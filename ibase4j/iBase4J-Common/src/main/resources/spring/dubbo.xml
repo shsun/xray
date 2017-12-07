@@ -30,16 +30,16 @@
     org.ibase4j.core.SysProviderImpl
     org.ibase4j.core.BizProviderImpl
     -->
+    <!--
     <dubbo:annotation package="org.ibase4j"/>
+    -->
 
     <!-- 声明需要暴露的服务接口（注意是接口,不是实现类）facade-->
-    <!--
-    <dubbo:service id="sysProvider" interface="org.ibase4j.provider.ISysProvider" ref="sysProviderImpl"/>
-    -->
+    <!--    -->
+    <dubbo:service id="sysProvider_" interface="org.ibase4j.provider.ISysProvider" ref="sysProviderImpl"/>
     <!-- 这里是具体实现类,id和上面的暴露的服务接口ref要一致,dubbo就是通过这个来注册对应的服务 service -->
-    <!--
+    <!--    -->
     <bean id="sysProviderImpl" class="org.ibase4j.core.SysProviderImpl"></bean>
-    -->
 
     <!--
     ====================================== dubbo-common-application-consumer
