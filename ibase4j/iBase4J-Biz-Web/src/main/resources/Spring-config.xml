@@ -30,6 +30,9 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:exclude-filter type="annotation" expression="org.springframework.cache.annotation.EnableCaching" />
 	</context:component-scan>
+
+	<bean id="applicationEventListener" class="base.listener.XApplicationEventListener"/>
+
 	<!-- dubbo -->
 	<dubbo:reference id="sysProvider" interface="org.ibase4j.provider.ISysProvider" check="false" />
 	<dubbo:reference id="bizProvider" interface="org.ibase4j.provider.IBizProvider" check="false" />

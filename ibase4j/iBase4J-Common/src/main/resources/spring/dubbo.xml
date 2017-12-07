@@ -30,9 +30,7 @@
     org.ibase4j.core.SysProviderImpl
     org.ibase4j.core.BizProviderImpl
     -->
-    <!--
     <dubbo:annotation package="org.ibase4j"/>
-    -->
 
     <!-- 声明需要暴露的服务接口（注意是接口,不是实现类）facade-->
     <!--

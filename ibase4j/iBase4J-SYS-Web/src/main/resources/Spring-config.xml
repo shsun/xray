@@ -39,6 +39,8 @@
 	</context:component-scan>
 
 
+	<bean id="applicationEventListener" class="base.listener.XApplicationEventListener"/>
+
 	<!--
 	dubbo consumer
 	sysProvider

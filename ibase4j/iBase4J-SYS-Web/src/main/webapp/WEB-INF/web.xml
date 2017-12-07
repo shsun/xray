@@ -12,6 +12,13 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:Spring-config.xml</param-value>
 	</context-param>
+
+
+	<listener>
+		<listener-class>base.listener.XBeforeContextLoaderListener</listener-class>
+	</listener>
+
+
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

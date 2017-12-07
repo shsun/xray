@@ -9,21 +9,34 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
- * 拦截器基类
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:16:31
+ *
  */
 public class BaseInterceptor extends HandlerInterceptorAdapter {
+
     protected final Logger logger = LogManager.getLogger();
+
+    /**
+     * 
+     */
     private BaseInterceptor[] nextInterceptor;
 
-    public void setNextInterceptor(BaseInterceptor... nextInterceptor) {
+    /**
+     *
+     * @param nextInterceptor
+     */
+    public void setNextInterceptor(BaseInterceptor...nextInterceptor) {
         this.nextInterceptor = nextInterceptor;
     }
 
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-        throws Exception {
+    /**
+     *
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     * @throws Exception
+     */
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (nextInterceptor == null) {
             return true;
         }
@@ -35,8 +48,15 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
         return true;
     }
 
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-        ModelAndView modelAndView) throws Exception {
+    /**
+     *
+     * @param request
+     * @param response
+     * @param handler
+     * @param modelAndView
+     * @throws Exception
+     */
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         if (nextInterceptor != null) {
             for (int i = 0; i < nextInterceptor.length; i++) {
                 nextInterceptor[i].postHandle(request, response, handler, modelAndView);
@@ -44,8 +64,15 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
         }
     }
 
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-        throws Exception {
+    /**
+     *
+     * @param request
+     * @param response
+     * @param handler
+     * @param ex
+     * @throws Exception
+     */
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         if (nextInterceptor != null) {
             for (int i = 0; i < nextInterceptor.length; i++) {
                 nextInterceptor[i].afterCompletion(request, response, handler, ex);
@@ -53,8 +80,14 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
         }
     }
 
-    public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler)
-        throws Exception {
+    /**
+     * 
+     * @param request
+     * @param response
+     * @param handler
+     * @throws Exception
+     */
+    public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (nextInterceptor != null) {
             for (int i = 0; i < nextInterceptor.length; i++) {
                 nextInterceptor[i].afterConcurrentHandlingStarted(request, response, handler);
