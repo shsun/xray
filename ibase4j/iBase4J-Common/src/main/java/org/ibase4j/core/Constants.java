@@ -11,7 +11,7 @@ public interface Constants {
      * 异常信息统一头信息<br>
      * 非常遗憾的通知您,程序发生了异常
      */
-    public static final String EXCEPTION_HEAD = "OH,MY GOD! SOME ERRORS OCCURED! AS FOLLOWS :";
+    public static final String Exception_Head = "OH,MY GOD! SOME ERRORS OCCURED! AS FOLLOWS :";
     /** 操作名称 */
     public static final String OPERATION_NAME = "OPERATION_NAME";
     /** 客户端语言 */
@@ -35,9 +35,7 @@ public interface Constants {
     /** 缓存命名空间 */
     public static final String CACHE_NAMESPACE = "iBase4J:";
 
-    /**
-     * 日志表状态
-     */
+    /** 日志表状态 */
     public interface JOBSTATE {
         /**
          * 日志表状态，初始状态，插入

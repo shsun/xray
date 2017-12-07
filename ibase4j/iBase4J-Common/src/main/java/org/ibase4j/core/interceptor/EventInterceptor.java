@@ -44,7 +44,7 @@ public class EventInterceptor extends BaseInterceptor {
 	@Autowired
 	@Qualifier("sysProvider")
 	protected BaseProvider sysProvider;
-
+	
 	static UASparser uasParser = null;
 
 	// 初始化uasParser对象

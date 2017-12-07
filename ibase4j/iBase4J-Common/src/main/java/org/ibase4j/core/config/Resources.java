@@ -20,7 +20,7 @@ public final class Resources {
     private static final Map<String, ResourceBundle> MESSAGES = new HashMap<String, ResourceBundle>();
 
     /** 国际化信息 */
-    public static String getMessage(String key, Object...params) {
+    public static String getMessage(String key, Object... params) {
         Locale locale = LocaleContextHolder.getLocale();
         ResourceBundle message = MESSAGES.get(locale.getLanguage());
         if (message == null) {

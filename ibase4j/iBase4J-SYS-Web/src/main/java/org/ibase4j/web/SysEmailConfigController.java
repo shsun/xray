@@ -8,6 +8,7 @@ import org.ibase4j.core.base.Parameter;
 import org.ibase4j.core.util.DataUtil;
 import org.ibase4j.core.util.SecurityUtil;
 import org.ibase4j.model.SysEmailConfig;
+import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

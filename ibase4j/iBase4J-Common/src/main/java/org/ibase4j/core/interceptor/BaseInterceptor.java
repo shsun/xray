@@ -18,11 +18,12 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
     protected final Logger logger = LogManager.getLogger();
     private BaseInterceptor[] nextInterceptor;
 
-    public void setNextInterceptor(BaseInterceptor...nextInterceptor) {
+    public void setNextInterceptor(BaseInterceptor... nextInterceptor) {
         this.nextInterceptor = nextInterceptor;
     }
 
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+        throws Exception {
         if (nextInterceptor == null) {
             return true;
         }
@@ -34,7 +35,8 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
         return true;
     }
 
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+        ModelAndView modelAndView) throws Exception {
         if (nextInterceptor != null) {
             for (int i = 0; i < nextInterceptor.length; i++) {
                 nextInterceptor[i].postHandle(request, response, handler, modelAndView);
@@ -42,7 +44,8 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
         }
     }
 
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+        throws Exception {
         if (nextInterceptor != null) {
             for (int i = 0; i < nextInterceptor.length; i++) {
                 nextInterceptor[i].afterCompletion(request, response, handler, ex);
@@ -50,7 +53,8 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
         }
     }
 
-    public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler)
+        throws Exception {
         if (nextInterceptor != null) {
             for (int i = 0; i < nextInterceptor.length; i++) {
                 nextInterceptor[i].afterConcurrentHandlingStarted(request, response, handler);
