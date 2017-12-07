@@ -532,7 +532,7 @@
       <recent name="$PROJECT_DIR$/iBase4J-SYS-Web/src/main/webapp/WEB-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.iBase4J-SYS-Service">
+  <component name="RunManager" selected="Tomcat Server.iBase4J-SYS-Web">
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings />
@@ -946,6 +946,7 @@
     </configuration>
     <configuration default="false" name="iBase4J-SYS-Web" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.82" ALTERNATIVE_JRE_ENABLED="false">
       <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+      <option name="COMMON_VM_ARGUMENTS" value="-Xms1024m -Xmx1536m -XX:MaxPermSize=512m" />
       <deployment>
         <artifact name="iBase4J-SYS-Web:war exploded">
           <settings>
@@ -1051,6 +1052,7 @@
     </configuration>
     <configuration default="false" name="iBase4J-SYS-Service" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.82" ALTERNATIVE_JRE_ENABLED="false">
       <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+      <option name="COMMON_VM_ARGUMENTS" value="-Xms1024m -Xmx1536m -XX:MaxPermSize=512m" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="iBase4J-SYS-Service:war exploded">
@@ -1203,12 +1205,12 @@
       <workItem from="1512605699685" duration="109000" />
       <workItem from="1512607626887" duration="1397000" />
       <workItem from="1512611460535" duration="2464000" />
-      <workItem from="1512642116669" duration="2527000" />
+      <workItem from="1512642116669" duration="2737000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56237000" />
+    <option name="totallyTimeSpent" value="56447000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1436" height="877" extended-state="6" />
