@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="iBase4J-SYS-Web:war">
+    <output-path>$PROJECT_DIR$/iBase4J-SYS-Web/target</output-path>
+    <root id="archive" name="iBase4J-SYS-Web.war">
+      <element id="artifact" artifact-name="iBase4J-SYS-Web:war exploded" />
+    </root>
+  </artifact>
+</component>

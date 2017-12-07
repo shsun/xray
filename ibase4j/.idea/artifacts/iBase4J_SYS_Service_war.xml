@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="iBase4J-SYS-Service:war">
+    <output-path>$PROJECT_DIR$/iBase4J-SYS-Service/target</output-path>
+    <root id="archive" name="iBase4J-SYS-Service.war">
+      <element id="artifact" artifact-name="iBase4J-SYS-Service:war exploded" />
+    </root>
+  </artifact>
+</component>

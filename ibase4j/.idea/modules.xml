@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/iBase4J.iml" filepath="$PROJECT_DIR$/iBase4J.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iBase4J-Biz-Facade/iBase4J-Biz-Facade.iml" filepath="$PROJECT_DIR$/iBase4J-Biz-Facade/iBase4J-Biz-Facade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iBase4J-Biz-Service/iBase4J-Biz-Service.iml" filepath="$PROJECT_DIR$/iBase4J-Biz-Service/iBase4J-Biz-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iBase4J-Biz-Web/iBase4J-Biz-Web.iml" filepath="$PROJECT_DIR$/iBase4J-Biz-Web/iBase4J-Biz-Web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iBase4J-Common/iBase4J-Common.iml" filepath="$PROJECT_DIR$/iBase4J-Common/iBase4J-Common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iBase4J-SYS-Facade/iBase4J-SYS-Facade.iml" filepath="$PROJECT_DIR$/iBase4J-SYS-Facade/iBase4J-SYS-Facade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iBase4J-SYS-Service/iBase4J-SYS-Service.iml" filepath="$PROJECT_DIR$/iBase4J-SYS-Service/iBase4J-SYS-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iBase4J-SYS-Web/iBase4J-SYS-Web.iml" filepath="$PROJECT_DIR$/iBase4J-SYS-Web/iBase4J-SYS-Web.iml" />
+    </modules>
+  </component>
+</project>
