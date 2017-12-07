@@ -12,11 +12,12 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 
 /**
  * Parsing The Configuration File
+ * 
  * @author ShenHuaJie
  * @version 2016年7月30日 下午11:41:53
  */
 public final class PropertiesUtil extends PropertyPlaceholderConfigurer {
-    private static final byte[] KEY = {9, -1, 0, 5, 39, 8, 6, 19};
+    private static final byte[] KEY = { 9, -1, 0, 5, 39, 8, 6, 19 };
     private static Map<String, String> ctxPropertiesMap;
     private List<String> decryptProperties;
 
@@ -28,7 +29,15 @@ public final class PropertiesUtil extends PropertyPlaceholderConfigurer {
             String keyStr = key.toString();
             String value = props.getProperty(keyStr);
             if (decryptProperties != null && decryptProperties.contains(keyStr)) {
-                value = SecurityUtil.decryptDes(value, KEY);
+
+                // TODO: 12/7/17  just skip decrypt
+                //System.out.println("-------->>" + keyStr + ", " + value + ", " + KEY);
+                //value = SecurityUtil.decryptDes(value, KEY);
+                //System.out.println("newValue-------->>" + value);
+
+
+                System.out.println("-------->>" + keyStr + ", " + value + ", " + KEY);
+
                 props.setProperty(keyStr, value);
             }
             ctxPropertiesMap.put(keyStr, value);
@@ -36,7 +45,7 @@ public final class PropertiesUtil extends PropertyPlaceholderConfigurer {
     }
 
     /**
-     * @param decryptPropertiesMap the decryptPropertiesMap to set
+     * @param decryptProperties the decryptPropertiesMap to set
      */
     public void setDecryptProperties(List<String> decryptProperties) {
         this.decryptProperties = decryptProperties;
@@ -83,6 +92,7 @@ public final class PropertiesUtil extends PropertyPlaceholderConfigurer {
 
     /**
      * 根据key获取值
+     * 
      * @param key
      * @param defaultValue
      * @return

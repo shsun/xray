@@ -42,8 +42,10 @@
 	<!--
 	dubbo consumer
 	sysProvider
+
+		<dubbo:reference id="sysProvider" interface="org.ibase4j.provider.ISysProvider" check="false"/>
+
 	-->
-	<dubbo:reference id="sysProvider" interface="org.ibase4j.provider.ISysProvider" check="false"/>
 
 
 
@@ -57,6 +59,9 @@
 	<!-- 引入SPRING配置文件 -->
 
 	<import resource="spring/dubbo.xml" />
+
+
+
 
 	<!-- <import resource="spring/mq.xml"/> -->
 
