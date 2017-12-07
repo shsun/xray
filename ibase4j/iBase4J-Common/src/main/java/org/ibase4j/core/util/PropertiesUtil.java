@@ -30,13 +30,12 @@ public final class PropertiesUtil extends PropertyPlaceholderConfigurer {
             String value = props.getProperty(keyStr);
             if (decryptProperties != null && decryptProperties.contains(keyStr)) {
 
-                // TODO: 12/7/17  just skip decrypt
-                //System.out.println("-------->>" + keyStr + ", " + value + ", " + KEY);
-                //value = SecurityUtil.decryptDes(value, KEY);
-                //System.out.println("newValue-------->>" + value);
-
-
                 System.out.println("-------->>" + keyStr + ", " + value + ", " + KEY);
+                value = SecurityUtil.decryptDes(value, KEY);
+                System.out.println("newValue-------->>" + value);
+
+
+                //System.out.println("-------->>" + keyStr + ", " + value + ", " + KEY);
 
                 props.setProperty(keyStr, value);
             }

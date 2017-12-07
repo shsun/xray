@@ -25,13 +25,15 @@
 
 			</props>
 		</property>
+		<!-- 没有必要搞这么复杂 -->
+		<!--
 		<property name="decryptProperties">
 			<array>
-				<!-- 需要解密的配置 -->
 				<value>db.reader.password</value>
 				<value>db.writer.password</value>
 			</array>
 		</property>
+		-->
 	</bean>
 
 	<!-- 扫描注解 -->
