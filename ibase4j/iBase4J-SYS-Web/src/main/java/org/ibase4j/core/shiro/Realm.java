@@ -30,17 +30,14 @@ import org.springframework.session.data.redis.RedisOperationsSessionRepository;
 
 import com.baomidou.mybatisplus.plugins.Page;
 
-/**
- * 权限检查类
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:44:45
- */
 public class Realm extends AuthorizingRealm {
     private final Logger logger = LogManager.getLogger();
+
     @Autowired
     @Qualifier("sysProvider")
     protected BaseProvider provider;
+
+
     @Autowired
     private RedisOperationsSessionRepository sessionRepository;
 
