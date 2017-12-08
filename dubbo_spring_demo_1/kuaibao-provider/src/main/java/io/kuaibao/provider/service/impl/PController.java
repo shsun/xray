@@ -16,7 +16,7 @@ public class PController {
 //    @Qualifier("c")
     private CService service;
 
-    @RequestMapping(value = "/test_p", produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "/test", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String test(){
         String userName = service.getUserName();

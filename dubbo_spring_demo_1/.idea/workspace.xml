@@ -48,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/kuaibao-provider/src/main/java/io/kuaibao/provider/service/impl/PController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.19858156">
+              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,10 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="applicationProvider.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="applicationProvider.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kuaibao-provider/src/main/resources/applicationProvider.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45454547">
+            <state vertical-scroll-proportion="-2.0588236">
               <caret line="22" column="95" selection-start-line="22" selection-start-column="95" selection-end-line="22" selection-end-column="95" />
               <folding />
             </state>
@@ -145,12 +145,12 @@
         <option value="$PROJECT_DIR$/kuaibao-provider/src/main/java/io/kuaibao/provider/service/impl/DServiceImpl2.java" />
         <option value="$PROJECT_DIR$/kuaibao-provider-api/src/main/java/io/kuaibao/provider/service/CService.java" />
         <option value="$PROJECT_DIR$/kuaibao-consumer/src/main/java/io/kuaibao/consumer/controller/CServiceImpl.java" />
-        <option value="$PROJECT_DIR$/kuaibao-provider/src/main/java/io/kuaibao/provider/service/impl/PController.java" />
         <option value="$PROJECT_DIR$/kuaibao-provider/src/main/java/io/kuaibao/provider/service/impl/DServiceImpl_1.java" />
         <option value="$PROJECT_DIR$/kuaibao-provider/src/main/java/io/kuaibao/provider/service/impl/DServiceImpl_2.java" />
         <option value="$PROJECT_DIR$/kuaibao-consumer/src/main/java/io/kuaibao/consumer/controller/UserController.java" />
         <option value="$PROJECT_DIR$/kuaibao-provider/src/main/resources/applicationProvider.xml" />
         <option value="$PROJECT_DIR$/kuaibao-consumer/src/main/resources/applicationConsumer.xml" />
+        <option value="$PROJECT_DIR$/kuaibao-provider/src/main/java/io/kuaibao/provider/service/impl/PController.java" />
       </list>
     </option>
   </component>
@@ -1003,16 +1003,16 @@
       <workItem from="1512728233076" duration="1030000" />
       <workItem from="1512729283425" duration="1557000" />
       <workItem from="1512731216857" duration="18000" />
-      <workItem from="1512731527090" duration="5541000" />
+      <workItem from="1512731527090" duration="5644000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8146000" />
+    <option name="totallyTimeSpent" value="8249000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1436" height="877" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1029,7 +1029,7 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.59264123" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.59264123" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1189,16 +1189,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kuaibao-provider/src/main/java/io/kuaibao/provider/service/impl/PController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kuaibao-provider/src/main/java/io/kuaibao/provider/service/impl/DServiceImpl_1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1239,9 +1229,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/kuaibao-provider/src/main/resources/applicationProvider.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45454547">
+        <state vertical-scroll-proportion="-2.0588236">
           <caret line="22" column="95" selection-start-line="22" selection-start-column="95" selection-end-line="22" selection-end-column="95" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kuaibao-provider/src/main/java/io/kuaibao/provider/service/impl/PController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19858156">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
