@@ -7,6 +7,6 @@ import io.kuaibao.provider.service.UserService;
  */
 public class UserServiceImpl implements UserService {
     public String getUserName() {
-        return "UserName(用户名)-本机";
+        return "UserName(用户名)-本机, i am provider ??";
     }
 }
