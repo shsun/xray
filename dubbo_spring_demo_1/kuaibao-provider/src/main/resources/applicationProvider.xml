@@ -19,8 +19,8 @@
 
 
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="io.kuaibao.provider.service.DService" ref="dService_1" group="d" />
-    <dubbo:service interface="io.kuaibao.provider.service.DService" ref="dService_2" group="d" />
+    <dubbo:service interface="io.kuaibao.provider.service.DService" ref="dService_1" group="d_1" />
+    <dubbo:service interface="io.kuaibao.provider.service.DService" ref="dService_2" group="d_2" />
     <bean id="dService_1" class="io.kuaibao.provider.service.impl.DServiceImpl_1" />
     <bean id="dService_2" class="io.kuaibao.provider.service.impl.DServiceImpl_2" />
 

@@ -18,6 +18,6 @@
 
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <dubbo:reference id="dService_1" interface="io.kuaibao.provider.service.DService" check="false" group="d" />
+    <dubbo:reference id="dService" interface="io.kuaibao.provider.service.DService" check="false" group="d_2" />
 
 </beans>
