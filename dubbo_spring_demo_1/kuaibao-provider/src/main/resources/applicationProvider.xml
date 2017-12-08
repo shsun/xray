@@ -19,12 +19,12 @@
 
 
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="io.kuaibao.provider.service.DService" ref="dService_1" group="d_1" />
-    <dubbo:service interface="io.kuaibao.provider.service.DService" ref="dService_2" group="d_2" />
-    <dubbo:service interface="io.kuaibao.provider.service.DService" ref="dService_3" group="d_3" />
-    <bean id="dService_1" class="io.kuaibao.provider.service.impl.DServiceImpl_1" />
-    <bean id="dService_2" class="io.kuaibao.provider.service.impl.DServiceImpl_2" />
-    <bean id="dService_3" class="io.kuaibao.provider.service.impl.DServiceImpl_3" />
+    <dubbo:service interface="io.kuaibao.service.DService" ref="dService_1" group="d_1" />
+    <dubbo:service interface="io.kuaibao.service.DService" ref="dService_2" group="d_2" />
+    <dubbo:service interface="io.kuaibao.service.DService" ref="dService_3" group="d_3" />
+    <bean id="dService_1" class="io.kuaibao.DServiceImpl_1" />
+    <bean id="dService_2" class="io.kuaibao.DServiceImpl_2" />
+    <bean id="dService_3" class="io.kuaibao.DServiceImpl_3" />
 
     <!--
     <dubbo:annotation package="org.kuaibao.provider.service.impl"/>
@@ -32,7 +32,7 @@
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
     <!-- -->
-    <dubbo:reference id="cService" interface="io.kuaibao.provider.service.CService" check="false"/>
+    <dubbo:reference id="cService" interface="io.kuaibao.service.CService" check="false"/>
 
 
 </beans>
