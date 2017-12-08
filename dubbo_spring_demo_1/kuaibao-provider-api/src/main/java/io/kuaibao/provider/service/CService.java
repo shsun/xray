@@ -3,6 +3,6 @@ package io.kuaibao.provider.service;
 /**
  * Created by tianwei on 2017/1/21.
  */
-public interface CService {
-    String getUserName();
+public interface CService extends DService {
+    // String getUserName();
 }

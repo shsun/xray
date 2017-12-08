@@ -11,13 +11,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UserController {
 
     @Autowired
-    //@Qualifier("d2")
+    @Qualifier("dService")
     private DService service;
+
+    @Autowired
+    @Qualifier("dService_random")
+    private DService dService_random;
 
     @RequestMapping(value = "/test", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String test() {
         String userName = service.getUserName();
-        return "test " + userName;
+
+        return "test " + userName + "----" + dService_random.getUserName();
     }
 }
