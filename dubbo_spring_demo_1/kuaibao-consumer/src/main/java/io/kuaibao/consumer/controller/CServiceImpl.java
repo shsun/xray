@@ -1,7 +1,7 @@
 package io.kuaibao.consumer.controller;
 
-        import io.kuaibao.provider.service.CService;
 
+import io.kuaibao.provider.service.*;
 
 /**
  * Created by shsun on 12/8/17.

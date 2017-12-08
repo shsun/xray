@@ -6,19 +6,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * Created by tianwei on 2017/1/21.
- */
 @Controller
 public class UserController {
     @Autowired
-    //@Qualifier("d")
+    // @Qualifier("d")
     private DService service;
 
     @RequestMapping(value = "/test", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String test(){
+    public String test() {
         String userName = service.getUserName();
-        return "test "+userName;
+        return "test " + userName;
     }
 }
