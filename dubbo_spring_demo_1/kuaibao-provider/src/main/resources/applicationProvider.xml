@@ -33,6 +33,6 @@
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
     <!-- -->
     <dubbo:reference id="cService" interface="io.kuaibao.service.CService" check="false"/>
-
+    <dubbo:reference id="myDService" interface="io.kuaibao.service.DService" check="false"/>
 
 </beans>

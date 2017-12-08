@@ -6,8 +6,9 @@ import io.kuaibao.service.*;
 /**
  * Created by shsun on 12/8/17.
  */
-public class CServiceImpl implements CService {
+public class MyDServiceImpl implements DService {
     public String getUserName() {
-        return "module=consumer, c=CServiceImpl i=CService";
+        return "module=consumer, c=MyDServiceImpl i=CService";
     }
+
 }
