@@ -14,7 +14,14 @@
     <dubbo:registry  protocol="zookeeper" address="zookeeper://127.0.0.1:2181" />
 
 
+
+    <!-- 声明需要暴露的服务接口 -->
+    <!--
+    <dubbo:service interface="io.kuaibao.provider.service.UserService" ref="cService" />
+    <bean id="cService" class="io.kuaibao.consumer.controller.CServiceImpl" />
+-->
+
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <dubbo:reference id="demoService" interface="io.kuaibao.provider.service.UserService" check="false" />
+    <dubbo:reference id="dService" interface="io.kuaibao.provider.service.UserService" check="false" />
 
 </beans>

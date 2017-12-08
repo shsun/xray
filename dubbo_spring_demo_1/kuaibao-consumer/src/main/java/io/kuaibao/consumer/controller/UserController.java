@@ -2,6 +2,7 @@ package io.kuaibao.consumer.controller;
 
 import io.kuaibao.provider.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
     @Autowired
-    private UserService demoService;
+    //@Qualifier("d")
+    private UserService service;
 
     @RequestMapping(value = "/test", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String test(){
-        String userName = demoService.getUserName();
+        String userName = service.getUserName();
         return "test "+userName;
     }
 }
