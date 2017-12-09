@@ -24,7 +24,7 @@
 				<!--
 				<prop key="dubbo.protocol.port">1${server.port}</prop>
 				-->
-				<prop key="dubbo.protocol.port">20880</prop>
+				<prop key="dubbo.protocol.port">20881</prop>
 
 				<!-- Web端常用数据缓存时间(秒) -->
 				<prop key="redis.expiration">1800</prop>
@@ -44,11 +44,9 @@
 	<!--
 	dubbo consumer
 	sysProvider
-
-		<dubbo:reference id="sysProvider" interface="org.ibase4j.provider.ISysProvider" check="false"/>
-
 	-->
 
+	<dubbo:reference id="sysProvider" interface="org.ibase4j.provider.ISysProvider" check="false"/>
 
 
 	<!-- ignore zookeeper, connect directly -->
@@ -61,9 +59,6 @@
 	<!-- 引入SPRING配置文件 -->
 
 	<import resource="spring/dubbo.xml" />
-
-
-
 
 	<!-- <import resource="spring/mq.xml"/> -->
 

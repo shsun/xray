@@ -17,6 +17,25 @@
 		<server.port>8088</server.port>
 	</properties>
 
+	<!--
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<overlays>
+						<overlay>
+							<groupId>org.ibase4j</groupId>
+							<artifactId>iBase4J-SYS-Service</artifactId>
+						</overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	-->
+
 	<dependencies>
 		<dependency>
 			<groupId>org.ibase4j</groupId>
@@ -42,15 +61,14 @@
 		</dependency>
 
 
+		<!--
 		<dependency>
 			<groupId>org.ibase4j</groupId>
 			<artifactId>iBase4J-SYS-Service</artifactId>
 			<version>${project.version}</version>
-			<type>jar</type>
-			<classifier>classes</classifier>
-			<scope>provided</scope>
+			<type>war</type>
 		</dependency>
-
+		-->
 
 		<!-- Spring -->
 		<dependency>

@@ -23,6 +23,13 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/iBase4J-Biz-Facade/pom.xml" />
+        <option value="$PROJECT_DIR$/iBase4J-Biz-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/iBase4J-Biz-Web/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />

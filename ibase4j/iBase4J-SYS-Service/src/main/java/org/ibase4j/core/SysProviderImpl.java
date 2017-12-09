@@ -8,8 +8,7 @@ import org.ibase4j.provider.ISysProvider;
 //@Component
 //@Service(protocol = { "dubbo" }, interfaceClass = ISysProvider.class)
 @Service(interfaceClass = ISysProvider.class)
-public class SysProviderImpl extends BaseProviderImpl implements org.ibase4j.core.base.BaseProvider {
-
+public class SysProviderImpl extends BaseProviderImpl implements ISysProvider {
 
     public SysProviderImpl() {
         super();

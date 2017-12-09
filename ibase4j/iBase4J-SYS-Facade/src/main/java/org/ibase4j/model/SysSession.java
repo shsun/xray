@@ -11,7 +11,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 @SuppressWarnings("serial")
 public class SysSession extends BaseModel {
     private String sessionId;
-    
+
     @TableField("account_")
     private String account;
 
@@ -105,24 +105,18 @@ public class SysSession extends BaseModel {
         if (getClass() != that.getClass()) {
             return false;
         }
-        SysSession other = (SysSession)that;
+        SysSession other = (SysSession) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getSessionId() == null ? other.getSessionId() == null
-                : this.getSessionId().equals(other.getSessionId()))
-            && (this.getAccount() == null ? other.getAccount() == null : this.getAccount().equals(other.getAccount()))
-            && (this.getIp() == null ? other.getIp() == null : this.getIp().equals(other.getIp()))
-            && (this.getStartTime() == null ? other.getStartTime() == null
-                : this.getStartTime().equals(other.getStartTime()))
-            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null
-                : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getCreateBy() == null ? other.getCreateBy() == null
-                : this.getCreateBy().equals(other.getCreateBy()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null
-                : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getUpdateBy() == null ? other.getUpdateBy() == null
-                : this.getUpdateBy().equals(other.getUpdateBy()));
+                && (this.getSessionId() == null ? other.getSessionId() == null : this.getSessionId().equals(other.getSessionId()))
+                && (this.getAccount() == null ? other.getAccount() == null : this.getAccount().equals(other.getAccount()))
+                && (this.getIp() == null ? other.getIp() == null : this.getIp().equals(other.getIp()))
+                && (this.getStartTime() == null ? other.getStartTime() == null : this.getStartTime().equals(other.getStartTime()))
+                && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
+                && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
+                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+                && (this.getCreateBy() == null ? other.getCreateBy() == null : this.getCreateBy().equals(other.getCreateBy()))
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+                && (this.getUpdateBy() == null ? other.getUpdateBy() == null : this.getUpdateBy().equals(other.getUpdateBy()));
     }
 
     /**

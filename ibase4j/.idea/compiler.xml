@@ -29,21 +29,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-Biz-Web" />
       </profile>
       <profile default="false" name="Annotation profile for iBase4J-Biz-Service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-Biz-Service" />
       </profile>
       <profile default="false" name="Annotation profile for iBase4J-Biz-Facade" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-Biz-Facade" />
       </profile>
       <profile default="false" name="Annotation profile for iBase4J-SYS-Facade" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />

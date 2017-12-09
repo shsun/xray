@@ -11,7 +11,18 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:Spring-config.xml</param-value>
+		<!--
+		<param-value>
+			classpath:Spring-config.xml,
+			classpath*:spring/dubbo.xml,
+			classpath*:spring/mq.xml,
+			classpath*:spring/redis.xml,
+			classpath*:spring/session.xml,
+			classpath*:spring/shiro.xml
+		</param-value>
+		-->
 	</context-param>
+
 
 
 	<listener>
