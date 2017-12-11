@@ -10,6 +10,7 @@ public interface BaseMapper<T extends BaseModel> extends com.baomidou.mybatisplu
 
     List<Long> selectIdPage(@Param("cm") Map<String, Object> params);
 
+
     List<Long> selectIdPage(RowBounds rowBounds, @Param("cm") Map<String, Object> params);
 
 }
