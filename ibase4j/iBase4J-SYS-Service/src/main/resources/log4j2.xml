@@ -5,8 +5,8 @@
         <!-- 日志备份目录 -->
         <property name="BACKUP_HOME">backup</property>
         <property name="SERVER_NAME">${project.artifactId}</property>
-        <property name="EVERY_FILE_SIZE">5M</property><!-- 日志切割的最小单位 -->
-        <property name="OUTPUT_LOG_LEVEL">DEBUG</property><!-- 日志输出级别 -->
+        <property name="EVERY_FILE_SIZE">50M</property><!-- 日志切割的最小单位 -->
+        <property name="OUTPUT_LOG_LEVEL">ALL</property><!-- 日志输出级别 -->
     </properties>
     <appenders>
         <Console name="Console" target="SYSTEM_OUT">

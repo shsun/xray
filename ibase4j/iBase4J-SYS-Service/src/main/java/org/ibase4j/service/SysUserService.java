@@ -92,9 +92,10 @@ public class SysUserService extends BaseService<SysUser>{
 	}
 
 	public void init() {
-		List<Long> list = ((SysUserMapper) mapper).selectIdPage(Collections.<String, Object>emptyMap());
+		SysUserMapper tmp = (SysUserMapper) mapper;
+		List<Long> list = tmp.selectIdPage(Collections.<String, Object>emptyMap());
 		for (Long id : list) {
-			CacheUtil.getCache().set(getCacheKey(id), mapper.selectById(id));
+			CacheUtil.getCache().set(getCacheKey(id), tmp.selectById(id));
 		}
 	}
 }

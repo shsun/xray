@@ -11,6 +11,7 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
 public class SysServerListener extends ServerListener {
+
     protected final Logger logger = LogManager.getLogger(this.getClass());
 
     public void contextInitialized(ServletContextEvent contextEvent) {
