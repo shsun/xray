@@ -14,15 +14,20 @@ public class SysServerListener extends ServerListener {
 
     protected final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * @param contextEvent
+     */
     public void contextInitialized(ServletContextEvent contextEvent) {
-
         WebApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
 
-        context.getBean(SysUserService.class).init();
+        SysUserService sysUserService = context.getBean(SysUserService.class);
+        sysUserService.init();
 
+        // FIXME: 12/11/17
         SysDicService sysDicService = context.getBean(SysDicService.class);
         sysDicService.getAllDic();
 
+        //
         super.contextInitialized(contextEvent);
     }
 }

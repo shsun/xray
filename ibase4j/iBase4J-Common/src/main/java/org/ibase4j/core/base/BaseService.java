@@ -232,11 +232,7 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
 
     public List<T> queryList(Map<String, Object> params) {
         logger.debug("queryList", params);
-        // FIXME: 12/11/17
-        //List<Long> ids = mapper.selectIdPage(params);
-        List<Long> ids = new ArrayList<>();
-        ids.add(2L);
-        ids.add(1L);
+        List<Long> ids = mapper.selectIdPage(params);
         List<T> list = getList(ids);
         return list;
     }
