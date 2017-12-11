@@ -1,5 +1,6 @@
 package org.ibase4j.core.base;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -119,7 +120,9 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
         return new Page<K>();
     }
 
-    /** 根据Id查询(默认类型T) */
+    /**
+     * 根据Id查询(默认类型T)
+     */
     public List<T> getList(List<Long> ids) {
         List<T> list = InstanceUtil.newArrayList();
         if (ids != null) {
@@ -228,7 +231,12 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
     }
 
     public List<T> queryList(Map<String, Object> params) {
-        List<Long> ids = mapper.selectIdPage(params);
+        logger.debug("queryList", params);
+        // FIXME: 12/11/17
+        //List<Long> ids = mapper.selectIdPage(params);
+        List<Long> ids = new ArrayList<>();
+        ids.add(2L);
+        ids.add(1L);
         List<T> list = getList(ids);
         return list;
     }
