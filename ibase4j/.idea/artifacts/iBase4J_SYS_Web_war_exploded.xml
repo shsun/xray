@@ -132,7 +132,6 @@
         <element id="file-copy" path="$PROJECT_DIR$/iBase4J-SYS-Web/target/iBase4J-SYS-Web/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="iBase4J-SYS-Web/web/Web" />
-      <element id="artifact" artifact-name="iBase4J-SYS-Service:war exploded" />
     </root>
   </artifact>
 </component>

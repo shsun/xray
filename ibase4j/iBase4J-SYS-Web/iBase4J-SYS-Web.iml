@@ -30,7 +30,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="iBase4J-Common" />
     <orderEntry type="module" module-name="iBase4J-SYS-Facade" />
-    <orderEntry type="module" module-name="iBase4J-SYS-Service" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.3.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.0.RELEASE" level="project" />

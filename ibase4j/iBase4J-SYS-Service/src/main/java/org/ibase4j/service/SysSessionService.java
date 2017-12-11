@@ -20,6 +20,10 @@ import org.springframework.transaction.annotation.Transactional;
 @CacheConfig(cacheNames = "sysSession")
 public class SysSessionService extends BaseService<SysSession> {
 
+    public SysSessionService() {
+        super();
+    }
+
     /**
      * 
      * @param record

@@ -45,16 +45,7 @@
 	dubbo consumer
 	sysProvider
 	-->
-
 	<dubbo:reference id="sysProvider" interface="org.ibase4j.provider.ISysProvider" check="false"/>
-
-
-	<!-- ignore zookeeper, connect directly -->
-	<!--
-	<dubbo:reference id="sysProvider" interface="org.ibase4j.provider.ISysProvider" check="false" url="dubbo://127.0.0.1:20880" />
-	-->
-
-
 
 	<!-- 引入SPRING配置文件 -->
 

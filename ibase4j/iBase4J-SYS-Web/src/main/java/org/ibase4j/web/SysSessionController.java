@@ -27,24 +27,25 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "会话管理", description = "会话管理")
 @RequestMapping(value = "/session")
 public class SysSessionController extends AbstractController<ISysProvider> {
-	public String getService() {
-		return "sysSessionService";
-	}
 
-	// 查询会话
-	@ApiOperation(value = "查询会话")
-	@PutMapping(value = "/read/list")
-	@RequiresPermissions("sys.base.session.read")
-	public Object get(ModelMap modelMap, @RequestBody Map<String, Object> param) {
-		Integer number = SessionListener.getAllUserNumber();
-		modelMap.put("userNumber", number); // 用户数大于会话数,有用户没有登录
-		return super.query(modelMap, param);
-	}
+    public String getService() {
+        return "sysSessionService";
+    }
 
-	@DeleteMapping
-	@ApiOperation(value = "删除会话")
-	@RequiresPermissions("sys.base.session.delete")
-	public Object delete(ModelMap modelMap, @RequestBody SysSession param) {
-		return super.delete(modelMap, param);
-	}
+    // 查询会话
+    @ApiOperation(value = "查询会话")
+    @PutMapping(value = "/read/list")
+    @RequiresPermissions("sys.base.session.read")
+    public Object get(ModelMap modelMap, @RequestBody Map<String, Object> param) {
+        Integer number = SessionListener.getAllUserNumber();
+        modelMap.put("userNumber", number); // 用户数大于会话数,有用户没有登录
+        return super.query(modelMap, param);
+    }
+
+    @DeleteMapping
+    @ApiOperation(value = "删除会话")
+    @RequiresPermissions("sys.base.session.delete")
+    public Object delete(ModelMap modelMap, @RequestBody SysSession param) {
+        return super.delete(modelMap, param);
+    }
 }
