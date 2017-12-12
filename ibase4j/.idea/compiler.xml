@@ -17,26 +17,12 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Annotation profile for iBase4J-Common" enabled="true">
+      <profile default="false" name="Annotation profile for iBase4J-Biz-Web" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-Common" />
-      </profile>
-      <profile default="false" name="Annotation profile for iBase4J-SYS-Service" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="iBase4J-SYS-Service" />
-      </profile>
-      <profile default="false" name="Annotation profile for iBase4J-SYS-Facade" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="iBase4J-SYS-Facade" />
+        <module name="iBase4J-Biz-Web" />
       </profile>
       <profile default="false" name="Annotation profile for iBase4J-SYS-Web" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -45,12 +31,12 @@
         <processorPath useClasspath="true" />
         <module name="iBase4J-SYS-Web" />
       </profile>
-      <profile default="false" name="Annotation profile for iBase4J-Biz-Service" enabled="true">
+      <profile default="false" name="Annotation profile for iBase4J-SYS-Service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-Biz-Service" />
+        <module name="iBase4J-SYS-Service" />
       </profile>
       <profile default="false" name="Annotation profile for iBase4J-Biz-Facade" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -59,12 +45,26 @@
         <processorPath useClasspath="true" />
         <module name="iBase4J-Biz-Facade" />
       </profile>
-      <profile default="false" name="Annotation profile for iBase4J-Biz-Web" enabled="true">
+      <profile default="false" name="Annotation profile for iBase4J-SYS-Facade" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-Biz-Web" />
+        <module name="iBase4J-SYS-Facade" />
+      </profile>
+      <profile default="false" name="Annotation profile for iBase4J-Biz-Service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="iBase4J-Biz-Service" />
+      </profile>
+      <profile default="false" name="Annotation profile for iBase4J-Common" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="iBase4J-Common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

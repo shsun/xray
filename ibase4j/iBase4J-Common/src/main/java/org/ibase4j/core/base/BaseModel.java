@@ -11,10 +11,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @SuppressWarnings("serial")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class BaseModel implements Serializable {
+
 	@TableId(value = "id_", type = IdType.ID_WORKER)
 	private Long id;
+
 	@TableField("enable_")
 	private Integer enable;
+
 	@TableField("remark_")
 	private String remark;
 	private Long createBy;
