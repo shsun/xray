@@ -59,8 +59,7 @@ public final class UploadUtil {
     }
 
     /** 获取文本域 */
-    public static final FileItem[] getFileItem(HttpServletRequest request, File saveDir, String... fieldName)
-        throws FileUploadException {
+    public static final FileItem[] getFileItem(HttpServletRequest request, File saveDir, String...fieldName) throws FileUploadException {
         if (fieldName == null || saveDir == null) {
             return null;
         }
@@ -69,7 +68,7 @@ public final class UploadUtil {
         FileItem[] fileItems = new FileItem[fieldName.length];
         for (int i = 0; i < fieldName.length; i++) {
             for (Iterator<?> iterator = fileItemList.iterator(); iterator.hasNext();) {
-                fileItem = (FileItem)iterator.next();
+                fileItem = (FileItem) iterator.next();
                 // 根据名字获得文本域
                 if (fieldName[i] != null && fieldName[i].equals(fileItem.getFieldName())) {
                     fileItems[i] = fileItem;
@@ -82,11 +81,10 @@ public final class UploadUtil {
 
     /** 上传文件处理(支持批量) */
     public static List<String> uploadImage(HttpServletRequest request) {
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
-            request.getSession().getServletContext());
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
         List<String> fileNames = InstanceUtil.newArrayList();
         if (multipartResolver.isMultipart(request)) {
-            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)request;
+            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
             Iterator<String> iterator = multiRequest.getFileNames();
             String pathDir = request.getSession().getServletContext().getRealPath(uploadFileDir + DateUtil.getDate());
             File dirFile = new File(pathDir);

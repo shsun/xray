@@ -66,6 +66,7 @@
 	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
     	<property name="securityManager" ref="securityManager"/>
 	</bean>
+
 	<!--  -->
 	<mvc:view-resolvers>
 	    <mvc:jsp cache-views="false" prefix="/WEB-INF/jsp/" suffix=".jsp" />  
@@ -79,6 +80,7 @@
 		<!-- 内存中的最大值 -->
 		<property name="maxInMemorySize" value="40960" />
 	</bean>
+
 	<!-- 资源重定向(仅作为后台使用不提供静态资源) -->
 	<mvc:resources mapping="upload/**" location="/WEB-INF/upload/" cache-period="300" />
 	<mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>

@@ -42,6 +42,7 @@ public class Realm extends AuthorizingRealm {
     private RedisOperationsSessionRepository sessionRepository;
 
     // 权限
+    @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Long userId = WebUtil.getCurrentUser();
@@ -59,6 +60,7 @@ public class Realm extends AuthorizingRealm {
     }
 
     // 登录验证
+    @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         Map<String, Object> params = new HashMap<String, Object>();

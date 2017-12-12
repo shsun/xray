@@ -28,6 +28,13 @@
         </property>
     </bean>
 
+    <bean class="com.baomidou.mybatisplus.spring.MybatisMapperRefresh">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <constructor-arg name="mapperLocations" value="classpath*:**/mapper/xml/*.xml"/>
+        <constructor-arg name="delaySeconds" value="${mybatis.mapper.refresh.delaySeconds}"/>
+        <constructor-arg name="sleepSeconds" value="${mybatis.mapper.refresh.sleepSeconds}"/>
+        <constructor-arg name="enabled" value="${mybatis.mapper.refresh.enabled}"/>
+    </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <description>DAO接口所在包名，Spring会自动查找其下的类</description>
