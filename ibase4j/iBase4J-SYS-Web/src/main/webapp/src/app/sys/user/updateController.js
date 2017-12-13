@@ -33,10 +33,11 @@
 				url : '/upload/imageData',
 				data: {fileData:$scope.myCroppedImage},
 			}).then(function(result){
-                    if(result && result.httpCode ==200){//成功
-                        $scope.record['avatar'] =result.imgName[0];
+                    if(result && result.httpCode == 200){
+                        // 成功
+                        $scope.record['avatar'] = result.imgName[0];
                         saveData();
-                    }else if(result && result.httpCode ==400){
+                    } else if(result && result.httpCode ==400) {
                         saveData();
                     }
                 });

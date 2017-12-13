@@ -52,13 +52,8 @@ public class LoginController extends AbstractController<ISysProvider> {
         Assert.notNull(sysUser.getAccount(), "ACCOUNT");
         Assert.notNull(sysUser.getPassword(), "PASSWORD");
 
-
-        sysUser.setUserName("admin");
-        sysUser.setPassword("111111");
-
-
-        //sysProvider.toString();
-
+//        sysUser.setUserName("admin");
+//        sysUser.setPassword("111111");
 
         if (LoginHelper.login(sysUser.getAccount(), SecurityUtil.encryptPassword(sysUser.getPassword()))) {
             request.setAttribute("msg", "[" + sysUser.getAccount() + "]登录成功.");

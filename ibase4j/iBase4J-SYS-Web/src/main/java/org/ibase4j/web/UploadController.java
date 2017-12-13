@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import base.utils.HttpServletRequestUtils;
 import org.ibase4j.core.base.BaseController;
 import org.ibase4j.core.support.HttpCode;
 import org.ibase4j.core.support.decoder.BASE64Decoder;
@@ -39,12 +41,14 @@ public class UploadController extends BaseController {
      * @param modelMap
      * @return
      */
-    @RequestMapping("/image")
+    @RequestMapping(value = "/image", method = { RequestMethod.GET, RequestMethod.POST })
     @ApiOperation(value = "上传图片")
     public Object uploadImage(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+        List<String> fileNames = UploadUtil.uploadImage(request);
+
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setContentType("text/html;charset=utf-8");
-        List<String> fileNames = UploadUtil.uploadImage(request);
+
         return ab(fileNames, modelMap);
     }
 
@@ -56,13 +60,19 @@ public class UploadController extends BaseController {
      * @param modelMap
      * @return
      */
-    @RequestMapping("/imageData")
+    @RequestMapping(value = "/imageData", method = { RequestMethod.GET, RequestMethod.POST })
     @ApiOperation(value = "上传图片")
     public Object uploadImageData(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+
+        Map map = HttpServletRequestUtils.getRequestMap(request);
+
+        String[] fileDatas = request.getParameterValues("fileData");
+        String tmp = request.getParameter("fileData");
+
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setContentType("text/html;charset=utf-8");
+
         List<String> fileNames = InstanceUtil.newArrayList();
-        String[] fileDatas = request.getParameterValues("fileData");
         if (fileDatas != null) {
             for (int i = 0; i < fileDatas.length; i++) {
                 String fileStr = fileDatas[i];
