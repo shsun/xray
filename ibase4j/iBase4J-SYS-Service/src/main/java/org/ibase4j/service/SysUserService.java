@@ -31,12 +31,16 @@ import com.baomidou.mybatisplus.plugins.Page;
 @Service
 @CacheConfig(cacheNames = "SysUser")
 public class SysUserService extends BaseService<SysUser>{
+
 	@Autowired
 	private SysUserThirdpartyMapper thirdpartyMapper;
+
 	@Autowired
 	private SysDicService sysDicService;
+
 	@Autowired
 	private SysDeptService sysDeptService;
+
 	@Autowired
 	private SysAuthorizeService sysAuthorizeService;
 

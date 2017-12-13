@@ -43,12 +43,22 @@
       <file leaf-file-name="SysUserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/iBase4J-SYS-Web/src/main/java/org/ibase4j/web/SysUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5866303">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4706685">
+              <caret line="64" column="23" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
               <folding>
                 <element signature="e#1331#1332#0" expanded="true" />
                 <element signature="e#1370#1371#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SysUserService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iBase4J-SYS-Service/src/main/java/org/ibase4j/service/SysUserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.7777777">
+              <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -98,6 +108,8 @@
         <option value="$PROJECT_DIR$/iBase4J-SYS-Web/src/main/java/org/ibase4j/web/UploadController.java" />
         <option value="$PROJECT_DIR$/iBase4J-SYS-Web/src/main/webapp/src/app/sys/user/updateController.js" />
         <option value="$PROJECT_DIR$/iBase4J-SYS-Web/src/main/java/org/ibase4j/web/SysUserController.java" />
+        <option value="$PROJECT_DIR$/iBase4J-SYS-Service/src/main/java/org/ibase4j/service/SysUserService.java" />
+        <option value="$PROJECT_DIR$/iBase4J-Common/src/main/java/org/ibase4j/core/base/AbstractController.java" />
       </list>
     </option>
   </component>
@@ -980,12 +992,12 @@
       <workItem from="1513046037190" duration="24000" />
       <workItem from="1513049220684" duration="2607000" />
       <workItem from="1513069642422" duration="11290000" />
-      <workItem from="1513124179360" duration="15350000" />
+      <workItem from="1513124179360" duration="15700000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30664000" />
+    <option name="totallyTimeSpent" value="31014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -1004,7 +1016,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41787124" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58607095" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1043,18 +1055,6 @@
           <line>83</line>
           <properties />
           <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/iBase4J-SYS-Web/src/main/java/org/ibase4j/web/SysUserController.java</url>
-          <line>44</line>
-          <properties />
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/iBase4J-SYS-Web/src/main/java/org/ibase4j/web/SysUserController.java</url>
-          <line>57</line>
-          <properties />
-          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1448,22 +1448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iBase4J-SYS-Service/src/main/java/org/ibase4j/service/SysUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48866856">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iBase4J-Common/src/main/java/org/ibase4j/core/base/AbstractController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3325301">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.0.RELEASE/spring-web-4.3.0.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.791237">
@@ -1480,10 +1464,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/iBase4J-SYS-Service/src/main/java/org/ibase4j/service/SysUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.7777777">
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iBase4J-Common/src/main/java/org/ibase4j/core/base/AbstractController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32469305">
+          <caret line="31" column="61" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/iBase4J-SYS-Web/src/main/java/org/ibase4j/web/SysUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5866303">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4706685">
+          <caret line="64" column="23" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
           <folding>
             <element signature="e#1331#1332#0" expanded="true" />
             <element signature="e#1370#1371#0" expanded="true" />
