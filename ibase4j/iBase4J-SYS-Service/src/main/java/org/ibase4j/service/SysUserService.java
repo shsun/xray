@@ -22,12 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.plugins.Page;
 
-/**
- * SysUser服务实现类
- * 
- * @author ShenHuaJie
- * @version 2016-08-27 22:39:42
- */
 @Service
 @CacheConfig(cacheNames = "SysUser")
 public class SysUserService extends BaseService<SysUser>{
