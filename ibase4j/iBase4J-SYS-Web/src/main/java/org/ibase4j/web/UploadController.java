@@ -38,18 +38,18 @@ public class UploadController extends BaseController {
      *
      * @param request
      * @param response
-     * @param modelMap
+     * @param map
      * @return
      */
     @RequestMapping(value = "/image", method = { RequestMethod.GET, RequestMethod.POST })
     @ApiOperation(value = "上传图片")
-    public Object uploadImage(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+    public Object uploadImage(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
         List<String> fileNames = UploadUtil.uploadImage(request);
 
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setContentType("text/html;charset=utf-8");
 
-        return ab(fileNames, modelMap);
+        return ab(fileNames, map);
     }
 
     /**
@@ -57,14 +57,14 @@ public class UploadController extends BaseController {
      *
      * @param request
      * @param response
-     * @param modelMap
+     * @param map
      * @return
      */
     @RequestMapping(value = "/imageData", method = { RequestMethod.GET, RequestMethod.POST })
     @ApiOperation(value = "上传图片")
-    public Object uploadImageData(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+    public Object uploadImageData(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
 
-        Map map = HttpServletRequestUtils.getRequestMap(request);
+        Map tmpmap = HttpServletRequestUtils.getRequestMap(request);
 
         String[] fileDatas = request.getParameterValues("fileData");
         String tmp = request.getParameter("fileData");
@@ -106,24 +106,24 @@ public class UploadController extends BaseController {
                             logger.error("上传文件异常：", e);
                         }
                     } else {
-                        setModelMap(modelMap, HttpCode.BAD_REQUEST);
-                        modelMap.put("msg", "请选择要上传的文件！");
-                        return modelMap;
+                        setModelMap(map, HttpCode.BAD_REQUEST);
+                        map.put("msg", "请选择要上传的文件！");
+                        return map;
                     }
                 }
             }
         }
-        return ab(fileNames, modelMap);
+        return ab(fileNames, map);
     }
 
-    private Object ab(List<String> fileNames, ModelMap modelMap) {
+    private Object ab(List<String> fileNames, ModelMap map) {
         if (fileNames.size() > 0) {
-            modelMap.put("imgName", fileNames);
-            return setSuccessModelMap(modelMap);
+            map.put("imgName", fileNames);
+            return super.setSuccessModelMap(map);
         } else {
-            setModelMap(modelMap, HttpCode.BAD_REQUEST);
-            modelMap.put("msg", "请选择要上传的文件！");
-            return modelMap;
+            super.setModelMap(map, HttpCode.BAD_REQUEST);
+            map.put("msg", "请选择要上传的文件！");
+            return map;
         }
     }
 }

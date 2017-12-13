@@ -27,10 +27,13 @@
         //初始化验证
         //validate($scope);
         $scope.submit= function(){
+            /*
             $scope.loading = true;
         	$.ajax({
         		type: 'POST',
 				url : '/upload/imageData',
+                contentType: false,
+                processData: false,
 				data: {fileData:$scope.myCroppedImage},
 			}).then(function(result){
                     if(result && result.httpCode == 200){
@@ -41,6 +44,9 @@
                         saveData();
                     }
                 });
+            */
+            // FIXME
+            saveData();
         };
 
         function saveData(){

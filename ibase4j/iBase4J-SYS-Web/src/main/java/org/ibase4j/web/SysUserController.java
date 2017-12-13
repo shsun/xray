@@ -44,14 +44,16 @@ public class SysUserController extends AbstractController<ISysProvider> {
         Assert.isNotBlank(param.getAccount(), "ACCOUNT");
         Assert.length(param.getAccount(), 3, 15, "ACCOUNT");
         if (param.getId() != null) {
+            // update
             Parameter parameter = new Parameter(getService(), "queryById").setId(param.getId());
             SysUser user = (SysUser) provider.execute(parameter).getModel();
             Assert.notNull(user, "USER", param.getId());
-            if (StringUtils.isNotBlank(param.getPassword())) {
-                if (!param.getPassword().equals(user.getPassword())) {
-                    param.setPassword(SecurityUtil.encryptPassword(param.getPassword()));
-                }
+            if (StringUtils.isNotBlank(param.getPassword()) && !param.getPassword().equals(user.getPassword())) {
+                param.setPassword(SecurityUtil.encryptPassword(param.getPassword()));
             }
+        } else {
+            // create
+            param.setPassword(SecurityUtil.encryptPassword(param.getPassword()));
         }
         return super.update(modelMap, param);
     }
