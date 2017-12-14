@@ -20,12 +20,14 @@ public class SysServerListener extends ServerListener {
     public void contextInitialized(ServletContextEvent contextEvent) {
         WebApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
 
+
+        /*
         SysUserService sysUserService = context.getBean(SysUserService.class);
         sysUserService.init();
 
-        // FIXME: 12/11/17
         SysDicService sysDicService = context.getBean(SysDicService.class);
         sysDicService.getAllDic();
+        */
 
         //
         super.contextInitialized(contextEvent);

@@ -84,6 +84,7 @@ public class SysUserService extends BaseService<SysUser> {
         sysUser.setPassword(SecurityUtil.encryptPassword("123456"));
         sysUser.setUserName(thirdPartyUser.getUserName());
         sysUser.setAvatar(thirdPartyUser.getAvatarUrl());
+
         // 初始化第三方信息
         SysUserThirdparty thirdparty = new SysUserThirdparty();
         thirdparty.setProvider(thirdPartyUser.getProvider());

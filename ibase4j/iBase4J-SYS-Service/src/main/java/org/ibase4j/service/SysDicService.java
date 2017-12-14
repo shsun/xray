@@ -3,8 +3,6 @@ package org.ibase4j.service;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.ibase4j.core.base.BaseService;
 import org.ibase4j.core.util.InstanceUtil;
 import org.ibase4j.model.SysDic;
@@ -22,19 +20,21 @@ public class SysDicService extends BaseService<SysDic> {
 
     @Cacheable(value = "sysDics")
     public Map<String, Map<String, String>> getAllDic() {
-        Map<String, Object> params = InstanceUtil.newHashMap();
-        params.put("orderBy", "sort_no");
-        List<SysDic> list = queryList(params);
-        Map<String, Map<String, String>> resultMap = InstanceUtil.newHashMap();
-        for (SysDic sysDic : list) {
-            String key = sysDic.getType();
-            if (resultMap.get(key) == null) {
-                Map<String, String> dicMap = InstanceUtil.newHashMap();
-                resultMap.put(key, dicMap);
+        Map<String, Object> p = InstanceUtil.newHashMap();
+        p.put("orderBy", "sort_no");
+        List<SysDic> list = queryList(p);
+
+        Map<String, Map<String, String>> map = InstanceUtil.newHashMap();
+        for (SysDic item : list) {
+            String key = item.getType();
+            if (map.get(key) == null) {
+                Map<String, String> tmp = InstanceUtil.newHashMap();
+                map.put(key, tmp);
             }
-            resultMap.get(key).put(sysDic.getCode(), sysDic.getCodeText());
+            map.get(key).put(item.getCode(), item.getCodeText());
         }
-        return resultMap;
+
+        return map;
     }
 
     // @Cacheable(value = { "sysDicMap" }, key = "'queryDicByType'.concat(#key)")

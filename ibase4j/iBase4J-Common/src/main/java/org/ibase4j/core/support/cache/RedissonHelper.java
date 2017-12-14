@@ -16,9 +16,7 @@ import org.redisson.api.RedissonClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-/**
- * Redis缓存辅助类
- */
+
 public class RedissonHelper implements CacheManager, ApplicationContextAware {
 
 	private RedissonClient redisTemplate = null;

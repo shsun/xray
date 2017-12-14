@@ -30,18 +30,17 @@
 	</bean>
 
 	<!-- 缓存 -->
-	<!--
 	<bean id="redisCacheManager" class="org.redisson.spring.cache.RedissonSpringCacheManager">
 		<property name="redisson" ref="redissonClient"/>
 	</bean>
-	-->
 
 	<!-- RedisCacheManager -->
-
-	<bean id="redisCacheManager_bak" class="org.springframework.data.redis.cache.RedisCacheManager">
+	<!--
+	<bean id="redisCacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
 		<constructor-arg index="0" ref="redisTemplate" />
 		<property name="defaultExpiration" value="${redis.expiration}" />
 	</bean>
+	-->
 
 	<!--
 	<bean id="redisCacheManager" class="org.springframework.cache.support.SimpleCacheManager">
@@ -64,15 +63,18 @@
 	<bean id="keySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
 	<bean id="valueSerializer" class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer" />
 
+
 	<!-- JedisConnectionFactory -->
 	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
 		  p:shard-info-ref="jedisShardInfo" p:pool-config-ref="jedisPoolConfig" />
+
 
 	<!-- JedisShardInfo -->
 	<bean id="jedisShardInfo" class="redis.clients.jedis.JedisShardInfo">
 		<constructor-arg index="0" value="${redis.host}" />
 		<constructor-arg index="1" value="${redis.port}" type="int" />
 	</bean>
+
 
 	<!-- JedisPoolConfig -->
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
