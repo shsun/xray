@@ -53,5 +53,5 @@
 
     消费端配置
     -->
-    <dubbo:consumer timeout="5000" loadbalance="leastactive" check="false"/>
+    <dubbo:consumer timeout="10000" loadbalance="leastactive" check="false"/>
 </beans>

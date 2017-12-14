@@ -39,6 +39,8 @@ public class SysUserService extends BaseService<SysUser>{
 	private SysAuthorizeService sysAuthorizeService;
 
 	public Page<SysUser> query(Map<String, Object> params) {
+		final long start = System.currentTimeMillis();
+		
 		Map<String, String> userTypeMap = sysDicService.queryDicByType("USERTYPE");
 		Page<SysUser> pageInfo = super.query(params);
 		for (SysUser userBean : pageInfo.getRecords()) {
@@ -57,6 +59,10 @@ public class SysUserService extends BaseService<SysUser>{
 				}
 			}
 		}
+
+        final long end = System.currentTimeMillis();
+        System.out.println("SysUserService.query-->" + (end - start));
+
 		return pageInfo;
 	}
 

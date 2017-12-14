@@ -49,6 +49,7 @@ public class SysDeptController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "修改部门")
     @RequiresPermissions("sys.base.dept.update")
     public Object update(ModelMap modelMap, @RequestBody SysDept param) {
+        param.setUnitId(1);
         return super.update(modelMap, param);
     }
 

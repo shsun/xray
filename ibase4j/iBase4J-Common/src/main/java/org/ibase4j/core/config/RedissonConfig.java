@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.ClusterServersConfig;
@@ -18,6 +20,8 @@ import org.springframework.context.annotation.Bean;
  * Redis连接配置
  */
 public class RedissonConfig {
+    protected final Logger logger = LogManager.getLogger(this.getClass());
+    
     /**
      * Redis server address
      *
@@ -46,6 +50,10 @@ public class RedissonConfig {
 
     @Bean(name = "redissonClient")
     public RedissonClient getRedissonClient() {
+        logger.debug("RedissonConfig.getRedissonClient()");
+
+        RedissonClient client = null;
+
         Config config = new Config();
         if (StringUtils.isNotBlank(address)) {
             SingleServerConfig serverConfig = config.useSingleServer().setAddress(address);
@@ -64,7 +72,13 @@ public class RedissonConfig {
                 serverConfig.setPassword(password);
             }
         }
-        return Redisson.create(config);
+
+        try {
+            client = Redisson.create(config);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return client;
     }
 
     public void setAddress(String address) {
