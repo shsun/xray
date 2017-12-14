@@ -28,13 +28,8 @@ import org.quartz.TriggerKey;
 import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.beans.factory.InitializingBean;
 
-/**
- * 默认的定时任务管理器
- * 
- * @author ShenHuaJie
- * @version 2016年5月27日 上午10:28:26
- */
 public class SchedulerManager implements InitializingBean {
+
     private Logger logger = LogManager.getLogger(this.getClass());
 
     private Scheduler scheduler;
@@ -49,11 +44,11 @@ public class SchedulerManager implements InitializingBean {
         this.jobListeners = jobListeners;
     }
 
+    @Override
     public void afterPropertiesSet() throws Exception {
         if (this.jobListeners != null && this.jobListeners.size() > 0) {
             if (logger.isInfoEnabled()) {
-                logger.info("Initing task scheduler[" + this.scheduler.getSchedulerName() + "] , add listener size ："
-                    + this.jobListeners.size());
+                logger.info("Initing task scheduler[" + this.scheduler.getSchedulerName() + "] , add listener size ：" + this.jobListeners.size());
             }
             for (JobListener listener : this.jobListeners) {
                 if (logger.isInfoEnabled()) {
@@ -79,7 +74,7 @@ public class SchedulerManager implements InitializingBean {
                     TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
                     job.setStatus(triggerState.name());
                     if (trigger instanceof CronTrigger) {
-                        CronTrigger cronTrigger = (CronTrigger)trigger;
+                        CronTrigger cronTrigger = (CronTrigger) trigger;
                         String cronExpression = cronTrigger.getCronExpression();
                         job.setTaskCron(cronExpression);
                     }
@@ -125,10 +120,10 @@ public class SchedulerManager implements InitializingBean {
      * @throws Exception
      */
     public boolean updateTask(TaskScheduled taskScheduled) {
-    	String jobGroup = taskScheduled.getTaskGroup();
+        String jobGroup = taskScheduled.getTaskGroup();
         if (DataUtil.isEmpty(jobGroup)) {
-			jobGroup = "ds_job";
-		}
+            jobGroup = "ds_job";
+        }
         String jobName = taskScheduled.getTaskName();
         if (DataUtil.isEmpty(jobName)) {
             jobName = String.valueOf(System.currentTimeMillis());
@@ -156,12 +151,11 @@ public class SchedulerManager implements InitializingBean {
             jobBuilder = JobBuilder.newJob(StatefulJob.class);
         }
         if (jobBuilder != null) {
-            JobDetail jobDetail = jobBuilder.withIdentity(jobName, jobGroup).withDescription(jobDescription)
-                .storeDurably(true).usingJobData(jobDataMap).build();
+            JobDetail jobDetail =
+                    jobBuilder.withIdentity(jobName, jobGroup).withDescription(jobDescription).storeDurably(true).usingJobData(jobDataMap).build();
 
-            Trigger trigger = TriggerBuilder.newTrigger().withSchedule(CronScheduleBuilder.cronSchedule(cronExpression))
-                .withIdentity(jobName, jobGroup).withDescription(jobDescription).forJob(jobDetail)
-                .usingJobData(jobDataMap).build();
+            Trigger trigger = TriggerBuilder.newTrigger().withSchedule(CronScheduleBuilder.cronSchedule(cronExpression)).withIdentity(jobName, jobGroup)
+                    .withDescription(jobDescription).forJob(jobDetail).usingJobData(jobDataMap).build();
 
             try {
                 JobDetail detail = scheduler.getJobDetail(new JobKey(jobName, jobGroup));

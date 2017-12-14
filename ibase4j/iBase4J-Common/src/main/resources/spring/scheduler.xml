@@ -18,7 +18,6 @@
         <property name="scheduler" ref="schedulerFactoryBean"/>
         <property name="jobListeners">
             <list>
-                <!--日志监控类型 -->
                 <bean class="org.ibase4j.core.support.scheduler.JobListener" autowire="byName"/>
             </list>
         </property>

@@ -20,12 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
 
-/**
- * 调度监听器
- * 
- * @author ShenHuaJie
- * @version 2016年5月27日 下午4:31:31
- */
 public class JobListener implements org.quartz.JobListener {
     private static Logger logger = LogManager.getLogger(JobListener.class);
 
