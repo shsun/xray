@@ -2,6 +2,8 @@ package org.ibase4j.service;
 
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.ibase4j.core.base.BaseService;
 import org.ibase4j.model.SysEvent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import com.baomidou.mybatisplus.plugins.Page;
 @Service
 @CacheConfig(cacheNames = "sysEvent")
 public class SysEventService extends BaseService<SysEvent> {
+
+
 	@Autowired
 	private SysUserService sysUserService;
 

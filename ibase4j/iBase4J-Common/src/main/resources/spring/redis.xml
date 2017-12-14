@@ -25,21 +25,37 @@
 			<array>
 				<value>${redis.host}:${redis.port}</value>
 			</array>
-		</property> -->
+		</property>
+		-->
 	</bean>
 
 	<!-- 缓存 -->
+	<!--
 	<bean id="redisCacheManager" class="org.redisson.spring.cache.RedissonSpringCacheManager">
-		<property name="redisson" ref="redissonClient" />
+		<property name="redisson" ref="redissonClient"/>
 	</bean>
-
+	-->
 
 	<!-- RedisCacheManager -->
-	<!--
-	<bean id="redisCacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+
+	<bean id="redisCacheManager_bak" class="org.springframework.data.redis.cache.RedisCacheManager">
 		<constructor-arg index="0" ref="redisTemplate" />
 		<property name="defaultExpiration" value="${redis.expiration}" />
 	</bean>
+
+	<!--
+	<bean id="redisCacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+		<property name="caches">
+			<set>
+				<bean class="org.ibase4j.core.config.RedisCache">
+					<property name="redisTemplate" ref="redisTemplate" />
+					<property name="name" value="SysUser"/>
+					<property name="timeout" value="7200" />
+				</bean>
+			</set>
+		</property>
+	</bean>
+	-->
 	<bean id="redisTemplate"
 		  class="org.springframework.data.redis.core.RedisTemplate"
 		  p:enableTransactionSupport="false" >
@@ -47,7 +63,6 @@
 	</bean>
 	<bean id="keySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
 	<bean id="valueSerializer" class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer" />
-	-->
 
 	<!-- JedisConnectionFactory -->
 	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"

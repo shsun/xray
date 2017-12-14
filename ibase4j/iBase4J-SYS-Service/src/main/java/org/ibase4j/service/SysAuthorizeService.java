@@ -42,6 +42,11 @@ public class SysAuthorizeService {
     @Autowired
     private SysMenuService sysMenuService;
 
+    /**
+     * 
+     * @param userId
+     * @return
+     */
     public List<Long> queryMenuIdsByUserId(Long userId) {
         return sysUserMenuMapper.queryMenuIdsByUserId(userId);
     }

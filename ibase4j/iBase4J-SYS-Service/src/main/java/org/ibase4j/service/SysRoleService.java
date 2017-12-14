@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.ibase4j.core.base.BaseService;
 import org.ibase4j.model.SysDept;
 import org.ibase4j.model.SysRole;
@@ -20,28 +22,30 @@ import com.baomidou.mybatisplus.plugins.Page;
 @Service
 @CacheConfig(cacheNames = "sysRole")
 public class SysRoleService extends BaseService<SysRole> {
-	@Autowired
-	private SysDeptService sysDeptService;
-	@Autowired
-	private SysAuthorizeService sysAuthorizeService;
 
-	public Page<SysRole> query(Map<String, Object> params) {
-		Page<SysRole> pageInfo = super.query(params);
-		// 权限信息
-		for (SysRole bean : pageInfo.getRecords()) {
-			if (bean.getDeptId() != null) {
-				SysDept sysDept = sysDeptService.queryById(bean.getDeptId());
-				bean.setDeptName(sysDept.getDeptName());
-			}
-			List<String> permissions = sysAuthorizeService.queryRolePermission(bean.getId());
-			for (String permission : permissions) {
-				if (StringUtils.isBlank(bean.getPermission())) {
-					bean.setPermission(permission);
-				} else {
-					bean.setPermission(bean.getPermission() + ";" + permission);
-				}
-			}
-		}
-		return pageInfo;
-	}
+    @Autowired
+    private SysDeptService sysDeptService;
+
+    @Autowired
+    private SysAuthorizeService sysAuthorizeService;
+
+    public Page<SysRole> query(Map<String, Object> params) {
+        Page<SysRole> pageInfo = super.query(params);
+        // 权限信息
+        for (SysRole bean : pageInfo.getRecords()) {
+            if (bean.getDeptId() != null) {
+                SysDept sysDept = sysDeptService.queryById(bean.getDeptId());
+                bean.setDeptName(sysDept.getDeptName());
+            }
+            List<String> permissions = sysAuthorizeService.queryRolePermission(bean.getId());
+            for (String permission : permissions) {
+                if (StringUtils.isBlank(bean.getPermission())) {
+                    bean.setPermission(permission);
+                } else {
+                    bean.setPermission(bean.getPermission() + ";" + permission);
+                }
+            }
+        }
+        return pageInfo;
+    }
 }

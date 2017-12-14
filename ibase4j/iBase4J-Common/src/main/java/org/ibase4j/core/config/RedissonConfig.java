@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Bean;
  */
 public class RedissonConfig {
     protected final Logger logger = LogManager.getLogger(this.getClass());
-    
+
     /**
      * Redis server address
      *

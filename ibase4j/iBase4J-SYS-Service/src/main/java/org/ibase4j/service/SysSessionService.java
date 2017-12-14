@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.ibase4j.core.base.BaseMapper;
 import org.ibase4j.core.base.BaseService;
 import org.ibase4j.core.util.CacheUtil;

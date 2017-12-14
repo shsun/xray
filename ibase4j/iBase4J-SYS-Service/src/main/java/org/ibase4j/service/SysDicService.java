@@ -3,6 +3,8 @@ package org.ibase4j.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.ibase4j.core.base.BaseService;
 import org.ibase4j.core.util.InstanceUtil;
 import org.ibase4j.model.SysDic;
@@ -35,9 +37,9 @@ public class SysDicService extends BaseService<SysDic> {
         return resultMap;
     }
 
-    //@Cacheable(value = { "sysDicMap" }, key = "'queryDicByType'.concat(#key)")
-	@Cacheable(value = "sysDicMap")
-	public Map<String, String> queryDicByType(String key) {
+    // @Cacheable(value = { "sysDicMap" }, key = "'queryDicByType'.concat(#key)")
+    @Cacheable(value = "sysDicMap")
+    public Map<String, String> queryDicByType(String key) {
         return applicationContext.getBean(SysDicService.class).getAllDic().get(key);
     }
 }

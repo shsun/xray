@@ -27,16 +27,14 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
 
     protected Logger logger = LogManager.getLogger(getClass());
 
-
     protected ApplicationContext applicationContext;
-
 
     @Autowired
     protected BaseMapper<T> mapper;
 
-	/**
-	 *
-	 * @param applicationContext
+    /**
+     *
+     * @param applicationContext
      */
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
@@ -68,8 +66,8 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
     }
 
     /**
-	 * 根据Id查询(默认类型T)
-	 */
+     * 根据Id查询(默认类型T)
+     */
     public Page<T> getPage(Page<Long> ids) {
         if (ids != null) {
             Page<T> page = new Page<T>(ids.getCurrent(), ids.getSize());
@@ -85,8 +83,8 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
     }
 
     /**
-	 * 根据Id查询(默认类型T)
-	 */
+     * 根据Id查询(默认类型T)
+     */
     public Page<Map<String, Object>> getPageMap(Page<Long> ids) {
         Page<Map<String, Object>> page;
         if (ids != null) {
@@ -219,6 +217,7 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
     }
 
     public Page<T> query(Map<String, Object> params) {
+        logger.debug("query", params);
         Page<Long> page = getPage(params);
         page.setRecords(mapper.selectIdPage(page, params));
         return getPage(page);
@@ -238,6 +237,7 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
     }
 
     protected <P> Page<P> query(Map<String, Object> params, Class<P> cls) {
+        logger.debug("query", params, cls);
         Page<Long> page = getPage(params);
         page.setRecords(mapper.selectIdPage(page, params));
         return getPage(page, cls);
@@ -247,6 +247,7 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
      * 获取缓存键值
      */
     protected String getCacheKey(Object id) {
+        logger.debug("getCacheKey", id);
         String cacheName = null;
         CacheConfig cacheConfig = getClass().getAnnotation(CacheConfig.class);
         if (cacheConfig == null || cacheConfig.cacheNames() == null || cacheConfig.cacheNames().length < 1) {
