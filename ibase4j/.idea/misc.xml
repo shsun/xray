@@ -16,6 +16,7 @@
     <file type="web" url="file://$PROJECT_DIR$/iBase4J-Biz-Web" />
     <file type="web" url="file://$PROJECT_DIR$/iBase4J-SYS-Service" />
     <file type="web" url="file://$PROJECT_DIR$/iBase4J-SYS-Web" />
+    <file type="web" url="file://$PROJECT_DIR$/x-batch" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

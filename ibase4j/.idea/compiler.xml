@@ -22,7 +22,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-Biz-Web" />
       </profile>
       <profile default="false" name="Annotation profile for iBase4J-SYS-Web" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -43,7 +42,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-Biz-Facade" />
       </profile>
       <profile default="false" name="Annotation profile for iBase4J-SYS-Facade" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -57,7 +55,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-Biz-Service" />
       </profile>
       <profile default="false" name="Annotation profile for iBase4J-Common" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -65,6 +62,13 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="iBase4J-Common" />
+      </profile>
+      <profile default="false" name="Annotation profile for x-batch" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="x-batch" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -76,6 +80,7 @@
       <module name="iBase4J-SYS-Facade" target="1.7" />
       <module name="iBase4J-SYS-Service" target="1.7" />
       <module name="iBase4J-SYS-Web" target="1.7" />
+      <module name="x-batch" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

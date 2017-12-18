@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-4.0.xsd
+         http://code.alibabatech.com/schema/dubbo
+		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 引入属性配置文件 -->
+	<bean class="org.ibase4j.core.util.PropertiesUtil">
+		<property name="locations">
+			<list>
+				<value>${sys.jdbc.config.path}</value>
+				<value>${system.config.path}</value>
+			</list>
+		</property>
+		<property name="properties">
+			<props>
+				<!-- dubbo个性化配置(服务名,端口) -->
+				<prop key="dubbo.application.name">${project.artifactId}</prop>
+				<!--
+				<prop key="dubbo.protocol.port">1${server.port}</prop>
+				-->
+				<prop key="dubbo.protocol.port">20881</prop>
+
+			</props>
+		</property>
+		<!-- 没有必要搞这么复杂 -->
+		<!--
+		<property name="decryptProperties">
+			<array>
+				<value>db.reader.password</value>
+				<value>db.writer.password</value>
+			</array>
+		</property>
+		-->
+	</bean>
+
+	<!-- 扫描注解 -->
+	<context:component-scan base-package="org.ibase4j">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+
+
+	<!-- 引入SPRING配置文件 -->
+	<!-- <import resource="spring/mq.xml"/>
+	-->
+	<import resource="spring/dubbo.xml" />
+
+	<!-- 声明需要暴露的服务接口（注意是接口,不是实现类）facade-->
+	<dubbo:service id="sysProvider" interface="org.ibase4j.provider.ISysProvider" ref="sysProviderImpl"/>
+	<!-- 这里是具体实现类,id和上面的暴露的服务接口ref要一致,dubbo就是通过这个来注册对应的服务 service-->
+	<bean id="sysProviderImpl" class="org.ibase4j.core.SysProviderImpl"></bean>
+
+
+	<import resource="spring/redis.xml"/>
+
+	<import resource="spring/dataSource.xml"/>
+
+	<import resource="spring/scheduler.xml"/>
+
+	<import resource="spring/mybatis.xml"/>
+
+	<!-- <import resource="spring/mq-listener.xml"/>
+	<import resource="spring/mq-sender.xml"/> -->
+
+</beans>
