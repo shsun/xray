@@ -1,6 +1,5 @@
 package org.ibase4j.core.base;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +19,7 @@ import org.springframework.context.ApplicationContextAware;
 import com.baomidou.mybatisplus.plugins.Page;
 
 /**
- * 业务逻辑层基类<br/>
- * 继承基类后必须配置CacheConfig(cacheNames="")
+ * MUST set CacheConfig(cacheNames="") in sub-class
  */
 public abstract class BaseService<T extends BaseModel> implements ApplicationContextAware {
 
@@ -67,6 +65,9 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
 
     /**
      * 根据Id查询(默认类型T)
+     *
+     * @param ids
+     * @return
      */
     public Page<T> getPage(Page<Long> ids) {
         if (ids != null) {
@@ -170,14 +171,22 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
         }
     }
 
+    /**
+     * update the existed record if id is not null, otherwise create a new record.
+     *
+     * @param record
+     * @return
+     */
     @Transactional
     public T update(T record) {
         try {
             record.setUpdateTime(new Date());
             if (record.getId() == null) {
+                // create
                 record.setCreateTime(new Date());
                 mapper.insert(record);
             } else {
+                // update
                 String lockKey = getClass().getName() + record.getId();
                 if (CacheUtil.getLock(lockKey)) {
                     try {
@@ -190,6 +199,7 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
                     }
                 }
             }
+            // retrieve the certain record out while update/create done and flush it to cache
             record = mapper.selectById(record.getId());
             CacheUtil.getCache().set(getCacheKey(record.getId()), record);
         } catch (Exception e) {

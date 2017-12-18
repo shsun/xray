@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.ibase4j.core.base.BaseService;
 import org.ibase4j.core.support.login.ThirdPartyUser;
 import org.ibase4j.core.util.CacheUtil;
@@ -72,13 +70,18 @@ public class SysUserService extends BaseService<SysUser> {
     /** 查询第三方帐号用户Id */
     @Cacheable
     public Long queryUserIdByThirdParty(ThirdPartyUser param) {
-        return thirdpartyMapper.queryUserIdByThirdParty(param.getProvider(), param.getOpenid());
+        final Long id = thirdpartyMapper.queryUserIdByThirdParty(param.getProvider(), param.getOpenid());
+        return id;
     }
 
     /** 保存第三方帐号 */
     @Transactional
     public SysUser insertThirdPartyUser(ThirdPartyUser thirdPartyUser) {
+        //
         SysUser sysUser = new SysUser();
+        //'1','SEX','0','未知'
+        //'2','SEX','1','男'
+        //'3','SEX','2','女'
         sysUser.setSex(0);
         sysUser.setUserType(1);
         sysUser.setPassword(SecurityUtil.encryptPassword("123456"));
@@ -90,12 +93,14 @@ public class SysUserService extends BaseService<SysUser> {
         thirdparty.setProvider(thirdPartyUser.getProvider());
         thirdparty.setOpenId(thirdPartyUser.getOpenid());
         thirdparty.setCreateTime(new Date());
-
+        //
         this.update(sysUser);
         sysUser.setAccount(thirdparty.getProvider() + sysUser.getId());
         this.update(sysUser);
+
         thirdparty.setUserId(sysUser.getId());
         thirdpartyMapper.insert(thirdparty);
+
         return sysUser;
     }
 

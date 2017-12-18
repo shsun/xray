@@ -4,21 +4,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.ibase4j.core.base.BaseService;
 import org.ibase4j.model.SysDept;
 import org.ibase4j.model.SysRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.plugins.Page;
 
-/**
- * @author ShenHuaJie
- * @version 2016年5月31日 上午11:01:33
- */
 @Service
 @CacheConfig(cacheNames = "sysRole")
 public class SysRoleService extends BaseService<SysRole> {
@@ -29,6 +24,8 @@ public class SysRoleService extends BaseService<SysRole> {
     @Autowired
     private SysAuthorizeService sysAuthorizeService;
 
+    // @Cacheable(value = { "sysRoleMap" }, key = "'query'.concat(#key)")
+    @Cacheable(value = "sysRoleMap")
     public Page<SysRole> query(Map<String, Object> params) {
         Page<SysRole> pageInfo = super.query(params);
         // 权限信息
