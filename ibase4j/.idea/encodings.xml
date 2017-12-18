@@ -2,14 +2,11 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/iBase4J-Biz-Facade" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/iBase4J-Biz-Service" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/iBase4J-Biz-Web" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/iBase4J-Common" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/iBase4J-SYS-Facade" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/iBase4J-SYS-Service" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/iBase4J-SYS-Web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/x-batch" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/x-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/x-facade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/x-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/x-web" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

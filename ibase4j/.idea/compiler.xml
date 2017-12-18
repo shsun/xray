@@ -17,51 +17,33 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Annotation profile for iBase4J-Biz-Web" enabled="true">
+      <profile default="false" name="Annotation profile for x-web" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="x-web" />
       </profile>
-      <profile default="false" name="Annotation profile for iBase4J-SYS-Web" enabled="true">
+      <profile default="false" name="Annotation profile for x-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-SYS-Web" />
+        <module name="x-service" />
       </profile>
-      <profile default="false" name="Annotation profile for iBase4J-SYS-Service" enabled="true">
+      <profile default="false" name="Annotation profile for x-facade" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="iBase4J-SYS-Service" />
+        <module name="x-facade" />
       </profile>
-      <profile default="false" name="Annotation profile for iBase4J-Biz-Facade" enabled="true">
+      <profile default="false" name="Annotation profile for x-common" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-      </profile>
-      <profile default="false" name="Annotation profile for iBase4J-SYS-Facade" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="iBase4J-SYS-Facade" />
-      </profile>
-      <profile default="false" name="Annotation profile for iBase4J-Biz-Service" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-      </profile>
-      <profile default="false" name="Annotation profile for iBase4J-Common" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="iBase4J-Common" />
+        <module name="x-common" />
       </profile>
       <profile default="false" name="Annotation profile for x-batch" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -72,15 +54,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="iBase4J" target="1.5" />
-      <module name="iBase4J-Biz-Facade" target="1.7" />
-      <module name="iBase4J-Biz-Service" target="1.7" />
-      <module name="iBase4J-Biz-Web" target="1.7" />
-      <module name="iBase4J-Common" target="1.7" />
-      <module name="iBase4J-SYS-Facade" target="1.7" />
-      <module name="iBase4J-SYS-Service" target="1.7" />
-      <module name="iBase4J-SYS-Web" target="1.7" />
+      <module name="ibase4j" target="1.5" />
       <module name="x-batch" target="1.7" />
+      <module name="x-common" target="1.7" />
+      <module name="x-facade" target="1.7" />
+      <module name="x-service" target="1.7" />
+      <module name="x-web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

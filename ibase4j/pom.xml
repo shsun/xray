@@ -3,17 +3,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.ibase4j</groupId>
-	<artifactId>iBase4J</artifactId>
+	<artifactId>ibase4j</artifactId>
 	<version>1.1.0</version>
-	<name>iBase4J</name>
+	<name>ibase4j</name>
 	<packaging>pom</packaging>
 	<url>http://maven.apache.org</url>
 	
 	<modules>
-		<module>iBase4J-Common</module>
-		<module>iBase4J-SYS-Service</module>
-		<module>iBase4J-SYS-Facade</module>
-		<module>iBase4J-SYS-Web</module>
+		<module>x-common</module>
+		<module>x-service</module>
+		<module>x-facade</module>
+		<module>x-web</module>
 		<!--
 		<module>iBase4J-Biz-Service</module>
 		<module>iBase4J-Biz-Facade</module>

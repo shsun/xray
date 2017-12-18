@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/iBase4J.iml" filepath="$PROJECT_DIR$/iBase4J.iml" />
-      <module fileurl="file://$PROJECT_DIR$/iBase4J-Common/iBase4J-Common.iml" filepath="$PROJECT_DIR$/iBase4J-Common/iBase4J-Common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/iBase4J-SYS-Facade/iBase4J-SYS-Facade.iml" filepath="$PROJECT_DIR$/iBase4J-SYS-Facade/iBase4J-SYS-Facade.iml" />
-      <module fileurl="file://$PROJECT_DIR$/iBase4J-SYS-Service/iBase4J-SYS-Service.iml" filepath="$PROJECT_DIR$/iBase4J-SYS-Service/iBase4J-SYS-Service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/iBase4J-SYS-Web/iBase4J-SYS-Web.iml" filepath="$PROJECT_DIR$/iBase4J-SYS-Web/iBase4J-SYS-Web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ibase4j.iml" filepath="$PROJECT_DIR$/ibase4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/x-batch/x-batch.iml" filepath="$PROJECT_DIR$/x-batch/x-batch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/x-common/x-common.iml" filepath="$PROJECT_DIR$/x-common/x-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/x-facade/x-facade.iml" filepath="$PROJECT_DIR$/x-facade/x-facade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/x-service/x-service.iml" filepath="$PROJECT_DIR$/x-service/x-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/x-web/x-web.iml" filepath="$PROJECT_DIR$/x-web/x-web.iml" />
     </modules>
   </component>
 </project>
