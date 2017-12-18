@@ -243,9 +243,6 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
         return getPage(page, cls);
     }
 
-    /**
-     * 获取缓存键值
-     */
     protected String getCacheKey(Object id) {
         logger.debug("getCacheKey", id);
         String cacheName = null;
@@ -255,6 +252,7 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
         } else {
             cacheName = cacheConfig.cacheNames()[0];
         }
-        return new StringBuilder(Constants.CACHE_NAMESPACE).append(cacheName).append(":").append(id).toString();
+        String k = new StringBuilder(Constants.CACHE_NAMESPACE).append(cacheName).append(":").append(id).toString();
+        return k;
     }
 }

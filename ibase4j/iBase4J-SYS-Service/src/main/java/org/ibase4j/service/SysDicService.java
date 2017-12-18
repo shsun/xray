@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @CacheConfig(cacheNames = "SysDic")
 public class SysDicService extends BaseService<SysDic> {
 
-    @Cacheable(value = "sysDics")
+    //@Cacheable(value = "sysDics")
     public Map<String, Map<String, String>> getAllDic() {
         Map<String, Object> p = InstanceUtil.newHashMap();
         p.put("orderBy", "sort_no");
@@ -38,7 +38,7 @@ public class SysDicService extends BaseService<SysDic> {
     }
 
     // @Cacheable(value = { "sysDicMap" }, key = "'queryDicByType'.concat(#key)")
-    @Cacheable(value = "sysDicMap")
+    //@Cacheable(value = "sysDicMap")
     public Map<String, String> queryDicByType(String key) {
         return applicationContext.getBean(SysDicService.class).getAllDic().get(key);
     }
