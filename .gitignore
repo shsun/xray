@@ -4,3 +4,6 @@
 .project
 target
 logs
+ibase4j/.idea
+*/.idea
+**/.idea
