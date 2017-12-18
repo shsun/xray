@@ -28,15 +28,15 @@ public final class WebUtil {
 	private WebUtil() {
 	}
     private static Logger logger = LogManager.getLogger();
-
+	
 	/**
 	 * 获取指定Cookie的值
-	 * 
-	 * @param cookies cookie集合
-	 * @param cookieName cookie名字
-	 * @param defaultValue 缺省值
-	 * @return
-	 */
+	 *
+	 * @param request
+	 * @param cookieName
+	 * @param defaultValue
+     * @return
+     */
 	public static final String getCookieValue(HttpServletRequest request, String cookieName, String defaultValue) {
 		Cookie cookie = WebUtils.getCookie(request, cookieName);
 		if (cookie == null) {
@@ -66,11 +66,13 @@ public final class WebUtil {
 		return null;
 	}
 
-	/**
-	 * 将一些数据放到ShiroSession中,以便于其它地方使用
-	 * 
-	 * @see 比如Controller,使用时直接用HttpSession.getAttribute(key)就可以取到
-	 */
+	
+    /**
+     * 将一些数据放到ShiroSession中,以便于其它地方使用. 比如Controller,使用时直接用HttpSession.getAttribute(key)就可以取到
+     * 
+     * @param key
+     * @param value
+     */
 	public static final void setSession(Object key, Object value) {
 		Subject currentUser = SecurityUtils.getSubject();
 		if (null != currentUser) {

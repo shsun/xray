@@ -49,12 +49,13 @@ public class LoginController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "用户登录")
     @PostMapping("/login")
     public Object login(@ApiParam(required = true, value = "登录帐号和密码") @RequestBody SysUser sysUser, ModelMap modelMap, HttpServletRequest request) {
+
+        sysUser.setAccount("admin");
+        sysUser.setPassword("111111");
+
         Assert.notNull(sysUser.getAccount(), "ACCOUNT");
         Assert.notNull(sysUser.getPassword(), "PASSWORD");
-
-//        sysUser.setUserName("admin");
-//        sysUser.setPassword("111111");
-
+        
         if (LoginHelper.login(sysUser.getAccount(), SecurityUtil.encryptPassword(sysUser.getPassword()))) {
             request.setAttribute("msg", "[" + sysUser.getAccount() + "]登录成功.");
             return setSuccessModelMap(modelMap);

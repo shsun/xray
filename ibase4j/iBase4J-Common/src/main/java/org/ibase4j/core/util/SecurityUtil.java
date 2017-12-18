@@ -28,10 +28,9 @@ public final class SecurityUtil {
 
     /**
      * BASE64解码
-     * 
+     *
      * @param key
      * @return
-     * @throws Exception
      */
     public static final byte[] decryptBASE64(String key) {
         try {
@@ -46,7 +45,6 @@ public final class SecurityUtil {
      * 
      * @param key
      * @return
-     * @throws Exception
      */
     public static final String encryptBASE64(byte[] key) {
         try {
@@ -97,7 +95,6 @@ public final class SecurityUtil {
      * 
      * @param data
      * @return
-     * @throws Exception
      */
     public static final String encryptSHA(String data) {
         try {
@@ -112,7 +109,6 @@ public final class SecurityUtil {
      * 
      * @param data
      * @return
-     * @throws Exception
      */
     public static final String encryptHMAC(String data) {
         return encryptHMAC(data, ENCRYPT_KEY);
@@ -157,7 +153,6 @@ public final class SecurityUtil {
      * 
      * @param data
      * @return
-     * @throws Exception
      */
     public static final String encryptHMAC(String data, byte[] key) {
         try {

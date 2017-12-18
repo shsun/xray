@@ -59,11 +59,10 @@ public final class XmlUtil {
 
 	/**
 	 * 解析XML并将其节点元素压入Dto返回(基于节点值形式的XML格式) 应用于复杂对象
-	 * 
-	 * @param pStrXml 待解析的XML字符串
-	 * @return outDto 返回Dto
-	 */
-
+	 *
+	 * @param doc
+	 * @return
+     */
 	public static Map Dom2Map(Document doc) {
 		Map map = new HashMap();
 		if (doc == null)
@@ -157,11 +156,11 @@ public final class XmlUtil {
 
 	/**
 	 * 将Dto转换为符合XML标准规范格式的字符串(基于节点值形式)
-	 * 
-	 * @param dto 传入的Dto对象
-	 * @param pRootNodeName 根结点名
-	 * @return string 返回XML格式字符串
-	 */
+	 *
+	 * @param map
+	 * @param pRootNodeName
+     * @return
+     */
 	public static final String parseDto2Xml(Map map, String pRootNodeName) {
 		Document document = DocumentHelper.createDocument();
 		// 增加一个根元素节点
@@ -181,11 +180,10 @@ public final class XmlUtil {
 
 	/**
 	 * 将Dto转换为符合XML标准规范格式的字符串(基于节点值形式)
-	 * 
-	 * @param dto 传入的Dto对象
+	 * @param map
 	 * @param pRootNodeName 根结点名
-	 * @return string 返回XML格式字符串
-	 */
+     * @return string 返回XML格式字符串
+     */
 	public static final String parseDto2XmlHasHead(Map map, String pRootNodeName) {
 		Document document = DocumentHelper.createDocument();
 		// 增加一个根元素节点
@@ -336,11 +334,10 @@ public final class XmlUtil {
 	}
 
 	/**
-	 * Element to map
-	 * 
+	 *
 	 * @param e
-	 * @return
-	 */
+	 * @param map
+     */
 	public static void element2Map(Element e, Map<String, Object> map) {
 		List<Object> list = e.elements();
 		if (e.attributeCount() > 0) {
