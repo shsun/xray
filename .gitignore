@@ -3,6 +3,8 @@
 .settings
 .project
 target
+*/target
+**/target
 logs
 ibase4j/.idea
 */.idea
