@@ -14,11 +14,6 @@
 		<module>x-service</module>
 		<module>x-facade</module>
 		<module>x-web</module>
-		<!--
-		<module>iBase4J-Biz-Service</module>
-		<module>iBase4J-Biz-Facade</module>
-		<module>iBase4J-Biz-Web</module>
-		-->
 		<module>x-batch</module>
 	</modules>
 
