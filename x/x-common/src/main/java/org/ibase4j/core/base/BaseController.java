@@ -28,62 +28,74 @@ import com.baomidou.mybatisplus.plugins.Page;
 public abstract class BaseController {
     protected final Logger logger = LogManager.getLogger(this.getClass());
 
-    /** 获取当前用户Id */
+    /**
+     * 获取当前用户Id
+     */
     protected Long getCurrUser() {
         return WebUtil.getCurrentUser();
     }
 
-    /** 设置成功响应代码 */
-    protected ResponseEntity<ModelMap> setSuccessModelMap(ModelMap modelMap) {
-        return setSuccessModelMap(modelMap, null);
+    /**
+     * 设置成功响应代码
+     */
+    protected ResponseEntity<ModelMap> setSuccessModelMap(ModelMap map) {
+        return setSuccessModelMap(map, null);
     }
 
-    /** 设置成功响应代码 */
-    protected ResponseEntity<ModelMap> setSuccessModelMap(ModelMap modelMap, Object data) {
-        return setModelMap(modelMap, HttpCode.OK, data);
+    /**
+     * 设置成功响应代码
+     */
+    protected ResponseEntity<ModelMap> setSuccessModelMap(ModelMap map, Object data) {
+        return setModelMap(map, HttpCode.OK, data);
     }
 
-    /** 设置响应代码 */
-    protected ResponseEntity<ModelMap> setModelMap(ModelMap modelMap, HttpCode code) {
-        return setModelMap(modelMap, code, null);
+    /**
+     * 设置响应代码
+     */
+    protected ResponseEntity<ModelMap> setModelMap(ModelMap map, HttpCode code) {
+        return setModelMap(map, code, null);
     }
 
-    /** 设置响应代码 */
-    protected ResponseEntity<ModelMap> setModelMap(ModelMap modelMap, HttpCode code, Object data) {
-        Map<String, Object> map = InstanceUtil.newLinkedHashMap();
-        map.putAll(modelMap);
-        modelMap.clear();
-        for (Iterator<String> iterator = map.keySet().iterator(); iterator.hasNext();) {
+    /**
+     * 设置响应代码
+     */
+    protected ResponseEntity<ModelMap> setModelMap(ModelMap map, HttpCode code, Object data) {
+        Map<String, Object> tmp = InstanceUtil.newLinkedHashMap();
+        tmp.putAll(map);
+        map.clear();
+        for (Iterator<String> iterator = tmp.keySet().iterator(); iterator.hasNext();) {
             String key = iterator.next();
             if (!key.startsWith("org.springframework.validation.BindingResult") && !key.equals("void")) {
-                modelMap.put(key, map.get(key));
+                map.put(key, tmp.get(key));
             }
         }
         if (data != null) {
             if (data instanceof Page) {
                 Page<?> page = (Page<?>) data;
-                modelMap.put("data", page.getRecords());
-                modelMap.put("current", page.getCurrent());
-                modelMap.put("size", page.getSize());
-                modelMap.put("pages", page.getPages());
-                modelMap.put("total", page.getTotal());
-                modelMap.put("iTotalRecords", page.getTotal());
-                modelMap.put("iTotalDisplayRecords", page.getTotal());
+                map.put("data", page.getRecords());
+                map.put("current", page.getCurrent());
+                map.put("size", page.getSize());
+                map.put("pages", page.getPages());
+                map.put("total", page.getTotal());
+                map.put("iTotalRecords", page.getTotal());
+                map.put("iTotalDisplayRecords", page.getTotal());
             } else if (data instanceof List<?>) {
-                modelMap.put("data", data);
-                modelMap.put("iTotalRecords", ((List<?>) data).size());
-                modelMap.put("iTotalDisplayRecords", ((List<?>) data).size());
+                map.put("data", data);
+                map.put("iTotalRecords", ((List<?>) data).size());
+                map.put("iTotalDisplayRecords", ((List<?>) data).size());
             } else {
-                modelMap.put("data", data);
+                map.put("data", data);
             }
         }
-        modelMap.put("httpCode", code.value());
-        modelMap.put("msg", code.msg());
-        modelMap.put("timestamp", System.currentTimeMillis());
-        return ResponseEntity.ok(modelMap);
+        map.put("httpCode", code.value());
+        map.put("msg", code.msg());
+        map.put("timestamp", System.currentTimeMillis());
+        return ResponseEntity.ok(map);
     }
 
-    /** 异常处理 */
+    /**
+     * 异常处理
+     */
     @ExceptionHandler(Exception.class)
     public void exceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception exception) throws Exception {
         logger.error(Constants.EXCEPTION_HEAD, exception);
