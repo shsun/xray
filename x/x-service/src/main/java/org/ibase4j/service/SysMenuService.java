@@ -25,24 +25,24 @@ public class SysMenuService extends BaseService<SysMenu> {
      * @return
      */
     public List<SysMenu> queryList(Map<String, Object> params) {
-        List<SysMenu> pageInfo = super.queryList(params);
+        List<SysMenu> list = super.queryList(params);
         Map<String, String> menuTypeMap = sysDicService.queryDicByType("MENUTYPE");
         Map<Long, Integer> leafMap = InstanceUtil.newHashMap();
-        for (SysMenu sysMenu : pageInfo) {
-            if (sysMenu.getMenuType() != null) {
-                sysMenu.setTypeName(menuTypeMap.get(sysMenu.getMenuType().toString()));
+        for (SysMenu item : list) {
+            if (item.getMenuType() != null) {
+                item.setTypeName(menuTypeMap.get(item.getMenuType().toString()));
             }
-            if (leafMap.get(sysMenu.getId()) == null) {
-                leafMap.put(sysMenu.getId(), 0);
+            if (leafMap.get(item.getId()) == null) {
+                leafMap.put(item.getId(), 0);
             }
-            leafMap.put(sysMenu.getId(), leafMap.get(sysMenu.getId()) + 1);
+            leafMap.put(item.getId(), leafMap.get(item.getId()) + 1);
         }
-        for (SysMenu sysMenu : pageInfo) {
-            if (leafMap.get(sysMenu.getId()) > 0) {
-                sysMenu.setLeaf(0);
+        for (SysMenu item : list) {
+            if (leafMap.get(item.getId()) > 0) {
+                item.setLeaf(0);
             }
         }
-        return pageInfo;
+        return list;
     }
 
     public List<Map<String, String>> getPermissions(BaseModel model) {

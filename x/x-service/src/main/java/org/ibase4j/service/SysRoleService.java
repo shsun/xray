@@ -31,11 +31,12 @@ public class SysRoleService extends BaseService<SysRole> {
         // 权限信息
         for (SysRole bean : pageInfo.getRecords()) {
             if (bean.getDeptId() != null) {
-                SysDept sysDept = sysDeptService.queryById(bean.getDeptId());
-                bean.setDeptName(sysDept.getDeptName());
+                SysDept dept = sysDeptService.queryById(bean.getDeptId());
+                bean.setDeptName(dept.getDeptName());
             }
-            List<String> permissions = sysAuthorizeService.queryRolePermission(bean.getId());
-            for (String permission : permissions) {
+
+            List<String> list = sysAuthorizeService.queryRolePermission(bean.getId());
+            for (String permission : list) {
                 if (StringUtils.isBlank(bean.getPermission())) {
                     bean.setPermission(permission);
                 } else {
