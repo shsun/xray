@@ -176,9 +176,9 @@ public final class InstanceUtil {
 
     /**
      * 封装实体
-     * 
-     * @param cls 实体类
-     * @param list 数据查询结果集
+     * @param cls
+     * @param rs
+     * @param <E>
      * @return
      */
     public static final <E> List<E> getInstanceList(Class<E> cls, ResultSet rs) {
@@ -201,10 +201,10 @@ public final class InstanceUtil {
     }
 
     /**
-     * 新建实例
-     * 
-     * @param cls 实体类
-     * @param list 实体属性Map
+     *
+     * @param cls
+     * @param map
+     * @param <E>
      * @return
      */
     public static final <E> E newInstance(Class<E> cls, Map<String, ?> map) {

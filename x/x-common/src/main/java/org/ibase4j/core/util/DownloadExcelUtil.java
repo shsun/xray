@@ -3,6 +3,7 @@ package org.ibase4j.core.util;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.Boolean;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -13,25 +14,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import jxl.Cell;
-import jxl.CellType;
-import jxl.CellView;
-import jxl.Range;
-import jxl.Workbook;
+import jxl.*;
 import jxl.biff.DisplayFormat;
+import jxl.format.*;
 import jxl.format.Alignment;
 import jxl.format.BoldStyle;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
-import jxl.format.UnderlineStyle;
 import jxl.format.VerticalAlignment;
-import jxl.write.Label;
-import jxl.write.WritableCellFeatures;
-import jxl.write.WritableCellFormat;
-import jxl.write.WritableFont;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
-import jxl.write.WriteException;
+import jxl.write.*;
 import jxl.write.biff.RowsExceededException;
 
 /**
@@ -376,16 +367,21 @@ public class DownloadExcelUtil {
     }
 
     /**
-     * 添加单元格
-     * 
-     * @return
-     * @throws IOException
+     *
+     * @param col
+     * @param row
+     * @param o
+     * @param type
+     * @param format
+     * @param isLastRow
+     * @param isLastCols
      * @throws WriteException
+     * @throws IOException
      */
-    public void addCell(Integer col, Integer row, Object o, CellType type, DisplayFormat format,
-                        Boolean isLastRow, Boolean isLastCols) throws WriteException, IOException {
-        WritableFont wfont = new WritableFont(WritableFont.createFont("宋体"), 10,
-            WritableFont.NO_BOLD, false, UnderlineStyle.NO_UNDERLINE, jxl.format.Colour.BLACK);
+    public void addCell(Integer col, Integer row, Object o, CellType type, DisplayFormat format, Boolean isLastRow, Boolean isLastCols)
+            throws WriteException, IOException {
+        WritableFont wfont =
+                new WritableFont(WritableFont.createFont("宋体"), 10, WritableFont.NO_BOLD, false, UnderlineStyle.NO_UNDERLINE, jxl.format.Colour.BLACK);
         try {
             if (o instanceof ArrayList<?>) {
                 Label Label = new Label(col, row, "", wcfFC);
@@ -397,8 +393,7 @@ public class DownloadExcelUtil {
             } else {
                 // 字体样式
                 if (type == CellType.LABEL) {
-                    wfont = new WritableFont(WritableFont.createFont("宋体"), 10, WritableFont.BOLD,
-                        false, UnderlineStyle.NO_UNDERLINE, jxl.format.Colour.BLACK);
+                    wfont = new WritableFont(WritableFont.createFont("宋体"), 10, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE, jxl.format.Colour.BLACK);
                     wcfFC = new WritableCellFormat(wfont);
                     wcfFC.setAlignment(Alignment.CENTRE);// 对齐方式
                 } else if (type == CellType.STRING_FORMULA) {
@@ -427,11 +422,9 @@ public class DownloadExcelUtil {
                 } else if (StringUtils.isEmpty(String.valueOf(o))) {
                     wsheet.addCell(new Label(col, row, o.toString(), wcfFC));
                 } else if (type == CellType.NUMBER) {
-                    wsheet.addCell(new jxl.write.Number(col, row,
-                        Double.valueOf(String.valueOf(o)), wcfFC));
+                    wsheet.addCell(new jxl.write.Number(col, row, Double.valueOf(String.valueOf(o)), wcfFC));
                 } else if (type == CellType.DATE || type == CellType.DATE_FORMULA) {
-                    wsheet.addCell(new jxl.write.DateTime(col, row, DateUtil.stringToDate(o
-                        .toString()), wcfFC));
+                    wsheet.addCell(new jxl.write.DateTime(col, row, DateUtil.stringToDate(o.toString()), wcfFC));
                 } else {
                     wsheet.addCell(new Label(col, row, o.toString(), wcfFC));
                 }
@@ -444,10 +437,9 @@ public class DownloadExcelUtil {
 
     /**
      * 设置行高
-     * 
-     * @throws IOException
+     *
      * @throws WriteException
-     * @throws RowsExceededException
+     * @throws IOException
      */
     private void setRowView() throws WriteException, IOException {
         try {
@@ -461,9 +453,6 @@ public class DownloadExcelUtil {
 
     /**
      * 设置列宽
-     * 
-     * @param cellInfo
-     * @param col
      */
     private void setColumnView() {
         int infoWidth, cellWidth;
@@ -475,9 +464,7 @@ public class DownloadExcelUtil {
                 // 过滤合并单元格
                 Range[] range = wsheet.getMergedCells();
                 for (int k = 0; k < range.length; k++) {
-                    if (range[k].getTopLeft().getRow() == i
-                        && range[k].getTopLeft().getColumn() == j
-                        && range[k].getBottomRight().getColumn() != j)
+                    if (range[k].getTopLeft().getRow() == i && range[k].getTopLeft().getColumn() == j && range[k].getBottomRight().getColumn() != j)
                         continue lablea;
                 }
                 cell = wsheet.getCell(j, i);
@@ -494,9 +481,7 @@ public class DownloadExcelUtil {
                     infoWidth = (int) Math.round(value.length() * 2 + p * 0.2);
                 } else if (pattern.matcher(value).matches()) {// 数字
                     infoWidth = (int) Math.round(value.length() * 1.2);
-                } else if (cell.getCellFormat() != null
-                           && cell.getCellFormat().getFont().getBoldWeight() == BoldStyle.BOLD
-                               .getValue()) {// 粗体
+                } else if (cell.getCellFormat() != null && cell.getCellFormat().getFont().getBoldWeight() == BoldStyle.BOLD.getValue()) {// 粗体
                     infoWidth = (int) Math.round(value.getBytes().length * 1.13);
                 } else if (value.getBytes().length != value.length()) {
                     infoWidth = (int) Math.round(value.length() * 1.9);
@@ -511,50 +496,90 @@ public class DownloadExcelUtil {
         }
     }
 
-    /** 隐藏列 */
+    /**
+     * 隐藏列
+     *
+     * @param rols
+     */
     public void setHideCol(int rols) {
         CellView view = new CellView();
         view.setHidden(true);
         wsheet.setColumnView(rols, view);
     }
 
-    /** 隐藏行 */
+    /**
+     * 隐藏行
+     *
+     * @param row
+     */
     public void setHideRow(int row) throws RowsExceededException {
         CellView view = new CellView();
         view.setHidden(true);
         wsheet.setRowView(row, view);
     }
 
-    /** 删除列 */
+    /**
+     * 删除列
+     *
+     * @param rols
+     */
     public void deleteCol(int rols) {
         wsheet.removeColumn(rols);
     }
 
-    /** 删除行 */
+    /**
+     * 删除行
+     *
+     * @param row
+     */
     public void deleteRow(int row) {
         wsheet.removeRow(row);
     }
 
+    /**
+     *
+     * @param row
+     */
     public void setIrow(Integer row) {
         this.irow = row;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIrow() {
         return this.irow;
     }
 
+    /**
+     *
+     * @param col
+     */
     public void setIcol(Integer col) {
         icol = col;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getIcol() {
         return icol;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getTitleCols() {
         return titleCols;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int getSheetIndex() {
         return sheetIndex;
     }
