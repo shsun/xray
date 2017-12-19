@@ -115,6 +115,7 @@ public abstract class BaseController {
         response.setContentType("application/json;charset=UTF-8");
         tmp.put("timestamp", System.currentTimeMillis());
         logger.info(JSON.toJSON(tmp));
+
         byte[] bytes = JSON.toJSONBytes(tmp, SerializerFeature.DisableCircularReferenceDetect);
         response.getOutputStream().write(bytes);
     }

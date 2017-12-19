@@ -43,7 +43,6 @@ public class SysAuthorizeService {
     private SysMenuService sysMenuService;
 
     /**
-     * 
      * @param userId
      * @return
      */
@@ -52,7 +51,7 @@ public class SysAuthorizeService {
     }
 
     @Transactional
-    @CacheEvict(value = { "getAuthorize", "sysPermission", "userPermission" }, allEntries = true)
+    @CacheEvict(value = {"getAuthorize", "sysPermission", "userPermission"}, allEntries = true)
     public void updateUserMenu(List<SysUserMenu> sysUserMenus) {
         Long userId = null;
         for (SysUserMenu sysUserMenu : sysUserMenus) {
@@ -71,35 +70,35 @@ public class SysAuthorizeService {
     }
 
     @Transactional
-    @CacheEvict(value = { "getAuthorize", "sysPermission", "userPermission" }, allEntries = true)
-    public void updateUserPermission(List<SysUserMenu> sysUserMenus) {
+    @CacheEvict(value = {"getAuthorize", "sysPermission", "userPermission"}, allEntries = true)
+    public void updateUserPermission(List<SysUserMenu> list) {
         Long userId = null;
         String permission = null;
-        for (SysUserMenu sysUserMenu : sysUserMenus) {
-            if (sysUserMenu.getUserId() != null && !"read".equals(sysUserMenu.getPermission())) {
-                userId = sysUserMenu.getUserId();
-                permission = sysUserMenu.getPermission();
+        for (SysUserMenu m : list) {
+            if (m.getUserId() != null && !"read".equals(m.getPermission())) {
+                userId = m.getUserId();
+                permission = m.getPermission();
             }
         }
         if (userId != null && DataUtil.isNotEmpty(permission)) {
             sysAuthorizeMapper.deleteUserMenu(userId, permission);
         }
-        for (SysUserMenu sysUserMenu : sysUserMenus) {
-            if (sysUserMenu.getUserId() != null && sysUserMenu.getMenuId() != null && !"read".equals(sysUserMenu.getPermission())) {
-                sysUserMenuMapper.insert(sysUserMenu);
+        for (SysUserMenu m : list) {
+            if (m.getUserId() != null && m.getMenuId() != null && !"read".equals(m.getPermission())) {
+                sysUserMenuMapper.insert(m);
             }
         }
     }
 
-    public List<SysUserRole> getRolesByUserId(Long userId) {
-        SysUserRole sysUserRole = new SysUserRole(userId, null);
-        Wrapper<SysUserRole> wrapper = new EntityWrapper<SysUserRole>(sysUserRole);
-        List<SysUserRole> userRoles = sysUserRoleMapper.selectList(wrapper);
-        return userRoles;
+    public List<SysUserRole> getRolesByUserId(Long id) {
+        SysUserRole role = new SysUserRole(id, null);
+        Wrapper<SysUserRole> wrapper = new EntityWrapper<SysUserRole>(role);
+        List<SysUserRole> l = sysUserRoleMapper.selectList(wrapper);
+        return l;
     }
 
     @Transactional
-    @CacheEvict(value = { "getAuthorize", "sysPermission", "userPermission", "rolePermission" }, allEntries = true)
+    @CacheEvict(value = {"getAuthorize", "sysPermission", "userPermission", "rolePermission"}, allEntries = true)
     public void updateUserRole(List<SysUserRole> sysUserRoles) {
         Long userId = null;
         for (SysUserRole sysUserRole : sysUserRoles) {
@@ -119,47 +118,48 @@ public class SysAuthorizeService {
     }
 
     public List<Long> queryMenuIdsByRoleId(Long roleId) {
-        return sysRoleMenuMapper.queryMenuIdsByRoleId(roleId);
+        List<Long> l = sysRoleMenuMapper.queryMenuIdsByRoleId(roleId);
+        return l;
     }
 
     @Transactional
-    @CacheEvict(value = { "getAuthorize", "sysPermission", "userPermission", "rolePermission" }, allEntries = true)
-    public void updateRoleMenu(List<SysRoleMenu> sysRoleMenus) {
+    @CacheEvict(value = {"getAuthorize", "sysPermission", "userPermission", "rolePermission"}, allEntries = true)
+    public void updateRoleMenu(List<SysRoleMenu> list) {
         Long roleId = null;
-        for (SysRoleMenu sysRoleMenu : sysRoleMenus) {
-            if (sysRoleMenu.getRoleId() != null && "read".equals(sysRoleMenu.getPermission())) {
-                roleId = sysRoleMenu.getRoleId();
+        for (SysRoleMenu item : list) {
+            if (item.getRoleId() != null && "read".equals(item.getPermission())) {
+                roleId = item.getRoleId();
                 break;
             }
         }
         if (roleId != null) {
             sysAuthorizeMapper.deleteRoleMenu(roleId, "read");
         }
-        for (SysRoleMenu sysRoleMenu : sysRoleMenus) {
-            if (sysRoleMenu.getRoleId() != null && sysRoleMenu.getMenuId() != null && "read".equals(sysRoleMenu.getPermission())) {
-                sysRoleMenuMapper.insert(sysRoleMenu);
+        for (SysRoleMenu item : list) {
+            if (item.getRoleId() != null && item.getMenuId() != null && "read".equals(item.getPermission())) {
+                sysRoleMenuMapper.insert(item);
             }
         }
     }
 
     @Transactional
-    @CacheEvict(value = { "getAuthorize", "sysPermission", "userPermission", "rolePermission" }, allEntries = true)
-    public void updateRolePermission(List<SysRoleMenu> sysRoleMenus) {
+    @CacheEvict(value = {"getAuthorize", "sysPermission", "userPermission", "rolePermission"}, allEntries = true)
+    public void updateRolePermission(List<SysRoleMenu> list) {
         Long roleId = null;
         String permission = null;
-        for (SysRoleMenu sysRoleMenu : sysRoleMenus) {
-            if (sysRoleMenu.getRoleId() != null && !"read".equals(sysRoleMenu.getPermission())) {
-                roleId = sysRoleMenu.getRoleId();
-                permission = sysRoleMenu.getPermission();
+        for (SysRoleMenu item : list) {
+            if (item.getRoleId() != null && !"read".equals(item.getPermission())) {
+                roleId = item.getRoleId();
+                permission = item.getPermission();
                 break;
             }
         }
         if (roleId != null && DataUtil.isNotEmpty(permission)) {
             sysAuthorizeMapper.deleteRoleMenu(roleId, permission);
         }
-        for (SysRoleMenu sysRoleMenu : sysRoleMenus) {
-            if (sysRoleMenu.getRoleId() != null && sysRoleMenu.getMenuId() != null && !"read".equals(sysRoleMenu.getPermission())) {
-                sysRoleMenuMapper.insert(sysRoleMenu);
+        for (SysRoleMenu item : list) {
+            if (item.getRoleId() != null && item.getMenuId() != null && !"read".equals(item.getPermission())) {
+                sysRoleMenuMapper.insert(item);
             }
         }
     }

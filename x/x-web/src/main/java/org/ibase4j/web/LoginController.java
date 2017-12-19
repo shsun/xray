@@ -79,6 +79,7 @@ public class LoginController extends AbstractController<ISysProvider> {
     public Object regin(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysUser user) {
         Assert.notNull(user.getAccount(), "ACCOUNT");
         Assert.notNull(user.getPassword(), "PASSWORD");
+        //
         user.setPassword(SecurityUtil.encryptPassword(user.getPassword()));
         provider.execute(new Parameter("sysUserService", "update").setModel(user));
         if (LoginHelper.login(user.getAccount(), user.getPassword())) {

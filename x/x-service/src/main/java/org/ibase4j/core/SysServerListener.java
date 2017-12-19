@@ -18,14 +18,16 @@ public class SysServerListener extends ServerListener {
      * @param contextEvent
      */
     public void contextInitialized(ServletContextEvent contextEvent) {
+
         WebApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
 
+        /*
         SysUserService sysUserService = context.getBean(SysUserService.class);
         sysUserService.init();
 
         SysDicService sysDicService = context.getBean(SysDicService.class);
         sysDicService.getAllDic();
-
+        */
         //
         super.contextInitialized(contextEvent);
     }
