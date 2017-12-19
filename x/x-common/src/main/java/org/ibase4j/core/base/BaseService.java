@@ -34,6 +34,7 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
      *
      * @param applicationContext
      */
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }

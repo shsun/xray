@@ -52,7 +52,7 @@ public abstract class BaseProviderImpl implements ApplicationContextAware, BaseP
 			logger.info("空响应");
 			return null;
 		} catch (Exception e) {
-			throw new BusinessException(Constants.Exception_Head + ExceptionUtil.getStackTraceAsString(e), e);
+			throw new BusinessException(Constants.EXCEPTION_HEAD + ExceptionUtil.getStackTraceAsString(e), e);
 		}
 	}
 }

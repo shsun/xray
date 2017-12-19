@@ -7,12 +7,10 @@
         http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 	<!-- 将session放入redis -->
-
 	<bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
         <property name="maxInactiveIntervalInSeconds" value="${session.maxInactiveInterval}" />
         <property name="redisNamespace" value="${session.redis.namespace}" />
 	</bean>
-
 
 	<!--
 	<bean class="org.springframework.session.config.annotation.web.http.SpringHttpSessionConfiguration">

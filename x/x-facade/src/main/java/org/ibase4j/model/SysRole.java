@@ -8,12 +8,16 @@ import com.baomidou.mybatisplus.annotations.TableName;
 @TableName("sys_role")
 @SuppressWarnings("serial")
 public class SysRole extends BaseModel {
+
 	private String roleName;
+
 	private Long deptId;
+
 	private Integer roleType;
 
 	@TableField(exist = false)
 	private String deptName;
+
 	@TableField(exist = false)
 	private String permission;
 

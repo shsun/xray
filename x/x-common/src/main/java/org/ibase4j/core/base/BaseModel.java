@@ -12,136 +12,130 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class BaseModel implements Serializable {
 
-	@TableId(value = "id_", type = IdType.ID_WORKER)
-	private Long id;
+    @TableId(value = "id_", type = IdType.ID_WORKER)
+    private Long id;
 
-	@TableField("enable_")
-	private Integer enable;
+    @TableField("enable_")
+    private Integer enable;
 
-	@TableField("remark_")
-	private String remark;
-	private Long createBy;
-	private Date createTime;
-	private Long updateBy;
-	private Date updateTime;
+    @TableField("remark_")
+    private String remark;
 
-	@TableField(exist = false)
-	private String keyword;
+    private Long createBy;
+    private Date createTime;
+    private Long updateBy;
+    private Date updateTime;
 
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return id;
-	}
+    @TableField(exist = false)
+    private String keyword;
 
-	public String getId_() {
-		return id == null ? "" : id.toString();
-	}
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
 
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public String getId_() {
+        return id == null ? "" : id.toString();
+    }
 
-	/**
-	 * @return the enable
-	 */
-	public Integer getEnable() {
-		return enable;
-	}
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	/**
-	 * @param enable
-	 *            the enable to set
-	 */
-	public void setEnable(Integer enable) {
-		this.enable = enable;
-	}
+    /**
+     * @return the enable
+     */
+    public Integer getEnable() {
+        return enable;
+    }
 
-	/**
-	 * @return the remark
-	 */
-	public String getRemark() {
-		return remark;
-	}
+    /**
+     * @param enable the enable to set
+     */
+    public void setEnable(Integer enable) {
+        this.enable = enable;
+    }
 
-	/**
-	 * @param remark
-	 *            the remark to set
-	 */
-	public void setRemark(String remark) {
-		this.remark = remark == null ? null : remark.trim();
-	}
+    /**
+     * @return the remark
+     */
+    public String getRemark() {
+        return remark;
+    }
 
-	/**
-	 * @return the createBy
-	 */
-	public Long getCreateBy() {
-		return createBy;
-	}
+    /**
+     * @param remark the remark to set
+     */
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
 
-	/**
-	 * @param createBy
-	 *            the createBy to set
-	 */
-	public void setCreateBy(Long createBy) {
-		this.createBy = createBy;
-	}
+    /**
+     * @return the createBy
+     */
+    public Long getCreateBy() {
+        return createBy;
+    }
 
-	/**
-	 * @return the createTime
-	 */
-	public Date getCreateTime() {
-		return createTime;
-	}
+    /**
+     * @param createBy the createBy to set
+     */
+    public void setCreateBy(Long createBy) {
+        this.createBy = createBy;
+    }
 
-	/**
-	 * @param createTime
-	 *            the createTime to set
-	 */
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    /**
+     * @return the createTime
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-	/**
-	 * @return the updateBy
-	 */
-	public Long getUpdateBy() {
-		return updateBy;
-	}
+    /**
+     * @param createTime the createTime to set
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-	/**
-	 * @param updateBy
-	 *            the updateBy to set
-	 */
-	public void setUpdateBy(Long updateBy) {
-		this.updateBy = updateBy;
-	}
+    /**
+     * @return the updateBy
+     */
+    public Long getUpdateBy() {
+        return updateBy;
+    }
 
-	/**
-	 * @return the updateTime
-	 */
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    /**
+     * @param updateBy the updateBy to set
+     */
+    public void setUpdateBy(Long updateBy) {
+        this.updateBy = updateBy;
+    }
 
-	/**
-	 * @param updateTime
-	 *            the updateTime to set
-	 */
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+    /**
+     * @return the updateTime
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
 
-	public String getKeyword() {
-		return keyword;
-	}
+    /**
+     * @param updateTime the updateTime to set
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
 }
