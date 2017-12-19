@@ -8,17 +8,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.subject.Subject;
 import org.ibase4j.core.base.BaseProvider;
 import org.ibase4j.core.base.Parameter;
 import org.ibase4j.core.util.WebUtil;
@@ -44,7 +39,6 @@ public class Realm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 
-        
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Long userId = WebUtil.getCurrentUser();
 
@@ -91,31 +85,35 @@ public class Realm extends AuthorizingRealm {
         return authcInfo;
     }
 
-    /** 保存session */
     private void saveSession(String account) {
+        SysSession newSession = new SysSession();
+        Session oldSession = SecurityUtils.getSubject().getSession();
+
         // 踢出用户
-        SysSession record = new SysSession();
-        record.setAccount(account);
-        Parameter parameter = new Parameter("sysSessionService", "querySessionIdByAccount").setModel(record);
+        newSession.setAccount(account);
+        Parameter parameter = new Parameter("sysSessionService", "querySessionIdByAccount").setModel(newSession);
         List<?> sessionIds = provider.execute(parameter).getList();
         if (sessionIds != null) {
-            for (Object sessionId : sessionIds) {
-                record.setSessionId((String) sessionId);
-                parameter = new Parameter("sysSessionService", "deleteBySessionId").setModel(record);
+            for (Object id : sessionIds) {
+                // delete from DB
+                newSession.setSessionId((String) id);
+                parameter = new Parameter("sysSessionService", "deleteBySessionId").setModel(newSession);
                 provider.execute(parameter);
-                sessionRepository.delete((String) sessionId);
+                // delete from redis
+                sessionRepository.delete((String) id);
                 sessionRepository.cleanupExpiredSessions();
             }
         }
 
-        Subject currentUser = SecurityUtils.getSubject();
-        Session session = currentUser.getSession();
-        record.setSessionId(session.getId().toString());
-        String host = (String) session.getAttribute("HOST");
-        record.setIp(StringUtils.isBlank(host) ? session.getHost() : host);
-        record.setStartTime(session.getStartTimestamp());
-
-        parameter = new Parameter("sysSessionService", "update").setModel(record);
+        // update session to DB
+        newSession.setSessionId(oldSession.getId().toString());
+        final String tmpHost = (String) oldSession.getAttribute("HOST");
+        newSession.setIp(StringUtils.isBlank(tmpHost) ? oldSession.getHost() : tmpHost);
+        newSession.setStartTime(oldSession.getStartTimestamp());
+        parameter = new Parameter("sysSessionService", "update").setModel(newSession);
         provider.execute(parameter);
+        // see session.xml in common project
+        // <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+        // RedisHttpSessionConfiguration will save session to redis
     }
 }
