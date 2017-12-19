@@ -1,6 +1,7 @@
 package org.ibase4j.web;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.apache.shiro.SecurityUtils;
@@ -48,7 +49,7 @@ public class LoginController extends AbstractController<ISysProvider> {
     // 登录
     @ApiOperation(value = "用户登录")
     @PostMapping("/login")
-    public Object login(@ApiParam(required = true, value = "登录帐号和密码") @RequestBody SysUser sysUser, ModelMap modelMap, HttpServletRequest request) {
+    public Object login(@ApiParam(required = true, value = "登录帐号和密码") @RequestBody SysUser sysUser, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
 
         sysUser.setAccount("admin");
         sysUser.setPassword("111111");
@@ -67,7 +68,7 @@ public class LoginController extends AbstractController<ISysProvider> {
     // 登出
     @ApiOperation(value = "用户登出")
     @PostMapping("/logout")
-    public Object logout(ModelMap modelMap) {
+    public Object logout(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         Long id = WebUtil.getCurrentUser();
         if (id != null) {
             provider.execute(new Parameter("sysSessionService", "delete").setId(id));
@@ -79,7 +80,7 @@ public class LoginController extends AbstractController<ISysProvider> {
     // 注册
     @ApiOperation(value = "用户注册")
     @PostMapping("/regin")
-    public Object regin(ModelMap modelMap, @RequestBody SysUser sysUser) {
+    public Object regin(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysUser sysUser) {
         Assert.notNull(sysUser.getAccount(), "ACCOUNT");
         Assert.notNull(sysUser.getPassword(), "PASSWORD");
         sysUser.setPassword(SecurityUtil.encryptPassword(sysUser.getPassword()));
@@ -93,14 +94,14 @@ public class LoginController extends AbstractController<ISysProvider> {
     // 没有登录
     @ApiOperation(value = "没有登录")
     @RequestMapping(value = "/unauthorized", method = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT })
-    public Object unauthorized(ModelMap modelMap) throws Exception {
+    public Object unauthorized(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) throws Exception {
         return setModelMap(modelMap, HttpCode.UNAUTHORIZED);
     }
 
     // 没有权限
     @ApiOperation(value = "没有权限")
     @RequestMapping(value = "/forbidden", method = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT })
-    public Object forbidden(ModelMap modelMap) {
+    public Object forbidden(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         return setModelMap(modelMap, HttpCode.FORBIDDEN);
     }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.UnauthorizedException;
@@ -61,8 +62,8 @@ public class SysUserController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "查询用户")
     //@RequiresPermissions("sys.base.user.read")
     @PutMapping(value = "/read/list")
-    public Object query(ModelMap modelMap, @RequestBody Map<String, Object> param) {
-        return super.query(modelMap, param);
+    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
+        return super.query(request, response, modelMap, param);
     }
 
     @ApiOperation(value = "用户详细信息")

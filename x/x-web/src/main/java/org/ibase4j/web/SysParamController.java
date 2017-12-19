@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 参数管理
  * 
@@ -34,8 +37,8 @@ public class SysParamController extends AbstractController<ISysProvider> {
 	@PutMapping(value = "/read/list")
 	@ApiOperation(value = "查询系统参数")
 	@RequiresPermissions("sys.base.param.read")
-	public Object query(ModelMap modelMap, @RequestBody Map<String, Object> param) {
-		return super.query(modelMap, param);
+	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
+		return super.query(request, response, modelMap, param);
 	}
 
 	@PutMapping(value = "/read/detail")

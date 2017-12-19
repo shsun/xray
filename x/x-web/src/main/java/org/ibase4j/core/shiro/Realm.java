@@ -44,6 +44,10 @@ public class Realm extends AuthorizingRealm {
     // 权限
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+
+        // TODO: 12/19/17
+        // session
+
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Long userId = WebUtil.getCurrentUser();
         Parameter parameter = new Parameter("sysAuthorizeService", "queryPermissionByUserId").setId(userId);

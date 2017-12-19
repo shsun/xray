@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 字典管理
  * 
@@ -35,9 +38,9 @@ public class SysDicController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "查询字典项")
     @RequiresPermissions("sys.base.dic.read")
     @PutMapping(value = "/read/list")
-    public Object query(ModelMap modelMap, @RequestBody Map<String, Object> param) {
+    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
         param.put("orderBy", "sort_no");
-        return super.query(modelMap, param);
+        return super.query(request, response, modelMap, param);
     }
 
     @ApiOperation(value = "字典项详情")

@@ -13,6 +13,9 @@ import org.springframework.ui.ModelMap;
 
 import com.baomidou.mybatisplus.plugins.Page;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 public abstract class AbstractController<T extends BaseProvider> extends BaseController {
     protected final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -21,7 +24,7 @@ public abstract class AbstractController<T extends BaseProvider> extends BaseCon
 
     public abstract String getService();
 
-    public Object query(ModelMap modelMap, Map<String, Object> param) {
+    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, Map<String, Object> param) {
         Parameter parameter = new Parameter(getService(), "query").setMap(param);
         Page<?> list = provider.execute(parameter).getPage();
         return setSuccessModelMap(modelMap, list);

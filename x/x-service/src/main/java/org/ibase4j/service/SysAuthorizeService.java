@@ -200,28 +200,34 @@ public class SysAuthorizeService {
 
     @Cacheable("sysPermission")
     public List<String> queryPermissionByUserId(Long userId) {
-        return sysAuthorizeMapper.queryPermissionByUserId(userId);
+        List<String> l = sysAuthorizeMapper.queryPermissionByUserId(userId);
+        return l;
     }
 
     @Cacheable("userPermission")
     public List<String> queryUserPermission(Long userId) {
-        return sysUserMenuMapper.queryPermission(userId);
+        List<String> l = sysUserMenuMapper.queryPermission(userId);
+        return l;
     }
 
     @Cacheable("rolePermission")
     public List<String> queryRolePermission(Long roleId) {
-        return sysRoleMenuMapper.queryPermission(roleId);
+        List<String> l = sysRoleMenuMapper.queryPermission(roleId);
+        return l;
     }
 
     public List<SysMenu> queryMenusPermission() {
-        return sysAuthorizeMapper.queryMenusPermission();
+        List<SysMenu> l = sysAuthorizeMapper.queryMenusPermission();
+        return l;
     }
 
     public List<Long> queryUserPermissions(SysUserMenu sysUserMenu) {
-        return sysUserMenuMapper.queryPermissions(sysUserMenu.getUserId(), sysUserMenu.getPermission());
+        List<Long> l = sysUserMenuMapper.queryPermissions(sysUserMenu.getUserId(), sysUserMenu.getPermission());
+        return l;
     }
 
     public List<Long> queryRolePermissions(SysRoleMenu sysRoleMenu) {
-        return sysRoleMenuMapper.queryPermissions(sysRoleMenu.getRoleId(), sysRoleMenu.getPermission());
+        List<Long> l = sysRoleMenuMapper.queryPermissions(sysRoleMenu.getRoleId(), sysRoleMenu.getPermission());
+        return l;
     }
 }

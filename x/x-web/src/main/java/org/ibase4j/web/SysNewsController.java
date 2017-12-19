@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 新闻管理控制类
  * 
@@ -34,8 +37,8 @@ public class SysNewsController extends AbstractController<ISysProvider> {
 	@ApiOperation(value = "查询新闻")
 	@RequiresPermissions("public.news.read")
 	@PutMapping(value = "/read/list")
-	public Object query(ModelMap modelMap, @RequestBody Map<String, Object> param) {
-		return super.query(modelMap, param);
+	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
+		return super.query(request, response, modelMap, param);
 	}
 
 	@ApiOperation(value = "新闻详情")

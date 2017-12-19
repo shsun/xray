@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 通知管理控制类
  * 
@@ -32,8 +35,8 @@ public class SysNoticeController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "查询通知")
     @RequiresPermissions("public.notice.read")
     @RequestMapping(value = "/read/list", method = RequestMethod.PUT)
-    public Object query(ModelMap modelMap, @RequestBody Map<String, Object> param) {
-        return super.query(modelMap, param);
+    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
+        return super.query(request, response, modelMap, param);
     }
 
     @ApiOperation(value = "通知详情")

@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 用户会话管理
  * 
@@ -36,10 +39,10 @@ public class SysSessionController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "查询会话")
     @PutMapping(value = "/read/list")
     @RequiresPermissions("sys.base.session.read")
-    public Object get(ModelMap modelMap, @RequestBody Map<String, Object> param) {
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
         Integer number = SessionListener.getAllUserNumber();
         modelMap.put("userNumber", number); // 用户数大于会话数,有用户没有登录
-        return super.query(modelMap, param);
+        return super.query(request, response, modelMap, param);
     }
 
     @DeleteMapping
