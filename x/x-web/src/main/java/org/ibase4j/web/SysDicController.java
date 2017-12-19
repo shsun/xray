@@ -20,12 +20,7 @@ import io.swagger.annotations.ApiOperation;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 字典管理
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:14:34
- */
+
 @RestController
 @Api(value = "字典管理", description = "字典管理")
 @RequestMapping(value = "/dic")
@@ -38,29 +33,29 @@ public class SysDicController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "查询字典项")
     @RequiresPermissions("sys.base.dic.read")
     @PutMapping(value = "/read/list")
-    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
+    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
         param.put("orderBy", "sort_no");
-        return super.query(request, response, modelMap, param);
+        return super.query(request, response, map, param);
     }
 
     @ApiOperation(value = "字典项详情")
     @RequiresPermissions("sys.base.dic.read")
     @PutMapping(value = "/read/detail")
-    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysDic param) {
-        return super.get(request, response, modelMap, param);
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysDic param) {
+        return super.get(request, response, map, param);
     }
 
     @PostMapping
     @ApiOperation(value = "修改字典项")
     @RequiresPermissions("sys.base.dic.update")
-    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysDic param) {
-        return super.update(request, response, modelMap, param);
+    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysDic param) {
+        return super.update(request, response, map, param);
     }
 
     @DeleteMapping
     @ApiOperation(value = "删除字典项")
     @RequiresPermissions("sys.base.dic.delete")
-    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysDic param) {
-        return super.delete(request, response, modelMap, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysDic param) {
+        return super.delete(request, response, map, param);
     }
 }

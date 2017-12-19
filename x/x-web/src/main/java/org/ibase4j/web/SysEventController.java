@@ -34,7 +34,7 @@ public class SysEventController extends AbstractController<ISysProvider> {
 	@ApiOperation(value = "查询新闻")
 	@RequiresPermissions("public.news.read")
 	@PutMapping(value = "/read/list")
-	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
-		return super.query(request, response, modelMap, param);
+	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
+		return super.query(request, response, map, param);
 	}
 }

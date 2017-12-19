@@ -25,12 +25,6 @@ import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-/**
- * 第三方登录控制类
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:12:56
- */
 @Controller
 @Api(value = "第三方登录接口", description = "第三方登录接口")
 public class ThirdPartyLoginController extends AbstractController<ISysProvider> {
@@ -69,29 +63,29 @@ public class ThirdPartyLoginController extends AbstractController<ISysProvider> 
 
     @RequestMapping("/callback/wx")
     @ApiOperation(value = "微信登录回调", httpMethod = "GET")
-    public String wxCallback(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+    public String wxCallback(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
         String host = request.getHeader("host");
         try {
             String code = request.getParameter("code");
             if (StringUtils.isNotBlank(code)) {// 如果不为空
                 // 获取token和openid
-                Map<String, String> map = ThirdPartyLoginHelper.getWxTokenAndOpenid(code, host);
-                String openId = map.get("openId");
+                Map<String, String> tmp = ThirdPartyLoginHelper.getWxTokenAndOpenid(code, host);
+                String openId = tmp.get("openId");
                 if (StringUtils.isNotBlank(openId)) {// 如果openID存在
                     // 获取第三方用户信息存放到session中
-                    ThirdPartyUser thirdUser = ThirdPartyLoginHelper.getWxUserinfo(map.get("access_token"), openId);
+                    ThirdPartyUser thirdUser = ThirdPartyLoginHelper.getWxUserinfo(tmp.get("access_token"), openId);
                     thirdUser.setProvider("WX");
                     thirdPartyLogin(thirdUser);
                     // 跳转到登录成功界面
-                    modelMap.put("retUrl", Resources.THIRDPARTY.getString("third_login_success"));
+                    map.put("retUrl", Resources.THIRDPARTY.getString("third_login_success"));
                 } else {// 如果未获取到OpenID
-                    modelMap.put("retUrl", "-1");
+                    map.put("retUrl", "-1");
                 }
             } else {// 如果没有返回令牌，则直接返回到登录页面
-                modelMap.put("retUrl", "-1");
+                map.put("retUrl", "-1");
             }
         } catch (Exception e) {
-            modelMap.put("retUrl", "-1");
+            map.put("retUrl", "-1");
             e.printStackTrace();
         }
 
@@ -100,29 +94,29 @@ public class ThirdPartyLoginController extends AbstractController<ISysProvider> 
 
     @RequestMapping("/callback/qq")
     @ApiOperation(value = "QQ登录回调", httpMethod = "GET")
-    public String qqCallback(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+    public String qqCallback(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
         String host = request.getHeader("host");
         try {
             String code = request.getParameter("code");
             if (StringUtils.isNotBlank(code)) {// 如果不为空
                 // 获取token和openid
-                Map<String, String> map = ThirdPartyLoginHelper.getQQTokenAndOpenid(code, host);
-                String openId = map.get("openId");
+                Map<String, String> tmp = ThirdPartyLoginHelper.getQQTokenAndOpenid(code, host);
+                String openId = tmp.get("openId");
                 if (StringUtils.isNotBlank(openId)) {// 如果openID存在
                     // 获取第三方用户信息存放到session中
-                    ThirdPartyUser thirdUser = ThirdPartyLoginHelper.getQQUserinfo(map.get("access_token"), openId);
+                    ThirdPartyUser thirdUser = ThirdPartyLoginHelper.getQQUserinfo(tmp.get("access_token"), openId);
                     thirdUser.setProvider("QQ");
                     thirdPartyLogin(thirdUser);
                     // 跳转到登录成功界面
-                    modelMap.put("retUrl", Resources.THIRDPARTY.getString("third_login_success"));
+                    map.put("retUrl", Resources.THIRDPARTY.getString("third_login_success"));
                 } else {// 如果未获取到OpenID
-                    modelMap.put("retUrl", "-1");
+                    map.put("retUrl", "-1");
                 }
             } else {// 如果没有返回令牌，则直接返回到登录页面
-                modelMap.put("retUrl", "-1");
+                map.put("retUrl", "-1");
             }
         } catch (Exception e) {
-            modelMap.put("retUrl", "-1");
+            map.put("retUrl", "-1");
             e.printStackTrace();
         }
 
@@ -131,7 +125,7 @@ public class ThirdPartyLoginController extends AbstractController<ISysProvider> 
 
     @RequestMapping("callback/sina")
     @ApiOperation(value = "微博登录回调", httpMethod = "GET")
-    public String sinaCallback(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+    public String sinaCallback(HttpServletRequest request, ModelMap map) {
         String host = request.getHeader("host");
         try {
             String code = request.getParameter("code");
@@ -145,18 +139,18 @@ public class ThirdPartyLoginController extends AbstractController<ISysProvider> 
                     thirdUser.setProvider("SINA");
                     thirdPartyLogin(thirdUser);
                     // 跳转到登录成功界面
-                    modelMap.put("retUrl", Resources.THIRDPARTY.getString("third_login_success"));
+                    map.put("retUrl", Resources.THIRDPARTY.getString("third_login_success"));
                 } else {// 如果未获取到OpenID
                         // 跳转到登录成功界面
-                    modelMap.put("retUrl", "-1");
+                    map.put("retUrl", "-1");
                 }
             } else {// 如果没有返回令牌，则直接返回到登录页面
                     // 跳转到登录成功界面
-                modelMap.put("retUrl", "-1");
+                map.put("retUrl", "-1");
             }
         } catch (Exception e) {
             // 跳转到登录失败界面
-            modelMap.put("retUrl", "-1");
+            map.put("retUrl", "-1");
             e.printStackTrace();
         }
 

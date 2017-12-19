@@ -35,28 +35,28 @@ public class SysEmailTemplateController extends AbstractController<ISysProvider>
 	@ApiOperation(value = "查询邮件模版")
 	@RequiresPermissions("sys.email.template.read")
 	@RequestMapping(value = "/read/list", method = RequestMethod.PUT)
-	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
-		return super.query(request, response, modelMap, param);
+	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
+		return super.query(request, response, map, param);
 	}
 
 	@ApiOperation(value = "邮件模版详情")
 	@RequiresPermissions("sys.email.template.read")
 	@RequestMapping(value = "/read/detail", method = RequestMethod.PUT)
-	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysEmailTemplate param) {
-		return super.get(request, response, modelMap, param);
+	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysEmailTemplate param) {
+		return super.get(request, response, map, param);
 	}
 
 	@ApiOperation(value = "修改邮件模版")
 	@RequiresPermissions("sys.email.template.update")
 	@RequestMapping(method = RequestMethod.POST)
-	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysEmailTemplate param) {
-		return super.update(request, response, modelMap, param);
+	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysEmailTemplate param) {
+		return super.update(request, response, map, param);
 	}
 
 	@ApiOperation(value = "删除邮件模版")
 	@RequiresPermissions("sys.email.template.delete")
 	@RequestMapping(method = RequestMethod.DELETE)
-	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysEmailTemplate param) {
-		return super.delete(request, response, modelMap, param);
+	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysEmailTemplate param) {
+		return super.delete(request, response, map, param);
 	}
 }

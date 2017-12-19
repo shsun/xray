@@ -20,12 +20,7 @@ import io.swagger.annotations.ApiOperation;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 部门管理控制类
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:13:31
- */
+
 @RestController
 @Api(value = "部门管理", description = "部门管理")
 @RequestMapping(value = "dept")
@@ -37,29 +32,29 @@ public class SysDeptController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "查询部门")
     @RequiresPermissions("sys.base.dept.read")
     @PutMapping(value = "/read/list")
-    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
-        return super.query(request, response, modelMap, param);
+    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
+        return super.query(request, response, map, param);
     }
 
     @ApiOperation(value = "部门详情")
     @RequiresPermissions("sys.base.dept.read")
     @PutMapping(value = "/read/detail")
-    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysDept param) {
-        return super.get(request, response, modelMap, param);
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysDept param) {
+        return super.get(request, response, map, param);
     }
 
     @PostMapping
     @ApiOperation(value = "修改部门")
     @RequiresPermissions("sys.base.dept.update")
-    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysDept param) {
+    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysDept param) {
         param.setUnitId(1);
-        return super.update(request, response, modelMap, param);
+        return super.update(request, response, map, param);
     }
 
     @DeleteMapping
     @ApiOperation(value = "删除部门")
     @RequiresPermissions("sys.base.dept.delete")
-    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysDept param) {
-        return super.delete(request, response, modelMap, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysDept param) {
+        return super.delete(request, response, map, param);
     }
 }

@@ -39,21 +39,21 @@ public class SysEmailConfigController extends AbstractController<ISysProvider> {
 	@ApiOperation(value = "查询邮件配置")
 	@RequiresPermissions("sys.email.config.read")
 	@RequestMapping(value = "/read/list", method = RequestMethod.PUT)
-	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
-		return super.query(request, response, modelMap, param);
+	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
+		return super.query(request, response, map, param);
 	}
 
 	@ApiOperation(value = "邮件配置详情")
 	@RequiresPermissions("sys.email.config.read")
 	@RequestMapping(value = "/read/detail", method = RequestMethod.PUT)
-	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysEmailConfig param) {
-		return super.get(request, response, modelMap, param);
+	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysEmailConfig param) {
+		return super.get(request, response, map, param);
 	}
 
 	@ApiOperation(value = "修改邮件配置")
 	@RequiresPermissions("sys.email.config.update")
 	@RequestMapping(method = RequestMethod.POST)
-	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysEmailConfig param) {
+	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysEmailConfig param) {
 		if (param.getId() != null) {
 			Parameter parameter = new Parameter("sysEmailConfigService", "queryById").setModel(param);
 			SysEmailConfig result = (SysEmailConfig) provider.execute(parameter).getModel();
@@ -63,13 +63,13 @@ public class SysEmailConfigController extends AbstractController<ISysProvider> {
 		} else if (DataUtil.isNotEmpty(param.getSenderPassword())) {
 			param.setSenderPassword(SecurityUtil.encryptMd5(param.getSenderPassword()));
 		}
-		return super.update(request, response, modelMap, param);
+		return super.update(request, response, map, param);
 	}
 
 	@ApiOperation(value = "删除邮件配置")
 	@RequiresPermissions("sys.email.config.delete")
 	@RequestMapping(method = RequestMethod.DELETE)
-	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysEmailConfig param) {
-		return super.delete(request, response, modelMap, param);
+	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysEmailConfig param) {
+		return super.delete(request, response, map, param);
 	}
 }

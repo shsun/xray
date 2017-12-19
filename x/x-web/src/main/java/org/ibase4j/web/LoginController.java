@@ -49,7 +49,7 @@ public class LoginController extends AbstractController<ISysProvider> {
     // 登录
     @ApiOperation(value = "用户登录")
     @PostMapping("/login")
-    public Object login(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @ApiParam(required = true, value = "登录帐号和密码") @RequestBody SysUser sysUser) {
+    public Object login(HttpServletRequest request, HttpServletResponse response, ModelMap map, @ApiParam(required = true, value = "登录帐号和密码") @RequestBody SysUser sysUser) {
 
         sysUser.setAccount("admin");
         sysUser.setPassword("111111");
@@ -59,7 +59,7 @@ public class LoginController extends AbstractController<ISysProvider> {
         
         if (LoginHelper.login(sysUser.getAccount(), SecurityUtil.encryptPassword(sysUser.getPassword()))) {
             request.setAttribute("msg", "[" + sysUser.getAccount() + "]登录成功.");
-            return setSuccessModelMap(modelMap);
+            return setSuccessModelMap(map);
         }
         request.setAttribute("msg", "[" + sysUser.getAccount() + "]登录失败.");
         throw new LoginException(Resources.getMessage("LOGIN_FAIL"));
@@ -68,25 +68,25 @@ public class LoginController extends AbstractController<ISysProvider> {
     // 登出
     @ApiOperation(value = "用户登出")
     @PostMapping("/logout")
-    public Object logout(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+    public Object logout(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
         Long id = WebUtil.getCurrentUser();
         if (id != null) {
             provider.execute(new Parameter("sysSessionService", "delete").setId(id));
         }
         SecurityUtils.getSubject().logout();
-        return setSuccessModelMap(modelMap);
+        return setSuccessModelMap(map);
     }
 
     // 注册
     @ApiOperation(value = "用户注册")
     @PostMapping("/regin")
-    public Object regin(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysUser sysUser) {
+    public Object regin(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysUser sysUser) {
         Assert.notNull(sysUser.getAccount(), "ACCOUNT");
         Assert.notNull(sysUser.getPassword(), "PASSWORD");
         sysUser.setPassword(SecurityUtil.encryptPassword(sysUser.getPassword()));
         provider.execute(new Parameter("sysUserService", "update").setModel(sysUser));
         if (LoginHelper.login(sysUser.getAccount(), sysUser.getPassword())) {
-            return setSuccessModelMap(modelMap);
+            return setSuccessModelMap(map);
         }
         throw new IllegalArgumentException(Resources.getMessage("LOGIN_FAIL"));
     }
@@ -94,14 +94,14 @@ public class LoginController extends AbstractController<ISysProvider> {
     // 没有登录
     @ApiOperation(value = "没有登录")
     @RequestMapping(value = "/unauthorized", method = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT })
-    public Object unauthorized(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) throws Exception {
-        return setModelMap(modelMap, HttpCode.UNAUTHORIZED);
+    public Object unauthorized(HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+        return setModelMap(map, HttpCode.UNAUTHORIZED);
     }
 
     // 没有权限
     @ApiOperation(value = "没有权限")
     @RequestMapping(value = "/forbidden", method = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT })
-    public Object forbidden(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
-        return setModelMap(modelMap, HttpCode.FORBIDDEN);
+    public Object forbidden(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
+        return setModelMap(map, HttpCode.FORBIDDEN);
     }
 }

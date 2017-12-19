@@ -46,7 +46,7 @@ public class ScheduledController extends AbstractController<ISysProvider> {
 	@PostMapping
 	@ApiOperation(value = "新增任务")
 	@RequiresPermissions("sys.task.scheduled.update")
-	public Object updateTask(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody TaskScheduled scheduled) {
+	public Object updateTask(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody TaskScheduled scheduled) {
 		Assert.notNull(scheduled.getJobType(), "JOBTYPE");
 		Assert.notNull(scheduled.getTaskType(), "TASKTYPE");
 		Assert.notNull(scheduled.getTargetObject(), "TARGETOBJECT");
@@ -58,72 +58,72 @@ public class ScheduledController extends AbstractController<ISysProvider> {
 		}
 		Parameter parameter = new Parameter(getService(), "updateTask").setModel(scheduled);
 		provider.execute(parameter);
-		return setSuccessModelMap(modelMap);
+		return setSuccessModelMap(map);
 	}
 
 	@DeleteMapping
 	@ApiOperation(value = "删除任务")
 	@RequiresPermissions("sys.task.scheduled.close")
-	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody TaskScheduled scheduled) {
+	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody TaskScheduled scheduled) {
 		Assert.notNull(scheduled.getTaskGroup(), "TASKGROUP");
 		Assert.notNull(scheduled.getTaskName(), "TASKNAME");
 		Parameter parameter = new Parameter(getService(), "delTask").setModel(scheduled);
 		provider.execute(parameter);
-		return setSuccessModelMap(modelMap);
+		return setSuccessModelMap(map);
 	}
 
 	@PostMapping("/run")
 	@ApiOperation(value = "立即执行任务")
 	@RequiresPermissions("sys.task.scheduled.run")
-	public Object exec(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody TaskScheduled scheduled) {
+	public Object exec(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody TaskScheduled scheduled) {
 		Assert.notNull(scheduled.getTaskGroup(), "TASKGROUP");
 		Assert.notNull(scheduled.getTaskName(), "TASKNAME");
 		Parameter parameter = new Parameter(getService(), "execTask").setModel(scheduled);
 		provider.execute(parameter);
-		return setSuccessModelMap(modelMap);
+		return setSuccessModelMap(map);
 	}
 
 	@PostMapping("/open")
 	@ApiOperation(value = "启动任务")
 	@RequiresPermissions("sys.task.scheduled.open")
-	public Object open(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody TaskScheduled scheduled) {
+	public Object open(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody TaskScheduled scheduled) {
 		Assert.notNull(scheduled.getTaskGroup(), "TASKGROUP");
 		Assert.notNull(scheduled.getTaskName(), "TASKNAME");
 		Parameter parameter = new Parameter(getService(), "openTask").setModel(scheduled);
 		provider.execute(parameter);
-		return setSuccessModelMap(modelMap);
+		return setSuccessModelMap(map);
 	}
 
 	@PostMapping("/close")
 	@ApiOperation(value = "暂停任务")
 	@RequiresPermissions("sys.task.scheduled.close")
-	public Object close(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody TaskScheduled scheduled) {
+	public Object close(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody TaskScheduled scheduled) {
 		Assert.notNull(scheduled.getTaskGroup(), "TASKGROUP");
 		Assert.notNull(scheduled.getTaskName(), "TASKNAME");
 		Parameter parameter = new Parameter(getService(), "closeTask").setModel(scheduled);
 		provider.execute(parameter);
-		return setSuccessModelMap(modelMap);
+		return setSuccessModelMap(map);
 	}
 
 	@PutMapping("/read/tasks")
 	@ApiOperation(value = "任务列表")
 	@RequiresPermissions("sys.task.scheduled.read")
-	public Object list(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+	public Object list(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
 		Parameter parameter = new Parameter(getService(), "getAllTaskDetail");
 		List<?> records = provider.execute(parameter).getList();
-		modelMap.put("recordsTotal", records.size());
-		modelMap.put("total", records.size());
-		modelMap.put("current", 1);
-		modelMap.put("size", records.size());
-		return setSuccessModelMap(modelMap, records);
+		map.put("recordsTotal", records.size());
+		map.put("total", records.size());
+		map.put("current", 1);
+		map.put("size", records.size());
+		return setSuccessModelMap(map, records);
 	}
 
 	@PutMapping("/read/log")
 	@ApiOperation(value = "任务执行记录")
 	@RequiresPermissions("sys.task.log.read")
-	public Object getFireLog(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> log) {
+	public Object getFireLog(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> log) {
 		Parameter parameter = new Parameter(getService(), "queryLog").setMap(log);
 		Page<?> list = provider.execute(parameter).getPage();
-		return setSuccessModelMap(modelMap, list);
+		return setSuccessModelMap(map, list);
 	}
 }

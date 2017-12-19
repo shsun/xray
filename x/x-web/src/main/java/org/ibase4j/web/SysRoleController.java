@@ -37,28 +37,28 @@ public class SysRoleController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "查询角色")
     @RequiresPermissions("sys.base.role.read")
     @PutMapping(value = "/read/list")
-    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
-        return super.query(request, response, modelMap, param);
+    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
+        return super.query(request, response, map, param);
     }
 
     @ApiOperation(value = "角色详情")
     @RequiresPermissions("sys.base.role.read")
     @PutMapping(value = "/read/detail")
-    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysRole param) {
-        return super.get(request, response, modelMap, param);
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysRole param) {
+        return super.get(request, response, map, param);
     }
 
     @PostMapping
     @ApiOperation(value = "修改角色")
     @RequiresPermissions("sys.base.role.update")
-    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysRole param) {
-        return super.update(request, response, modelMap, param);
+    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysRole param) {
+        return super.update(request, response, map, param);
     }
 
     @DeleteMapping
     @ApiOperation(value = "删除角色")
     @RequiresPermissions("sys.base.role.delete")
-    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysRole param) {
-        return super.delete(request, response, modelMap, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysRole param) {
+        return super.delete(request, response, map, param);
     }
 }

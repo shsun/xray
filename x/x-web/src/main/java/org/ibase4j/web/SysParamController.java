@@ -37,28 +37,28 @@ public class SysParamController extends AbstractController<ISysProvider> {
 	@PutMapping(value = "/read/list")
 	@ApiOperation(value = "查询系统参数")
 	@RequiresPermissions("sys.base.param.read")
-	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
-		return super.query(request, response, modelMap, param);
+	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
+		return super.query(request, response, map, param);
 	}
 
 	@PutMapping(value = "/read/detail")
 	@ApiOperation(value = "系统参数详情")
 	@RequiresPermissions("sys.base.param.read")
-	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysParam param) {
-		return super.get(request, response, modelMap, param);
+	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysParam param) {
+		return super.get(request, response, map, param);
 	}
 
 	@PostMapping
 	@ApiOperation(value = "修改系统参数")
 	@RequiresPermissions("sys.base.param.update")
-	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysParam param) {
-		return super.update(request, response, modelMap, param);
+	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysParam param) {
+		return super.update(request, response, map, param);
 	}
 
 	@DeleteMapping
 	@ApiOperation(value = "删除系统参数")
 	@RequiresPermissions("sys.base.param.delete")
-	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysParam param) {
-		return super.delete(request, response, modelMap, param);
+	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysParam param) {
+		return super.delete(request, response, map, param);
 	}
 }

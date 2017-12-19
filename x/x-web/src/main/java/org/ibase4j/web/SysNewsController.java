@@ -37,31 +37,31 @@ public class SysNewsController extends AbstractController<ISysProvider> {
 	@ApiOperation(value = "查询新闻")
 	@RequiresPermissions("public.news.read")
 	@PutMapping(value = "/read/list")
-	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
-		return super.query(request, response, modelMap, param);
+	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
+		return super.query(request, response, map, param);
 	}
 
 	@ApiOperation(value = "新闻详情")
 	@RequiresPermissions("public.news.read")
 	@PutMapping(value = "/read/detail")
-	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysNews param) {
-		Object o = super.get(request, response, modelMap, param);
+	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysNews param) {
+		Object o = super.get(request, response, map, param);
 		return o;
 	}
 
 	@PostMapping
 	@ApiOperation(value = "修改新闻")
 	@RequiresPermissions("public.news.update")
-	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysNews param) {
-		Object o = super.update(request, response, modelMap, param);
+	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysNews param) {
+		Object o = super.update(request, response, map, param);
 		return o;
 	}
 
 	@DeleteMapping
 	@ApiOperation(value = "删除新闻")
 	@RequiresPermissions("public.news.delete")
-	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysNews param) {
-		Object o = super.delete(request, response, modelMap, param);
+	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysNews param) {
+		Object o = super.delete(request, response, map, param);
 		return o;
 	}
 }

@@ -33,16 +33,16 @@ public class SysSessionController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "查询会话")
     @PutMapping(value = "/read/list")
     @RequiresPermissions("sys.base.session.read")
-    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody Map<String, Object> param) {
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
         Integer number = SessionListener.getAllUserNumber();
-        modelMap.put("userNumber", number); // 用户数大于会话数,有用户没有登录
-        return super.query(request, response, modelMap, param);
+        map.put("userNumber", number); // 用户数大于会话数,有用户没有登录
+        return super.query(request, response, map, param);
     }
 
     @DeleteMapping
     @ApiOperation(value = "删除会话")
     @RequiresPermissions("sys.base.session.delete")
-    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysSession param) {
-        return super.delete(request, response, modelMap, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysSession param) {
+        return super.delete(request, response, map, param);
     }
 }
