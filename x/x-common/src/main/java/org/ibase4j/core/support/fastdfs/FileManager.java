@@ -5,18 +5,18 @@ import java.net.InetSocketAddress;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.csource.common.MyException;
-import org.csource.common.NameValuePair;
-import org.csource.fastdfs.ClientGlobal;
-import org.csource.fastdfs.FileInfo;
-import org.csource.fastdfs.ServerInfo;
-import org.csource.fastdfs.StorageClient;
-import org.csource.fastdfs.StorageServer;
-import org.csource.fastdfs.TrackerClient;
-import org.csource.fastdfs.TrackerGroup;
-import org.csource.fastdfs.TrackerServer;
-import org.csource.fastdht.FastDHTClient;
-import org.csource.fastdht.KeyInfo;
+import base.common.MyException;
+import base.common.NameValuePair;
+import base.fastdfs.ClientGlobal;
+import base.fastdfs.FileInfo;
+import base.fastdfs.ServerInfo;
+import base.fastdfs.StorageClient;
+import base.fastdfs.StorageServer;
+import base.fastdfs.TrackerClient;
+import base.fastdfs.TrackerGroup;
+import base.fastdfs.TrackerServer;
+import base.fastdht.FastDHTClient;
+import base.fastdht.KeyInfo;
 import org.ibase4j.core.util.PropertiesUtil;
 
 import com.alibaba.fastjson.JSON;
@@ -37,7 +37,7 @@ public class FileManager implements Config {
     static { // Initialize Fast DFS Client configurations
         try {
             initFastDFSClient();
-            //org.csource.fastdht.ClientGlobal.init(fdhtClientConfigFilePath);
+            //base.fastdht.ClientGlobal.init(fdhtClientConfigFilePath);
             trackerClient = new TrackerClient();
             trackerServer = trackerClient.getConnection();
             storageClient = new StorageClient(trackerServer, storageServer);

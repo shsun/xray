@@ -1,6 +1,6 @@
 package org.ibase4j.core.support.fastdfs;
 
-import org.csource.common.NameValuePair;
+import base.common.NameValuePair;
 
 /**
  * @author ShenHuaJie
