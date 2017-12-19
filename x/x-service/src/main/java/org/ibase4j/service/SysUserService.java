@@ -63,7 +63,6 @@ public class SysUserService extends BaseService<SysUser> {
 
         final long end = System.currentTimeMillis();
         logger.info("SysUserService.query-->" + (end - start));
-
         return pageInfo;
     }
 

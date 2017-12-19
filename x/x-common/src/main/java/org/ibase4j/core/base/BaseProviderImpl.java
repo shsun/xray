@@ -56,7 +56,7 @@ public abstract class BaseProviderImpl implements ApplicationContextAware, BaseP
             }
             //
             final long end = System.currentTimeMillis();
-			System.err.println("Time: " + (end - start) + " ms, " + p.getService() + "." + p.getMethod() + " argument=" + arg);
+			System.err.println("Dubbo Time: " + (end - start) + " ms, " + p.getService() + "." + p.getMethod() + " argument=" + arg);
 
             if (result != null) {
                 Parameter response = new Parameter(result);

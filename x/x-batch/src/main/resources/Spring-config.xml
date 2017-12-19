@@ -25,7 +25,7 @@
 				<!--
 				<prop key="dubbo.protocol.port">1${server.port}</prop>
 				-->
-				<prop key="dubbo.protocol.port">20881</prop>
+				<prop key="dubbo.protocol.port">20880</prop>
 
 			</props>
 		</property>
