@@ -26,8 +26,8 @@ public class SysRoleService extends BaseService<SysRole> {
 
     // @Cacheable(value = { "sysRoleMap" }, key = "'query'.concat(#key)")
     @Cacheable(value = "sysRoleMap")
-    public Page<SysRole> query(Map<String, Object> params) {
-        Page<SysRole> pageInfo = super.query(params);
+    public Page<SysRole> query(Map<String, Object> map) {
+        Page<SysRole> pageInfo = super.query(map);
         // 权限信息
         for (SysRole bean : pageInfo.getRecords()) {
             if (bean.getDeptId() != null) {
