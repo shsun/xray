@@ -67,7 +67,8 @@ public class TrackerGroup {
         try {
             return this.getConnection(current_index);
         } catch (IOException ex) {
-            System.err.println("connect to server " + this.tracker_servers[current_index].getAddress().getHostAddress() + ":" + this.tracker_servers[current_index].getPort() + " fail");
+            System.err.println("connect to server " + this.tracker_servers[current_index].getAddress().getHostAddress() + ":"
+                    + this.tracker_servers[current_index].getPort() + " fail");
             ex.printStackTrace(System.err);
         }
 
@@ -87,7 +88,8 @@ public class TrackerGroup {
 
                 return trackerServer;
             } catch (IOException ex) {
-                System.err.println("connect to server " + this.tracker_servers[i].getAddress().getHostAddress() + ":" + this.tracker_servers[i].getPort() + " fail");
+                System.err.println(
+                        "connect to server " + this.tracker_servers[i].getAddress().getHostAddress() + ":" + this.tracker_servers[i].getPort() + " fail");
                 ex.printStackTrace(System.err);
             }
         }

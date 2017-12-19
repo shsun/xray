@@ -21,11 +21,11 @@ import org.csource.common.MyException;
  * @version Version 1.00
  */
 public class ClientGlobal {
-    public static int g_network_timeout; //millisecond
-    public static String g_charset;      //String charset
-    public static ServerGroup g_server_group; //group info
+    public static int g_network_timeout; // millisecond
+    public static String g_charset; // String charset
+    public static ServerGroup g_server_group; // group info
 
-    public static final int DEFAULT_NETWORK_TIMEOUT = 30; //second
+    public static final int DEFAULT_NETWORK_TIMEOUT = 30; // second
 
     /**
      * load global variables
@@ -41,7 +41,7 @@ public class ClientGlobal {
         if (g_network_timeout < 0) {
             g_network_timeout = DEFAULT_NETWORK_TIMEOUT;
         }
-        g_network_timeout *= 1000; //millisecond
+        g_network_timeout *= 1000; // millisecond
 
         g_charset = iniReader.getStrValue("charset");
         if (g_charset == null || g_charset.length() == 0) {

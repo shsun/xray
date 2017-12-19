@@ -23,16 +23,16 @@ import org.csource.common.MyException;
  * @version Version 1.11
  */
 public class ClientGlobal {
-    public static int g_connect_timeout; //millisecond
-    public static int g_network_timeout; //millisecond
+    public static int g_connect_timeout; // millisecond
+    public static int g_network_timeout; // millisecond
     public static String g_charset;
     public static int g_tracker_http_port;
-    public static boolean g_anti_steal_token;  //if anti-steal token
-    public static String g_secret_key;   //generage token secret key
+    public static boolean g_anti_steal_token; // if anti-steal token
+    public static String g_secret_key; // generage token secret key
     public static TrackerGroup g_tracker_group;
 
-    public static final int DEFAULT_CONNECT_TIMEOUT = 5;  //second
-    public static final int DEFAULT_NETWORK_TIMEOUT = 30; //second
+    public static final int DEFAULT_CONNECT_TIMEOUT = 5; // second
+    public static final int DEFAULT_NETWORK_TIMEOUT = 30; // second
 
     private ClientGlobal() {
     }
@@ -53,13 +53,13 @@ public class ClientGlobal {
         if (g_connect_timeout < 0) {
             g_connect_timeout = DEFAULT_CONNECT_TIMEOUT;
         }
-        g_connect_timeout *= 1000; //millisecond
+        g_connect_timeout *= 1000; // millisecond
 
         g_network_timeout = iniReader.getIntValue("network_timeout", DEFAULT_NETWORK_TIMEOUT);
         if (g_network_timeout < 0) {
             g_network_timeout = DEFAULT_NETWORK_TIMEOUT;
         }
-        g_network_timeout *= 1000; //millisecond
+        g_network_timeout *= 1000; // millisecond
 
         g_charset = iniReader.getStrValue("charset");
         if (g_charset == null || g_charset.length() == 0) {
@@ -93,7 +93,7 @@ public class ClientGlobal {
      * construct Socket object
      *
      * @param ip_addr ip address or hostname
-     * @param port    port number
+     * @param port port number
      * @return connected Socket object
      */
     public static Socket getSocket(String ip_addr, int port) throws IOException {
