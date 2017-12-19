@@ -49,7 +49,7 @@ public class LoginController extends AbstractController<ISysProvider> {
     // 登录
     @ApiOperation(value = "用户登录")
     @PostMapping("/login")
-    public Object login(@ApiParam(required = true, value = "登录帐号和密码") @RequestBody SysUser sysUser, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+    public Object login(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @ApiParam(required = true, value = "登录帐号和密码") @RequestBody SysUser sysUser) {
 
         sysUser.setAccount("admin");
         sysUser.setPassword("111111");

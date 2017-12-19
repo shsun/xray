@@ -46,7 +46,7 @@ public class ScheduledController extends AbstractController<ISysProvider> {
 	@PostMapping
 	@ApiOperation(value = "新增任务")
 	@RequiresPermissions("sys.task.scheduled.update")
-	public Object updateTask(HttpServletRequest request, HttpServletResponse response, @RequestBody TaskScheduled scheduled, ModelMap modelMap) {
+	public Object updateTask(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody TaskScheduled scheduled) {
 		Assert.notNull(scheduled.getJobType(), "JOBTYPE");
 		Assert.notNull(scheduled.getTaskType(), "TASKTYPE");
 		Assert.notNull(scheduled.getTargetObject(), "TARGETOBJECT");
@@ -64,7 +64,7 @@ public class ScheduledController extends AbstractController<ISysProvider> {
 	@DeleteMapping
 	@ApiOperation(value = "删除任务")
 	@RequiresPermissions("sys.task.scheduled.close")
-	public Object delete(HttpServletRequest request, HttpServletResponse response, @RequestBody TaskScheduled scheduled, ModelMap modelMap) {
+	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody TaskScheduled scheduled) {
 		Assert.notNull(scheduled.getTaskGroup(), "TASKGROUP");
 		Assert.notNull(scheduled.getTaskName(), "TASKNAME");
 		Parameter parameter = new Parameter(getService(), "delTask").setModel(scheduled);
@@ -75,7 +75,7 @@ public class ScheduledController extends AbstractController<ISysProvider> {
 	@PostMapping("/run")
 	@ApiOperation(value = "立即执行任务")
 	@RequiresPermissions("sys.task.scheduled.run")
-	public Object exec(HttpServletRequest request, HttpServletResponse response, @RequestBody TaskScheduled scheduled, ModelMap modelMap) {
+	public Object exec(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody TaskScheduled scheduled) {
 		Assert.notNull(scheduled.getTaskGroup(), "TASKGROUP");
 		Assert.notNull(scheduled.getTaskName(), "TASKNAME");
 		Parameter parameter = new Parameter(getService(), "execTask").setModel(scheduled);
@@ -86,7 +86,7 @@ public class ScheduledController extends AbstractController<ISysProvider> {
 	@PostMapping("/open")
 	@ApiOperation(value = "启动任务")
 	@RequiresPermissions("sys.task.scheduled.open")
-	public Object open(HttpServletRequest request, HttpServletResponse response, @RequestBody TaskScheduled scheduled, ModelMap modelMap) {
+	public Object open(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody TaskScheduled scheduled) {
 		Assert.notNull(scheduled.getTaskGroup(), "TASKGROUP");
 		Assert.notNull(scheduled.getTaskName(), "TASKNAME");
 		Parameter parameter = new Parameter(getService(), "openTask").setModel(scheduled);
@@ -97,7 +97,7 @@ public class ScheduledController extends AbstractController<ISysProvider> {
 	@PostMapping("/close")
 	@ApiOperation(value = "暂停任务")
 	@RequiresPermissions("sys.task.scheduled.close")
-	public Object close(HttpServletRequest request, HttpServletResponse response, @RequestBody TaskScheduled scheduled, ModelMap modelMap) {
+	public Object close(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody TaskScheduled scheduled) {
 		Assert.notNull(scheduled.getTaskGroup(), "TASKGROUP");
 		Assert.notNull(scheduled.getTaskName(), "TASKNAME");
 		Parameter parameter = new Parameter(getService(), "closeTask").setModel(scheduled);
