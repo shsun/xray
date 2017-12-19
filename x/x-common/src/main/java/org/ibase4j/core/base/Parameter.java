@@ -12,6 +12,18 @@ import com.baomidou.mybatisplus.plugins.Page;
  */
 @SuppressWarnings("serial")
 public class Parameter implements Serializable {
+
+
+	private String service;
+	private String method;
+
+	private Long id;
+	private BaseModel model;
+	private Map<?, ?> map;
+	private Page<?> page;
+	private List<?> list;
+
+
 	public Parameter() {
 	}
 
@@ -33,15 +45,6 @@ public class Parameter implements Serializable {
 			this.list = (List<?>) result;
 		}
 	}
-
-	private String service;
-	private String method;
-
-	private Long id;
-	private BaseModel model;
-	private Map<?, ?> map;
-	private Page<?> page;
-	private List<?> list;
 
 	public String getService() {
 		return service;

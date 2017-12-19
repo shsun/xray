@@ -41,7 +41,7 @@ public class SysUserController extends AbstractController<ISysProvider> {
     @PostMapping
     @ApiOperation(value = "修改用户信息")
     //@RequiresPermissions("sys.base.user.update")
-    public Object update(ModelMap modelMap, @RequestBody SysUser param) {
+    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysUser param) {
         Assert.isNotBlank(param.getAccount(), "ACCOUNT");
         Assert.length(param.getAccount(), 3, 15, "ACCOUNT");
         if (param.getId() != null) {
@@ -56,7 +56,7 @@ public class SysUserController extends AbstractController<ISysProvider> {
             // create
             param.setPassword(SecurityUtil.encryptPassword(param.getPassword()));
         }
-        return super.update(modelMap, param);
+        return super.update(request, response, modelMap, param);
     }
 
     @ApiOperation(value = "查询用户")
@@ -69,20 +69,21 @@ public class SysUserController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "用户详细信息")
     //@RequiresPermissions("sys.base.user.read")
     @PutMapping(value = "/read/detail")
-    public Object get(ModelMap modelMap, @RequestBody SysUser param) {
-        return super.get(modelMap, param);
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysUser param) {
+        return super.get(request, response, modelMap, param);
     }
 
     @ApiOperation(value = "删除用户")
     //@RequiresPermissions("sys.base.user.delete")
     @DeleteMapping
-    public Object delete(ModelMap modelMap, @RequestBody SysUser param) {
-        return super.delete(modelMap, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysUser param) {
+        Object o = super.delete(request, response, modelMap, param);
+        return o;
     }
 
     @ApiOperation(value = "当前用户信息")
     @GetMapping(value = "/read/promission")
-    public Object promission(ModelMap modelMap) {
+    public Object promission(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         Long id = getCurrUser();
         Parameter parameter = new Parameter(getService(), "queryById").setId(id);
         SysUser sysUser = (SysUser) provider.execute(parameter).getModel();
@@ -95,25 +96,25 @@ public class SysUserController extends AbstractController<ISysProvider> {
 
     @ApiOperation(value = "当前用户信息")
     @GetMapping(value = "/read/current")
-    public Object current(ModelMap modelMap) {
+    public Object current(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         SysUser param = new SysUser();
         param.setId(getCurrUser());
-        return super.get(modelMap, param);
+        return super.get(request, response, modelMap, param);
     }
 
     @ApiOperation(value = "修改个人信息")
     @PostMapping(value = "/update/person")
-    public Object updatePerson(ModelMap modelMap, @RequestBody SysUser param) {
+    public Object updatePerson(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysUser param) {
         param.setId(WebUtil.getCurrentUser());
         param.setPassword(null);
         Assert.isNotBlank(param.getAccount(), "ACCOUNT");
         Assert.length(param.getAccount(), 3, 15, "ACCOUNT");
-        return super.update(modelMap, param);
+        return super.update(request, response, modelMap, param);
     }
 
     @ApiOperation(value = "修改用户头像")
     @PostMapping(value = "/update/avatar")
-    public Object updateAvatar(HttpServletRequest request, ModelMap modelMap) {
+    public Object updateAvatar(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         List<String> fileNames = UploadUtil.uploadImage(request);
         if (fileNames.size() > 0) {
             SysUser param = new SysUser();
@@ -124,7 +125,7 @@ public class SysUserController extends AbstractController<ISysProvider> {
             // String avatar = UploadUtil.remove2Sftp(filePath, "user" +
             // sysUser.getId());
             param.setAvatar(filePath);
-            return super.update(modelMap, param);
+            return super.update(request, response, modelMap, param);
         } else {
             setModelMap(modelMap, HttpCode.BAD_REQUEST);
             modelMap.put("msg", "请选择要上传的文件！");
@@ -134,7 +135,7 @@ public class SysUserController extends AbstractController<ISysProvider> {
 
     @ApiOperation(value = "修改密码")
     @PostMapping(value = "/update/password")
-    public Object updatePassword(ModelMap modelMap, @RequestBody SysUser param) {
+    public Object updatePassword(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysUser param) {
         Assert.notNull(param.getId(), "USER_ID");
         Assert.isNotBlank(param.getOldPassword(), "OLDPASSWORD");
         Assert.isNotBlank(param.getPassword(), "PASSWORD");
@@ -158,6 +159,7 @@ public class SysUserController extends AbstractController<ISysProvider> {
         }
         param.setPassword(encryptPassword);
         param.setUpdateBy(WebUtil.getCurrentUser());
-        return super.update(modelMap, param);
+        Object o = super.update(request, response, modelMap, param);
+        return o;
     }
 }

@@ -42,21 +42,21 @@ public class SysEmailTemplateController extends AbstractController<ISysProvider>
 	@ApiOperation(value = "邮件模版详情")
 	@RequiresPermissions("sys.email.template.read")
 	@RequestMapping(value = "/read/detail", method = RequestMethod.PUT)
-	public Object get(ModelMap modelMap, @RequestBody SysEmailTemplate param) {
-		return super.get(modelMap, param);
+	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysEmailTemplate param) {
+		return super.get(request, response, modelMap, param);
 	}
 
 	@ApiOperation(value = "修改邮件模版")
 	@RequiresPermissions("sys.email.template.update")
 	@RequestMapping(method = RequestMethod.POST)
-	public Object update(ModelMap modelMap, @RequestBody SysEmailTemplate param) {
-		return super.update(modelMap, param);
+	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysEmailTemplate param) {
+		return super.update(request, response, modelMap, param);
 	}
 
 	@ApiOperation(value = "删除邮件模版")
 	@RequiresPermissions("sys.email.template.delete")
 	@RequestMapping(method = RequestMethod.DELETE)
-	public Object delete(ModelMap modelMap, @RequestBody SysEmailTemplate param) {
-		return super.delete(modelMap, param);
+	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysEmailTemplate param) {
+		return super.delete(request, response, modelMap, param);
 	}
 }

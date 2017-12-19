@@ -44,21 +44,21 @@ public class SysRoleController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "角色详情")
     @RequiresPermissions("sys.base.role.read")
     @PutMapping(value = "/read/detail")
-    public Object get(ModelMap modelMap, @RequestBody SysRole param) {
-        return super.get(modelMap, param);
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysRole param) {
+        return super.get(request, response, modelMap, param);
     }
 
     @PostMapping
     @ApiOperation(value = "修改角色")
     @RequiresPermissions("sys.base.role.update")
-    public Object update(ModelMap modelMap, @RequestBody SysRole param) {
-        return super.update(modelMap, param);
+    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysRole param) {
+        return super.update(request, response, modelMap, param);
     }
 
     @DeleteMapping
     @ApiOperation(value = "删除角色")
     @RequiresPermissions("sys.base.role.delete")
-    public Object delete(ModelMap modelMap, @RequestBody SysRole param) {
-        return super.delete(modelMap, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysRole param) {
+        return super.delete(request, response, modelMap, param);
     }
 }

@@ -51,25 +51,25 @@ public class ThirdPartyLoginController extends AbstractController<ISysProvider> 
 
     @RequestMapping("/sns_success")
     @ApiOperation(value = "登录成功", httpMethod = "GET")
-    public String thirdLoginsuccess() {
+    public String thirdLoginsuccess(HttpServletRequest request, HttpServletResponse response) {
         return "/sns/success";
     }
 
     @RequestMapping("/sns_bind")
     @ApiOperation(value = "用户绑定", httpMethod = "GET")
-    public String thirdLoginbind() {
+    public String thirdLoginbind(HttpServletRequest request, HttpServletResponse response) {
         return "/sns/bind";
     }
 
     @RequestMapping("/sns_fail")
     @ApiOperation(value = "登录失败", httpMethod = "GET")
-    public String thirdLoginfail() {
+    public String thirdLoginfail(HttpServletRequest request, HttpServletResponse response) {
         return "/sns/fail";
     }
 
     @RequestMapping("/callback/wx")
     @ApiOperation(value = "微信登录回调", httpMethod = "GET")
-    public String wxCallback(HttpServletRequest request, ModelMap modelMap) {
+    public String wxCallback(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         String host = request.getHeader("host");
         try {
             String code = request.getParameter("code");
@@ -100,7 +100,7 @@ public class ThirdPartyLoginController extends AbstractController<ISysProvider> 
 
     @RequestMapping("/callback/qq")
     @ApiOperation(value = "QQ登录回调", httpMethod = "GET")
-    public String qqCallback(HttpServletRequest request, ModelMap modelMap) {
+    public String qqCallback(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         String host = request.getHeader("host");
         try {
             String code = request.getParameter("code");
@@ -131,7 +131,7 @@ public class ThirdPartyLoginController extends AbstractController<ISysProvider> 
 
     @RequestMapping("callback/sina")
     @ApiOperation(value = "微博登录回调", httpMethod = "GET")
-    public String sinaCallback(HttpServletRequest request, ModelMap modelMap) {
+    public String sinaCallback(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         String host = request.getHeader("host");
         try {
             String code = request.getParameter("code");

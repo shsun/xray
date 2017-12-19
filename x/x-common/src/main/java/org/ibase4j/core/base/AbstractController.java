@@ -15,6 +15,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public abstract class AbstractController<T extends BaseProvider> extends BaseController {
     protected final Logger logger = LogManager.getLogger(this.getClass());
@@ -25,24 +26,27 @@ public abstract class AbstractController<T extends BaseProvider> extends BaseCon
     public abstract String getService();
 
     public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, Map<String, Object> param) {
+
+        HttpSession session = request.getSession();
+        
         Parameter parameter = new Parameter(getService(), "query").setMap(param);
         Page<?> list = provider.execute(parameter).getPage();
         return setSuccessModelMap(modelMap, list);
     }
 
-    public Object queryList(ModelMap modelMap, Map<String, Object> param) {
+    public Object queryList(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, Map<String, Object> param) {
         Parameter parameter = new Parameter(getService(), "queryList").setMap(param);
         List<?> list = provider.execute(parameter).getList();
         return setSuccessModelMap(modelMap, list);
     }
 
-    public Object get(ModelMap modelMap, BaseModel param) {
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, BaseModel param) {
         Parameter parameter = new Parameter(getService(), "queryById").setId(param.getId());
         BaseModel result = provider.execute(parameter).getModel();
         return setSuccessModelMap(modelMap, result);
     }
 
-    public Object update(ModelMap modelMap, BaseModel param) {
+    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, BaseModel param) {
         Long userId = getCurrUser();
         if (param.getId() == null) {
             param.setCreateBy(userId);
@@ -53,7 +57,7 @@ public abstract class AbstractController<T extends BaseProvider> extends BaseCon
         return setSuccessModelMap(modelMap);
     }
 
-    public Object delete(ModelMap modelMap, BaseModel param) {
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, BaseModel param) {
         Parameter parameter = new Parameter(getService(), "delete").setId(param.getId());
         provider.execute(parameter);
         return setSuccessModelMap(modelMap);

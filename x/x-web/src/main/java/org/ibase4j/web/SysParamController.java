@@ -44,21 +44,21 @@ public class SysParamController extends AbstractController<ISysProvider> {
 	@PutMapping(value = "/read/detail")
 	@ApiOperation(value = "系统参数详情")
 	@RequiresPermissions("sys.base.param.read")
-	public Object get(ModelMap modelMap, @RequestBody SysParam param) {
-		return super.get(modelMap, param);
+	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysParam param) {
+		return super.get(request, response, modelMap, param);
 	}
 
 	@PostMapping
 	@ApiOperation(value = "修改系统参数")
 	@RequiresPermissions("sys.base.param.update")
-	public Object update(ModelMap modelMap, @RequestBody SysParam param) {
-		return super.update(modelMap, param);
+	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysParam param) {
+		return super.update(request, response, modelMap, param);
 	}
 
 	@DeleteMapping
 	@ApiOperation(value = "删除系统参数")
 	@RequiresPermissions("sys.base.param.delete")
-	public Object delete(ModelMap modelMap, @RequestBody SysParam param) {
-		return super.delete(modelMap, param);
+	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysParam param) {
+		return super.delete(request, response, modelMap, param);
 	}
 }

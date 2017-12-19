@@ -37,7 +37,6 @@ public class Realm extends AuthorizingRealm {
     @Qualifier("sysProvider")
     protected BaseProvider provider;
 
-
     @Autowired
     private RedisOperationsSessionRepository sessionRepository;
 
@@ -50,6 +49,11 @@ public class Realm extends AuthorizingRealm {
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Long userId = WebUtil.getCurrentUser();
+
+        if (userId == null) {
+
+        }
+
         Parameter parameter = new Parameter("sysAuthorizeService", "queryPermissionByUserId").setId(userId);
         List<?> list = provider.execute(parameter).getList();
         for (Object permission : list) {
@@ -66,6 +70,7 @@ public class Realm extends AuthorizingRealm {
     // 登录验证
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
+        AuthenticationInfo authcInfo = null;
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("countSql", 0);
@@ -82,15 +87,14 @@ public class Realm extends AuthorizingRealm {
             if (user.getPassword().equals(sb.toString())) {
                 WebUtil.saveCurrentUser(user.getId());
                 saveSession(user.getAccount());
-                AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(), user.getUserName());
-                return authcInfo;
+                authcInfo = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(), user.getUserName());
+            } else {
+                logger.warn("USER [{}] PASSWORD IS WRONG: {}", token.getUsername(), sb.toString());
             }
-            logger.warn("USER [{}] PASSWORD IS WRONG: {}", token.getUsername(), sb.toString());
-            return null;
         } else {
             logger.warn("No user: {}", token.getUsername());
-            return null;
         }
+        return authcInfo;
     }
 
     /** 保存session */
@@ -109,12 +113,14 @@ public class Realm extends AuthorizingRealm {
                 sessionRepository.cleanupExpiredSessions();
             }
         }
+
         Subject currentUser = SecurityUtils.getSubject();
         Session session = currentUser.getSession();
         record.setSessionId(session.getId().toString());
         String host = (String) session.getAttribute("HOST");
         record.setIp(StringUtils.isBlank(host) ? session.getHost() : host);
         record.setStartTime(session.getStartTimestamp());
+
         parameter = new Parameter("sysSessionService", "update").setModel(record);
         provider.execute(parameter);
     }

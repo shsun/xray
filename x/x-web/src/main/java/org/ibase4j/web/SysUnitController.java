@@ -44,21 +44,24 @@ public class SysUnitController extends AbstractController<ISysProvider> {
 	@ApiOperation(value = "单位详情")
 	@RequiresPermissions("sys.base.unit.read")
 	@PutMapping(value = "/read/detail")
-	public Object get(ModelMap modelMap, @RequestBody SysUnit param) {
-		return super.get(modelMap, param);
+	public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysUnit param) {
+		Object o = super.get(request, response, modelMap, param);
+		return o;
 	}
 
 	@PostMapping
 	@ApiOperation(value = "修改单位")
 	@RequiresPermissions("sys.base.unit.update")
-	public Object update(ModelMap modelMap, @RequestBody SysUnit param) {
-		return super.update(modelMap, param);
+	public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysUnit param) {
+		Object o = super.update(request, response, modelMap, param);
+		return o;
 	}
 
 	@DeleteMapping
 	@ApiOperation(value = "删除单位")
 	@RequiresPermissions("sys.base.unit.delete")
-	public Object delete(ModelMap modelMap, @RequestBody SysUnit param) {
-		return super.delete(modelMap, param);
+	public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysUnit param) {
+		Object o = super.delete(request, response, modelMap, param);
+		return o;
 	}
 }

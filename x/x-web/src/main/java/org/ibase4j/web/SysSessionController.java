@@ -20,12 +20,6 @@ import io.swagger.annotations.ApiOperation;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 用户会话管理
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:13:06
- */
 @RestController
 @Api(value = "会话管理", description = "会话管理")
 @RequestMapping(value = "/session")
@@ -48,7 +42,7 @@ public class SysSessionController extends AbstractController<ISysProvider> {
     @DeleteMapping
     @ApiOperation(value = "删除会话")
     @RequiresPermissions("sys.base.session.delete")
-    public Object delete(ModelMap modelMap, @RequestBody SysSession param) {
-        return super.delete(modelMap, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysSession param) {
+        return super.delete(request, response, modelMap, param);
     }
 }

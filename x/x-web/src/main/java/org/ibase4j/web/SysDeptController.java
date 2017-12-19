@@ -44,22 +44,22 @@ public class SysDeptController extends AbstractController<ISysProvider> {
     @ApiOperation(value = "部门详情")
     @RequiresPermissions("sys.base.dept.read")
     @PutMapping(value = "/read/detail")
-    public Object get(ModelMap modelMap, @RequestBody SysDept param) {
-        return super.get(modelMap, param);
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysDept param) {
+        return super.get(request, response, modelMap, param);
     }
 
     @PostMapping
     @ApiOperation(value = "修改部门")
     @RequiresPermissions("sys.base.dept.update")
-    public Object update(ModelMap modelMap, @RequestBody SysDept param) {
+    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysDept param) {
         param.setUnitId(1);
-        return super.update(modelMap, param);
+        return super.update(request, response, modelMap, param);
     }
 
     @DeleteMapping
     @ApiOperation(value = "删除部门")
     @RequiresPermissions("sys.base.dept.delete")
-    public Object delete(ModelMap modelMap, @RequestBody SysDept param) {
-        return super.delete(modelMap, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap, @RequestBody SysDept param) {
+        return super.delete(request, response, modelMap, param);
     }
 }
