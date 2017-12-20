@@ -1,6 +1,8 @@
 package org.ibase4j.core.util;
 
-import org.ibase4j.core.support.cache.CacheManager;
+import java.io.Serializable;
+
+import org.ibase4j.core.support.cache.ICacheManager;
 import org.ibase4j.core.support.cache.RedissonHelper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,28 +10,27 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CacheUtil {
 
-    private static CacheManager cacheManager;
+    private static ICacheManager cacheManager;
 
     @Bean
-    public CacheManager setCache() {
+    public ICacheManager setCache() {
         cacheManager = new RedissonHelper();
         return cacheManager;
     }
 
-    public static CacheManager getCache() {
+    public static ICacheManager getCache() {
         return cacheManager;
     }
 
     /**
      * 获取锁
      */
-    public static boolean getLock(String key) {
+    public static boolean getLock(final String key) {
         if (!getCache().exists(key)) {
             synchronized (CacheUtil.class) {
-                if (!getCache().exists(key)) {
-                    if (getCache().setnx(key, String.valueOf(System.currentTimeMillis()))) {
-                        return true;
-                    }
+                final Serializable value = String.valueOf(System.currentTimeMillis());
+                if (!getCache().exists(key) && getCache().setnx(key, value)) {
+                    return true;
                 }
             }
         }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.Constants;
+import org.ibase4j.core.IConstants;
 import org.ibase4j.core.exception.BusinessException;
 import org.ibase4j.core.util.ExceptionUtil;
 import org.springframework.beans.BeansException;
@@ -15,7 +15,7 @@ import org.springframework.context.ApplicationContextAware;
 import com.alibaba.fastjson.JSON;
 import com.esotericsoftware.reflectasm.MethodAccess;
 
-public abstract class BaseProviderImpl implements ApplicationContextAware, BaseProvider {
+public abstract class BaseProviderImpl implements ApplicationContextAware, IBaseProvider {
     protected static Logger logger = LogManager.getLogger();
     private ApplicationContext applicationContext;
 
@@ -66,7 +66,7 @@ public abstract class BaseProviderImpl implements ApplicationContextAware, BaseP
             logger.info("空响应");
             return null;
         } catch (Exception e) {
-            throw new BusinessException(Constants.EXCEPTION_HEAD + ExceptionUtil.getStackTraceAsString(e), e);
+            throw new BusinessException(IConstants.EXCEPTION_HEAD + ExceptionUtil.getStackTraceAsString(e), e);
         }
 
     }

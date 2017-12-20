@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.ibase4j.core.Constants;
+import org.ibase4j.core.IConstants;
 import org.ibase4j.core.support.HttpCode;
 
 /**
@@ -30,29 +30,29 @@ public class MaliciousRequestInterceptor extends BaseInterceptor {
 			return super.preHandle(request, response, handler);
 		}
 		HttpSession session = request.getSession();
-		String preRequest = (String) session.getAttribute(Constants.PREREQUEST);
-		Long preRequestTime = (Long) session.getAttribute(Constants.PREREQUEST_TIME);
+		String preRequest = (String) session.getAttribute(IConstants.PREREQUEST);
+		Long preRequestTime = (Long) session.getAttribute(IConstants.PREREQUEST_TIME);
 		if (preRequestTime != null && preRequest != null) { // 过滤频繁操作
 			if ((url.equals(preRequest) || allRequest)
 					&& System.currentTimeMillis() - preRequestTime < minRequestIntervalTime) {
-				Integer maliciousRequestTimes = (Integer) session.getAttribute(Constants.MALICIOUS_REQUEST_TIMES);
+				Integer maliciousRequestTimes = (Integer) session.getAttribute(IConstants.MALICIOUS_REQUEST_TIMES);
 				if (maliciousRequestTimes == null) {
 					maliciousRequestTimes = 1;
 				} else {
 					maliciousRequestTimes++;
 				}
-				session.setAttribute(Constants.MALICIOUS_REQUEST_TIMES, maliciousRequestTimes);
+				session.setAttribute(IConstants.MALICIOUS_REQUEST_TIMES, maliciousRequestTimes);
 				if (maliciousRequestTimes > maxMaliciousTimes) {
 					response.setStatus(HttpCode.MULTI_STATUS.value());
 					logger.warn("To intercept a malicious request : {}", url);
 					return false;
 				}
 			} else {
-				session.setAttribute(Constants.MALICIOUS_REQUEST_TIMES, 0);
+				session.setAttribute(IConstants.MALICIOUS_REQUEST_TIMES, 0);
 			}
 		}
-		session.setAttribute(Constants.PREREQUEST, url);
-		session.setAttribute(Constants.PREREQUEST_TIME, System.currentTimeMillis());
+		session.setAttribute(IConstants.PREREQUEST, url);
+		session.setAttribute(IConstants.PREREQUEST_TIME, System.currentTimeMillis());
 		return super.preHandle(request, response, handler);
 	}
 

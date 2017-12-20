@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.Constants;
+import org.ibase4j.core.IConstants;
 import org.ibase4j.core.util.CacheUtil;
 import org.ibase4j.core.util.DataUtil;
 import org.ibase4j.core.util.InstanceUtil;
@@ -28,7 +28,7 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
     protected ApplicationContext applicationContext;
 
     @Autowired
-    protected BaseMapper<T> mapper;
+    protected IBaseMapper<T> mapper;
 
     /**
      *
@@ -267,7 +267,7 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
         } else {
             cacheName = cacheConfig.cacheNames()[0];
         }
-        String k = new StringBuilder(Constants.CACHE_NAMESPACE).append(cacheName).append(":").append(id).toString();
+        String k = new StringBuilder(IConstants.CACHE_NAMESPACE).append(cacheName).append(":").append(id).toString();
         return k;
     }
 }

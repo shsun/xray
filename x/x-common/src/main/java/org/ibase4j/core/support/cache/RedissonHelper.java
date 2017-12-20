@@ -17,7 +17,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 
-public class RedissonHelper implements CacheManager, ApplicationContextAware {
+public class RedissonHelper implements ICacheManager, ApplicationContextAware {
 
 	private RedissonClient redisTemplate = null;
 	private Integer EXPIRE = PropertiesUtil.getInt("redis.expiration");

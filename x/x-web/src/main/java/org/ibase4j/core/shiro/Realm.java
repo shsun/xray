@@ -14,7 +14,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.ibase4j.core.base.BaseProvider;
+import org.ibase4j.core.base.IBaseProvider;
 import org.ibase4j.core.base.Parameter;
 import org.ibase4j.core.util.WebUtil;
 import org.ibase4j.model.SysSession;
@@ -30,7 +30,7 @@ public class Realm extends AuthorizingRealm {
 
     @Autowired
     @Qualifier("sysProvider")
-    protected BaseProvider provider;
+    protected IBaseProvider provider;
 
     @Autowired
     private RedisOperationsSessionRepository sessionRepository;

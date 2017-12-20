@@ -5,9 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.alibaba.dubbo.config.ServiceConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ import org.springframework.ui.ModelMap;
 
 import com.baomidou.mybatisplus.plugins.Page;
 
-public abstract class AbstractController<T extends BaseProvider> extends BaseController {
+public abstract class AbstractController<T extends IBaseProvider> extends BaseController {
     protected final Logger logger = LogManager.getLogger(this.getClass());
 
     @Autowired

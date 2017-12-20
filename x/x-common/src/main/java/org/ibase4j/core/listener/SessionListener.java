@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSessionListener;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.Constants;
+import org.ibase4j.core.IConstants;
 import org.ibase4j.core.util.CacheUtil;
 
 public class SessionListener implements HttpSessionListener {
@@ -15,7 +15,7 @@ public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent event) {
         HttpSession session = event.getSession();
-        session.setAttribute(Constants.WEBTHEME, "default");
+        session.setAttribute(IConstants.WEBTHEME, "default");
         logger.info("创建了一个Session连接:[" + session.getId() + "]");
         setAllUserNumber(1);
     }
@@ -26,7 +26,7 @@ public class SessionListener implements HttpSessionListener {
         if (getAllUserNumber() > 0) {
             logger.info("销毁了一个Session连接:[" + session.getId() + "]");
         }
-        session.removeAttribute(Constants.CURRENT_USER);
+        session.removeAttribute(IConstants.CURRENT_USER);
         setAllUserNumber(-1);
     }
 
@@ -34,7 +34,7 @@ public class SessionListener implements HttpSessionListener {
         Integer number = getAllUserNumber() + n;
         if (number >= 0) {
             logger.info("用户数：" + number);
-            CacheUtil.getCache().set(Constants.ALLUSER_NUMBER, number, 60 * 60 * 24);
+            CacheUtil.getCache().set(IConstants.ALLUSER_NUMBER, number, 60 * 60 * 24);
         }
     }
 
@@ -42,7 +42,7 @@ public class SessionListener implements HttpSessionListener {
      * 获取在线用户数量
      */
     public static Integer getAllUserNumber() {
-        Integer v = (Integer) CacheUtil.getCache().get(Constants.ALLUSER_NUMBER);
+        Integer v = (Integer) CacheUtil.getCache().get(IConstants.ALLUSER_NUMBER);
         if (v != null) {
             return v;
         }

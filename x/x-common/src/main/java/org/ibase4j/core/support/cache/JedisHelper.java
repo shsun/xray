@@ -19,7 +19,7 @@ import redis.clients.jedis.SortingParams;
 import redis.clients.jedis.Tuple;
 
 @Configuration
-public class JedisHelper implements CacheManager {
+public class JedisHelper implements ICacheManager {
     JedisTemplate jedisTemplate;
 
     @Bean

@@ -2,10 +2,10 @@ package org.ibase4j.mapper;
 
 import java.util.List;
 
-import org.ibase4j.core.base.BaseMapper;
+import org.ibase4j.core.base.IBaseMapper;
 import org.ibase4j.model.SysSession;
 
-public interface SysSessionMapper extends BaseMapper<SysSession> {
+public interface SysSessionMapper extends IBaseMapper<SysSession> {
 
     void deleteBySessionId(String sessionId);
 

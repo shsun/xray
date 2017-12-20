@@ -34,7 +34,7 @@ public class TestLoad {
      * @author Happy Fish / YuQing
      * @version Version 1.0
      */
-    public static class DownloadFileDiscard implements DownloadCallback {
+    public static class DownloadFileDiscard implements IDownloadCallback {
         public DownloadFileDiscard() {
         }
 

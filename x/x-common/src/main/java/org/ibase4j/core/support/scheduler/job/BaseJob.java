@@ -5,7 +5,7 @@ package org.ibase4j.core.support.scheduler.job;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.base.BaseProvider;
+import org.ibase4j.core.base.IBaseProvider;
 import org.ibase4j.core.base.Parameter;
 import org.ibase4j.core.support.scheduler.TaskScheduled.TaskType;
 import org.ibase4j.core.util.DubboUtil;
@@ -36,7 +36,7 @@ public class BaseJob implements Job {
 				refer.getClass().getDeclaredMethod(targetMethod).invoke(refer);
 			} else if (TaskType.dubbo.equals(taskType)) {
 				String system = jobDataMap.getString("targetSystem");
-				BaseProvider provider = (BaseProvider) DubboUtil.refer(applicationContext, system);
+				IBaseProvider provider = (IBaseProvider) DubboUtil.refer(applicationContext, system);
 				provider.execute(new Parameter(targetObject, targetMethod));
 			}
 			double time = (System.currentTimeMillis() - start) / 1000.0;

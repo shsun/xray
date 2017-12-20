@@ -62,7 +62,7 @@ public class Generator {
         // 自定义实体，公共字段
         strategy.setSuperEntityColumns(new String[] { "id_", "enable_", "remark_", "create_by", "create_time", "update_by", "update_time" });
         // 自定义 mapper 父类
-        strategy.setSuperMapperClass("org.ibase4j.core.base.BaseMapper");
+        strategy.setSuperMapperClass("org.ibase4j.core.base.IBaseMapper");
         // 自定义 service 父类
         strategy.setSuperServiceClass("org.ibase4j.core.base.BaseService");
         // 自定义 service 实现类父类

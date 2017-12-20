@@ -1,6 +1,6 @@
 package org.ibase4j.mapper;
 
-import org.ibase4j.core.base.BaseMapper;
+import org.ibase4j.core.base.IBaseMapper;
 import org.ibase4j.model.SysEmailTemplate;
 
 /**
@@ -11,6 +11,6 @@ import org.ibase4j.model.SysEmailTemplate;
  * @author ShenHuaJie
  * @since 2017-01-29
  */
-public interface SysEmailTemplateMapper extends BaseMapper<SysEmailTemplate> {
+public interface SysEmailTemplateMapper extends IBaseMapper<SysEmailTemplate> {
 
 }

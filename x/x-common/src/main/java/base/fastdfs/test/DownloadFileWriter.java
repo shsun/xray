@@ -11,7 +11,7 @@ package base.fastdfs.test;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import base.fastdfs.DownloadCallback;
+import base.fastdfs.IDownloadCallback;
 
 /**
  * DowloadCallback test
@@ -19,7 +19,7 @@ import base.fastdfs.DownloadCallback;
  * @author Happy Fish / YuQing
  * @version Version 1.3
  */
-public class DownloadFileWriter implements DownloadCallback {
+public class DownloadFileWriter implements IDownloadCallback {
     private String filename;
     private FileOutputStream out = null;
     private long current_bytes = 0;

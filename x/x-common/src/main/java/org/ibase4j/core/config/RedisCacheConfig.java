@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.ibase4j.core.Constants;
+import org.ibase4j.core.IConstants;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -25,7 +25,7 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
     public KeyGenerator keyGenerator() {
         return new KeyGenerator() {
             public Object generate(Object o, Method method, Object...objects) {
-                StringBuilder sb = new StringBuilder(Constants.CACHE_NAMESPACE);
+                StringBuilder sb = new StringBuilder(IConstants.CACHE_NAMESPACE);
                 CacheConfig cacheConfig = o.getClass().getAnnotation(CacheConfig.class);
                 Cacheable cacheable = method.getAnnotation(Cacheable.class);
                 CachePut cachePut = method.getAnnotation(CachePut.class);
@@ -46,13 +46,13 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
                         sb.append(cacheNames[0]);
                     }
                 }
-                if (cacheConfig != null && sb.toString().equals(Constants.CACHE_NAMESPACE)) {
+                if (cacheConfig != null && sb.toString().equals(IConstants.CACHE_NAMESPACE)) {
                     String[] cacheNames = cacheConfig.cacheNames();
                     if (cacheNames != null && cacheNames.length > 0) {
                         sb.append(cacheNames[0]);
                     }
                 }
-                if (sb.toString().equals(Constants.CACHE_NAMESPACE)) {
+                if (sb.toString().equals(IConstants.CACHE_NAMESPACE)) {
                     sb.append(o.getClass().getName());
                 }
                 sb.append(":");

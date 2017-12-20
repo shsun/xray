@@ -12,7 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import base.fastdfs.UploadCallback;
+import base.fastdfs.IUploadCallback;
 
 /**
  * upload file callback class, local file sender
@@ -20,7 +20,7 @@ import base.fastdfs.UploadCallback;
  * @author Happy Fish / YuQing
  * @version Version 1.0
  */
-public class UploadLocalFileSender implements UploadCallback {
+public class UploadLocalFileSender implements IUploadCallback {
     private String local_filename;
 
     public UploadLocalFileSender(String szLocalFilename) {

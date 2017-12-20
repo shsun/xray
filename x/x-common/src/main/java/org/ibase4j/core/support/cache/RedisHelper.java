@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.data.redis.core.RedisTemplate;
 
-public final class RedisHelper implements CacheManager, ApplicationContextAware {
+public final class RedisHelper implements ICacheManager, ApplicationContextAware {
 
     private RedisTemplate<Serializable, Serializable> redisTemplate = null;
     private Integer EXPIRE = PropertiesUtil.getInt("redis.expiration");

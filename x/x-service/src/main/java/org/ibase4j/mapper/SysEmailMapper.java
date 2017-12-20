@@ -1,6 +1,6 @@
 package org.ibase4j.mapper;
 
-import org.ibase4j.core.base.BaseMapper;
+import org.ibase4j.core.base.IBaseMapper;
 import org.ibase4j.model.SysEmail;
 
 /**
@@ -8,6 +8,6 @@ import org.ibase4j.model.SysEmail;
  * Mapper接口
  * </p>
  */
-public interface SysEmailMapper extends BaseMapper<SysEmail> {
+public interface SysEmailMapper extends IBaseMapper<SysEmail> {
 
 }

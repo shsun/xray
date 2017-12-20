@@ -15,7 +15,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.InvalidSessionException;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.ibase4j.core.Constants;
+import org.ibase4j.core.IConstants;
 import org.springframework.web.util.WebUtils;
 
 public final class WebUtil {
@@ -42,7 +42,7 @@ public final class WebUtil {
 
     /** 保存当前用户 */
     public static final void saveCurrentUser(Object user) {
-        setSession(Constants.CURRENT_USER, user);
+        setSession(IConstants.CURRENT_USER, user);
     }
 
     /** 获取当前用户 */
@@ -53,7 +53,7 @@ public final class WebUtil {
             try {
                 Session session = currentUser.getSession();
                 if (null != session) {
-                    id = (Long) session.getAttribute(Constants.CURRENT_USER);
+                    id = (Long) session.getAttribute(IConstants.CURRENT_USER);
                 }
             } catch (InvalidSessionException e) {
                 id = null;
@@ -81,7 +81,7 @@ public final class WebUtil {
 
     /** 移除当前用户 */
     public static final void removeCurrentUser(HttpServletRequest request) {
-        request.getSession().removeAttribute(Constants.CURRENT_USER);
+        request.getSession().removeAttribute(IConstants.CURRENT_USER);
     }
 
     /**

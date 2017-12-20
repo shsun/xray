@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.Constants.JOBSTATE;
+import org.ibase4j.core.IConstants.IJOBSTATE;
 import org.ibase4j.core.support.email.Email;
 import org.ibase4j.core.support.mq.QueueSender;
 import org.ibase4j.core.util.EmailUtil;
@@ -50,7 +50,7 @@ public class JobListener implements org.quartz.JobListener {
         log.setStartTime(context.getFireTime());
         log.setGroupName(targetObject);
         log.setTaskName(targetMethod);
-        log.setStatus(JOBSTATE.INIT_STATS);
+        log.setStatus(IJOBSTATE.INIT_STATS);
         log.setServerHost(NativeUtil.getHostName());
         log.setServerDuid(NativeUtil.getDUID());
         schedulerService.updateLog(log);
@@ -77,11 +77,11 @@ public class JobListener implements org.quartz.JobListener {
                     String topic = String.format("调度[%s.%s]发生异常", targetMethod, targetMethod);
                     sendEmail(new Email(contactEmail, topic, exp.getMessage()));
                 }
-                log.setStatus(JOBSTATE.ERROR_STATS);
+                log.setStatus(IJOBSTATE.ERROR_STATS);
                 log.setFireInfo(exp.getMessage());
             } else {
-                if (log.getStatus().equals(JOBSTATE.INIT_STATS)) {
-                    log.setStatus(JOBSTATE.SUCCESS_STATS);
+                if (log.getStatus().equals(IJOBSTATE.INIT_STATS)) {
+                    log.setStatus(IJOBSTATE.SUCCESS_STATS);
                 }
             }
         }

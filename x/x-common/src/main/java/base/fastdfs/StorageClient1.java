@@ -136,7 +136,7 @@ public class StorageClient1 extends StorageClient {
      * @return file id(including group name and filename) if success, <br>
      *         return null if fail
      */
-    public String upload_file1(String group_name, long file_size, UploadCallback callback, String file_ext_name, NameValuePair[] meta_list)
+    public String upload_file1(String group_name, long file_size, IUploadCallback callback, String file_ext_name, NameValuePair[] meta_list)
             throws IOException, MyException {
         String parts[] = this.upload_file(group_name, file_size, callback, file_ext_name, meta_list);
         if (parts != null) {
@@ -232,7 +232,7 @@ public class StorageClient1 extends StorageClient {
      * @return file id(including group name and filename) if success, <br>
      *         return null if fail
      */
-    public String upload_appender_file1(String group_name, long file_size, UploadCallback callback, String file_ext_name, NameValuePair[] meta_list)
+    public String upload_appender_file1(String group_name, long file_size, IUploadCallback callback, String file_ext_name, NameValuePair[] meta_list)
             throws IOException, MyException {
         String parts[] = this.upload_appender_file(group_name, file_size, callback, file_ext_name, meta_list);
         if (parts != null) {
@@ -335,8 +335,8 @@ public class StorageClient1 extends StorageClient {
      * @return file id(including group name and filename) if success, <br>
      *         return null if fail
      */
-    public String upload_file1(String master_file_id, String prefix_name, long file_size, UploadCallback callback, String file_ext_name,
-            NameValuePair[] meta_list) throws IOException, MyException {
+    public String upload_file1(String master_file_id, String prefix_name, long file_size, IUploadCallback callback, String file_ext_name,
+                               NameValuePair[] meta_list) throws IOException, MyException {
         String[] parts = new String[2];
         this.errno = this.split_file_id(master_file_id, parts);
         if (this.errno != 0) {
@@ -412,7 +412,7 @@ public class StorageClient1 extends StorageClient {
      * @param callback the write data callback object
      * @return 0 for success, != 0 for error (error no)
      */
-    public int append_file1(String appender_file_id, long file_size, UploadCallback callback) throws IOException, MyException {
+    public int append_file1(String appender_file_id, long file_size, IUploadCallback callback) throws IOException, MyException {
         String[] parts = new String[2];
         this.errno = this.split_file_id(appender_file_id, parts);
         if (this.errno != 0) {
@@ -487,7 +487,7 @@ public class StorageClient1 extends StorageClient {
      * @param callback the write data callback object
      * @return 0 for success, != 0 for error (error no)
      */
-    public int modify_file1(String appender_file_id, long file_offset, long modify_size, UploadCallback callback) throws IOException, MyException {
+    public int modify_file1(String appender_file_id, long file_offset, long modify_size, IUploadCallback callback) throws IOException, MyException {
         String[] parts = new String[2];
         this.errno = this.split_file_id(appender_file_id, parts);
         if (this.errno != 0) {
@@ -617,7 +617,7 @@ public class StorageClient1 extends StorageClient {
      * @param callback the callback object, will call callback.recv() when data arrive
      * @return 0 success, return none zero errno if fail
      */
-    public int download_file1(String file_id, DownloadCallback callback) throws IOException, MyException {
+    public int download_file1(String file_id, IDownloadCallback callback) throws IOException, MyException {
         final long file_offset = 0;
         final long download_bytes = 0;
 
@@ -633,7 +633,7 @@ public class StorageClient1 extends StorageClient {
      * @param callback the callback object, will call callback.recv() when data arrive
      * @return 0 success, return none zero errno if fail
      */
-    public int download_file1(String file_id, long file_offset, long download_bytes, DownloadCallback callback) throws IOException, MyException {
+    public int download_file1(String file_id, long file_offset, long download_bytes, IDownloadCallback callback) throws IOException, MyException {
         String[] parts = new String[2];
         this.errno = this.split_file_id(file_id, parts);
         if (this.errno != 0) {

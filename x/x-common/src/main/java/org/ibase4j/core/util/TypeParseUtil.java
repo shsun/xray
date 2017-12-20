@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import org.ibase4j.core.exception.DataParseException;
-import org.ibase4j.core.support.DataType;
+import org.ibase4j.core.support.IDataType;
 
 /**
  * 类型转换辅助工具类
@@ -73,7 +73,7 @@ public final class TypeParseUtil {
             return time2Obj(value, type, format);
         } else if (value instanceof Boolean) {
             return bool2Obj(value, type);
-        } else if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+        } else if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
             return value.toString();
         } else {
             throw new DataParseException(String.format(support, value.getClass().getName(), type));
@@ -84,11 +84,11 @@ public final class TypeParseUtil {
     private static Object bool2Obj(Object value, String type) {
         String fromType = "Boolean";
         Boolean bol = (Boolean) value;
-        if ("Boolean".equalsIgnoreCase(type) || DataType.BOOLEAN.equalsIgnoreCase(type)) {
+        if ("Boolean".equalsIgnoreCase(type) || IDataType.BOOLEAN.equalsIgnoreCase(type)) {
             return bol;
-        } else if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+        } else if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
             return bol.toString();
-        } else if ("Integer".equalsIgnoreCase(type) || DataType.INTEGER.equalsIgnoreCase(type)) {
+        } else if ("Integer".equalsIgnoreCase(type) || IDataType.INTEGER.equalsIgnoreCase(type)) {
             if (bol) {
                 return new Integer(1);
             } else {
@@ -103,20 +103,20 @@ public final class TypeParseUtil {
     private static Object time2Obj(Object value, String type, String format) {
         String fromType = "Timestamp";
         Timestamp tme = (Timestamp) value;
-        if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+        if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
             if (format == null || format.length() == 0) {
                 return (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(tme).toString();
             } else {
                 SimpleDateFormat sdf = new SimpleDateFormat(format);
                 return sdf.format(new java.util.Date(tme.getTime()));
             }
-        } else if ("Date".equalsIgnoreCase(type) || DataType.DATE.equalsIgnoreCase(type)) {
+        } else if ("Date".equalsIgnoreCase(type) || IDataType.DATE.equalsIgnoreCase(type)) {
             return new java.util.Date(tme.getTime());
         } else if ("java.sql.Date".equalsIgnoreCase(type)) {
             return new Date(tme.getTime());
-        } else if ("Time".equalsIgnoreCase(type) || DataType.TIME.equalsIgnoreCase(type)) {
+        } else if ("Time".equalsIgnoreCase(type) || IDataType.TIME.equalsIgnoreCase(type)) {
             return new Time(tme.getTime());
-        } else if ("Timestamp".equalsIgnoreCase(type) || DataType.TIMESTAMP.equalsIgnoreCase(type)) {
+        } else if ("Timestamp".equalsIgnoreCase(type) || IDataType.TIMESTAMP.equalsIgnoreCase(type)) {
             return value;
         } else {
             throw new DataParseException(String.format(support, fromType, type));
@@ -127,20 +127,20 @@ public final class TypeParseUtil {
     private static Object sqlDate2Obj(Object value, String type, String format) {
         String fromType = "Date";
         Date dte = (Date) value;
-        if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+        if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
             if (format == null || format.length() == 0) {
                 return dte.toString();
             } else {
                 SimpleDateFormat sdf = new SimpleDateFormat(format);
                 return sdf.format(new java.util.Date(dte.getTime()));
             }
-        } else if ("Date".equalsIgnoreCase(type) || DataType.DATE.equalsIgnoreCase(type)) {
+        } else if ("Date".equalsIgnoreCase(type) || IDataType.DATE.equalsIgnoreCase(type)) {
             return new java.util.Date(dte.getTime());
         } else if ("java.sql.Date".equalsIgnoreCase(type)) {
             return value;
-        } else if ("Time".equalsIgnoreCase(type) || DataType.TIME.equalsIgnoreCase(type)) {
+        } else if ("Time".equalsIgnoreCase(type) || IDataType.TIME.equalsIgnoreCase(type)) {
             throw new DataParseException("Conversion from " + fromType + " to " + type + " not currently supported");
-        } else if ("Timestamp".equalsIgnoreCase(type) || DataType.TIMESTAMP.equalsIgnoreCase(type)) {
+        } else if ("Timestamp".equalsIgnoreCase(type) || IDataType.TIMESTAMP.equalsIgnoreCase(type)) {
             return new Timestamp(dte.getTime());
         } else {
             throw new DataParseException(String.format(support, fromType, type));
@@ -151,20 +151,20 @@ public final class TypeParseUtil {
     private static Object date2Obj(Object value, String type, String format) {
         String fromType = "Date";
         java.util.Date dte = (java.util.Date) value;
-        if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+        if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
             if (format == null || format.length() == 0) {
                 return dte.toString();
             } else {
                 SimpleDateFormat sdf = new SimpleDateFormat(format);
                 return sdf.format(dte);
             }
-        } else if ("Date".equalsIgnoreCase(type) || DataType.DATE.equalsIgnoreCase(type)) {
+        } else if ("Date".equalsIgnoreCase(type) || IDataType.DATE.equalsIgnoreCase(type)) {
             return value;
         } else if ("java.sql.Date".equalsIgnoreCase(type)) {
             return new Date(dte.getTime());
-        } else if ("Time".equalsIgnoreCase(type) || DataType.TIME.equalsIgnoreCase(type)) {
+        } else if ("Time".equalsIgnoreCase(type) || IDataType.TIME.equalsIgnoreCase(type)) {
             return new Time(dte.getTime());
-        } else if ("Timestamp".equalsIgnoreCase(type) || DataType.TIMESTAMP.equalsIgnoreCase(type)) {
+        } else if ("Timestamp".equalsIgnoreCase(type) || IDataType.TIMESTAMP.equalsIgnoreCase(type)) {
             return new Timestamp(dte.getTime());
         } else {
             throw new DataParseException(String.format(support, fromType, type));
@@ -175,13 +175,13 @@ public final class TypeParseUtil {
     private static Object intr2Obj(Object value, String type, Locale locale) {
         String fromType = "Integer";
         Integer intgr = (Integer) value;
-        if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+        if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
             return getNf(locale).format(intgr.toString());
-        } else if ("Double".equalsIgnoreCase(type) || DataType.DOUBLE.equalsIgnoreCase(type)) {
+        } else if ("Double".equalsIgnoreCase(type) || IDataType.DOUBLE.equalsIgnoreCase(type)) {
             return new Double(intgr.toString());
-        } else if ("Float".equalsIgnoreCase(type) || DataType.FLOAT.equalsIgnoreCase(type)) {
+        } else if ("Float".equalsIgnoreCase(type) || IDataType.FLOAT.equalsIgnoreCase(type)) {
             return new Float(intgr.toString());
-        } else if ("BigDecimal".equalsIgnoreCase(type) || DataType.BIGDECIMAL.equalsIgnoreCase(type)) {
+        } else if ("BigDecimal".equalsIgnoreCase(type) || IDataType.BIGDECIMAL.equalsIgnoreCase(type)) {
             String str = intgr.toString();
             BigDecimal retBig = new BigDecimal(intgr.toString());
             int iscale = str.indexOf(".");
@@ -192,9 +192,9 @@ public final class TypeParseUtil {
             } else {
                 return retBig.setScale(0, 5);
             }
-        } else if ("Long".equalsIgnoreCase(type) || DataType.LONG.equalsIgnoreCase(type)) {
+        } else if ("Long".equalsIgnoreCase(type) || IDataType.LONG.equalsIgnoreCase(type)) {
             return new Long(intgr.toString());
-        } else if ("Integer".equalsIgnoreCase(type) || DataType.INTEGER.equalsIgnoreCase(type)) {
+        } else if ("Integer".equalsIgnoreCase(type) || IDataType.INTEGER.equalsIgnoreCase(type)) {
             return value;
         } else {
             throw new DataParseException(String.format(support, fromType, type));
@@ -205,25 +205,25 @@ public final class TypeParseUtil {
     private static Object long2Obj(Object value, String type, Locale locale) {
         String fromType = "Long";
         Long lng = (Long) value;
-        if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+        if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
             return getNf(locale).format(lng.toString());
-        } else if ("Double".equalsIgnoreCase(type) || DataType.DOUBLE.equalsIgnoreCase(type)) {
+        } else if ("Double".equalsIgnoreCase(type) || IDataType.DOUBLE.equalsIgnoreCase(type)) {
             return new Double(lng.toString());
-        } else if ("Float".equalsIgnoreCase(type) || DataType.FLOAT.equalsIgnoreCase(type)) {
+        } else if ("Float".equalsIgnoreCase(type) || IDataType.FLOAT.equalsIgnoreCase(type)) {
             return new Float(lng.toString());
-        } else if ("BigDecimal".equalsIgnoreCase(type) || DataType.BIGDECIMAL.equalsIgnoreCase(type)) {
+        } else if ("BigDecimal".equalsIgnoreCase(type) || IDataType.BIGDECIMAL.equalsIgnoreCase(type)) {
             return new BigDecimal(lng.toString());
-        } else if ("Long".equalsIgnoreCase(type) || DataType.LONG.equalsIgnoreCase(type)) {
+        } else if ("Long".equalsIgnoreCase(type) || IDataType.LONG.equalsIgnoreCase(type)) {
             return value;
-        } else if ("Integer".equalsIgnoreCase(type) || DataType.INTEGER.equalsIgnoreCase(type)) {
+        } else if ("Integer".equalsIgnoreCase(type) || IDataType.INTEGER.equalsIgnoreCase(type)) {
             return new Integer(lng.toString());
-        } else if ("Date".equalsIgnoreCase(type) || DataType.DATE.equalsIgnoreCase(type)) {
+        } else if ("Date".equalsIgnoreCase(type) || IDataType.DATE.equalsIgnoreCase(type)) {
             return new java.util.Date(lng);
         } else if ("java.sql.Date".equalsIgnoreCase(type)) {
             return new Date(lng);
-        } else if ("Time".equalsIgnoreCase(type) || DataType.TIME.equalsIgnoreCase(type)) {
+        } else if ("Time".equalsIgnoreCase(type) || IDataType.TIME.equalsIgnoreCase(type)) {
             return new Time(lng);
-        } else if ("Timestamp".equalsIgnoreCase(type) || DataType.TIMESTAMP.equalsIgnoreCase(type)) {
+        } else if ("Timestamp".equalsIgnoreCase(type) || IDataType.TIMESTAMP.equalsIgnoreCase(type)) {
             return new Timestamp(lng);
         } else {
             throw new DataParseException(String.format(support, fromType, type));
@@ -233,17 +233,17 @@ public final class TypeParseUtil {
     private static Object float2Obj(Object value, String type, Locale locale) {
         String fromType = "Float";
         Float flt = (Float) value;
-        if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+        if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
             return getNf(locale).format(flt.toString());
-        } else if ("BigDecimal".equalsIgnoreCase(type) || DataType.BIGDECIMAL.equalsIgnoreCase(type)) {
+        } else if ("BigDecimal".equalsIgnoreCase(type) || IDataType.BIGDECIMAL.equalsIgnoreCase(type)) {
             return new BigDecimal(flt.toString());
-        } else if ("Double".equalsIgnoreCase(type) || DataType.DOUBLE.equalsIgnoreCase(type)) {
+        } else if ("Double".equalsIgnoreCase(type) || IDataType.DOUBLE.equalsIgnoreCase(type)) {
             return new Double(flt.toString());
-        } else if ("Float".equalsIgnoreCase(type) || DataType.FLOAT.equalsIgnoreCase(type)) {
+        } else if ("Float".equalsIgnoreCase(type) || IDataType.FLOAT.equalsIgnoreCase(type)) {
             return value;
-        } else if ("Long".equalsIgnoreCase(type) || DataType.LONG.equalsIgnoreCase(type)) {
+        } else if ("Long".equalsIgnoreCase(type) || IDataType.LONG.equalsIgnoreCase(type)) {
             return new Long(flt.toString());
-        } else if ("Integer".equalsIgnoreCase(type) || DataType.INTEGER.equalsIgnoreCase(type)) {
+        } else if ("Integer".equalsIgnoreCase(type) || IDataType.INTEGER.equalsIgnoreCase(type)) {
             return new Integer(flt.toString());
         } else {
             throw new DataParseException(String.format(support, fromType, type));
@@ -254,17 +254,17 @@ public final class TypeParseUtil {
     private static Object double2Obj(Object value, String type, Locale locale) {
         String fromType = "Double";
         Double dbl = (Double) value;
-        if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+        if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
             return getNf(locale).format(dbl.toString());
-        } else if ("Double".equalsIgnoreCase(type) || DataType.DOUBLE.equalsIgnoreCase(type)) {
+        } else if ("Double".equalsIgnoreCase(type) || IDataType.DOUBLE.equalsIgnoreCase(type)) {
             return value;
-        } else if ("Float".equalsIgnoreCase(type) || DataType.FLOAT.equalsIgnoreCase(type)) {
+        } else if ("Float".equalsIgnoreCase(type) || IDataType.FLOAT.equalsIgnoreCase(type)) {
             return new Float(dbl.toString());
-        } else if ("Long".equalsIgnoreCase(type) || DataType.LONG.equalsIgnoreCase(type)) {
+        } else if ("Long".equalsIgnoreCase(type) || IDataType.LONG.equalsIgnoreCase(type)) {
             return new Long(dbl.toString());
-        } else if ("Integer".equalsIgnoreCase(type) || DataType.INTEGER.equalsIgnoreCase(type)) {
+        } else if ("Integer".equalsIgnoreCase(type) || IDataType.INTEGER.equalsIgnoreCase(type)) {
             return new Integer(dbl.toString());
-        } else if ("BigDecimal".equalsIgnoreCase(type) || DataType.BIGDECIMAL.equalsIgnoreCase(type)) {
+        } else if ("BigDecimal".equalsIgnoreCase(type) || IDataType.BIGDECIMAL.equalsIgnoreCase(type)) {
             return new BigDecimal(dbl.toString());
         } else {
             throw new DataParseException(String.format(support, fromType, type));
@@ -275,17 +275,17 @@ public final class TypeParseUtil {
     private static Object decimal2Obj(Object value, String type, Locale locale) {
         String fromType = "BigDecimal";
         BigDecimal bigD = (BigDecimal) value;
-        if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+        if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
             return getNf(locale).format(bigD.toString());
-        } else if ("BigDecimal".equalsIgnoreCase(type) || DataType.BIGDECIMAL.equalsIgnoreCase(type)) {
+        } else if ("BigDecimal".equalsIgnoreCase(type) || IDataType.BIGDECIMAL.equalsIgnoreCase(type)) {
             return value;
-        } else if ("Double".equalsIgnoreCase(type) || DataType.DOUBLE.equalsIgnoreCase(type)) {
+        } else if ("Double".equalsIgnoreCase(type) || IDataType.DOUBLE.equalsIgnoreCase(type)) {
             return new Double(bigD.toString());
-        } else if ("Float".equalsIgnoreCase(type) || DataType.FLOAT.equalsIgnoreCase(type)) {
+        } else if ("Float".equalsIgnoreCase(type) || IDataType.FLOAT.equalsIgnoreCase(type)) {
             return new Float(bigD.toString());
-        } else if ("Long".equalsIgnoreCase(type) || DataType.LONG.equalsIgnoreCase(type)) {
+        } else if ("Long".equalsIgnoreCase(type) || IDataType.LONG.equalsIgnoreCase(type)) {
             return new Long(bigD.toString());
-        } else if ("Integer".equals(type) || DataType.INTEGER.equalsIgnoreCase(type)) {
+        } else if ("Integer".equals(type) || IDataType.INTEGER.equalsIgnoreCase(type)) {
             return new Integer(bigD.toString());
         } else {
             throw new DataParseException(String.format(support, fromType, type));
@@ -297,19 +297,19 @@ public final class TypeParseUtil {
         String fromType = "String";
         String str = (String) value;
         try {
-            if ("String".equalsIgnoreCase(type) || DataType.STRING.equalsIgnoreCase(type)) {
+            if ("String".equalsIgnoreCase(type) || IDataType.STRING.equalsIgnoreCase(type)) {
                 return value;
             } else if (str.length() == 0) {
                 return null;
-            } else if ("Boolean".equalsIgnoreCase(type) || DataType.BOOLEAN.equals(type)) {
+            } else if ("Boolean".equalsIgnoreCase(type) || IDataType.BOOLEAN.equals(type)) {
                 if (str.equalsIgnoreCase("TRUE"))
                     return new Boolean(true);
                 else
                     return new Boolean(false);
-            } else if ("Double".equalsIgnoreCase(type) || DataType.DOUBLE.equalsIgnoreCase(type)) {
+            } else if ("Double".equalsIgnoreCase(type) || IDataType.DOUBLE.equalsIgnoreCase(type)) {
                 Number tempNum = getNf(locale).parse(str.replaceAll(",", ""));
                 return new Double(tempNum.toString());
-            } else if ("BigDecimal".equalsIgnoreCase(type) || DataType.BIGDECIMAL.equalsIgnoreCase(type)) {
+            } else if ("BigDecimal".equalsIgnoreCase(type) || IDataType.BIGDECIMAL.equalsIgnoreCase(type)) {
                 BigDecimal retBig = new BigDecimal(str.replaceAll(",", ""));
                 int iscale = str.indexOf(".");
                 int keylen = str.length();
@@ -319,21 +319,21 @@ public final class TypeParseUtil {
                 } else {
                     return retBig.setScale(0, 5);
                 }
-            } else if ("Float".equalsIgnoreCase(type) || DataType.FLOAT.equalsIgnoreCase(type)) {
+            } else if ("Float".equalsIgnoreCase(type) || IDataType.FLOAT.equalsIgnoreCase(type)) {
                 Number tempNum = getNf(locale).parse(str.replaceAll(",", ""));
                 return new Float(tempNum.toString());
 
-            } else if ("Long".equalsIgnoreCase(type) || DataType.LONG.equalsIgnoreCase(type)) {
+            } else if ("Long".equalsIgnoreCase(type) || IDataType.LONG.equalsIgnoreCase(type)) {
                 NumberFormat nf = getNf(locale);
                 nf.setMaximumFractionDigits(0);
                 Number tempNum = nf.parse(str.replaceAll(",", ""));
                 return new Long(tempNum.toString());
-            } else if ("Integer".equalsIgnoreCase(type) || DataType.INTEGER.equalsIgnoreCase(type)) {
+            } else if ("Integer".equalsIgnoreCase(type) || IDataType.INTEGER.equalsIgnoreCase(type)) {
                 NumberFormat nf = getNf(locale);
                 nf.setMaximumFractionDigits(0);
                 Number tempNum = nf.parse(str.replaceAll(",", ""));
                 return new Integer(tempNum.toString());
-            } else if ("Date".equalsIgnoreCase(type) || DataType.DATE.equalsIgnoreCase(type)) {
+            } else if ("Date".equalsIgnoreCase(type) || IDataType.DATE.equalsIgnoreCase(type)) {
                 if (format == null || format.length() == 0) {
                     String separator = String.valueOf(str.charAt(4));
                     StringBuilder pattern;
@@ -367,7 +367,7 @@ public final class TypeParseUtil {
                 SimpleDateFormat sdf = new SimpleDateFormat(format);
                 java.util.Date fieldDate = sdf.parse(str);
                 return new Date(fieldDate.getTime());
-            } else if ("Timestamp".equalsIgnoreCase(type) || DataType.TIMESTAMP.equalsIgnoreCase(type)) {
+            } else if ("Timestamp".equalsIgnoreCase(type) || IDataType.TIMESTAMP.equalsIgnoreCase(type)) {
                 if (str.length() == 10)
                     str = str + " 00:00:00";
                 if (format == null || format.length() == 0)

@@ -29,7 +29,7 @@ public class StorageClient {
      * @author Happy Fish / YuQing
      * @version Version 1.12
      */
-    public static class UploadBuff implements UploadCallback {
+    public static class UploadBuff implements IUploadCallback {
         private byte[] fileBuff;
         private int offset;
         private int length;
@@ -273,7 +273,7 @@ public class StorageClient {
      *         </ul>
      *         return null if fail
      */
-    public String[] upload_file(String group_name, long file_size, UploadCallback callback, String file_ext_name, NameValuePair[] meta_list)
+    public String[] upload_file(String group_name, long file_size, IUploadCallback callback, String file_ext_name, NameValuePair[] meta_list)
             throws IOException, MyException {
         final String master_filename = null;
         final String prefix_name = null;
@@ -401,8 +401,8 @@ public class StorageClient {
      *         </ul>
      *         return null if fail
      */
-    public String[] upload_file(String group_name, String master_filename, String prefix_name, long file_size, UploadCallback callback, String file_ext_name,
-            NameValuePair[] meta_list) throws IOException, MyException {
+    public String[] upload_file(String group_name, String master_filename, String prefix_name, long file_size, IUploadCallback callback, String file_ext_name,
+                                NameValuePair[] meta_list) throws IOException, MyException {
         return this.do_upload_file(ProtoCommon.STORAGE_PROTO_CMD_UPLOAD_SLAVE_FILE, group_name, master_filename, prefix_name, file_ext_name, file_size,
                 callback, meta_list);
     }
@@ -554,7 +554,7 @@ public class StorageClient {
      *         </ul>
      *         return null if fail
      */
-    public String[] upload_appender_file(String group_name, long file_size, UploadCallback callback, String file_ext_name, NameValuePair[] meta_list)
+    public String[] upload_appender_file(String group_name, long file_size, IUploadCallback callback, String file_ext_name, NameValuePair[] meta_list)
             throws IOException, MyException {
         final String master_filename = null;
         final String prefix_name = null;
@@ -617,7 +617,7 @@ public class StorageClient {
      * @param callback the write data callback object
      * @return 0 for success, != 0 for error (error no)
      */
-    public int append_file(String group_name, String appender_filename, long file_size, UploadCallback callback) throws IOException, MyException {
+    public int append_file(String group_name, String appender_filename, long file_size, IUploadCallback callback) throws IOException, MyException {
         return this.do_append_file(group_name, appender_filename, file_size, callback);
     }
 
@@ -680,7 +680,7 @@ public class StorageClient {
      * @param callback the write data callback object
      * @return 0 for success, != 0 for error (error no)
      */
-    public int modify_file(String group_name, String appender_filename, long file_offset, long modify_size, UploadCallback callback)
+    public int modify_file(String group_name, String appender_filename, long file_offset, long modify_size, IUploadCallback callback)
             throws IOException, MyException {
         return this.do_modify_file(group_name, appender_filename, file_offset, modify_size, callback);
     }
@@ -706,7 +706,7 @@ public class StorageClient {
      *         return null if fail
      */
     protected String[] do_upload_file(byte cmd, String group_name, String master_filename, String prefix_name, String file_ext_name, long file_size,
-            UploadCallback callback, NameValuePair[] meta_list) throws IOException, MyException {
+                                      IUploadCallback callback, NameValuePair[] meta_list) throws IOException, MyException {
         byte[] header;
         byte[] ext_name_bs;
         String new_group_name;
@@ -870,7 +870,7 @@ public class StorageClient {
      * @param callback the write data callback object
      * @return return true for success, false for fail
      */
-    protected int do_append_file(String group_name, String appender_filename, long file_size, UploadCallback callback) throws IOException, MyException {
+    protected int do_append_file(String group_name, String appender_filename, long file_size, IUploadCallback callback) throws IOException, MyException {
         byte[] header;
         boolean bNewConnection;
         Socket storageSocket;
@@ -957,7 +957,7 @@ public class StorageClient {
      * @param callback the write data callback object
      * @return return true for success, false for fail
      */
-    protected int do_modify_file(String group_name, String appender_filename, long file_offset, long modify_size, UploadCallback callback)
+    protected int do_modify_file(String group_name, String appender_filename, long file_offset, long modify_size, IUploadCallback callback)
             throws IOException, MyException {
         byte[] header;
         boolean bNewConnection;
@@ -1339,7 +1339,7 @@ public class StorageClient {
      * @param callback call callback.recv() when data arrive
      * @return 0 success, return none zero errno if fail
      */
-    public int download_file(String group_name, String remote_filename, DownloadCallback callback) throws IOException, MyException {
+    public int download_file(String group_name, String remote_filename, IDownloadCallback callback) throws IOException, MyException {
         final long file_offset = 0;
         final long download_bytes = 0;
         return this.download_file(group_name, remote_filename, file_offset, download_bytes, callback);
@@ -1355,7 +1355,7 @@ public class StorageClient {
      * @param callback call callback.recv() when data arrive
      * @return 0 success, return none zero errno if fail
      */
-    public int download_file(String group_name, String remote_filename, long file_offset, long download_bytes, DownloadCallback callback)
+    public int download_file(String group_name, String remote_filename, long file_offset, long download_bytes, IDownloadCallback callback)
             throws IOException, MyException {
         int result;
         boolean bNewConnection = this.newReadableStorageConnection(group_name, remote_filename);

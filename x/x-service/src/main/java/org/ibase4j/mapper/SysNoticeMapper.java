@@ -1,6 +1,6 @@
 package org.ibase4j.mapper;
 
-import org.ibase4j.core.base.BaseMapper;
+import org.ibase4j.core.base.IBaseMapper;
 import org.ibase4j.model.SysNotice;
 
 /**
@@ -11,6 +11,6 @@ import org.ibase4j.model.SysNotice;
  * @author ShenHuaJie
  * @since 2017-01-29
  */
-public interface SysNoticeMapper extends BaseMapper<SysNotice> {
+public interface SysNoticeMapper extends IBaseMapper<SysNotice> {
 
 }

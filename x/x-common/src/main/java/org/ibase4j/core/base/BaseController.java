@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authz.UnauthorizedException;
-import org.ibase4j.core.Constants;
+import org.ibase4j.core.IConstants;
 import org.ibase4j.core.exception.BaseException;
 import org.ibase4j.core.exception.IllegalParameterException;
 import org.ibase4j.core.support.HttpCode;
@@ -98,7 +98,7 @@ public abstract class BaseController {
      */
     @ExceptionHandler(Exception.class)
     public void exceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception exception) throws Exception {
-        logger.error(Constants.EXCEPTION_HEAD, exception);
+        logger.error(IConstants.EXCEPTION_HEAD, exception);
         ModelMap tmp = new ModelMap();
         if (exception instanceof BaseException) {
             ((BaseException) exception).handler(tmp);
