@@ -13,6 +13,7 @@
 	<bean class="org.ibase4j.core.util.PropertiesUtil">
 		<property name="locations">
 			<list>
+				<value>${sys.jdbc.config.path}</value>
 				<value>${system.config.path}</value>
 			</list>
 		</property>
@@ -59,4 +60,9 @@
 
 	<import resource="spring/shiro.xml" />
 
+	<import resource="spring/dataSource.xml"/>
+
+	<!-- <import resource="spring/scheduler.xml"/> -->
+
+	<import resource="spring/mybatis.xml"/>
 </beans>
