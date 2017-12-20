@@ -38,7 +38,9 @@ public class SessionListener implements HttpSessionListener {
         }
     }
 
-    /** 获取在线用户数量 */
+    /**
+     * 获取在线用户数量
+     */
     public static Integer getAllUserNumber() {
         Integer v = (Integer) CacheUtil.getCache().get(Constants.ALLUSER_NUMBER);
         if (v != null) {

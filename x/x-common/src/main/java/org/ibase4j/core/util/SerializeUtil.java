@@ -11,10 +11,6 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * 序列化辅助类
- * 
- * @author ShenHuaJie
- * @version $Id: SerializableUtil.java, v 0.1 2014-6-10 下午1:30:39 ShenHuaJie Exp
- *          $
  */
 public final class SerializeUtil {
     private SerializeUtil() {

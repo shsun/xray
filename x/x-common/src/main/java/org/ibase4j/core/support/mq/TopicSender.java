@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 /**
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:19:19
  */
 public class TopicSender {
 	@Autowired

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.ibase4j.core.support.jedis.Executor;
+import org.ibase4j.core.support.jedis.IExecutor;
 import org.ibase4j.core.support.jedis.JedisTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +29,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Object get(final String key) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.get(key);
             }
@@ -37,7 +37,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String get(final String key, final Integer...expire) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.get(key);
             }
@@ -45,7 +45,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public void set(final String key, final Serializable value) {
-        jedisTemplate.run(key, new Executor<String>() {
+        jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.set(key, JSON.toJSONString(value));
             }
@@ -53,7 +53,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final void set(final String key, final Serializable value, final int seconds) {
-        jedisTemplate.run(key, new Executor<String>() {
+        jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.setex(key, seconds, JSON.toJSONString(value));
             }
@@ -61,7 +61,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Boolean exists(final String key) {
-        return jedisTemplate.run((String) key, new Executor<Boolean>() {
+        return jedisTemplate.run((String) key, new IExecutor<Boolean>() {
             public Boolean execute(ShardedJedis jedis) {
                 return jedis.exists((String) key);
             }
@@ -69,7 +69,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final void del(final String key) {
-        jedisTemplate.run((String) key, new Executor<Long>() {
+        jedisTemplate.run((String) key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.del((String) key);
             }
@@ -77,7 +77,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String type(final String key) {
-        return jedisTemplate.run((String) key, new Executor<String>() {
+        return jedisTemplate.run((String) key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.type((String) key);
             }
@@ -90,7 +90,7 @@ public class JedisHelper implements CacheManager {
      * @return
      */
     public final Boolean expire(final String key, final int seconds) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.expire(key, seconds);
             }
@@ -105,7 +105,7 @@ public class JedisHelper implements CacheManager {
      * @return
      */
     public final Boolean expireAt(final String key, final long unixTime) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.expireAt(key, unixTime);
             }
@@ -113,7 +113,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long ttl(final String key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.ttl(key);
             }
@@ -121,7 +121,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Boolean setbit(final String key, final long offset, final boolean value) {
-        return jedisTemplate.run(key, new Executor<Boolean>() {
+        return jedisTemplate.run(key, new IExecutor<Boolean>() {
             public Boolean execute(ShardedJedis jedis) {
                 return jedis.setbit(key, offset, value);
             }
@@ -129,7 +129,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Boolean getbit(final String key, final long offset) {
-        return jedisTemplate.run(key, new Executor<Boolean>() {
+        return jedisTemplate.run(key, new IExecutor<Boolean>() {
             public Boolean execute(ShardedJedis jedis) {
                 return jedis.getbit(key, offset);
             }
@@ -137,7 +137,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long setrange(final String key, final long offset, final String value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.setrange(key, offset, value);
             }
@@ -145,7 +145,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String getrange(final String key, final long startOffset, final long endOffset) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.getrange(key, startOffset, endOffset);
             }
@@ -153,7 +153,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Object getSet(final String key, final Serializable value) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.getSet(key, JSON.toJSONString(value));
             }
@@ -161,7 +161,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long setnx(final String key, final String value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.setnx(key, value);
             }
@@ -169,7 +169,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String setex(final String key, final int seconds, final String value) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.setex(key, seconds, value);
             }
@@ -177,7 +177,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long decrBy(final String key, final long integer) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.decrBy(key, integer);
             }
@@ -185,7 +185,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long decr(final String key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.decr(key);
             }
@@ -193,7 +193,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long incrBy(final String key, final long integer) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.incrBy(key, integer);
             }
@@ -201,7 +201,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long incr(final String key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.incr(key);
             }
@@ -209,7 +209,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long append(final String key, final String value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.append(key, value);
             }
@@ -217,7 +217,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String substr(final String key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.substr(key, start, end);
             }
@@ -225,7 +225,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long hset(final String key, final String field, final String value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.hset(key, field, value);
             }
@@ -233,7 +233,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String hget(final String key, final String field) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.hget(key, field);
             }
@@ -241,7 +241,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long hsetnx(final String key, final String field, final String value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.hsetnx(key, field, value);
             }
@@ -249,7 +249,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String hmset(final String key, final Map<String, String> hash) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.hmset(key, hash);
             }
@@ -257,7 +257,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final List<String> hmget(final String key, final String...fields) {
-        return jedisTemplate.run(key, new Executor<List<String>>() {
+        return jedisTemplate.run(key, new IExecutor<List<String>>() {
             public List<String> execute(ShardedJedis jedis) {
                 return jedis.hmget(key, fields);
             }
@@ -265,7 +265,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long hincrBy(final String key, final String field, final long value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.hincrBy(key, field, value);
             }
@@ -273,7 +273,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Boolean hexists(final String key, final String field) {
-        return jedisTemplate.run(key, new Executor<Boolean>() {
+        return jedisTemplate.run(key, new IExecutor<Boolean>() {
             public Boolean execute(ShardedJedis jedis) {
                 return jedis.hexists(key, field);
             }
@@ -281,7 +281,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long hdel(final String key, final String field) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.hdel(key, field);
             }
@@ -289,7 +289,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long hlen(final String key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.hlen(key);
             }
@@ -297,7 +297,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<String> hkeys(final String key) {
-        return jedisTemplate.run(key, new Executor<Set<String>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<String>>() {
             public Set<String> execute(ShardedJedis jedis) {
                 return jedis.hkeys(key);
             }
@@ -305,7 +305,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final List<String> hvals(final String key) {
-        return jedisTemplate.run(key, new Executor<List<String>>() {
+        return jedisTemplate.run(key, new IExecutor<List<String>>() {
             public List<String> execute(ShardedJedis jedis) {
                 return jedis.hvals(key);
             }
@@ -313,7 +313,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Map<String, String> hgetAll(final String key) {
-        return jedisTemplate.run(key, new Executor<Map<String, String>>() {
+        return jedisTemplate.run(key, new IExecutor<Map<String, String>>() {
             public Map<String, String> execute(ShardedJedis jedis) {
                 return jedis.hgetAll(key);
             }
@@ -321,7 +321,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long rpush(final String key, final String string) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.rpush(key, string);
             }
@@ -329,7 +329,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long lpush(final String key, final String string) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.lpush(key, string);
             }
@@ -337,7 +337,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long llen(final String key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.llen(key);
             }
@@ -345,7 +345,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final List<String> lrange(final String key, final long start, final long end) {
-        return jedisTemplate.run(key, new Executor<List<String>>() {
+        return jedisTemplate.run(key, new IExecutor<List<String>>() {
             public List<String> execute(ShardedJedis jedis) {
                 return jedis.lrange(key, start, end);
             }
@@ -353,7 +353,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String ltrim(final String key, final long start, final long end) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.ltrim(key, start, end);
             }
@@ -361,7 +361,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String lindex(final String key, final long index) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.lindex(key, index);
             }
@@ -369,7 +369,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String lset(final String key, final long index, final String value) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.lset(key, index, value);
             }
@@ -377,7 +377,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long lrem(final String key, final long count, final String value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.lrem(key, count, value);
             }
@@ -385,7 +385,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String lpop(final String key) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.lpop(key);
             }
@@ -393,7 +393,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String rpop(final String key) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.rpop(key);
             }
@@ -403,7 +403,7 @@ public class JedisHelper implements CacheManager {
     // return 1 add a not exist value ,
     // return 0 add a exist value
     public final Long sadd(final String key, final String member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.sadd(key, member);
             }
@@ -411,7 +411,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<String> smembers(final String key) {
-        return jedisTemplate.run(key, new Executor<Set<String>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<String>>() {
             public Set<String> execute(ShardedJedis jedis) {
                 return jedis.smembers(key);
             }
@@ -419,7 +419,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long srem(final String key, final String member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.srem(key, member);
             }
@@ -427,7 +427,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String spop(final String key) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.spop(key);
             }
@@ -435,7 +435,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long scard(final String key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.scard(key);
             }
@@ -443,7 +443,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Boolean sismember(final String key, final String member) {
-        return jedisTemplate.run(key, new Executor<Boolean>() {
+        return jedisTemplate.run(key, new IExecutor<Boolean>() {
             public Boolean execute(ShardedJedis jedis) {
                 return jedis.sismember(key, member);
             }
@@ -451,7 +451,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String srandmember(final String key) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.srandmember(key);
             }
@@ -459,7 +459,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zadd(final String key, final double score, final String member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zadd(key, score, member);
             }
@@ -467,7 +467,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<String> zrange(final String key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<Set<String>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<String>>() {
             public Set<String> execute(ShardedJedis jedis) {
                 return jedis.zrange(key, start, end);
             }
@@ -475,7 +475,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zrem(final String key, final String member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zrem(key, member);
             }
@@ -483,7 +483,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Double zincrby(final String key, final double score, final String member) {
-        return jedisTemplate.run(key, new Executor<Double>() {
+        return jedisTemplate.run(key, new IExecutor<Double>() {
             public Double execute(ShardedJedis jedis) {
                 return jedis.zincrby(key, score, member);
             }
@@ -491,7 +491,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zrank(final String key, final String member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zrank(key, member);
             }
@@ -499,7 +499,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zrevrank(final String key, final String member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zrevrank(key, member);
             }
@@ -507,7 +507,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<String> zrevrange(final String key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<Set<String>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<String>>() {
             public Set<String> execute(ShardedJedis jedis) {
                 return jedis.zrevrange(key, start, end);
             }
@@ -515,7 +515,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrangeWithScores(final String key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrangeWithScores(key, start, end);
             }
@@ -523,7 +523,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrevrangeWithScores(final String key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrevrangeWithScores(key, start, end);
             }
@@ -531,7 +531,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zcard(final String key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zcard(key);
             }
@@ -539,7 +539,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Double zscore(final String key, final String member) {
-        return jedisTemplate.run(key, new Executor<Double>() {
+        return jedisTemplate.run(key, new IExecutor<Double>() {
             public Double execute(ShardedJedis jedis) {
                 return jedis.zscore(key, member);
             }
@@ -547,7 +547,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final List<String> sort(final String key) {
-        return jedisTemplate.run(key, new Executor<List<String>>() {
+        return jedisTemplate.run(key, new IExecutor<List<String>>() {
             public List<String> execute(ShardedJedis jedis) {
                 return jedis.sort(key);
             }
@@ -555,7 +555,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final List<String> sort(final String key, final SortingParams sortingParameters) {
-        return jedisTemplate.run(key, new Executor<List<String>>() {
+        return jedisTemplate.run(key, new IExecutor<List<String>>() {
             public List<String> execute(ShardedJedis jedis) {
                 return jedis.sort(key, sortingParameters);
             }
@@ -563,7 +563,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zcount(final String key, final double min, final double max) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zcount(key, min, max);
             }
@@ -571,7 +571,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<String> zrangeByScore(final String key, final double min, final double max) {
-        return jedisTemplate.run(key, new Executor<Set<String>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<String>>() {
             public Set<String> execute(ShardedJedis jedis) {
                 return jedis.zrangeByScore(key, min, max);
             }
@@ -579,7 +579,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<String> zrevrangeByScore(final String key, final double max, final double min) {
-        return jedisTemplate.run(key, new Executor<Set<String>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<String>>() {
             public Set<String> execute(ShardedJedis jedis) {
                 return jedis.zrevrangeByScore(key, max, min);
             }
@@ -587,7 +587,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<String> zrangeByScore(final String key, final double min, final double max, final int offset, final int count) {
-        return jedisTemplate.run(key, new Executor<Set<String>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<String>>() {
             public Set<String> execute(ShardedJedis jedis) {
                 return jedis.zrangeByScore(key, min, max, offset, count);
             }
@@ -595,7 +595,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<String> zrevrangeByScore(final String key, final double max, final double min, final int offset, final int count) {
-        return jedisTemplate.run(key, new Executor<Set<String>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<String>>() {
             public Set<String> execute(ShardedJedis jedis) {
                 return jedis.zrevrangeByScore(key, max, min, offset, count);
             }
@@ -603,7 +603,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrangeByScoreWithScores(final String key, final double min, final double max) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrangeByScoreWithScores(key, min, max);
             }
@@ -611,7 +611,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrevrangeByScoreWithScores(final String key, final double max, final double min) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrevrangeByScoreWithScores(key, max, min);
             }
@@ -619,7 +619,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrangeByScoreWithScores(final String key, final double min, final double max, final int offset, final int count) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrangeByScoreWithScores(key, min, max, offset, count);
             }
@@ -627,7 +627,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrevrangeByScoreWithScores(final String key, final double max, final double min, final int offset, final int count) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrevrangeByScoreWithScores(key, max, min, offset, count);
             }
@@ -635,7 +635,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zremrangeByRank(final String key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zremrangeByRank(key, start, end);
             }
@@ -643,7 +643,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zremrangeByScore(final String key, final double start, final double end) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zremrangeByScore(key, start, end);
             }
@@ -651,7 +651,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long linsert(final String key, final LIST_POSITION where, final String pivot, final String value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.linsert(key, where, pivot, value);
             }
@@ -659,7 +659,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String set(final byte[] key, final byte[] value, final Integer...expire) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.set(key, value);
             }
@@ -667,7 +667,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final byte[] get(final byte[] key, final Integer...expire) {
-        return jedisTemplate.run(key, new Executor<byte[]>() {
+        return jedisTemplate.run(key, new IExecutor<byte[]>() {
             public byte[] execute(ShardedJedis jedis) {
                 return jedis.get(key);
             }
@@ -675,7 +675,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Boolean exists(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Boolean>() {
+        return jedisTemplate.run(key, new IExecutor<Boolean>() {
             public Boolean execute(ShardedJedis jedis) {
                 return jedis.exists(key);
             }
@@ -683,7 +683,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String type(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.type(key);
             }
@@ -691,7 +691,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long expire(final byte[] key, final int seconds) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.expire(key, seconds);
             }
@@ -699,7 +699,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long expireAt(final byte[] key, final long unixTime) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.expireAt(key, unixTime);
             }
@@ -707,7 +707,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long ttl(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.ttl(key);
             }
@@ -715,7 +715,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long del(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.del(key);
             }
@@ -723,7 +723,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public byte[] getSet(final byte[] key, final byte[] value) {
-        return jedisTemplate.run(key, new Executor<byte[]>() {
+        return jedisTemplate.run(key, new IExecutor<byte[]>() {
             public byte[] execute(ShardedJedis jedis) {
                 return jedis.getSet(key, value);
             }
@@ -731,7 +731,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long setnx(final byte[] key, final byte[] value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.setnx(key, value);
             }
@@ -739,7 +739,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public String setex(final byte[] key, final int seconds, final byte[] value) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.setex(key, seconds, value);
             }
@@ -747,7 +747,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long decrBy(final byte[] key, final long integer) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.decrBy(key, integer);
             }
@@ -755,7 +755,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long decr(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.decr(key);
             }
@@ -763,7 +763,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long incrBy(final byte[] key, final long integer) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.incrBy(key, integer);
             }
@@ -771,7 +771,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long incr(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.incr(key);
             }
@@ -779,7 +779,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long append(final byte[] key, final byte[] value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.append(key, value);
             }
@@ -787,7 +787,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public byte[] substr(final byte[] key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<byte[]>() {
+        return jedisTemplate.run(key, new IExecutor<byte[]>() {
             public byte[] execute(ShardedJedis jedis) {
                 return jedis.substr(key, start, end);
             }
@@ -795,7 +795,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long hset(final byte[] key, final byte[] field, final byte[] value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.hset(key, field, value);
             }
@@ -803,7 +803,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public byte[] hget(final byte[] key, final byte[] field) {
-        return jedisTemplate.run(key, new Executor<byte[]>() {
+        return jedisTemplate.run(key, new IExecutor<byte[]>() {
             public byte[] execute(ShardedJedis jedis) {
                 return jedis.hget(key, field);
             }
@@ -811,7 +811,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long hsetnx(final byte[] key, final byte[] field, final byte[] value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.hsetnx(key, field, value);
             }
@@ -819,7 +819,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public String hmset(final byte[] key, final Map<byte[], byte[]> hash) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.hmset(key, hash);
             }
@@ -827,7 +827,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public List<byte[]> hmget(final byte[] key, final byte[]...fields) {
-        return jedisTemplate.run(key, new Executor<List<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<List<byte[]>>() {
             public List<byte[]> execute(ShardedJedis jedis) {
                 return jedis.hmget(key, fields);
             }
@@ -835,7 +835,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long hincrBy(final byte[] key, final byte[] field, final long value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.hincrBy(key, field, value);
             }
@@ -843,7 +843,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Boolean hexists(final byte[] key, final byte[] field) {
-        return jedisTemplate.run(key, new Executor<Boolean>() {
+        return jedisTemplate.run(key, new IExecutor<Boolean>() {
             public Boolean execute(ShardedJedis jedis) {
                 return jedis.hexists(key, field);
             }
@@ -851,7 +851,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long hdel(final byte[] key, final byte[] field) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.hdel(key, field);
             }
@@ -859,7 +859,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public Long hlen(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.hlen(key);
             }
@@ -867,7 +867,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<byte[]> hkeys(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Set<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<byte[]>>() {
             public Set<byte[]> execute(ShardedJedis jedis) {
                 return jedis.hkeys(key);
             }
@@ -875,7 +875,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Collection<byte[]> hvals(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Collection<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<Collection<byte[]>>() {
             public Collection<byte[]> execute(ShardedJedis jedis) {
                 return jedis.hvals(key);
             }
@@ -883,7 +883,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Map<byte[], byte[]> hgetAll(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Map<byte[], byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<Map<byte[], byte[]>>() {
             public Map<byte[], byte[]> execute(ShardedJedis jedis) {
                 return jedis.hgetAll(key);
             }
@@ -891,7 +891,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long rpush(final byte[] key, final byte[] string) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.rpush(key, string);
             }
@@ -899,7 +899,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long lpush(final byte[] key, final byte[] string) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.lpush(key, string);
             }
@@ -907,7 +907,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long llen(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.llen(key);
             }
@@ -915,7 +915,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final List<byte[]> lrange(final byte[] key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<List<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<List<byte[]>>() {
             public List<byte[]> execute(ShardedJedis jedis) {
                 return jedis.lrange(key, start, end);
             }
@@ -923,7 +923,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String ltrim(final byte[] key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.ltrim(key, start, end);
             }
@@ -931,7 +931,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final byte[] lindex(final byte[] key, final int index) {
-        return jedisTemplate.run(key, new Executor<byte[]>() {
+        return jedisTemplate.run(key, new IExecutor<byte[]>() {
             public byte[] execute(ShardedJedis jedis) {
                 return jedis.lindex(key, index);
             }
@@ -939,7 +939,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String lset(final byte[] key, final int index, final byte[] value) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.lset(key, index, value);
             }
@@ -947,7 +947,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long lrem(final byte[] key, final int count, final byte[] value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.lrem(key, count, value);
             }
@@ -955,7 +955,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final byte[] lpop(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<byte[]>() {
+        return jedisTemplate.run(key, new IExecutor<byte[]>() {
             public byte[] execute(ShardedJedis jedis) {
                 return jedis.lpop(key);
             }
@@ -963,7 +963,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final byte[] rpop(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<byte[]>() {
+        return jedisTemplate.run(key, new IExecutor<byte[]>() {
             public byte[] execute(ShardedJedis jedis) {
                 return jedis.rpop(key);
             }
@@ -971,7 +971,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long sadd(final byte[] key, final byte[] member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.sadd(key, member);
             }
@@ -979,7 +979,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<byte[]> smembers(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Set<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<byte[]>>() {
             public Set<byte[]> execute(ShardedJedis jedis) {
                 return jedis.smembers(key);
             }
@@ -987,7 +987,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long srem(final byte[] key, final byte[] member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.srem(key, member);
             }
@@ -995,7 +995,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final byte[] spop(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<byte[]>() {
+        return jedisTemplate.run(key, new IExecutor<byte[]>() {
             public byte[] execute(ShardedJedis jedis) {
                 return jedis.spop(key);
             }
@@ -1003,7 +1003,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long scard(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.scard(key);
             }
@@ -1011,7 +1011,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Boolean sismember(final byte[] key, final byte[] member) {
-        return jedisTemplate.run(key, new Executor<Boolean>() {
+        return jedisTemplate.run(key, new IExecutor<Boolean>() {
             public Boolean execute(ShardedJedis jedis) {
                 return jedis.sismember(key, member);
             }
@@ -1019,7 +1019,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final byte[] srandmember(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<byte[]>() {
+        return jedisTemplate.run(key, new IExecutor<byte[]>() {
             public byte[] execute(ShardedJedis jedis) {
                 return jedis.srandmember(key);
             }
@@ -1027,7 +1027,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zadd(final byte[] key, final double score, final byte[] member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zadd(key, score, member);
             }
@@ -1035,7 +1035,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<byte[]> zrange(final byte[] key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<Set<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<byte[]>>() {
             public Set<byte[]> execute(ShardedJedis jedis) {
                 return jedis.zrange(key, start, end);
             }
@@ -1043,7 +1043,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zrem(final byte[] key, final byte[] member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zrem(key, member);
             }
@@ -1051,7 +1051,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Double zincrby(final byte[] key, final double score, final byte[] member) {
-        return jedisTemplate.run(key, new Executor<Double>() {
+        return jedisTemplate.run(key, new IExecutor<Double>() {
             public Double execute(ShardedJedis jedis) {
                 return jedis.zincrby(key, score, member);
             }
@@ -1059,7 +1059,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zrank(final byte[] key, final byte[] member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zrank(key, member);
             }
@@ -1067,7 +1067,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zrevrank(final byte[] key, final byte[] member) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zrevrank(key, member);
             }
@@ -1075,7 +1075,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<byte[]> zrevrange(final byte[] key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<Set<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<byte[]>>() {
             public Set<byte[]> execute(ShardedJedis jedis) {
                 return jedis.zrevrange(key, start, end);
             }
@@ -1083,7 +1083,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrangeWithScores(final byte[] key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrangeWithScores(key, start, end);
             }
@@ -1091,7 +1091,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrevrangeWithScores(final byte[] key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrevrangeWithScores(key, start, end);
             }
@@ -1099,7 +1099,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zcard(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zcard(key);
             }
@@ -1107,7 +1107,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Double zscore(final byte[] key, final byte[] member) {
-        return jedisTemplate.run(key, new Executor<Double>() {
+        return jedisTemplate.run(key, new IExecutor<Double>() {
             public Double execute(ShardedJedis jedis) {
                 return jedis.zscore(key, member);
             }
@@ -1115,7 +1115,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final List<byte[]> sort(final byte[] key) {
-        return jedisTemplate.run(key, new Executor<List<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<List<byte[]>>() {
             public List<byte[]> execute(ShardedJedis jedis) {
                 return jedis.sort(key);
             }
@@ -1123,7 +1123,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final List<byte[]> sort(final byte[] key, final SortingParams sortingParameters) {
-        return jedisTemplate.run(key, new Executor<List<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<List<byte[]>>() {
             public List<byte[]> execute(ShardedJedis jedis) {
                 return jedis.sort(key, sortingParameters);
             }
@@ -1131,7 +1131,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zcount(final byte[] key, final double min, final double max) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zcount(key, min, max);
             }
@@ -1139,7 +1139,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<byte[]> zrangeByScore(final byte[] key, final double min, final double max) {
-        return jedisTemplate.run(key, new Executor<Set<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<byte[]>>() {
             public Set<byte[]> execute(ShardedJedis jedis) {
                 return jedis.zrangeByScore(key, min, max);
             }
@@ -1147,7 +1147,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<byte[]> zrangeByScore(final byte[] key, final double min, final double max, final int offset, final int count) {
-        return jedisTemplate.run(key, new Executor<Set<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<byte[]>>() {
             public Set<byte[]> execute(ShardedJedis jedis) {
                 return jedis.zrangeByScore(key, min, max, offset, count);
             }
@@ -1155,7 +1155,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrangeByScoreWithScores(final byte[] key, final double min, final double max) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrangeByScoreWithScores(key, min, max);
             }
@@ -1163,7 +1163,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrangeByScoreWithScores(final byte[] key, final double min, final double max, final int offset, final int count) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrangeByScoreWithScores(key, min, max, offset, count);
             }
@@ -1171,7 +1171,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<byte[]> zrevrangeByScore(final byte[] key, final double max, final double min) {
-        return jedisTemplate.run(key, new Executor<Set<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<byte[]>>() {
             public Set<byte[]> execute(ShardedJedis jedis) {
                 return jedis.zrevrangeByScore(key, max, min);
             }
@@ -1179,7 +1179,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<byte[]> zrevrangeByScore(final byte[] key, final double max, final double min, final int offset, final int count) {
-        return jedisTemplate.run(key, new Executor<Set<byte[]>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<byte[]>>() {
             public Set<byte[]> execute(ShardedJedis jedis) {
                 return jedis.zrevrangeByScore(key, max, min, offset, count);
             }
@@ -1187,7 +1187,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrevrangeByScoreWithScores(final byte[] key, final double max, final double min) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrevrangeByScoreWithScores(key, max, min);
             }
@@ -1195,7 +1195,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Set<Tuple> zrevrangeByScoreWithScores(final byte[] key, final double max, final double min, final int offset, final int count) {
-        return jedisTemplate.run(key, new Executor<Set<Tuple>>() {
+        return jedisTemplate.run(key, new IExecutor<Set<Tuple>>() {
             public Set<Tuple> execute(ShardedJedis jedis) {
                 return jedis.zrevrangeByScoreWithScores(key, max, min, offset, count);
             }
@@ -1203,7 +1203,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zremrangeByRank(final byte[] key, final int start, final int end) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zremrangeByRank(key, start, end);
             }
@@ -1211,7 +1211,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long zremrangeByScore(final byte[] key, final double start, final double end) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.zremrangeByScore(key, start, end);
             }
@@ -1219,7 +1219,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final Long linsert(final byte[] key, final LIST_POSITION where, final byte[] pivot, final byte[] value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.linsert(key, where, pivot, value);
             }
@@ -1227,7 +1227,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public final String getKeyTag(final String key) {
-        return jedisTemplate.run(key, new Executor<String>() {
+        return jedisTemplate.run(key, new IExecutor<String>() {
             public String execute(ShardedJedis jedis) {
                 return jedis.getKeyTag(key);
             }
@@ -1242,7 +1242,7 @@ public class JedisHelper implements CacheManager {
     }
 
     public boolean setnx(final String key, final Serializable value) {
-        return jedisTemplate.run(key, new Executor<Long>() {
+        return jedisTemplate.run(key, new IExecutor<Long>() {
             public Long execute(ShardedJedis jedis) {
                 return jedis.setnx(key, JSON.toJSONString(value));
             }

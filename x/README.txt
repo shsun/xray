@@ -1,5 +1,9 @@
 
 
+---------------------------------------------------- VM options:
+-Xms1024m -Xmx1536m -XX:MaxPermSize=512m -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Ddubbo.shutdown.hook=true
+
+
 
 ---------------------------------------------------- nginx:
 /usr/local/etc/nginx/nginx.conf （配置文件路径）

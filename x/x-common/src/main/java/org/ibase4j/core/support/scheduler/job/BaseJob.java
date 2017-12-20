@@ -17,9 +17,6 @@ import org.springframework.context.ApplicationContext;
 
 /**
  * 默认调度(非阻塞)
- * 
- * @author ShenHuaJie
- * @version 2016年12月29日 上午11:52:32
  */
 public class BaseJob implements Job {
 	private Logger logger = LogManager.getLogger(this.getClass());

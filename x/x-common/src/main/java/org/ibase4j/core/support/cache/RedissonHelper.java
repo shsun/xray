@@ -24,6 +24,7 @@ public class RedissonHelper implements CacheManager, ApplicationContextAware {
 
 	protected ApplicationContext applicationContext;
 
+	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) {
 		this.applicationContext = applicationContext;
 	}

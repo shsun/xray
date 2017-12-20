@@ -17,5 +17,9 @@ public class ServerListener implements ServletContextListener {
         logger.info("=================================");
         logger.info("系统[{}]启动完成!!!", contextEvent.getServletContext().getServletContextName());
         logger.info("=================================");
+
+
+//        Runtime.getRuntime().addShutdownHook();
+
     }
 }

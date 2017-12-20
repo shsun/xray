@@ -6,9 +6,6 @@ import org.quartz.PersistJobDataAfterExecution;
 
 /**
  * 阻塞调度
- * 
- * @author ShenHuaJie
- * @version 2016年5月27日 下午4:30:46
  */
 @PersistJobDataAfterExecution
 @DisallowConcurrentExecution

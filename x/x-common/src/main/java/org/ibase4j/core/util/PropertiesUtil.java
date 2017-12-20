@@ -1,16 +1,10 @@
 package org.ibase4j.core.util;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.Properties;
+import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
-import org.springframework.core.io.Resource;
-
 
 public final class PropertiesUtil extends PropertyPlaceholderConfigurer {
     private static final byte[] KEY = { 9, -1, 0, 5, 39, 8, 6, 19 };

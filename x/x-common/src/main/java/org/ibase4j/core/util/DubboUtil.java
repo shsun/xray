@@ -8,8 +8,6 @@ import org.springframework.context.ApplicationContext;
 import com.alibaba.dubbo.config.spring.ReferenceBean;
 
 /**
- * @author ShenHuaJie
- * @version 2016年5月27日 下午4:23:06
  */
 public class DubboUtil {
     private DubboUtil() {
@@ -17,7 +15,9 @@ public class DubboUtil {
 
     private static final ConcurrentMap<String, ReferenceBean<?>> referenceConfigs = new ConcurrentHashMap<String, ReferenceBean<?>>();
 
-    /** 获取Dubbo服务 */
+    /**
+     * 获取Dubbo服务
+     */
     public static Object refer(ApplicationContext applicationContext, String interfaceName) {
         String key = "/" + interfaceName + ":";
         ReferenceBean<?> referenceConfig = referenceConfigs.get(key);

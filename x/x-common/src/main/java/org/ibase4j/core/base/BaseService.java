@@ -12,9 +12,9 @@ import org.ibase4j.core.util.DataUtil;
 import org.ibase4j.core.util.InstanceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.plugins.Page;
 
@@ -43,6 +43,7 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
      * 分页查询
      */
     public static Page<Long> getPage(Map<String, Object> params) {
+        Page<Long> page;
         Integer current = 1;
         Integer size = 10;
         String orderBy = "id_";
@@ -57,10 +58,11 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
             params.remove("orderBy");
         }
         if (size == -1) {
-            return new Page<Long>();
+            page = new Page<Long>();
+        } else {
+            page = new Page<Long>(current, size, orderBy);
+            page.setAsc(false);
         }
-        Page<Long> page = new Page<Long>(current, size, orderBy);
-        page.setAsc(false);
         return page;
     }
 
@@ -105,8 +107,9 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
 
     /** 根据Id查询(cls返回类型Class) */
     public <K> Page<K> getPage(Page<Long> ids, Class<K> cls) {
+        Page<K> page;
         if (ids != null) {
-            Page<K> page = new Page<K>(ids.getCurrent(), ids.getSize());
+            page = new Page<K>(ids.getCurrent(), ids.getSize());
             page.setTotal(ids.getTotal());
             List<K> records = InstanceUtil.newArrayList();
             for (Long id : ids.getRecords()) {
@@ -115,9 +118,10 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
                 records.add(k);
             }
             page.setRecords(records);
-            return page;
+        } else {
+            page = new Page<K>();
         }
-        return new Page<K>();
+        return page;
     }
 
     /**

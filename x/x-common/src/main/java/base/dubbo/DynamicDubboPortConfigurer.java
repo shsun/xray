@@ -1,10 +1,13 @@
 package base.dubbo;
 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.PostConstruct;
 
+import com.alibaba.dubbo.container.Container;
+import com.alibaba.dubbo.container.Main;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -27,7 +30,7 @@ public class DynamicDubboPortConfigurer implements ApplicationContextAware {
 
     @PostConstruct
     public void init() {
-
+        /*
         Map<String, ProtocolConfig> beansOfType = applicationContext.getBeansOfType(ProtocolConfig.class);
         for (Entry<String, ProtocolConfig> item : beansOfType.entrySet()) {
             int oldPort = item.getValue().getPort();
@@ -35,7 +38,36 @@ public class DynamicDubboPortConfigurer implements ApplicationContextAware {
             item.getValue().setPort(newPort);
             System.err.println("######## dubbo oldPort=" + oldPort + ", newPort=" + newPort + ", name=" + item.getValue().getName());
         }
+        */
+
+
+        /*
+        Map<String, ProtocolConfig> beansOfType = applicationContext.getBeansOfType(ProtocolConfig.class);
+        for (Entry<String, ProtocolConfig> item : beansOfType.entrySet()) {
+            int oldPort = item.getValue().getPort();
+            newPort = NetUtils.getAvailablePort();
+            item.getValue().setPort(newPort);
+            System.err.println("######## dubbo oldPort=" + oldPort + ", newPort=" + newPort + ", name=" + item.getValue().getName());
+
+
+            Container container = (Container)i$.next();
+
+            try {
+                container.stop();
+                Main.logger.info("Dubbo " + container.getClass().getSimpleName() + " stopped!");
+            } catch (Throwable var6) {
+                Main.logger.error(var6.getMessage(), var6);
+            }
+
+            Class t = Main.class;
+            synchronized(Main.class) {
+                Main.running = false;
+                Main.class.notify();
+            }
+        }
+        */
     }
+
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

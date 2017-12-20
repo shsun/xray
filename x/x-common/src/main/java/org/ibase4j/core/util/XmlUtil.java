@@ -1,26 +1,14 @@
 package org.ibase4j.core.util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.dom4j.Attribute;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.Node;
+import org.dom4j.*;
 import org.dom4j.tree.DefaultElement;
 
 /**
  * XML处理器<br>
- * 
- * @author XiongChun
- * @since 2009-07-07
  */
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public final class XmlUtil {
@@ -377,11 +365,10 @@ public final class XmlUtil {
 				Map elementdto = XmlUtil.Dom2Map(it.next());
 				res.add(elementdto);
 			}
-			map.put("resultList", res);// 放入结果集
-			/*
-			 * 如果存在REC_MNT，说明是分页查询类，需要将总记录数返回
-			 */
-			Node de = doc.selectSingleNode("//REC_MNT");
+            // 放入结果集
+            map.put("resultList", res);
+            // 如果存在REC_MNT，说明是分页查询类，需要将总记录数返回
+            Node de = doc.selectSingleNode("//REC_MNT");
 			if (DataUtil.isNotEmpty(de)) {
 				map.put("countInteger", de.getText());
 			}

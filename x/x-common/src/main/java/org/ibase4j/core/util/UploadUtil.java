@@ -27,8 +27,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 /**
  * 上传辅助类 与Spring.multipartResolver冲突
- * 
- * @author ShenHuaJie
  */
 public final class UploadUtil {
     private UploadUtil() {

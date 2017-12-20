@@ -27,9 +27,6 @@ import jxl.write.biff.RowsExceededException;
 
 /**
  * 下载EXCEL文件
- * 
- * @author ShenHuaJie
- * @since 2011-11-08
  */
 @SuppressWarnings("deprecation")
 public class DownloadExcelUtil {

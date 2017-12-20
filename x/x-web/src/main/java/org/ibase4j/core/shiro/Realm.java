@@ -35,10 +35,14 @@ public class Realm extends AuthorizingRealm {
     @Autowired
     private RedisOperationsSessionRepository sessionRepository;
 
-    // 权限
+    /**
+     * 权限, this method will be invoked by the shiro framework
+     * 
+     * @param principals
+     * @return
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Long userId = WebUtil.getCurrentUser();
 
@@ -55,16 +59,22 @@ public class Realm extends AuthorizingRealm {
         return info;
     }
 
-    // 登录验证
+    /**
+     * 登录验证, this method will be invoked by the shiro framework
+     *
+     * @param authcToken
+     * @return
+     * @throws AuthenticationException
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         AuthenticationInfo authcInfo = null;
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("countSql", 0);
-        params.put("enable", 1);
-        params.put("account", token.getUsername());
-        Parameter parameter = new Parameter("sysUserService", "query").setMap(params);
+        Map<String, Object> p = new HashMap<String, Object>();
+        p.put("countSql", 0);
+        p.put("enable", 1);
+        p.put("account", token.getUsername());
+        Parameter parameter = new Parameter("sysUserService", "query").setMap(p);
         Page<?> pageInfo = provider.execute(parameter).getPage();
         if (pageInfo.getTotal() == 1) {
             SysUser user = (SysUser) pageInfo.getRecords().get(0);
