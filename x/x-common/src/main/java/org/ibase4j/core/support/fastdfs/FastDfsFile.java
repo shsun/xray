@@ -3,8 +3,7 @@ package org.ibase4j.core.support.fastdfs;
 import base.common.NameValuePair;
 
 /**
- * @author ShenHuaJie
- * @version 2016年6月27日 上午9:36:30
+ *
  */
 public class FastDfsFile {
 	private String groupName;

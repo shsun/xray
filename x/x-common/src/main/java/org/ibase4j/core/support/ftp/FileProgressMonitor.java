@@ -9,9 +9,7 @@ import com.jcraft.jsch.SftpProgressMonitor;
 
 /**
  * 监控
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:19:19
+ *
  */
 public class FileProgressMonitor implements SftpProgressMonitor {
 	private final Logger logger = LogManager.getLogger();

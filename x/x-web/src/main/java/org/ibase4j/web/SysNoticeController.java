@@ -19,10 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 通知管理控制类
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:13:31
+ *
  */
 @RestController
 @Api(value = "通知管理", description = "通知管理")

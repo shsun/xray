@@ -22,10 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 邮件配置管理控制类
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:13:31
+ *
  */
 @RestController
 @Api(value = "邮件配置管理", description = "邮件配置管理")

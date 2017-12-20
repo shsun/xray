@@ -9,8 +9,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * @author ShenHuaJie
- * @since 2017年2月3日 下午5:19:09
+ *
  */
 public class WeiXinSignUtils {
 	public static void main(String[] args) {

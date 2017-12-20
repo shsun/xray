@@ -5,10 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
- * 身份证验证辅助类
- * 
- * @author ShenHuaJie
- * @since 2011-11-08
+ * 身份证验证辅助类\
  */
 public final class IDCardUtil {
     private IDCardUtil() {
@@ -151,8 +148,6 @@ public final class IDCardUtil {
 
     /**
      * 性别
-     * 
-     * @author ShenHuaJie
      */
     public enum Sex {
         /**

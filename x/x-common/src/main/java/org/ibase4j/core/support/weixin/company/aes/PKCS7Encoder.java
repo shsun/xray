@@ -4,8 +4,7 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 
 /**
- * @author ShenHuaJie
- * @since 2017年2月3日 下午5:20:19
+ *
  */
 public class PKCS7Encoder {
 	static Charset CHARSET = Charset.forName("utf-8");

@@ -14,8 +14,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 
 /**
- * @author ShenHuaJie
- * @since 2017年2月3日 下午5:16:15
+ *
  */
 public class WeiXinCompanyUpload {
 

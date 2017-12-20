@@ -10,8 +10,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 /**
- * @author ShenHuaJie
- * @since 2017年2月3日 下午5:15:32
+ *
  */
 public class WeiXinCompanyOAuth {
 	public static String getUserInfo(String code, int agentid) {

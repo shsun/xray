@@ -21,10 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 角色管理
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:15:43
+ *
  */
 @RestController
 @Api(value = "角色管理", description = "角色管理")

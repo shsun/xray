@@ -7,8 +7,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 /**
- * @author ShenHuaJie
- * @since 2017年2月3日 下午5:11:07
+ *
  */
 public class WeiXinUserUtils {
 	public static String getUserList(String next_openid) {

@@ -22,10 +22,6 @@ import org.ibase4j.core.support.security.SecurityCoder;
 
 /**
  * DES安全编码组件
- * 
- * @author ShenHuaJie
- * @version 1.0
- * @since 1.0
  */
 public abstract class DESCoder extends SecurityCoder {
 

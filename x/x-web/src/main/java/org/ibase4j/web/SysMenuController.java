@@ -24,9 +24,6 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 菜单管理
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:14:54
  */
 @RestController
 @Api(value = "菜单管理", description = "菜单管理")

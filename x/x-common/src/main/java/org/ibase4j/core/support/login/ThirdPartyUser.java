@@ -6,8 +6,7 @@ package org.ibase4j.core.support.login;
 import org.ibase4j.core.base.BaseModel;
 
 /**
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:26:23
+ *
  */
 @SuppressWarnings("serial")
 public class ThirdPartyUser extends BaseModel {

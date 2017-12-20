@@ -12,9 +12,6 @@ import com.baomidou.mybatisplus.annotations.TableName;
  * <p>
  * 新闻表
  * </p>
- *
- * @author ShenHuaJie
- * @since 2017-01-29
  */
 @SuppressWarnings("serial")
 @TableName("sys_news")

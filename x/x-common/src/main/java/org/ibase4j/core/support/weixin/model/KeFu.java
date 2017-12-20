@@ -1,8 +1,7 @@
 package org.ibase4j.core.support.weixin.model;
 
 /**
- * @author ShenHuaJie
- * @since 2017年2月3日 下午5:10:58
+ *
  */
 public class KeFu {
 	private String kf_account;

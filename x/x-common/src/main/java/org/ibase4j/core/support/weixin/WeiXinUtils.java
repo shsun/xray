@@ -11,8 +11,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 /**
- * @author ShenHuaJie
- * @since 2017年2月3日 下午5:11:18
+ *
  */
 public class WeiXinUtils {
 	private static String token;

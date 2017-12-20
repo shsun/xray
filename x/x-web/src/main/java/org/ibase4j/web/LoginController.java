@@ -24,12 +24,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
-/**
- * 用户登录
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:11:21
- */
 @RestController
 @Api(value = "登录接口", description = "登录接口")
 public class LoginController extends AbstractController<ISysProvider> {

@@ -8,6 +8,6 @@ import org.apache.ibatis.session.RowBounds;
 import org.ibase4j.model.TaskFireLog;
 
 
-public interface ITaskFireLogMapper extends com.baomidou.mybatisplus.mapper.BaseMapper<TaskFireLog> {
+public interface TaskFireLogMapper extends com.baomidou.mybatisplus.mapper.BaseMapper<TaskFireLog> {
     List<Long> selectIdByMap(RowBounds rowBounds, @Param("cm") Map<String, Object> params);
 }

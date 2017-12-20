@@ -15,9 +15,6 @@ import com.jcraft.jsch.SftpException;
 
 /**
  * Java Secure Channel
- * 
- * @author ShenHuaJie
- * @version 2016年5月20日 下午3:19:19
  */
 public class SftpClient {
     private Logger logger = LogManager.getLogger();

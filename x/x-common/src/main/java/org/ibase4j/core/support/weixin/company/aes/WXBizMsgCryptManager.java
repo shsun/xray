@@ -6,8 +6,7 @@ import java.util.Map;
 import org.ibase4j.core.util.PropertiesUtil;
 
 /**
- * @author ShenHuaJie
- * @since 2017年2月3日 下午5:22:35
+ *
  */
 public class WXBizMsgCryptManager {
 

@@ -11,9 +11,6 @@ import com.baomidou.mybatisplus.annotations.TableName;
  * <p>
  * 邮件模版表
  * </p>
- *
- * @author ShenHuaJie
- * @since 2017-01-29
  */
 @SuppressWarnings("serial")
 @TableName("sys_email_template")

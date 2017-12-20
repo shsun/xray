@@ -1,8 +1,7 @@
 package org.ibase4j.core.support.weixin.company.aes;
 
 /**
- * @author ShenHuaJie
- * @since 2017年2月3日 下午5:19:56
+ *
  */
 @SuppressWarnings("serial")
 public class AesException extends Exception {

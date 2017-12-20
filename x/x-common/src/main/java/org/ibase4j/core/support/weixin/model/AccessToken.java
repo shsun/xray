@@ -1,8 +1,7 @@
 package org.ibase4j.core.support.weixin.model;
 
 /**
- * @author ShenHuaJie
- * @since 2017年2月3日 下午5:09:23
+ *
  */
 public class AccessToken {
     private String access_token;

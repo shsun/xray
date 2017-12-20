@@ -11,8 +11,6 @@ import com.baomidou.mybatisplus.annotations.TableName;
 
 /**
  * SysUser实体类
- * @author ShenHuaJie
- * @version 2016-08-27 22:39:42
  */
 @TableName("sys_user")
 @SuppressWarnings("serial")
