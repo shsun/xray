@@ -30,6 +30,7 @@ public class SchedulerService implements ApplicationContextAware {
      */
     protected ApplicationContext applicationContext;
 
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
