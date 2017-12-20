@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.ibase4j.core.base.BaseService;
 import org.ibase4j.core.util.InstanceUtil;
-import org.ibase4j.mapper.TaskFireLogMapper;
+import org.ibase4j.mapper.ITaskFireLogMapper;
 import org.ibase4j.model.TaskFireLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
@@ -20,7 +20,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 public class SchedulerService implements ApplicationContextAware {
 
     @Autowired
-    private TaskFireLogMapper logMapper;
+    private ITaskFireLogMapper logMapper;
 
     @Autowired
     private SchedulerManager schedulerManager;
