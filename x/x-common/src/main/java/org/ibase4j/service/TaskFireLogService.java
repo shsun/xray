@@ -14,5 +14,4 @@ public class TaskFireLogService {
     public TaskFireLog selectById(Long id) {
         return taskFireLogMapper.selectById(id);
     }
-
 }

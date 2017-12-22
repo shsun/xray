@@ -25,7 +25,7 @@ sudo /usr/local/openresty/nginx/sbin/nginx -c /usr/local/openresty/nginx/conf/ng
 
 
 http {
-	lua_shared_dict dogs 10m; # shared data in lua, you can use this cache in lua via ngx.shared.dogs
+	lua_shared_dict shared_data 10m; # shared data in lua, you can use this cache in lua via ngx.shared.dogs
    	server {
     	location /set {
         	content_by_lua '
@@ -35,6 +35,8 @@ http {
             ';
         }
         location /get {
+			#content_by_lua_file the_lua_file_path;
+
         	content_by_lua '
             	local dogs = ngx.shared.dogs
             	ngx.say(dogs:get("Jim"))
