@@ -46,7 +46,7 @@ local function sayhi()
     ngx.log(ngx.INFO, '@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible, ' http_host='..ngx.var.http_host, ' request_uri='..ngx.var.request_uri);
     ngx.log(ngx.ERR, '@@@@@@@@@@@@@@@@--->>', "request_uri="..ngx.var.request_uri, ", scheme="..ngx.var.scheme, ", host="..ngx.var.host);
 
-    if access['times'] >= 3 then
+    if access['times'] >= 4 then
         shared_dict:delete(remote_addr);
         ngx.var.target = '127.0.0.1:8082/examples';
         constant_default_upstream = ngx.var.target;
