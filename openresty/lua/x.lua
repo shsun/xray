@@ -4,12 +4,14 @@ local string = require("string")
 local table = require("table")
 local cjson = require("cjson")
 
-require "x_base_class"
+--require "x_base_class"
 
-x = class(base_type)
+--x = class(base_type)
 
 
-function x:sayhi()
+
+
+local function sayhi()
 
 
     print("\n\n\n\nx.sayhi");
@@ -70,3 +72,11 @@ function x:sayhi()
 
 --ngx.var.target = '127.0.0.1:8081/examples';
 end
+
+
+local x = {
+   sayhi           = sayhi,
+};
+return x;
+
+
