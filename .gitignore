@@ -9,3 +9,5 @@ logs
 x/.idea
 */.idea
 **/.idea
+*/.buildpath
+
