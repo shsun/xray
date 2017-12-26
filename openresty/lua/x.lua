@@ -35,8 +35,8 @@ local function sayhi()
 
     access['times'] = access['times'] + 1;
     local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
-    ngx.log(ngx.INFO, '\n@@@@@@@@@@@@@@@@--->>', access['times'], ", " , succ, err, forcible);
-    if access['times'] >= 2 then
+    ngx.log(ngx.INFO, '\n@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible,"  target=", ngx.var.target);
+    if access['times'] >= 4 then
         local ups_from = shared_dict:get(http_host);
         shared_dict:set(http_host, ups);
         shared_dict:delete(remote_addr);
