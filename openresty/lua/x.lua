@@ -40,10 +40,6 @@ local function sayhi()
         ngx.log(ngx.ERR, "remote_addr=", access["remote_addr"]);
     end
 
-
-    
-
-
     access['times'] = access['times'] + 1;
     local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
     ngx.log(ngx.INFO, '@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible, ' http_host='..ngx.var.http_host, ' request_uri='..ngx.var.request_uri);
@@ -53,6 +49,9 @@ local function sayhi()
         shared_dict:delete(remote_addr);
         ngx.var.target = '127.0.0.1:8082/examples';
         constant_default_upstream = ngx.var.target;
+        
+        
+        
     else
         ngx.log(ngx.INFO, '####################----', access['times'], "\n");
     end

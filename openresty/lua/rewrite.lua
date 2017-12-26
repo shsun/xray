@@ -10,3 +10,16 @@ if ngx.var.args ~= nil then
         return ngx.exec(ngx.var.uri, fixed_args);
     end
 end
+
+
+local upstream_addr_str = nil;
+if nil ~= ngx.var.upstream_addr then
+    upstream_addr_str = " from "..ngx.var.upstream_addr;
+else
+    upstream_addr_str = "";
+end
+
+
+ngx.log(ngx.ERR, 'rewrite @@@@@@@@@@@@@@@@--->>'..upstream_addr_str);
+
+
