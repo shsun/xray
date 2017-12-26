@@ -27,12 +27,17 @@ sudo nginx -s quit;
 sudo nginx -s stop;
 sleep 1;
 
+echo '';
 sudo cp -rfv ./conf/nginx.conf ${NGX_HOME}/conf/nginx.conf;
+echo '';
 sudo cp -rfv ./lua/*.lua ${NGX_HOME}
+echo '';
+
 
 #sleep 1;
 
 sudo nginx -c ${NGX_HOME}/conf/nginx.conf
+echo '';
 
 tail -f ${NGX_HOME}/logs/error.log ;
 
