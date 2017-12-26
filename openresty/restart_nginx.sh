@@ -22,13 +22,13 @@ clear;
 
 
 sudo nginx -s quit;
+sudo nginx -s stop;
 sleep 1;
 
 sudo cp -rfv conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf;
-sleep 1;
+#sleep 1;
 
 sudo nginx -c /usr/local/openresty/nginx/conf/nginx.conf
-
 
 tail -f /usr/local/openresty/nginx/logs/error.log ;
 
