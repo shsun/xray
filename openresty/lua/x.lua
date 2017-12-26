@@ -7,6 +7,11 @@ local table = require("table")
 local cjson = require("cjson")
 
 local function sayhi()
+    
+    if ngx.var.request_uri ~= '/docs/' then
+        return;
+    end
+    
     ngx.log(ngx.INFO, "\n\n\n\nx.sayhi");
     -- shared dictionary
     local shared_dict = ngx.shared.shared_dict;
@@ -18,7 +23,11 @@ local function sayhi()
     local http_user_agent = ngx.var.http_user_agent;
 
     --ngx.req.set_uri_args("r"..math.random(0, 999999999));
-
+    
+    
+    
+    
+    
     --
     if shared_dict:get(remote_addr) == nil then
         local t = {remote_addr=remote_addr, method='xu', times=0};
@@ -36,12 +45,12 @@ local function sayhi()
     access['times'] = access['times'] + 1;
     local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
     ngx.log(ngx.INFO, '@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible,"  target=", ngx.var.target);
-    ngx.log(ngx.ERR, '@@@@@@@@@@@@@@@@--->>', ngx.var.upstream_addr);
+    ngx.log(ngx.ERR, '@@@@@@@@@@@@@@@@--->>', ngx.var.request_uri);
     
     
     if access['times'] >= 4 then
         shared_dict:delete(remote_addr);
-        ngx.var.target = '127.0.0.1:8082/examples'
+        ngx.var.target = '127.0.0.1:8082/examples';
         return
     else
         ngx.log(ngx.WARN, 'else times=', access['times'], "\n");
