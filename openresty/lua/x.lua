@@ -8,11 +8,10 @@ local cjson = require("cjson")
 
 local function sayhi()
     local constant_default_upstream = 'default_doc_upstream';
-    local constant_location = '/docs/';
-    
+        
     --ngx.log(ngx.INFO, 'xxxxxxxxxxxxx--->>', 'http_host='..ngx.var.http_host, ' request_uri='..ngx.var.request_uri);
     
-    if ngx.var.request_uri ~= constant_location then
+    if ngx.var.request_uri ~= ngx.var.constant_location then
         return constant_default_upstream;
     end
 

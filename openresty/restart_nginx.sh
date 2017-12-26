@@ -21,14 +21,18 @@ clear;
 #tail -f /Users/shsun/Downloads/apache-tomcat-7.0.82/logs/catalina.out;
 
 
+NGX_HOME=/usr/local/openresty/nginx;
+
 sudo nginx -s quit;
 sudo nginx -s stop;
 sleep 1;
 
-sudo cp -rfv conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf;
+sudo cp -rfv ./conf/nginx.conf ${NGX_HOME}/conf/nginx.conf;
+sudo cp -rfv ./lua/*.lua ${NGX_HOME}
+
 #sleep 1;
 
-sudo nginx -c /usr/local/openresty/nginx/conf/nginx.conf
+sudo nginx -c ${NGX_HOME}/conf/nginx.conf
 
-tail -f /usr/local/openresty/nginx/logs/error.log ;
+tail -f ${NGX_HOME}/logs/error.log ;
 
