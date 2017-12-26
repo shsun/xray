@@ -40,7 +40,7 @@ local function sayhi()
     
     access['times'] = access['times'] + 1;
     local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
-    ngx.log(ngx.INFO, '@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible);
+    ngx.log(ngx.INFO, '@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible, ' http_host='..ngx.var.http_host, ' request_uri='..ngx.var.request_uri);
     ngx.log(ngx.ERR, '@@@@@@@@@@@@@@@@--->>', "request_uri="..ngx.var.request_uri, ", scheme="..ngx.var.scheme, ", host="..ngx.var.host);
        
     if access['times'] >= 3 then
