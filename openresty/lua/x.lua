@@ -1,4 +1,6 @@
+--[[
 
+]]
 local math = require('math')
 local string = require("string")
 local table = require("table")
@@ -15,18 +17,13 @@ local function sayhi()
     --
     local http_user_agent = ngx.var.http_user_agent;
 
-    --require "xutils"
-    --local xutils = xutils.new();
-    
     --
     if shared_dict:get(remote_addr) == nil then
         local t = {remote_addr=remote_addr, method='xu', times=0};
-        --local succ, err, forcible = shared_dict:set(remote_addr, xutils:table2string(t));
-        local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(t));        
+        local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(t));
     end
 
-    --local access = xutils:string2table( shared_dict:get(remote_addr) );
-    local access = cjson.decode( shared_dict:get(remote_addr) );    
+    local access = cjson.decode( shared_dict:get(remote_addr) );
     if access == nil then
         ngx.log(ngx.INFO, "access is nil");
         return;
@@ -37,9 +34,7 @@ local function sayhi()
     end
 
     access['times'] = access['times'] + 1;
-    -- local succ, err, forcible = shared_dict:set(remote_addr, xutils:table2string(access));
     local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
-    
     ngx.log(ngx.INFO, '\n@@@@@@@@@@@@@@@@--->>', access['times'], ", " , succ, err, forcible);
     if access['times'] >= 2 then
         local ups_from = shared_dict:get(http_host);
@@ -50,8 +45,7 @@ local function sayhi()
     else
         print('else times=', access['times'], "\n");
     end
-
-
+    
     local key = ngx.var.http_user_agent;
     if not key then
         ngx.log(ngx.ERR, "no user-agent found");
@@ -66,7 +60,7 @@ end
 
 
 local x = {
-   sayhi           = sayhi,
+    sayhi           = sayhi,
 };
 return x;
 
