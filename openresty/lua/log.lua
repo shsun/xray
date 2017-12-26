@@ -2,8 +2,8 @@
 if nil ~= ngx.var.upstream_response_time then
     local resp_time_so_far = ngx.now() - tonumber(ngx.var.upstream_response_time);
     
-    -- 1000 ms
-    if tonumber(ngx.var.upstream_response_time) >= 0.0001 then
+    -- 1s
+    if tonumber(ngx.var.upstream_response_time) >= 1 then
         local upstream_addr_str = nil;
         if nil ~= ngx.var.upstream_addr then
             upstream_addr_str = " from "..ngx.var.upstream_addr;

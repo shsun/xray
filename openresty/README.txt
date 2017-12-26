@@ -1,5 +1,7 @@
 
 
+http://www.ttlsa.com/nginx/nginx-and-lua/
+
 
 
 configure arguments: --prefix=/usr/local/openresty/nginx --with-debug --with-cc-opt='-DNGX_LUA_USE_ASSERT -DNGX_LUA_ABORT_AT_PANIC -O2' 
