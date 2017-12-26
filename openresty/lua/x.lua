@@ -6,13 +6,12 @@ local string = require("string")
 local table = require("table")
 local cjson = require("cjson")
 
-local function sayhi()
-    
+local function sayhi()    
+    local default_upstream = 'default_doc_upstream';    
     if ngx.var.request_uri ~= '/docs/' then
-        return;
+        return default_upstream;
     end
     
-    ngx.log(ngx.INFO, "\n\n\n\nx.sayhi");
     -- shared dictionary
     local shared_dict = ngx.shared.shared_dict;
     -- client ip
@@ -22,10 +21,8 @@ local function sayhi()
     --
     local http_user_agent = ngx.var.http_user_agent;
 
-    --ngx.req.set_uri_args("r"..math.random(0, 999999999));
-    
-    
-    
+    --
+    -- ngx.req.set_uri_args("r"..math.random(0, 999999999));
     
     
     --
@@ -36,41 +33,30 @@ local function sayhi()
 
     local access = cjson.decode( shared_dict:get(remote_addr) );
     if access == nil then
-        ngx.log(ngx.INFO, "access is nil");
-        return;
+        return default_upstream;
     else
-        ngx.log(ngx.INFO, "remote_addr=", access["remote_addr"]);
+        ngx.log(ngx.ERR, "remote_addr=", access["remote_addr"]);
     end
     
     access['times'] = access['times'] + 1;
     local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
-    ngx.log(ngx.INFO, '@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible,"  target=", ngx.var.target);
+    ngx.log(ngx.INFO, '@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible);
     ngx.log(ngx.ERR, '@@@@@@@@@@@@@@@@--->>', "request_uri="..ngx.var.request_uri, ", scheme="..ngx.var.scheme, ", host="..ngx.var.host);
-    
-    for key, value in pairs(ngx.var) do  
-        ngx.log(ngx.ERR, '############--->>', key, "=", value);
-    end     
-    
-    if access['times'] >= 4 then
+       
+    if access['times'] >= 3 then
         shared_dict:delete(remote_addr);
         ngx.var.target = '127.0.0.1:8082/examples';
-        return
+        default_upstream = ngx.var.target;
     else
-        ngx.log(ngx.WARN, 'else times=', access['times'], "\n");
+        ngx.log(ngx.INFO, '####################----', access['times'], "\n");
     end
-    
-    local key = ngx.var.http_user_agent;
-    if not key then
-        ngx.log(ngx.ERR, "no user-agent found");
-        return ngx.exit(400);
-    end
-    --ngx.var.target = '127.0.0.1:8081/examples';
+    return default_upstream;
 end
+
 
 
 local x = {
     sayhi           = sayhi,
 };
+
 return x;
-
-
