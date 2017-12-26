@@ -17,6 +17,8 @@ local function sayhi()
     --
     local http_user_agent = ngx.var.http_user_agent;
 
+    --ngx.req.set_uri_args("r"..math.random(0, 999999999));
+
     --
     if shared_dict:get(remote_addr) == nil then
         local t = {remote_addr=remote_addr, method='xu', times=0};
@@ -28,22 +30,18 @@ local function sayhi()
         ngx.log(ngx.INFO, "access is nil");
         return;
     else
-        for key, value in pairs(access) do
-            print(key, ":", value);
-        end
+        ngx.log(ngx.INFO, "remote_addr=", access["remote_addr"]);
     end
-
+    
     access['times'] = access['times'] + 1;
     local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
-    ngx.log(ngx.INFO, '\n@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible,"  target=", ngx.var.target);
+    ngx.log(ngx.INFO, '@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible,"  target=", ngx.var.target);
     if access['times'] >= 4 then
-        local ups_from = shared_dict:get(http_host);
-        shared_dict:set(http_host, ups);
         shared_dict:delete(remote_addr);
         ngx.var.target = '127.0.0.1:8082/examples'
         return
     else
-        print('else times=', access['times'], "\n");
+        ngx.log(ngx.WARN, 'else times=', access['times'], "\n");
     end
     
     local key = ngx.var.http_user_agent;
@@ -51,11 +49,7 @@ local function sayhi()
         ngx.log(ngx.ERR, "no user-agent found");
         return ngx.exit(400);
     end
-    local host = "127.0.0.1:8081";
-
-    ngx.log(ngx.INFO, "go to 163...?");
-
---ngx.var.target = '127.0.0.1:8081/examples';
+    --ngx.var.target = '127.0.0.1:8081/examples';
 end
 
 
