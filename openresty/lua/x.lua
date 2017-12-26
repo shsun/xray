@@ -4,17 +4,8 @@ local string = require("string")
 local table = require("table")
 local cjson = require("cjson")
 
---require "x_base_class"
-
---x = class(base_type)
-
-
-
-
 local function sayhi()
-
-
-    print("\n\n\n\nx.sayhi");
+    ngx.log(ngx.INFO, "\n\n\n\nx.sayhi");
     -- shared dictionary
     local shared_dict = ngx.shared.shared_dict;
     -- client ip
@@ -37,7 +28,7 @@ local function sayhi()
     --local access = xutils:string2table( shared_dict:get(remote_addr) );
     local access = cjson.decode( shared_dict:get(remote_addr) );    
     if access == nil then
-        print("access is nil");
+        ngx.log(ngx.INFO, "access is nil");
         return;
     else
         for key, value in pairs(access) do
@@ -49,7 +40,7 @@ local function sayhi()
     -- local succ, err, forcible = shared_dict:set(remote_addr, xutils:table2string(access));
     local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
     
-    print('\n@@@@@@@@@@@@@@@@--->>', access['times'], ", " , succ, err, forcible);
+    ngx.log(ngx.INFO, '\n@@@@@@@@@@@@@@@@--->>', access['times'], ", " , succ, err, forcible);
     if access['times'] >= 2 then
         local ups_from = shared_dict:get(http_host);
         shared_dict:set(http_host, ups);
