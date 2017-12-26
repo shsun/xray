@@ -47,6 +47,9 @@ local function sayhi()
     ngx.log(ngx.INFO, '@@@@@@@@@@@@@@@@--->>', access['times'], ",  " , succ, err, forcible,"  target=", ngx.var.target);
     ngx.log(ngx.ERR, '@@@@@@@@@@@@@@@@--->>', "request_uri="..ngx.var.request_uri, ", scheme="..ngx.var.scheme, ", host="..ngx.var.host);
     
+    for key, value in pairs(ngx.var) do  
+        ngx.log(ngx.ERR, '############--->>', key, "=", value);
+    end     
     
     if access['times'] >= 4 then
         shared_dict:delete(remote_addr);
