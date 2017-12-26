@@ -11,5 +11,7 @@ else
 end
 
 ngx.log(ngx.INFO, 'body_filter @@@@@@@@@@@@@@@@--->>', "upstream_addr_str="..upstream_addr_str);
+ngx.log(ngx.INFO, '');
 
 
+--ngx.var.upstream_addr = string.gsub(ngx.var.upstream_addr,'8081','8082');
