@@ -30,7 +30,5 @@ sleep 1;
 sudo nginx -c /usr/local/openresty/nginx/conf/nginx.conf
 
 
-#tail -f /usr/local/openresty/nginx/logs/error.log ;
-
-
+tail -f /usr/local/openresty/nginx/logs/error.log ;
 
