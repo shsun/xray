@@ -24,10 +24,13 @@ local function sayhi()
         local t = {remote_addr=remote_addr, method='xu', times=1, body_filter_times=0};
         local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(t));
     end
-    
+        
     local access = cjson.decode( shared_dict:get(remote_addr) );
-           
-    ngx.log(ngx.INFO, "times="..access['times'].." body_filter_times="..access['body_filter_times']);
+    local upstream_addr = "nil";
+    if nil ~= access['upstream_addr'] then
+        upstream_addr = access['upstream_addr'];
+    end
+    ngx.log(ngx.INFO, "times="..access['times'].." body_filter_times="..access['body_filter_times']..", upstream_addr="..upstream_addr);
         
     if access['times'] >= 4 then
         shared_dict:delete(remote_addr);
