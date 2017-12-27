@@ -4,6 +4,7 @@
 ]]
 
 
+local cjson = require("cjson");
 
 
 if ngx.var.args ~= nil then
@@ -26,7 +27,17 @@ else
     upstream_addr_str = "";
 end
 
+local upstreams = {
+    "www.shsun8081.com:8081",
+    "www.shsun8082.com:8082"
+};
 
-ngx.log(ngx.ERR, 'rewrite @@@@@@@@@@@@@@@@--->>'..upstream_addr_str);
+local m = math.random( #upstreams );
+ngx.log(ngx.ERR, 'rewrite @@@@@@@@@@@@@@@@---m>>'..m);
+ngx.var.res = "127.0.0.1:8082";
+--upstreams[ m ] 
+
+
+ngx.log(ngx.ERR, 'rewrite @@@@@@@@@@@@@@@@---uas>>'..upstream_addr_str);
 
 
