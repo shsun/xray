@@ -34,7 +34,7 @@ local function sayhi()
         
     if access['times'] >= 4 then
         shared_dict:delete(remote_addr);
-        ngx.var.target = '127.0.0.1:8082/examples';
+        ngx.var.target = '127.0.0.1:8082/examples';        
         constant_default_upstream = ngx.var.target;
     end
     
