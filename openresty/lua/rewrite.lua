@@ -6,18 +6,12 @@
 
 local cjson = require("cjson");
 
-
 if ngx.var.args ~= nil then
     -- /some_request?_=1346491660 becomes /some_request
     local fixed_args, count = ngx.re.sub( ngx.var.args, "&?_=[0-9]+", "" );
     if count > 0 then
         return ngx.exec(ngx.var.uri, fixed_args);
     end
-end
-
-
-if ngx.var.request_uri ~= ngx.var.constant_location then
-    return constant_default_upstream;
 end
 
 local upstream_addr_str = nil;
@@ -33,11 +27,9 @@ local upstreams = {
 };
 
 local m = math.random( #upstreams );
-ngx.log(ngx.ERR, 'rewrite @@@@@@@@@@@@@@@@---m>>'..m);
-ngx.var.res = "127.0.0.1:8082";
+--ngx.log(ngx.ERR, 'rewrite @@@@@@@@@@@@@@@@---m>>'..m);
+--ngx.var.res = "127.0.0.1:8082";
 --upstreams[ m ] 
 
-
-ngx.log(ngx.ERR, 'rewrite @@@@@@@@@@@@@@@@---uas>>'..upstream_addr_str);
 
 
