@@ -20,7 +20,7 @@ if shared_dict:get(remote_addr) ~= nil then
     access['upstream_addr'] = upstream_addr;    
     local succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
     access = cjson.decode( shared_dict:get(remote_addr) );
-    ngx.log(ngx.INFO, "times="..access['times'].." body_filter_times="..access['body_filter_times']);
+    ngx.log(ngx.INFO, "times="..access['times'].." body_filter_times="..access['body_filter_times']..", upstream=");
 end
 
 --
