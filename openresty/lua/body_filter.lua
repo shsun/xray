@@ -7,6 +7,7 @@ local remote_addr = ngx.var.remote_addr;
 
 ngx.log(ngx.INFO, "remote_addr="..remote_addr);
 
+
 if shared_dict:get(remote_addr) ~= nil then
     local access = cjson.decode( shared_dict:get(remote_addr) );
     access['times'] = access['times'] + 1;
