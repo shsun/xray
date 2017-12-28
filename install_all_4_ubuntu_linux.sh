@@ -1,15 +1,18 @@
 #!/bin/sh
 
 
-echo -n "install these software would take much times"
-
-
+echo '';
+echo "install these software would take much times"
+echo '';
+echo '';
+echo '-------------------------------------------------------- update';
+echo '';
 sudo apt-get update;
 
 
 echo '';
 echo '';
-echo '--------------------------------------------------------';
+echo '-------------------------------------------------------- install software 4 openresty/nginx';
 echo '';
 echo -n "libpcre3 libpcre3-dev zlib1g-dev openssl and libssl-dev will be installed"
 echo -n "Do you want to continue? [Y/n]"
