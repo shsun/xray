@@ -1,14 +1,21 @@
 #!/bin/sh
 
 
+echo -n "install these software would take much times"
+
+
 sudo apt-get update;
 
 
+echo '';
+echo '';
+echo '--------------------------------------------------------';
+echo '';
 echo -n "libpcre3 libpcre3-dev zlib1g-dev openssl and libssl-dev will be installed"
 echo -n "Do you want to continue? [Y/n]"
-read input1
+read input
 
-if [ $input == "Y" ] then
+if [ $input == "Y" ]; then
 	# for openresty/nginx
 	echo 'install 3rd-payty software for openrety/nginx ............';
 	sudo apt-get install libpcre3 libpcre3-dev;
