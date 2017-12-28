@@ -14,8 +14,8 @@ echo '--------------->> install software 4 openresty/nginx';
 echo '';
 echo -n "libpcre3 libpcre3-dev zlib1g-dev openssl bless and libssl-dev will be installed"
 echo -n "Do you want to continue? [Y/n]"
+$input = "N";
 read input
-
 if [ $input == "Y" ]; then
 	# for openresty/nginx
 	echo 'install 3rd-payty software for openrety/nginx ............';
@@ -24,7 +24,7 @@ if [ $input == "Y" ]; then
 	sudo apt-get install openssl libssl-dev, bless;
 	echo 'done';
 else
-   	echo "$input1"
+   	echo "$input"
 fi
 
 
@@ -33,6 +33,8 @@ echo '';
 echo '--------------->> openresty';
 echo '';
 echo -n "Do you want to continue? [Y/n]"
+$input = "N";
+read input
 if [ $input == "Y" ]; then	
 	wget -qO - https://openresty.org/package/pubkey.gpg | sudo apt-key add -;
 	sudo apt-get -y install software-properties-common;
@@ -40,7 +42,7 @@ if [ $input == "Y" ]; then
 	sudo apt-get update;sudo apt-get install openresty;
 	echo 'done';
 else
-   	echo "$input1"
+   	echo "$input"
 fi
 
 
@@ -49,6 +51,8 @@ echo '';
 echo '--------------->> install preload,vim,redis-server,jdk1.8,ruby,mysql,rabbitMQ';
 echo '';
 echo -n "Do you want to continue? [Y/n]"
+$input = "N";
+read input
 if [ $input == "Y" ]; then
 	sudo apt-get install preload;
 	sleep 2;
@@ -65,7 +69,7 @@ if [ $input == "Y" ]; then
 	sudo echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list;wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -;sudo apt-get update;sudo apt-get install rabbitmq-server;
 	echo 'done';
 else
-   	echo "$input1"
+   	echo "$input"
 fi
 
 
