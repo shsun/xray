@@ -3,8 +3,6 @@
 
 echo '';
 echo "install these software would take much times"
-echo '';
-echo '';
 echo '-------------------------------------------------------- update';
 echo '';
 sudo apt-get update;
