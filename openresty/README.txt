@@ -140,7 +140,14 @@ configure arguments: --prefix=/usr/local/openresty/nginx --with-debug --with-cc-
 	apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential
 2. download openresty and tar -xzvf openresty-VERSION.tar.gz 
 3. 
-	3.1 sudo ./configure --with-debug --with-openssl=/usr/local/openssl/ --with-ngx_http_log_module --with-ngx_syslog_module --with-ngx_errlog_module --with-ngx_epoll_module -j2; 
+	3.1 
+	debug:
+		clear;sudo ./configure --with-openssl=/usr/local/openssl/ --add-module=3rd_party_modules/lua-resty-core --add-module=3rd_party_modules/lua-resty-module --with-debug -j2; 
+	release:
+		clear;sudo ./configure --with-openssl=/usr/local/openssl/ --add-module=3rd_party_modules/lua-resty-core --add-module=3rd_party_modules/lua-resty-module -j2; 
+	
+	
+	
 	3.2 make & make install
 	此时，我的系统中已经安装好了Openresty，因为在配置时使用了默认安装路径，所以我的程序被安装到了：
 	/usr/local/openresty/中，该文件夹中包含了luajit、lualib、nginx三个目录。
