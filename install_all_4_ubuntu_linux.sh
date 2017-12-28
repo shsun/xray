@@ -14,7 +14,7 @@ echo '--------------->> install software 4 openresty/nginx';
 echo '';
 echo -n "libpcre3 libpcre3-dev zlib1g-dev openssl bless and libssl-dev will be installed"
 echo -n "Do you want to continue? [Y/n]"
-$input = "N";
+input = "N";
 read input
 if [ $input == "Y" ]; then
 	# for openresty/nginx
@@ -33,7 +33,7 @@ echo '';
 echo '--------------->> openresty';
 echo '';
 echo -n "Do you want to continue? [Y/n]"
-$input = "N";
+input = "N";
 read input
 if [ $input == "Y" ]; then	
 	wget -qO - https://openresty.org/package/pubkey.gpg | sudo apt-key add -;
@@ -51,7 +51,7 @@ echo '';
 echo '--------------->> install preload,vim,redis-server,jdk1.8,ruby,mysql,rabbitMQ';
 echo '';
 echo -n "Do you want to continue? [Y/n]"
-$input = "N";
+input = "N";
 read input
 if [ $input == "Y" ]; then
 	sudo apt-get install preload;
