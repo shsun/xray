@@ -14,9 +14,7 @@
 		<module>x-service</module>
 		<module>x-facade</module>
 		<module>x-web</module>
-		<!--
 		<module>x-batch</module>
-		-->
 	</modules>
 
 	<!-- clean package -P build tomcat7:run-war-only -->

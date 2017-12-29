@@ -2,7 +2,8 @@ package org.ibase4j.scheduled;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.service.SysSessionService;
+import org.ibase4j.model.TaskFireLog;
+import org.ibase4j.service.TaskFireLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,14 +16,18 @@ public class CoreTask {
     private final Logger logger = LogManager.getLogger();
 
     @Autowired
-    private SysSessionService sessionService;
+    private TaskFireLogService taskFireLogService;
 
     /**
-     * 定时清除会话信息
+     *
      */
-    @Scheduled(cron = "0 0/5 * * * *")
-    public void cleanExpiredSessions() {
-        logger.info("cleanExpiredSessions");
-        sessionService.cleanExpiredSessions();
+    @Scheduled(cron = "0 0/1 * * * *")
+    public void ticktock() {
+        logger.info("ticktock");
+
+        TaskFireLog log = taskFireLogService.selectById(1L);
+
+        System.err.println("done---->>" + log.toString());
+
     }
 }
