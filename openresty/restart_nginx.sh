@@ -20,17 +20,19 @@ clear;
 #bash /Users/shsun/Downloads/apache-tomcat-7.0.82/bin/catalina.sh start;
 #tail -f /Users/shsun/Downloads/apache-tomcat-7.0.82/logs/catalina.out;
 
-
+#/usr/local/Cellar/openresty/1.13.6.1/nginx/
+#NGX_HOME=${OPENRESTY_PREFIX}/nginx;
 NGX_HOME=/usr/local/openresty/nginx;
+
 
 sudo nginx -s quit;
 sudo nginx -s stop;
 sleep 1;
 
 echo '';
-sudo cp -rfv ./conf/nginx.conf ${NGX_HOME}/conf/nginx.conf;
+sudo cp -rfv conf/* ${NGX_HOME}/conf/;
 echo '';
-sudo cp -rfv ./lua/*.lua ${NGX_HOME}
+sudo cp -rfv ./lua/*.lua ${NGX_HOME}/
 echo '';
 
 

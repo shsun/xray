@@ -27,4 +27,3 @@ sudo redis-cli shutdown;
 sleep 3;
 sudo /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf;
 sleep 3;
-

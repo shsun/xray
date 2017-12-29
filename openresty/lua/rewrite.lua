@@ -1,9 +1,7 @@
 --[[
 很多外部客户端请求JSONP接口时，都会包含一个时间戳类似的参数，从而导致Nginx proxy缓存无法命中（因为无法忽略指定的HTTP参数）。
 下面的 规则删除了时间戳参数，使得Nginx可以缓存upstream server的响应内容，减轻后端服务器的负载。
-]]
-
-
+  ]]
 local cjson = require("cjson");
 
 if ngx.var.args ~= nil then
@@ -29,7 +27,4 @@ local upstreams = {
 local m = math.random( #upstreams );
 --ngx.log(ngx.ERR, 'rewrite @@@@@@@@@@@@@@@@---m>>'..m);
 --ngx.var.res = "127.0.0.1:8082";
---upstreams[ m ] 
-
-
-
+--upstreams[ m ]

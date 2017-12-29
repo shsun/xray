@@ -33,7 +33,7 @@ echo '--------------->> openresty';
 echo '';
 echo -n "Do you want to continue? [Y/n]"
 read input
-if [ $input == "Y" ]; then	
+if [ $input == "Y" ]; then
 	wget -qO - https://openresty.org/package/pubkey.gpg | sudo apt-key add -;
 	sudo apt-get -y install software-properties-common;
 	sudo add-apt-repository -y "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main";
@@ -61,7 +61,7 @@ if [ $input == "Y" ]; then
 	sudo add-apt-repository ppa:webupd8team/java;sudo apt-get update;sudo apt-get install oracle-java8-installer;sudo update-java-alternatives -s java-8-oracle;
 	sleep 2;
 	sudo apt-get update;sudo apt-get install ruby;
-	sleep 2;	
+	sleep 2;
 	sudo apt-get install mysql-server;sudo apt isntall mysql-client;sudo apt install libmysqlclient-dev;
 	sleep 2;
 	sudo echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list;wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -;sudo apt-get update;sudo apt-get install rabbitmq-server;
@@ -69,11 +69,3 @@ if [ $input == "Y" ]; then
 else
    	echo "$input"
 fi
-
-
-
-
-
-
-
-

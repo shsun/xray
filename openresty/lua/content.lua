@@ -8,5 +8,3 @@ else
 end
 
 ngx.log(ngx.INFO, 'content @@@@@@@@@@@@@@@@--->>', "upstream_addr_str="..upstream_addr_str);
-
-
