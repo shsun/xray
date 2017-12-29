@@ -1,7 +1,7 @@
 local cjson = require("cjson");
 
 -- shared dictionary
-local shared_dict = ngx.shared.shared_dict;
+local cache_request_history = ngx.shared.cache_request_history;
 -- client ip
 local remote_addr = ngx.var.remote_addr;
 

@@ -6,7 +6,7 @@ local balancer = require("ngx.balancer");
 
 
 -- shared dictionary
-local shared_dict = ngx.shared.shared_dict;
+local cache_request_history = ngx.shared.cache_request_history;
 -- client ip
 local remote_addr = ngx.var.remote_addr;
 --
@@ -16,14 +16,14 @@ local http_user_agent = ngx.var.http_user_agent;
 
 local access;
 local succ, err, forcible;
-if shared_dict:get(remote_addr) == nil then
+if cache_request_history:get(remote_addr) == nil then
     access = {remote_addr=remote_addr, method='xu', times=0, fullpath=nil};
-    succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
+    succ, err, forcible = cache_request_history:set(remote_addr, cjson.encode(access));
 end
 
-access = cjson.decode( shared_dict:get(remote_addr) );
+access = cjson.decode( cache_request_history:get(remote_addr) );
 access['times'] = access['times'] + 1;
-succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
+succ, err, forcible = cache_request_history:set(remote_addr, cjson.encode(access));
 
 local fullpath = "nil";
 if nil ~= access['fullpath'] then
@@ -34,7 +34,7 @@ local port;
 local upstream_addr = "192.168.1.170";
 --local upstream_addr = "127.0.0.1";
 if access['times'] >= 3 then
-    shared_dict:delete(remote_addr);
+    cache_request_history:delete(remote_addr);
     port = "8081";
 else
     port = "8082";
