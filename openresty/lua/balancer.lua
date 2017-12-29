@@ -47,7 +47,7 @@ if not ok then
     return ngx.exit(500)
 end
 
-ngx.log(ngx.DEBUG, "***********************current peer ", port);
+ngx.log(ngx.DEBUG, "***********************current peer ", 'upstream_addr='..upstream_addr, ' port='..port);
 
 
 
