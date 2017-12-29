@@ -41,4 +41,4 @@ echo '';
 sudo nginx -c ${NGX_HOME}/conf/nginx.conf
 echo '';
 
-tail -f ${NGX_HOME}/logs/error.log ;
+tail -f /opt/logs/openresty_error.log ;
