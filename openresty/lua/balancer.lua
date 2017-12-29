@@ -17,7 +17,7 @@ local http_user_agent = ngx.var.http_user_agent;
 local access;
 local succ, err, forcible;
 if shared_dict:get(remote_addr) == nil then
-    access = {remote_addr=remote_addr, method='xu', times=0, upstream_addr=nil};
+    access = {remote_addr=remote_addr, method='xu', times=0, fullpath=nil};
     succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
 end
 
@@ -25,11 +25,10 @@ access = cjson.decode( shared_dict:get(remote_addr) );
 access['times'] = access['times'] + 1;
 succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
 
-local upstream_addr = "nil";
-if nil ~= access['upstream_addr'] then
-    upstream_addr = access['upstream_addr'];
+local fullpath = "nil";
+if nil ~= access['fullpath'] then
+    fullpath = access['fullpath'];
 end
---ngx.log(ngx.INFO, "***********************times="..access['times']..", upstream_addr="..upstream_addr);
 
 local port;
 local upstream_addr = "192.168.1.170";
@@ -48,8 +47,6 @@ if not ok then
 end
 
 ngx.log(ngx.DEBUG, "***********************current peer ", 'upstream_addr='..upstream_addr, ' port='..port);
-
-
 
 
 
