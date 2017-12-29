@@ -13,6 +13,15 @@ local remote_addr = ngx.var.remote_addr;
 local http_host = ngx.var.http_host;
 --
 local http_user_agent = ngx.var.http_user_agent;
+-- /docs/images/tomcat.png
+local request_uri = ngx.var.request_uri;
+
+
+local port;
+local upstream_addr = "192.168.1.170";
+if nil == string.find(request_uri, 'docs/') then
+  ;
+end
 
 local access;
 local succ, err, forcible;
@@ -30,8 +39,7 @@ if nil ~= access['fullpath'] then
     fullpath = access['fullpath'];
 end
 
-local port;
-local upstream_addr = "192.168.1.170";
+
 --local upstream_addr = "127.0.0.1";
 if access['times'] >= 3 then
     cache_request_history:delete(remote_addr);
@@ -46,7 +54,9 @@ if not ok then
     return ngx.exit(500)
 end
 
-ngx.log(ngx.DEBUG, "***********************current peer ", 'upstream_addr='..upstream_addr, ' port='..port);
 
+local t = ngx.var.server_addr..ngx.var.request_uri;
 
-
+--ngx.log(ngx.DEBUG, "***********************current 1 peer"..ngx.var.server_addr);
+--ngx.log(ngx.DEBUG, "***********************current 2 peer"..ngx.var.request_uri);
+ngx.log(ngx.DEBUG, "***********************current peer ", 'upstream_addr='..upstream_addr, ' port='..port..', var='..t);
