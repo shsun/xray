@@ -29,7 +29,7 @@ local upstream_addr = "nil";
 if nil ~= access['upstream_addr'] then
     upstream_addr = access['upstream_addr'];
 end
-ngx.log(ngx.INFO, "***********************times="..access['times']..", upstream_addr="..upstream_addr);
+--ngx.log(ngx.INFO, "***********************times="..access['times']..", upstream_addr="..upstream_addr);
 
 local port;
 local upstream_addr = "192.168.1.170";
@@ -46,8 +46,6 @@ if not ok then
     ngx.log(ngx.ERR, "***********************failed to set the current peer: ", err)
     return ngx.exit(500)
 end
-
-
 
 ngx.log(ngx.DEBUG, "***********************current peer ", port);
 
