@@ -11,20 +11,3 @@ if ngx.var.args ~= nil then
         return ngx.exec(ngx.var.uri, fixed_args);
     end
 end
-
-local upstream_addr_str = nil;
-if nil ~= ngx.var.upstream_addr then
-    upstream_addr_str = " from "..ngx.var.upstream_addr;
-else
-    upstream_addr_str = "";
-end
-
-local upstreams = {
-    "www.shsun8081.com:8081",
-    "www.shsun8082.com:8082"
-};
-
-local m = math.random( #upstreams );
---ngx.log(ngx.ERR, 'rewrite @@@@@@@@@@@@@@@@---m>>'..m);
---ngx.var.res = "127.0.0.1:8082";
---upstreams[ m ]

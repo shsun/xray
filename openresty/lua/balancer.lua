@@ -34,7 +34,7 @@ end
 local port;
 local upstream_addr = "192.168.1.170";
 --local upstream_addr = "127.0.0.1";
-if access['times'] >= 4 then
+if access['times'] >= 3 then
     shared_dict:delete(remote_addr);
     port = "8081";
 else
