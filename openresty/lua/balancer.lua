@@ -25,29 +25,31 @@ access = cjson.decode( shared_dict:get(remote_addr) );
 access['times'] = access['times'] + 1;
 succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
 
-
 local upstream_addr = "nil";
 if nil ~= access['upstream_addr'] then
     upstream_addr = access['upstream_addr'];
 end
 ngx.log(ngx.INFO, "***********************times="..access['times']..", upstream_addr="..upstream_addr);
 
-local backend = "";
-local ok, err;
+local port;
+local upstream_addr = "192.168.1.170";
+--local upstream_addr = "127.0.0.1";
 if access['times'] >= 4 then
     shared_dict:delete(remote_addr);
-    backend = "8081";
-    ok, err = balancer.set_current_peer("127.0.0.1", backend)
+    port = "8081";
 else
-    backend = "8081";
-    ok, err = balancer.set_current_peer("192.168.1.170", backend)
+    port = "8082";
 end
+local ok, err = balancer.set_current_peer(upstream_addr, port);
+
 if not ok then
     ngx.log(ngx.ERR, "***********************failed to set the current peer: ", err)
     return ngx.exit(500)
 end
 
-ngx.log(ngx.DEBUG, "***********************current peer ", backend);
+
+
+ngx.log(ngx.DEBUG, "***********************current peer ", port);
 
 
 
