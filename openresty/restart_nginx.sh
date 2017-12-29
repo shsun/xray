@@ -32,7 +32,7 @@ sleep 1;
 echo '';
 sudo cp -rfv conf/* ${NGX_HOME}/conf/;
 echo '';
-sudo cp -rfv ./lua/*.lua ${NGX_HOME}/
+sudo cp -rfv ./lua/* ${NGX_HOME}/
 echo '';
 
 
@@ -42,4 +42,3 @@ sudo nginx -c ${NGX_HOME}/conf/nginx.conf
 echo '';
 
 tail -f ${NGX_HOME}/logs/error.log ;
-
