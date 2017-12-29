@@ -17,7 +17,7 @@ local http_user_agent = ngx.var.http_user_agent;
 local access;
 local succ, err, forcible;
 if shared_dict:get(remote_addr) == nil then
-    access = {remote_addr=remote_addr, method='xu', times=1, upstream_addr=nil};
+    access = {remote_addr=remote_addr, method='xu', times=0, upstream_addr=nil};
     succ, err, forcible = shared_dict:set(remote_addr, cjson.encode(access));
 end
 
@@ -30,7 +30,7 @@ local upstream_addr = "nil";
 if nil ~= access['upstream_addr'] then
     upstream_addr = access['upstream_addr'];
 end
-ngx.log(ngx.INFO, "times="..access['times']..", upstream_addr="..upstream_addr);
+ngx.log(ngx.INFO, "***********************times="..access['times']..", upstream_addr="..upstream_addr);
 
 local backend = "";
 local ok, err;
@@ -46,12 +46,6 @@ if not ok then
     ngx.log(ngx.ERR, "***********************failed to set the current peer: ", err)
     return ngx.exit(500)
 end
-
-
-
-
-
-
 
 ngx.log(ngx.DEBUG, "***********************current peer ", backend);
 
