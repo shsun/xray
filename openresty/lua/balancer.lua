@@ -18,7 +18,7 @@ local request_uri = ngx.var.request_uri;
 
 
 local port;
-local upstream_addr = "192.168.1.170";
+local upstream_addr = "192.168.1.100";
 if nil == string.find(request_uri, 'docs/') then
   ;
 end
