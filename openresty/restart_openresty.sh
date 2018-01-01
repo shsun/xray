@@ -17,6 +17,7 @@ clear;
 
 NGX_HOME=${OPENRESTY_PREFIX}/nginx;
 #NGX_HOME=/usr/local/openresty/nginx;
+export PATH=${PATH}:${NGX_HOME}/bin;
 
 
 nginx -s quit;
