@@ -19,8 +19,8 @@ NGX_HOME=${OPENRESTY_PREFIX}/nginx;
 #NGX_HOME=/usr/local/openresty/nginx;
 
 
-sudo nginx -s quit;
-sudo nginx -s stop;
+nginx -s quit;
+nginx -s stop;
 sleep 1;
 
 sudo test -d /opt/openresty/ || mkdir -p /opt/openresty;
@@ -34,7 +34,7 @@ echo '';
 
 #sleep 1;
 
-sudo nginx -c /opt/openresty/nginx.conf
+nginx -c /opt/openresty/nginx.conf
 echo '';
 
 tail -f /opt/openresty/error.log ;
