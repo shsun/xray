@@ -13,32 +13,28 @@ if [ -n "$pid" ]
         else
 				echo "starting.............................................."
 fi
-
-
 clear;
 
-#bash /Users/shsun/Downloads/apache-tomcat-7.0.82/bin/catalina.sh start;
-#tail -f /Users/shsun/Downloads/apache-tomcat-7.0.82/logs/catalina.out;
-
-#/usr/local/Cellar/openresty/1.13.6.1/nginx/
-#NGX_HOME=${OPENRESTY_PREFIX}/nginx;
-NGX_HOME=/usr/local/openresty/nginx;
+NGX_HOME=${OPENRESTY_PREFIX}/nginx;
+#NGX_HOME=/usr/local/openresty/nginx;
 
 
 sudo nginx -s quit;
 sudo nginx -s stop;
 sleep 1;
 
+sudo test -d /opt/openresty/ || mkdir -p /opt/openresty;
+
 echo '';
-sudo cp -rfv conf/* ${NGX_HOME}/conf/;
+sudo cp -rfv conf/* /opt/openresty/;
 echo '';
-sudo cp -rfv ./lua/* ${NGX_HOME}/
+sudo cp -rfv ./lua/* /opt/openresty/
 echo '';
 
 
 #sleep 1;
 
-sudo nginx -c ${NGX_HOME}/conf/nginx.conf
+sudo nginx -c /opt/openresty/nginx.conf
 echo '';
 
-tail -f /opt/logs/openresty_error.log ;
+tail -f /opt/openresty/error.log ;
