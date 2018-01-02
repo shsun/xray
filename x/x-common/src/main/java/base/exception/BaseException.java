@@ -1,4 +1,4 @@
-package org.ibase4j.core.exception;
+package base.exception;
 
 import org.apache.commons.lang3.StringUtils;
 import org.ibase4j.core.support.HttpCode;
@@ -22,14 +22,11 @@ public abstract class BaseException extends RuntimeException {
         super(message, ex);
     }
 
-    public void handler(ModelMap modelMap) {
-        modelMap.put("httpCode", getHttpCode().value());
-        if (StringUtils.isNotBlank(getMessage())) {
-            modelMap.put("msg", getMessage());
-        } else {
-            modelMap.put("msg", getHttpCode().msg());
-        }
-        modelMap.put("timestamp", System.currentTimeMillis());
+    public void handler(ModelMap map) {
+        String msg = StringUtils.isNotBlank(getMessage()) ? getMessage() : getHttpCode().msg();
+        map.put("httpCode", getHttpCode().value());
+        map.put("msg", msg);
+        map.put("timestamp", System.currentTimeMillis());
     }
 
     protected abstract HttpCode getHttpCode();

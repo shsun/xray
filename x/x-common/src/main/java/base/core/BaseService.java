@@ -217,18 +217,19 @@ public abstract class BaseService<T extends BaseModel> implements ApplicationCon
     @Transactional
     @SuppressWarnings("unchecked")
     public T queryById(Long id) {
+        T record = null;
         try {
             String key = getCacheKey(id);
-            T record = (T) CacheUtil.getCache().get(key);
+            record = (T) CacheUtil.getCache().get(key);
             if (record == null) {
                 record = mapper.selectById(id);
                 CacheUtil.getCache().set(key, record);
             }
-            return record;
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             throw new RuntimeException(e.getMessage(), e);
         }
+        return record;
     }
 
     public Page<T> query(Map<String, Object> params) {

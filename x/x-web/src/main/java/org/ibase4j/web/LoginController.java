@@ -7,7 +7,7 @@ import org.apache.shiro.SecurityUtils;
 import base.core.AbstractMSAController;
 import base.core.Parameter;
 import org.ibase4j.core.config.Resources;
-import org.ibase4j.core.exception.LoginException;
+import base.exception.LoginException;
 import org.ibase4j.core.support.Assert;
 import org.ibase4j.core.support.HttpCode;
 import org.ibase4j.core.support.login.LoginHelper;

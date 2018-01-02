@@ -26,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.ibase4j.core.exception.DataParseException;
+import base.exception.DataParseException;
 
 public final class InstanceUtil {
     private InstanceUtil() {

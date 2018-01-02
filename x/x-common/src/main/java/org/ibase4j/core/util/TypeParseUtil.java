@@ -10,7 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import org.ibase4j.core.exception.DataParseException;
+import base.exception.DataParseException;
 import org.ibase4j.core.support.IDataType;
 
 /**

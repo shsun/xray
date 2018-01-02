@@ -12,8 +12,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.ibase4j.core.IConstants;
-import org.ibase4j.core.exception.BaseException;
-import org.ibase4j.core.exception.IllegalParameterException;
+import base.exception.BaseException;
+import base.exception.IllegalParameterException;
 import org.ibase4j.core.support.HttpCode;
 import org.ibase4j.core.util.InstanceUtil;
 import org.ibase4j.core.util.WebUtil;
@@ -99,6 +99,8 @@ public abstract class BaseController {
     @ExceptionHandler(Exception.class)
     public void exceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception exception) throws Exception {
         logger.error(IConstants.EXCEPTION_HEAD, exception);
+        response.setContentType("application/json;charset=UTF-8");
+
         ModelMap tmp = new ModelMap();
         if (exception instanceof BaseException) {
             ((BaseException) exception).handler(tmp);
@@ -108,11 +110,10 @@ public abstract class BaseController {
             tmp.put("httpCode", HttpCode.FORBIDDEN.value());
             tmp.put("msg", StringUtils.defaultIfBlank(exception.getMessage(), HttpCode.FORBIDDEN.msg()));
         } else {
-            tmp.put("httpCode", HttpCode.INTERNAL_SERVER_ERROR.value());
             String msg = StringUtils.defaultIfBlank(exception.getMessage(), HttpCode.INTERNAL_SERVER_ERROR.msg());
+            tmp.put("httpCode", HttpCode.INTERNAL_SERVER_ERROR.value());
             tmp.put("msg", msg.length() > 100 ? "系统走神了,请稍候再试." : msg);
         }
-        response.setContentType("application/json;charset=UTF-8");
         tmp.put("timestamp", System.currentTimeMillis());
         logger.info(JSON.toJSON(tmp));
 

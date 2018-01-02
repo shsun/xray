@@ -23,11 +23,13 @@ public class CoreTask {
      */
     @Scheduled(cron = "0 0/1 * * * *")
     public void ticktock() {
+        /*
         logger.info("ticktock");
 
         TaskFireLog log = taskFireLogService.selectById(1L);
 
         System.err.println("done---->>" + log.toString());
+        */
 
     }
 }

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import base.core.AbstractMSAController;
 import base.core.Parameter;
-import org.ibase4j.core.exception.IllegalParameterException;
+import base.exception.IllegalParameterException;
 import org.ibase4j.core.util.WebUtil;
 import org.ibase4j.model.SysRoleMenu;
 import org.ibase4j.model.SysUserMenu;

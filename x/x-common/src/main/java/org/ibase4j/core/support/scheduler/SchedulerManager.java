@@ -6,7 +6,7 @@ import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.exception.BusinessException;
+import base.exception.BusinessException;
 import org.ibase4j.core.support.scheduler.TaskScheduled.JobType;
 import org.ibase4j.core.support.scheduler.TaskScheduled.TaskType;
 import org.ibase4j.core.support.scheduler.job.BaseJob;

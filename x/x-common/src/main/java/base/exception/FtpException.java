@@ -1,4 +1,4 @@
-package org.ibase4j.core.exception;
+package base.exception;
 
 /**
  * FTP异常
