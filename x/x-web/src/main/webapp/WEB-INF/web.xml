@@ -75,7 +75,7 @@
 	<!-- TODO
 	<filter>
 		<filter-name>csrfFilter</filter-name>
-		<filter-class>org.ibase4j.core.filter.CsrfFilter</filter-class>
+		<filter-class>base.filter.CsrfFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>csrfFilter</filter-name>
@@ -83,7 +83,7 @@
 	</filter-mapping>
 	<filter>
 		<filter-name>xssFilter</filter-name>
-		<filter-class>org.ibase4j.core.filter.XssFilter</filter-class>
+		<filter-class>base.filter.XssFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>xssFilter</filter-name>

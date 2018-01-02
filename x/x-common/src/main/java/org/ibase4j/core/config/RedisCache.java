@@ -1,5 +1,6 @@
 package org.ibase4j.core.config;
 
+import base.utils.SerializableUtils;
 import org.springframework.cache.Cache;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;

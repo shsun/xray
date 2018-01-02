@@ -1,4 +1,4 @@
-package org.ibase4j.core.filter;
+package base.filter;
 
 import java.io.BufferedReader;
 import java.io.File;

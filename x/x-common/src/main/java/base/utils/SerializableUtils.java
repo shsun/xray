@@ -1,4 +1,4 @@
-package org.ibase4j.core.config;
+package base.utils;
 
 import java.io.*;
 import java.util.ArrayList;
