@@ -1,10 +1,10 @@
-package org.ibase4j.core.interceptor;
+package base.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.ibase4j.core.IConstants;
+import base.IConstants;
 import org.ibase4j.core.support.HttpCode;
 
 /**

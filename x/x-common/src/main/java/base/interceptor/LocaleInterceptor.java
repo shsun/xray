@@ -1,4 +1,4 @@
-package org.ibase4j.core.interceptor;
+package base.interceptor;
 
 import java.util.Locale;
 

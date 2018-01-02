@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authz.UnauthorizedException;
-import org.ibase4j.core.IConstants;
+import base.IConstants;
 import base.exception.BaseException;
 import base.exception.IllegalParameterException;
 import org.ibase4j.core.support.HttpCode;

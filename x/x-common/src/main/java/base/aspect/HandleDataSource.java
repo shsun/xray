@@ -1,4 +1,4 @@
-package org.ibase4j.core.aspect;
+package base.aspect;
 
 public class HandleDataSource {
     /**

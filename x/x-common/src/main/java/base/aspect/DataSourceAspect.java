@@ -1,4 +1,4 @@
-package org.ibase4j.core.aspect;
+package base.aspect;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;

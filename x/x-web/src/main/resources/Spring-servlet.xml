@@ -44,13 +44,13 @@
 			<mvc:exclude-mapping path="/swagger**" />
 			<mvc:exclude-mapping path="/webjars/**" />
 			<mvc:exclude-mapping path="/configuration/**" />
-			<bean class="org.ibase4j.core.interceptor.MaliciousRequestInterceptor">
+			<bean class="base.interceptor.MaliciousRequestInterceptor">
 				<property name="minRequestIntervalTime" value="500" />
 				<property name="maxMaliciousTimes" value="0" />
 				<property name="nextInterceptor">
 					<array>
-						<bean class="org.ibase4j.core.interceptor.LocaleInterceptor" />
-						<bean class="org.ibase4j.core.interceptor.EventInterceptor" />
+						<bean class="base.interceptor.LocaleInterceptor" />
+						<bean class="base.interceptor.EventInterceptor" />
 					</array>
 				</property>
 			</bean>

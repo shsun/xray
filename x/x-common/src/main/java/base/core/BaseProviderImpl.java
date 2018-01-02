@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.IConstants;
+import base.IConstants;
 import base.exception.BusinessException;
 import org.ibase4j.core.util.ExceptionUtil;
 import org.springframework.beans.BeansException;

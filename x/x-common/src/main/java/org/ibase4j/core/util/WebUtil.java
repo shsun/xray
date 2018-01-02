@@ -15,7 +15,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.InvalidSessionException;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.ibase4j.core.IConstants;
+import base.IConstants;
 import org.springframework.web.util.WebUtils;
 
 public final class WebUtil {

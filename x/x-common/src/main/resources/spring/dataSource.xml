@@ -78,7 +78,7 @@
 	</bean>
 
 
-	<bean id="dataSource" class="org.ibase4j.core.aspect.ChooseDataSource" lazy-init="true">
+	<bean id="dataSource" class="base.aspect.ChooseDataSource" lazy-init="true">
 		<description>数据源</description>
 		<property name="targetDataSources">
 			<map key-type="java.lang.String" value-type="javax.sql.DataSource">
@@ -101,7 +101,7 @@
 
 
 	<!-- 切面 -->
-	<bean class="org.ibase4j.core.aspect.DataSourceAspect" />
+	<bean class="base.aspect.DataSourceAspect" />
 
 
 	<!--  -->

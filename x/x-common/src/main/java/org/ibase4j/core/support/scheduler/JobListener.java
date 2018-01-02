@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.IConstants.IJOBSTATE;
+import base.IConstants.IJOBSTATE;
 import org.ibase4j.core.support.email.Email;
 import org.ibase4j.core.support.mq.QueueSender;
 import org.ibase4j.core.util.EmailUtil;

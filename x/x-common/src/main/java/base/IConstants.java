@@ -1,4 +1,4 @@
-package org.ibase4j.core;
+package base;
 
 public interface IConstants {
     /**

@@ -1,4 +1,4 @@
-package org.ibase4j.core.interceptor;
+package base.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
