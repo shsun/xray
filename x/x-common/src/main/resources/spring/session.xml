@@ -16,7 +16,7 @@
 	<bean class="org.springframework.session.config.annotation.web.http.SpringHttpSessionConfiguration">
 		<property name="httpSessionListeners">
 			<list>
-				<bean class="org.ibase4j.core.listener.SessionListener" />
+				<bean class="base.listener.XSessionListenerr" />
 			</list>
 		</property>
 	</bean>

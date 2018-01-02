@@ -2,9 +2,9 @@ package org.ibase4j.web;
 
 import java.util.Map;
 
+import base.listener.XSessionListener;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import base.core.AbstractMSAController;
-import org.ibase4j.core.listener.SessionListener;
 import org.ibase4j.model.SysSession;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
@@ -34,7 +34,7 @@ public class SysSessionController extends AbstractMSAController<ISysProvider> {
     @PutMapping(value = "/read/list")
     @RequiresPermissions("sys.base.session.read")
     public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
-        Integer number = SessionListener.getAllUserNumber();
+        Integer number = XSessionListener.getAllUserNumber();
         map.put("userNumber", number); // 用户数大于会话数,有用户没有登录
         return super.query(request, response, map, param);
     }

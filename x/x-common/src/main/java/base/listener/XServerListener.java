@@ -1,4 +1,4 @@
-package org.ibase4j.core.listener;
+package base.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -6,7 +6,7 @@ import javax.servlet.ServletContextListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class ServerListener implements ServletContextListener {
+public class XServerListener implements ServletContextListener {
 
     protected final Logger logger = LogManager.getLogger(this.getClass());
 

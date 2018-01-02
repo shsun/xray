@@ -1,4 +1,4 @@
-package org.ibase4j.core.listener;
+package base.listener;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
@@ -9,8 +9,8 @@ import org.apache.logging.log4j.Logger;
 import base.IConstants;
 import org.ibase4j.core.util.CacheUtil;
 
-public class SessionListener implements HttpSessionListener {
-    private Logger logger = LogManager.getLogger(SessionListener.class);
+public class XSessionListener implements HttpSessionListener {
+    private Logger logger = LogManager.getLogger(XSessionListener.class);
 
     @Override
     public void sessionCreated(HttpSessionEvent event) {
