@@ -3,8 +3,8 @@ package org.ibase4j.service;
 import java.util.List;
 import java.util.Map;
 
-import org.ibase4j.core.base.BaseModel;
-import org.ibase4j.core.base.BaseService;
+import base.core.BaseModel;
+import base.core.BaseService;
 import org.ibase4j.core.util.InstanceUtil;
 import org.ibase4j.mapper.SysMenuMapper;
 import org.ibase4j.model.SysMenu;

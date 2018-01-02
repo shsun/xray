@@ -1,4 +1,4 @@
-package org.ibase4j.core.base;
+package base.core;
 
 public interface IBaseProvider {
     Parameter execute(Parameter parameter);

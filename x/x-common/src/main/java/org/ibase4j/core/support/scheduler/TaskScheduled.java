@@ -2,7 +2,7 @@ package org.ibase4j.core.support.scheduler;
 
 import java.util.Date;
 
-import org.ibase4j.core.base.BaseModel;
+import base.core.BaseModel;
 
 /**
  * 计划任务信息

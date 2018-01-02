@@ -2,7 +2,7 @@ package org.ibase4j.model;
 
 import java.util.List;
 
-import org.ibase4j.core.base.BaseModel;
+import base.core.BaseModel;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;

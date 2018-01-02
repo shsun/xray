@@ -3,7 +3,7 @@ package org.ibase4j.model;
 import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
-import org.ibase4j.core.base.BaseModel;
+import base.core.BaseModel;
 import org.ibase4j.core.util.PinyinUtil;
 
 import com.baomidou.mybatisplus.annotations.TableField;

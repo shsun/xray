@@ -1,6 +1,6 @@
 package org.ibase4j.model;
 
-import org.ibase4j.core.base.BaseModel;
+import base.core.BaseModel;
 
 import com.baomidou.mybatisplus.annotations.TableName;
 

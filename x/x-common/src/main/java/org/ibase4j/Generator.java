@@ -58,17 +58,17 @@ public class Generator {
         // 字段名生成策略
         strategy.setFieldNaming(NamingStrategy.underline_to_camel);
         // 自定义实体父类
-        strategy.setSuperEntityClass("org.ibase4j.core.base.BaseModel");
+        strategy.setSuperEntityClass("base.core.BaseModel");
         // 自定义实体，公共字段
         strategy.setSuperEntityColumns(new String[] { "id_", "enable_", "remark_", "create_by", "create_time", "update_by", "update_time" });
         // 自定义 mapper 父类
-        strategy.setSuperMapperClass("org.ibase4j.core.base.IBaseMapper");
+        strategy.setSuperMapperClass("base.core.IBaseMapper");
         // 自定义 service 父类
-        strategy.setSuperServiceClass("org.ibase4j.core.base.BaseService");
+        strategy.setSuperServiceClass("base.core.BaseService");
         // 自定义 service 实现类父类
-        // strategy.setSuperServiceImplClass("org.ibase4j.core.base.BaseService");
+        // strategy.setSuperServiceImplClass("base.core.BaseService");
         // 自定义 controller 父类
-        strategy.setSuperControllerClass("org.ibase4j.core.base.AbstractController");
+        strategy.setSuperControllerClass("base.core.AbstractController");
         // 【实体】是否生成字段常量（默认 false）
         // public static final String ID = "test_id";
         // strategy.setEntityColumnConstant(true);

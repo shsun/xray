@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
-import org.ibase4j.core.base.AbstractController;
-import org.ibase4j.core.base.Parameter;
+import base.core.AbstractController;
+import base.core.Parameter;
 import org.ibase4j.core.config.Resources;
 import org.ibase4j.core.exception.LoginException;
 import org.ibase4j.core.support.Assert;

@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
-import org.ibase4j.core.base.AbstractController;
-import org.ibase4j.core.base.Parameter;
+import base.core.AbstractController;
+import base.core.Parameter;
 import org.ibase4j.core.config.Resources;
 import org.ibase4j.core.support.login.LoginHelper;
 import org.ibase4j.core.support.login.ThirdPartyLoginHelper;

@@ -3,7 +3,7 @@ package org.ibase4j.web;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.ibase4j.core.base.AbstractController;
+import base.core.AbstractController;
 import org.ibase4j.model.SysNotice;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;

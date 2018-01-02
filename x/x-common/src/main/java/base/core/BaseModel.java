@@ -1,4 +1,4 @@
-package org.ibase4j.core.base;
+package base.core;
 
 import java.io.Serializable;
 import java.util.Date;

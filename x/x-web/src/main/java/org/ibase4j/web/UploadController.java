@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import base.utils.HttpServletRequestUtils;
-import org.ibase4j.core.base.BaseController;
+import base.core.BaseController;
 import org.ibase4j.core.support.HttpCode;
 import org.ibase4j.core.support.decoder.BASE64Decoder;
 import org.ibase4j.core.util.InstanceUtil;

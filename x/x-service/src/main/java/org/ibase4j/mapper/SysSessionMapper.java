@@ -2,7 +2,7 @@ package org.ibase4j.mapper;
 
 import java.util.List;
 
-import org.ibase4j.core.base.IBaseMapper;
+import base.core.IBaseMapper;
 import org.ibase4j.model.SysSession;
 
 public interface SysSessionMapper extends IBaseMapper<SysSession> {

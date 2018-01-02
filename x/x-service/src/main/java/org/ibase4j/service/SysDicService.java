@@ -3,7 +3,7 @@ package org.ibase4j.service;
 import java.util.List;
 import java.util.Map;
 
-import org.ibase4j.core.base.BaseService;
+import base.core.BaseService;
 import org.ibase4j.core.util.InstanceUtil;
 import org.ibase4j.model.SysDic;
 import org.springframework.cache.annotation.CacheConfig;

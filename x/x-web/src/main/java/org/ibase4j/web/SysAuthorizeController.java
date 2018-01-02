@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.ibase4j.core.base.AbstractController;
-import org.ibase4j.core.base.Parameter;
+import base.core.AbstractController;
+import base.core.Parameter;
 import org.ibase4j.core.exception.IllegalParameterException;
 import org.ibase4j.core.util.WebUtil;
 import org.ibase4j.model.SysRoleMenu;

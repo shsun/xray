@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.ibase4j.core.base.AbstractController;
-import org.ibase4j.core.base.Parameter;
+import base.core.AbstractController;
+import base.core.Parameter;
 import org.ibase4j.model.SysMenu;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;

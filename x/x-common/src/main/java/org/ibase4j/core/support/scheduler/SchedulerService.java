@@ -3,7 +3,7 @@ package org.ibase4j.core.support.scheduler;
 import java.util.List;
 import java.util.Map;
 
-import org.ibase4j.core.base.BaseService;
+import base.core.BaseService;
 import org.ibase4j.core.util.InstanceUtil;
 import org.ibase4j.mapper.TaskFireLogMapper;
 import org.ibase4j.model.TaskFireLog;

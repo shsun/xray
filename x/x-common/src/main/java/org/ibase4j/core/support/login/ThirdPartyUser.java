@@ -3,7 +3,7 @@
  */
 package org.ibase4j.core.support.login;
 
-import org.ibase4j.core.base.BaseModel;
+import base.core.BaseModel;
 
 /**
  *

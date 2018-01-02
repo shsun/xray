@@ -2,7 +2,7 @@ package org.ibase4j.service;
 
 import java.util.Map;
 
-import org.ibase4j.core.base.BaseService;
+import base.core.BaseService;
 import org.ibase4j.model.SysEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
