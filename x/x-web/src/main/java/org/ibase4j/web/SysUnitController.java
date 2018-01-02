@@ -3,7 +3,7 @@ package org.ibase4j.web;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import base.core.AbstractController;
+import base.core.AbstractMSAController;
 import org.ibase4j.model.SysUnit;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "单位管理", description = "单位管理")
 @RequestMapping(value = "unit")
-public class SysUnitController extends AbstractController<ISysProvider> {
+public class SysUnitController extends AbstractMSAController<ISysProvider> {
 	public String getService() {
 		return "sysUnitService";
 	}

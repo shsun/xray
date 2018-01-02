@@ -13,7 +13,7 @@ import org.springframework.ui.ModelMap;
 
 import com.baomidou.mybatisplus.plugins.Page;
 
-public abstract class AbstractController<T extends IBaseProvider> extends BaseController {
+public abstract class AbstractMSAController<T extends IBaseProvider> extends BaseController {
     protected final Logger logger = LogManager.getLogger(this.getClass());
 
     @Autowired

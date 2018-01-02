@@ -3,7 +3,7 @@ package org.ibase4j.web;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import base.core.AbstractController;
+import base.core.AbstractMSAController;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "系统日志", description = "系统日志")
 @RequestMapping(value = "event")
-public class SysEventController extends AbstractController<ISysProvider> {
+public class SysEventController extends AbstractMSAController<ISysProvider> {
 	public String getService() {
 		return "sysEventService";
 	}

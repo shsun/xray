@@ -2,8 +2,8 @@ package org.ibase4j.web;
 
 import java.util.Map;
 
+import base.core.AbstractMSAController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import base.core.AbstractController;
 import org.ibase4j.model.SysNews;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "新闻管理", description = "新闻管理")
 @RequestMapping(value = "news")
-public class SysNewsController extends AbstractController<ISysProvider> {
+public class SysNewsController extends AbstractMSAController<ISysProvider> {
 	public String getService() {
 		return "sysNewsService";
 	}

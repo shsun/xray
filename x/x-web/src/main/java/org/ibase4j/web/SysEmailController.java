@@ -2,8 +2,8 @@ package org.ibase4j.web;
 
 import java.util.Map;
 
+import base.core.AbstractMSAController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import base.core.AbstractController;
 import org.ibase4j.model.SysEmail;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "邮件管理", description = "邮件管理")
 @RequestMapping(value = "email")
-public class SysEmailController extends AbstractController<ISysProvider> {
+public class SysEmailController extends AbstractMSAController<ISysProvider> {
 
     public String getService() {
         return "sysEmailService";

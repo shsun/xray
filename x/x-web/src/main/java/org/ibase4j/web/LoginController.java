@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
-import base.core.AbstractController;
+import base.core.AbstractMSAController;
 import base.core.Parameter;
 import org.ibase4j.core.config.Resources;
 import org.ibase4j.core.exception.LoginException;
@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiParam;
 
 @RestController
 @Api(value = "登录接口", description = "登录接口")
-public class LoginController extends AbstractController<ISysProvider> {
+public class LoginController extends AbstractMSAController<ISysProvider> {
 
     public String getService() {
         return "sysUserService";

@@ -3,7 +3,7 @@ package org.ibase4j.web;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import base.core.AbstractController;
+import base.core.AbstractMSAController;
 import org.ibase4j.model.SysDic;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "字典管理", description = "字典管理")
 @RequestMapping(value = "/dic")
-public class SysDicController extends AbstractController<ISysProvider> {
+public class SysDicController extends AbstractMSAController<ISysProvider> {
 
     public String getService() {
         return "sysDicService";

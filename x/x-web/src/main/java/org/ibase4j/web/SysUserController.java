@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.UnauthorizedException;
-import base.core.AbstractController;
+import base.core.AbstractMSAController;
 import base.core.Parameter;
 import org.ibase4j.core.support.Assert;
 import org.ibase4j.core.support.HttpCode;
@@ -32,7 +32,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @Api(value = "用户管理", description = "用户管理")
 @RequestMapping(value = "/user")
-public class SysUserController extends AbstractController<ISysProvider> {
+public class SysUserController extends AbstractMSAController<ISysProvider> {
 
     public String getService() {
         return "sysUserService";

@@ -2,8 +2,8 @@ package org.ibase4j.web;
 
 import java.util.Map;
 
+import base.core.AbstractMSAController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import base.core.AbstractController;
 import org.ibase4j.model.SysDept;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "部门管理", description = "部门管理")
 @RequestMapping(value = "dept")
-public class SysDeptController extends AbstractController<ISysProvider> {
+public class SysDeptController extends AbstractMSAController<ISysProvider> {
     public String getService() {
         return "sysDeptService";
     }

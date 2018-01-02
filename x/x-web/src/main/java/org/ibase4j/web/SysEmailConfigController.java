@@ -3,7 +3,7 @@ package org.ibase4j.web;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import base.core.AbstractController;
+import base.core.AbstractMSAController;
 import base.core.Parameter;
 import org.ibase4j.core.util.DataUtil;
 import org.ibase4j.core.util.SecurityUtil;
@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "邮件配置管理", description = "邮件配置管理")
 @RequestMapping(value = "emailConfig")
-public class SysEmailConfigController extends AbstractController<ISysProvider> {
+public class SysEmailConfigController extends AbstractMSAController<ISysProvider> {
 
 	public String getService() {
 		return "sysEmailConfigService";

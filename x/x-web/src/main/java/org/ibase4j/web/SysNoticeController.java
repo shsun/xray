@@ -2,8 +2,8 @@ package org.ibase4j.web;
 
 import java.util.Map;
 
+import base.core.AbstractMSAController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import base.core.AbstractController;
 import org.ibase4j.model.SysNotice;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "通知管理", description = "通知管理")
 @RequestMapping(value = "notice")
-public class SysNoticeController extends AbstractController<ISysProvider> {
+public class SysNoticeController extends AbstractMSAController<ISysProvider> {
     public String getService() {
         return "sysNoticeService";
     }

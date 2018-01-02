@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import base.core.AbstractController;
+import base.core.AbstractMSAController;
 import base.core.Parameter;
 import org.ibase4j.core.support.Assert;
 import org.ibase4j.core.support.scheduler.TaskScheduled;
@@ -35,7 +35,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "调度管理", description = "调度管理")
 @RequestMapping(value = "/scheduled")
-public class ScheduledController extends AbstractController<ISysProvider> {
+public class ScheduledController extends AbstractMSAController<ISysProvider> {
 	public String getService() {
 		return "scheduledService";
 	}

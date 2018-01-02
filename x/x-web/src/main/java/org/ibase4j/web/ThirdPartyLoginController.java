@@ -6,8 +6,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import base.core.AbstractMSAController;
 import org.apache.commons.lang3.StringUtils;
-import base.core.AbstractController;
 import base.core.Parameter;
 import org.ibase4j.core.config.Resources;
 import org.ibase4j.core.support.login.LoginHelper;
@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Controller
 @Api(value = "第三方登录接口", description = "第三方登录接口")
-public class ThirdPartyLoginController extends AbstractController<ISysProvider> {
+public class ThirdPartyLoginController extends AbstractMSAController<ISysProvider> {
     public String getService() {
         return "sysUserService";
     }
