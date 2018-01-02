@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.ibase4j.core.support.scheduler.job;
+package org.ibase4j.core.support.scheduler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

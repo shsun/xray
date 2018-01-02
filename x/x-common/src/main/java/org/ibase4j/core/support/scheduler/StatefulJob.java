@@ -1,4 +1,4 @@
-package org.ibase4j.core.support.scheduler.job;
+package org.ibase4j.core.support.scheduler;
 
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;

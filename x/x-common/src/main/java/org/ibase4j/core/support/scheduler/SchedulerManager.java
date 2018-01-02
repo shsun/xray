@@ -9,8 +9,6 @@ import org.apache.logging.log4j.Logger;
 import base.exception.BusinessException;
 import org.ibase4j.core.support.scheduler.TaskScheduled.JobType;
 import org.ibase4j.core.support.scheduler.TaskScheduled.TaskType;
-import org.ibase4j.core.support.scheduler.job.BaseJob;
-import org.ibase4j.core.support.scheduler.job.StatefulJob;
 import org.ibase4j.core.util.DataUtil;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
