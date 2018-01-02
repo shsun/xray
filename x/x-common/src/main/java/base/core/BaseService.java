@@ -7,7 +7,7 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import base.IConstants;
-import org.ibase4j.core.util.CacheUtil;
+import org.ibase4j.CacheUtil;
 import base.utils.DataUtil;
 import base.utils.InstanceUtil;
 import org.springframework.beans.factory.annotation.Autowired;

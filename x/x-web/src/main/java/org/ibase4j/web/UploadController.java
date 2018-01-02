@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import base.utils.HttpServletRequestUtils;
 import base.core.BaseController;
-import org.ibase4j.core.support.HttpCode;
+import base.HttpCode;
 import base.decoder.BASE64Decoder;
 import base.utils.InstanceUtil;
 import base.utils.UploadUtil;

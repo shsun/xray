@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSessionListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import base.IConstants;
-import org.ibase4j.core.util.CacheUtil;
+import org.ibase4j.CacheUtil;
 
 public class XSessionListener implements HttpSessionListener {
     private Logger logger = LogManager.getLogger(XSessionListener.class);

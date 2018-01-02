@@ -2,12 +2,12 @@ package base.utils;
 
 import java.util.Map;
 
-import org.ibase4j.core.support.security.BASE64Encoder;
-import org.ibase4j.core.support.security.coder.DESCoder;
-import org.ibase4j.core.support.security.coder.HmacCoder;
-import org.ibase4j.core.support.security.coder.MDCoder;
-import org.ibase4j.core.support.security.coder.RSACoder;
-import org.ibase4j.core.support.security.coder.SHACoder;
+import base.security.BASE64Encoder;
+import base.security.coder.DESCoder;
+import base.security.coder.HmacCoder;
+import base.security.coder.MDCoder;
+import base.security.coder.RSACoder;
+import base.security.coder.SHACoder;
 
 /**
  * 数据加密辅助类(默认编码UTF-8)

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import base.core.BaseService;
-import org.ibase4j.core.util.CacheUtil;
+import org.ibase4j.CacheUtil;
 import base.utils.InstanceUtil;
 import base.utils.PropertiesUtil;
 import org.ibase4j.mapper.SysSessionMapper;

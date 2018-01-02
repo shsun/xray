@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import base.core.BaseController;
-import org.ibase4j.core.support.HttpCode;
+import base.HttpCode;
 import org.ibase4j.model.TaskFireLog;
 import org.ibase4j.service.TaskFireLogService;
 import org.springframework.beans.factory.annotation.Autowired;

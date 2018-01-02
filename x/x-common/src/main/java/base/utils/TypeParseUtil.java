@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import base.exception.DataParseException;
-import org.ibase4j.core.support.IDataType;
+import base.IDataType;
 
 /**
  * 类型转换辅助工具类

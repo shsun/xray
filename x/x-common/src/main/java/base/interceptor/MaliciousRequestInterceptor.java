@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import base.IConstants;
-import org.ibase4j.core.support.HttpCode;
+import base.HttpCode;
 
 /**
  * 恶意请求拦截器

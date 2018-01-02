@@ -14,7 +14,7 @@ import org.apache.shiro.authz.UnauthorizedException;
 import base.IConstants;
 import base.exception.BaseException;
 import base.exception.IllegalParameterException;
-import org.ibase4j.core.support.HttpCode;
+import base.HttpCode;
 import base.utils.InstanceUtil;
 import base.utils.WebUtil;
 import org.springframework.http.ResponseEntity;

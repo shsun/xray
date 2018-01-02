@@ -1,7 +1,7 @@
 package base.exception;
 
 import org.apache.commons.lang3.StringUtils;
-import org.ibase4j.core.support.HttpCode;
+import base.HttpCode;
 import org.springframework.ui.ModelMap;
 
 @SuppressWarnings("serial")

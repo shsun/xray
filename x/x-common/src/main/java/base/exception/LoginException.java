@@ -1,6 +1,6 @@
 package base.exception;
 
-import org.ibase4j.core.support.HttpCode;
+import base.HttpCode;
 
 @SuppressWarnings("serial")
 public class LoginException extends BaseException {

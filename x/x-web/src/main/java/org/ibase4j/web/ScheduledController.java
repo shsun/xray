@@ -9,7 +9,7 @@ import java.util.Map;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import base.core.AbstractMSAController;
 import base.core.Parameter;
-import org.ibase4j.core.support.Assert;
+import base.Assert;
 import base.scheduler.TaskScheduled;
 import base.scheduler.TaskScheduled.TaskType;
 import org.ibase4j.provider.ISysProvider;
