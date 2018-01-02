@@ -3,6 +3,7 @@ package base.core;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.enums.IdType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -13,6 +14,12 @@ public abstract class TopModel implements Serializable {
 
     @TableId(value = "id_", type = IdType.ID_WORKER)
     private Long id;
+
+    @TableField(value = "enable_", exist = true)
+    private Integer enable;
+
+    @TableField(value = "remark_", exist = true)
+    private String remark;
 
     private Long createBy;
     private Date createTime;
@@ -35,6 +42,34 @@ public abstract class TopModel implements Serializable {
      */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    /**
+     * @return the enable
+     */
+    public Integer getEnable() {
+        return enable;
+    }
+
+    /**
+     * @return the remark
+     */
+    public String getRemark() {
+        return remark;
+    }
+
+    /**
+     * @param remark the remark to set
+     */
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+
+    /**
+     * @param enable the enable to set
+     */
+    public void setEnable(Integer enable) {
+        this.enable = enable;
     }
 
     /**

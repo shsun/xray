@@ -3,16 +3,12 @@ package org.ibase4j.model;
 import java.util.Date;
 
 import base.core.BaseModel;
-import base.core.TopModel;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 
 @TableName("task_fire_log")
 @SuppressWarnings("serial")
 public class TaskFireLog extends BaseModel {
-
-    //@TableId("id_")
-    //private Long id;
 
     private String groupName;
     private String taskName;
@@ -25,25 +21,7 @@ public class TaskFireLog extends BaseModel {
     private String serverHost;
     private String serverDuid;
     private String fireInfo;
-
-    /**
-     * @return the id
-     */
-    /*
-    public Long getId() {
-        return id;
-    }
-    */
-
-    /**
-     * @param id the id to set
-     */
-    /*
-    public void setId(Long id) {
-        this.id = id;
-    }
-    */
-
+    
     /**
      * @return the value of task_fire_log.group_name
      */
