@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import base.core.BaseService;
 import base.login.ThirdPartyUser;
 import org.ibase4j.core.util.CacheUtil;
-import org.ibase4j.core.util.SecurityUtil;
+import base.utils.SecurityUtil;
 import org.ibase4j.mapper.SysUserMapper;
 import org.ibase4j.mapper.SysUserThirdpartyMapper;
 import org.ibase4j.model.SysUser;

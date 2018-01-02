@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import base.IConstants;
 import base.exception.BusinessException;
-import org.ibase4j.core.util.ExceptionUtil;
+import base.utils.ExceptionUtil;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import base.core.BaseModel;
-import org.ibase4j.core.util.PinyinUtil;
+import base.utils.PinyinUtil;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;

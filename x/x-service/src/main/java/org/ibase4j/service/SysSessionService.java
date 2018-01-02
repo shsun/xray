@@ -6,8 +6,8 @@ import java.util.Map;
 
 import base.core.BaseService;
 import org.ibase4j.core.util.CacheUtil;
-import org.ibase4j.core.util.InstanceUtil;
-import org.ibase4j.core.util.PropertiesUtil;
+import base.utils.InstanceUtil;
+import base.utils.PropertiesUtil;
 import org.ibase4j.mapper.SysSessionMapper;
 import org.ibase4j.model.SysSession;
 import org.springframework.cache.annotation.CacheConfig;

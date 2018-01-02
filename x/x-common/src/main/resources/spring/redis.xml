@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 	<!-- redis连接 -->
-	<bean class="org.ibase4j.core.config.RedissonConfig">
+	<bean class="base.config.RedissonConfig">
 		<property name="password" value="${redis.password}" />
 		<!-- SingleServer -->
 		<property name="address" value="${redis.host}:${redis.port}" />
@@ -46,7 +46,7 @@
 	<bean id="redisCacheManager" class="org.springframework.cache.support.SimpleCacheManager">
 		<property name="caches">
 			<set>
-				<bean class="org.ibase4j.core.config.RedisCache">
+				<bean class="base.config.RedisCache">
 					<property name="redisTemplate" ref="redisTemplate" />
 					<property name="name" value="SysUser"/>
 					<property name="timeout" value="7200" />

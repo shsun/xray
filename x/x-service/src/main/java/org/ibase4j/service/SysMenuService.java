@@ -5,7 +5,7 @@ import java.util.Map;
 
 import base.core.BaseModel;
 import base.core.BaseService;
-import org.ibase4j.core.util.InstanceUtil;
+import base.utils.InstanceUtil;
 import org.ibase4j.mapper.SysMenuMapper;
 import org.ibase4j.model.SysMenu;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import base.core.BaseService;
-import org.ibase4j.core.util.InstanceUtil;
+import base.utils.InstanceUtil;
 import org.ibase4j.model.SysDic;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;

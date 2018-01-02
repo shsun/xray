@@ -6,7 +6,7 @@ import org.apache.shiro.authc.ExpiredCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.ibase4j.core.config.Resources;
+import base.config.Resources;
 import base.exception.LoginException;
 
 /**

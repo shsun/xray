@@ -5,7 +5,7 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import org.ibase4j.core.util.PropertiesUtil;
+import base.utils.PropertiesUtil;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

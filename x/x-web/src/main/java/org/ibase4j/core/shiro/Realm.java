@@ -16,7 +16,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import base.core.IBaseProvider;
 import base.core.Parameter;
-import org.ibase4j.core.util.WebUtil;
+import base.utils.WebUtil;
 import org.ibase4j.model.SysSession;
 import org.ibase4j.model.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;

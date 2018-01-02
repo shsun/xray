@@ -7,8 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
-import org.ibase4j.core.config.Resources;
-import org.ibase4j.core.util.IDCardUtil;
+import base.config.Resources;
+import base.utils.IDCardUtil;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 

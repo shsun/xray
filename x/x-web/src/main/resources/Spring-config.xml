@@ -10,7 +10,7 @@
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 	<!-- 引入属性配置文件 -->
-	<bean class="org.ibase4j.core.util.PropertiesUtil">
+	<bean class="base.utils.PropertiesUtil">
 		<property name="locations">
 			<list>
 				<value>${sys.jdbc.config.path}</value>

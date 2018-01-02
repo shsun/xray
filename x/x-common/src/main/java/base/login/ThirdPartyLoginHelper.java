@@ -8,8 +8,8 @@ import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.config.Resources;
-import org.ibase4j.core.util.HttpUtil;
+import base.config.Resources;
+import base.utils.HttpUtil;
 
 import com.alibaba.fastjson.JSONObject;
 

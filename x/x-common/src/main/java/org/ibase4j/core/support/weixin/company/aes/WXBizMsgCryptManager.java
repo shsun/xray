@@ -3,7 +3,7 @@ package org.ibase4j.core.support.weixin.company.aes;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.ibase4j.core.util.PropertiesUtil;
+import base.utils.PropertiesUtil;
 
 /**
  *

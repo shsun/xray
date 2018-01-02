@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.ibase4j.core.support.weixin.company.WeiXinCompanyOAuth;
-import org.ibase4j.core.util.PropertiesUtil;
+import base.utils.PropertiesUtil;
 import org.springframework.ui.ModelMap;
 
 public class Promission {

@@ -8,8 +8,8 @@ import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-import org.ibase4j.core.config.Resources;
-import org.ibase4j.core.util.PropertiesUtil;
+import base.config.Resources;
+import base.utils.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

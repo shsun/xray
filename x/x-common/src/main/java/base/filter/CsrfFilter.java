@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.util.WebUtil;
+import base.utils.WebUtil;
 
 public class CsrfFilter implements Filter {
 	private static final Logger logger = LogManager.getLogger(CsrfFilter.class);

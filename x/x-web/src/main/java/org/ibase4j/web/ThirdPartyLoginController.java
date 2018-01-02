@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import base.core.AbstractMSAController;
 import org.apache.commons.lang3.StringUtils;
 import base.core.Parameter;
-import org.ibase4j.core.config.Resources;
+import base.config.Resources;
 import base.login.LoginHelper;
 import base.login.ThirdPartyLoginHelper;
 import base.login.ThirdPartyUser;

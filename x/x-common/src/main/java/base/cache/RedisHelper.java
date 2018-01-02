@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.ibase4j.core.util.InstanceUtil;
-import org.ibase4j.core.util.PropertiesUtil;
+import base.utils.InstanceUtil;
+import base.utils.PropertiesUtil;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.data.redis.core.RedisTemplate;

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
-import org.ibase4j.core.util.WebUtil;
+import base.utils.WebUtil;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 /**

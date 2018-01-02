@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.ibase4j.core.util.InstanceUtil;
-import org.ibase4j.core.util.PropertiesUtil;
+import base.utils.InstanceUtil;
+import base.utils.PropertiesUtil;
 import org.redisson.Redisson;
 import org.redisson.api.RBucket;
 import org.redisson.api.RType;

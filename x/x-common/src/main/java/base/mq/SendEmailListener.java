@@ -8,7 +8,7 @@ import javax.jms.ObjectMessage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import base.email.Email;
-import org.ibase4j.core.util.EmailUtil;
+import base.utils.EmailUtil;
 
 /**
  * 发送邮件队列

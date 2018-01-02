@@ -3,8 +3,8 @@ package org.ibase4j.service;
 import java.util.List;
 import java.util.Map;
 
-import org.ibase4j.core.util.DataUtil;
-import org.ibase4j.core.util.InstanceUtil;
+import base.utils.DataUtil;
+import base.utils.InstanceUtil;
 import org.ibase4j.mapper.SysAuthorizeMapper;
 import org.ibase4j.mapper.SysRoleMenuMapper;
 import org.ibase4j.mapper.SysUserMenuMapper;

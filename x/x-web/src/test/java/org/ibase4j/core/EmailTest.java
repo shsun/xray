@@ -1,7 +1,7 @@
 package org.ibase4j.core;
 
 import base.email.Email;
-import org.ibase4j.core.util.EmailUtil;
+import base.utils.EmailUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.context.annotation.ComponentScan;
