@@ -611,7 +611,8 @@ CREATE TABLE IF NOT EXISTS `sys_user_thirdparty` (
 -- 导出  表 ibase4j.task_fire_log 结构
 DROP TABLE IF EXISTS `task_fire_log`;
 CREATE TABLE IF NOT EXISTS `task_fire_log` (
-  `id_` bigint(20) NOT NULL,
+  `id_` bigint(20) primary key not null auto_increment,
+  `enable_` tinyint(1) DEFAULT NULL COMMENT '启用状态',
   `group_name` varchar(50) NOT NULL,
   `task_name` varchar(50) NOT NULL,
   `start_time` datetime NOT NULL,
@@ -620,6 +621,19 @@ CREATE TABLE IF NOT EXISTS `task_fire_log` (
   `server_host` varchar(50) DEFAULT NULL COMMENT '服务器名',
   `server_duid` varchar(50) DEFAULT NULL COMMENT '服务器网卡序列号',
   `fire_info` text,
-  PRIMARY KEY (`id_`),
   UNIQUE KEY `group_name_task_name_start_time` (`group_name`,`task_name`,`start_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='定时任务日志表';
+
+INSERT INTO `task_fire_log` 
+(`enable_`, `group_name`, `task_name`, `start_time`, `end_time`, `status_`, `server_host`, `server_duid`, `fire_info`) 
+VALUES
+(1, 'group_name_1', 'task_name', now(), now(), 'I', '127.0.0.1', 'duid', 'fire_info'),
+(1, 'group_name_2', 'task_name', now(), now(), 'I', '127.0.0.1', 'duid', 'fire_info');
+
+
+
+    
+
+
+
+

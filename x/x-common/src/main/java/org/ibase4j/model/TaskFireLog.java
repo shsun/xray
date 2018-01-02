@@ -1,23 +1,27 @@
 package org.ibase4j.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
+import base.core.BaseModel;
+import base.core.TopModel;
 import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 
 @TableName("task_fire_log")
 @SuppressWarnings("serial")
-public class TaskFireLog implements Serializable {
-    @TableId("id_")
-    private Long id;
+public class TaskFireLog extends BaseModel {
+
+    //@TableId("id_")
+    //private Long id;
+
     private String groupName;
     private String taskName;
     private Date startTime;
     private Date endTime;
+
     @TableField("status_")
     private String status;
+
     private String serverHost;
     private String serverDuid;
     private String fireInfo;
@@ -25,16 +29,20 @@ public class TaskFireLog implements Serializable {
     /**
      * @return the id
      */
+    /*
     public Long getId() {
         return id;
     }
+    */
 
     /**
      * @param id the id to set
      */
+    /*
     public void setId(Long id) {
         this.id = id;
     }
+    */
 
     /**
      * @return the value of task_fire_log.group_name

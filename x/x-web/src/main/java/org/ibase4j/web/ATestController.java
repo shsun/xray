@@ -21,7 +21,7 @@ public class ATestController {
     @RequestMapping("/test_1")
     @ResponseBody
     public String test_1(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
-        TaskFireLog log = taskFireLogService.selectById(1L);
+        TaskFireLog log = taskFireLogService.queryById(1L);
         System.out.println("done");
         String s = log != null ? log.toString() : "no-data";
         return s;
