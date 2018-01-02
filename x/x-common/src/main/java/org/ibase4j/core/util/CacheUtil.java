@@ -2,8 +2,8 @@ package org.ibase4j.core.util;
 
 import java.io.Serializable;
 
-import org.ibase4j.core.support.cache.ICacheManager;
-import org.ibase4j.core.support.cache.RedissonHelper;
+import base.cache.ICacheManager;
+import base.cache.RedissonHelper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

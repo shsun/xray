@@ -1,4 +1,4 @@
-package org.ibase4j.core.support.ftp;
+package base.ftp;
 
 import java.io.File;
 import java.io.FileInputStream;

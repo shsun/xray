@@ -1,4 +1,4 @@
-package org.ibase4j.core.support.mq;
+package base.mq;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -7,7 +7,7 @@ import javax.jms.ObjectMessage;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.support.email.Email;
+import base.email.Email;
 import org.ibase4j.core.util.EmailUtil;
 
 /**

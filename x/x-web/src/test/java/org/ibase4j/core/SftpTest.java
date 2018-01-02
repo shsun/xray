@@ -1,6 +1,6 @@
 package org.ibase4j.core;
 
-import org.ibase4j.core.support.ftp.SftpClient;
+import base.ftp.SftpClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.context.annotation.ComponentScan;

@@ -10,7 +10,7 @@ import org.ibase4j.core.config.Resources;
 import base.exception.LoginException;
 import org.ibase4j.core.support.Assert;
 import org.ibase4j.core.support.HttpCode;
-import org.ibase4j.core.support.login.LoginHelper;
+import base.login.LoginHelper;
 import org.ibase4j.core.util.SecurityUtil;
 import org.ibase4j.core.util.WebUtil;
 import org.ibase4j.model.SysUser;

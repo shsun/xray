@@ -8,9 +8,9 @@ import java.util.List;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.support.excel.Excel2003Reader;
-import org.ibase4j.core.support.excel.Excel2007Reader;
-import org.ibase4j.core.support.excel.IRowReader;
+import base.excel.Excel2003Reader;
+import base.excel.Excel2007Reader;
+import base.excel.IRowReader;
 
 public final class ExcelReaderUtil {
     private ExcelReaderUtil() {

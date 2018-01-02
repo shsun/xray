@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import base.core.BaseService;
-import org.ibase4j.core.support.login.ThirdPartyUser;
+import base.login.ThirdPartyUser;
 import org.ibase4j.core.util.CacheUtil;
 import org.ibase4j.core.util.SecurityUtil;
 import org.ibase4j.mapper.SysUserMapper;

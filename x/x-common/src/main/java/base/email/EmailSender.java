@@ -1,4 +1,4 @@
-package org.ibase4j.core.support.email;
+package base.email;
 
 import java.util.Date;
 import java.util.Properties;

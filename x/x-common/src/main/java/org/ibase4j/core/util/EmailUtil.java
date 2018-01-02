@@ -1,7 +1,7 @@
 package org.ibase4j.core.util;
 
-import org.ibase4j.core.support.email.Email;
-import org.ibase4j.core.support.email.EmailSender;
+import base.email.Email;
+import base.email.EmailSender;
 
 /**
  * 发送邮件辅助类

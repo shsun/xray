@@ -1,7 +1,7 @@
 /**
  * 第三方用户实体类
  */
-package org.ibase4j.core.support.login;
+package base.login;
 
 import base.core.BaseModel;
 

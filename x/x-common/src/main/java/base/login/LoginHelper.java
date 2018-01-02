@@ -1,4 +1,4 @@
-package org.ibase4j.core.support.login;
+package base.login;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.DisabledAccountException;

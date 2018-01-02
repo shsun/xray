@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import base.utils.HttpServletRequestUtils;
 import base.core.BaseController;
 import org.ibase4j.core.support.HttpCode;
-import org.ibase4j.core.support.decoder.BASE64Decoder;
+import base.decoder.BASE64Decoder;
 import org.ibase4j.core.util.InstanceUtil;
 import org.ibase4j.core.util.UploadUtil;
 import org.springframework.ui.ModelMap;

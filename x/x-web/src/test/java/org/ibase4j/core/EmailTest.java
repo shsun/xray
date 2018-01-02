@@ -1,6 +1,6 @@
 package org.ibase4j.core;
 
-import org.ibase4j.core.support.email.Email;
+import base.email.Email;
 import org.ibase4j.core.util.EmailUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;

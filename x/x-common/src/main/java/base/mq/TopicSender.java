@@ -1,4 +1,4 @@
-package org.ibase4j.core.support.mq;
+package base.mq;
 
 import java.io.Serializable;
 
@@ -11,21 +11,20 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 /**
- * 队列消息发送类
  */
-public class QueueSender {
+public class TopicSender {
 	@Autowired
-	@Qualifier("jmsQueueTemplate")
+	@Qualifier("jmsTopicTemplate")
 	private JmsTemplate jmsTemplate;
 
 	/**
-	 * 发送一条消息到指定的队列（目标）
+	 * 发送一条消息到指定的订阅者（目标）
 	 * 
-	 * @param queueName 队列名称
+	 * @param topicName 订阅者名称
 	 * @param message 消息内容
 	 */
-	public void send(String queueName, final Serializable message) {
-		jmsTemplate.send(queueName, new MessageCreator() {
+	public void send(String topicName, final Serializable message) {
+		jmsTemplate.send(topicName, new MessageCreator() {
 			public Message createMessage(Session session) throws JMSException {
 				return session.createObjectMessage(message);
 			}

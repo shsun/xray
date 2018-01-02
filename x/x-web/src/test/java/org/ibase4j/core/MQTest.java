@@ -1,7 +1,7 @@
 package org.ibase4j.core;
 
-import org.ibase4j.core.support.mq.QueueSender;
-import org.ibase4j.core.support.mq.TopicSender;
+import base.mq.QueueSender;
+import base.mq.TopicSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
