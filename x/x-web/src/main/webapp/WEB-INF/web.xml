@@ -14,11 +14,11 @@
 		<!--
 		<param-value>
 			classpath:Spring-config.xml,
-			classpath*:spring/dubbo.xml,
-			classpath*:spring/mq.xml,
-			classpath*:spring/redis.xml,
-			classpath*:spring/session.xml,
-			classpath*:spring/shiro.xml
+			classpath*:spring/common-ac-dubbo.xml,
+			classpath*:spring/common-ac-mq.xml,
+			classpath*:spring/common-ac-redis.xml,
+			classpath*:spring/common-ac-session.xml,
+			classpath*:spring/common-ac-shiro.xml
 		</param-value>
 		-->
 	</context-param>

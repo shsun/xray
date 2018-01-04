@@ -122,7 +122,7 @@ public class Realm extends AuthorizingRealm {
         newSession.setStartTime(oldSession.getStartTimestamp());
         parameter = new Parameter("sysSessionService", "update").setModel(newSession);
         provider.execute(parameter);
-        // see session.xml in common project
+        // see common-ac-session.xml in common project
         // <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
         // RedisHttpSessionConfiguration will save session to redis
     }

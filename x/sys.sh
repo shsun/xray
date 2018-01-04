@@ -1,9 +1,9 @@
 #!/bin/sh
 
 #TOMCAT_HOME_2=~/Downloads/apache-tomcat-7.0.82
-TOMCAT_HOME_2=~/Downloads/pure-apache-tomcat-7
-#TOMCAT_HOME_2=~/Downloads/pure-apache-tomcat-8
-#TOMCAT_HOME_2=~/Downloads/pure-apache-tomcat-9
+TOMCAT_HOME_2=~/Downloads/apache-tomcat-7
+#TOMCAT_HOME_2=~/Downloads/apache-tomcat-8
+#TOMCAT_HOME_2=~/Downloads/apache-tomcat-9
 
 clear;
 mvn clean;
