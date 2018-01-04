@@ -151,17 +151,17 @@ CREATE TABLE IF NOT EXISTS `qrtz_cron_triggers` (
 -- 导出  表 ibase4j.sys_dept 结构
 DROP TABLE IF EXISTS `sys_dept`;
 CREATE TABLE IF NOT EXISTS `sys_dept` (
-  `id_` bigint(20) NOT NULL COMMENT '部门编号',
-  `unit_id` bigint(20) NOT NULL COMMENT '隶属单位',
+  `id_` bigint(50) NOT NULL COMMENT '部门编号',
+  `unit_id` bigint(50) NOT NULL COMMENT '隶属单位',
   `dept_name` varchar(50) DEFAULT NULL COMMENT '部门名称',
-  `parent_id` bigint(20) DEFAULT NULL COMMENT '上级部门编号',
-  `sort_no` int(3) DEFAULT NULL COMMENT '排序号',
-  `leaf_` int(1) DEFAULT NULL COMMENT '叶子节点(0:树枝节点;1:叶子节点)',
+  `parent_id` bigint(50) DEFAULT NULL COMMENT '上级部门编号',
+  `sort_no` bigint(50) DEFAULT NULL COMMENT '排序号',
+  `leaf_` bigint(50) DEFAULT NULL COMMENT '叶子节点(0:树枝节点;1:叶子节点)',
   `enable_` tinyint(1) DEFAULT NULL COMMENT '启用状态',
   `remark_` varchar(1024) DEFAULT NULL COMMENT '备注',
-  `create_by` bigint(20) DEFAULT NULL,
+  `create_by` bigint(50) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
-  `update_by` bigint(20) DEFAULT NULL,
+  `update_by` bigint(50) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id_`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门';

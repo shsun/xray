@@ -1,6 +1,4 @@
-
 1. nginx version: openresty/1.13.6.1
-
 
 ========== install openresty on ubuntu
 1. install openssh to /usr/local/openssl/ via

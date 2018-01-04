@@ -2,23 +2,18 @@ package org.ibase4j.web;
 
 import java.util.Map;
 
-import base.core.AbstractMSAController;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.ibase4j.model.SysDept;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import base.core.AbstractMSAController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 
 @RestController
@@ -47,7 +42,6 @@ public class SysDeptController extends AbstractMSAController<ISysProvider> {
     @ApiOperation(value = "修改部门")
     @RequiresPermissions("sys.base.dept.update")
     public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysDept param) {
-        param.setUnitId(1);
         return super.update(request, response, map, param);
     }
 
