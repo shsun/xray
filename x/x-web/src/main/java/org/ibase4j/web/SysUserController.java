@@ -84,7 +84,7 @@ public class SysUserController extends AbstractMSAController<ISysProvider> {
     @ApiOperation(value = "当前用户信息")
     @GetMapping(value = "/read/promission")
     public Object promission(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
-        Long id = getCurrUser();
+        Long id = getCurrUser().getId();
         Parameter parameter = new Parameter(getService(), "queryById").setId(id);
         SysUser sysUser = (SysUser) provider.execute(parameter).getModel();
         map.put("user", sysUser);
@@ -98,14 +98,14 @@ public class SysUserController extends AbstractMSAController<ISysProvider> {
     @GetMapping(value = "/read/current")
     public Object current(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
         SysUser param = new SysUser();
-        param.setId(getCurrUser());
+        param.setId(getCurrUser().getId());
         return super.get(request, response, map, param);
     }
 
     @ApiOperation(value = "修改个人信息")
     @PostMapping(value = "/update/person")
     public Object updatePerson(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysUser param) {
-        param.setId(WebUtil.getCurrentUser());
+        param.setId(WebUtil.getCurrentUser().getId());
         param.setPassword(null);
         Assert.isNotBlank(param.getAccount(), "ACCOUNT");
         Assert.length(param.getAccount(), 3, 15, "ACCOUNT");
@@ -118,7 +118,7 @@ public class SysUserController extends AbstractMSAController<ISysProvider> {
         List<String> fileNames = UploadUtil.uploadImage(request);
         if (fileNames.size() > 0) {
             SysUser param = new SysUser();
-            param.setId(WebUtil.getCurrentUser());
+            param.setId(WebUtil.getCurrentUser().getId());
             String filePath = UploadUtil.getUploadDir(request) + fileNames.get(0);
             // String avatar = UploadUtil.remove2DFS("sysUser", "user" +
             // sysUser.getId(), filePath).getRemotePath();
@@ -143,7 +143,7 @@ public class SysUserController extends AbstractMSAController<ISysProvider> {
         Parameter parameter = new Parameter(getService(), "queryById").setId(param.getId());
         SysUser sysUser = (SysUser) provider.execute(parameter).getModel();
         Assert.notNull(sysUser, "USER", param.getId());
-        Long userId = WebUtil.getCurrentUser();
+        Long userId = WebUtil.getCurrentUser().getId();
         if (!param.getId().equals(userId)) {
             SysUser current = new SysUser();
             current.setId(userId);
@@ -158,7 +158,7 @@ public class SysUserController extends AbstractMSAController<ISysProvider> {
             }
         }
         param.setPassword(encryptPassword);
-        param.setUpdateBy(WebUtil.getCurrentUser());
+        param.setUpdateBy(WebUtil.getCurrentUser().getId());
         Object o = super.update(request, response, map, param);
         return o;
     }

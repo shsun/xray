@@ -96,7 +96,7 @@ public class EventInterceptor extends BaseInterceptor {
         String path = request.getServletPath();
         if (!path.contains("/read/") && !path.contains("/unauthorized") && !path.contains("/forbidden")) {
             final SysEvent record = new SysEvent();
-            Long uid = WebUtil.getCurrentUser();
+            Long uid = WebUtil.getCurrentUser().getId();
             record.setMethod(request.getMethod());
             record.setRequestUri(request.getServletPath());
             record.setClientHost(WebUtil.getHost(request));

@@ -44,7 +44,7 @@ public class Realm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        Long userId = WebUtil.getCurrentUser();
+        Long userId = WebUtil.getCurrentUser().getId();
 
         Parameter parameter = new Parameter("sysAuthorizeService", "queryPermissionByUserId").setId(userId);
         List<?> list = provider.execute(parameter).getList();
@@ -83,7 +83,7 @@ public class Realm extends AuthorizingRealm {
                 sb.append(token.getPassword()[i]);
             }
             if (user.getPassword().equals(sb.toString())) {
-                WebUtil.saveCurrentUser(user.getId());
+                WebUtil.saveCurrentUser(user);
                 saveSession(user.getAccount());
 
                 authcInfo = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(), user.getUserName());

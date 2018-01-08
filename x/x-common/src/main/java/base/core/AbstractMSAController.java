@@ -41,7 +41,7 @@ public abstract class AbstractMSAController<T extends IBaseProvider> extends Bas
     }
 
     public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, BaseModel param) {
-        Long userId = getCurrUser();
+        Long userId = getCurrUser().getId();
         if (param.getId() == null) {
             param.setCreateBy(userId);
         }

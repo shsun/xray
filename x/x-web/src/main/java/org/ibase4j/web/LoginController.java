@@ -59,7 +59,7 @@ public class LoginController extends AbstractMSAController<ISysProvider> {
     @ApiOperation(value = "用户登出")
     @PostMapping("/logout")
     public Object logout(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
-        Long id = WebUtil.getCurrentUser();
+        Long id = WebUtil.getCurrentUser().getId();
         if (id != null) {
             provider.execute(new Parameter("sysSessionService", "delete").setId(id));
         }

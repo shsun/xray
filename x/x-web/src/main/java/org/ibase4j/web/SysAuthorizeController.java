@@ -48,7 +48,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
     @RequiresPermissions("sys.permisson.userMenu.update")
     public Object userMenu(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody List<SysUserMenu> list) {
         Long userId = null;
-        Long currentUserId = WebUtil.getCurrentUser();
+        Long currentUserId = WebUtil.getCurrentUser().getId();
         for (SysUserMenu sysUserMenu : list) {
             if (sysUserMenu.getUserId() != null) {
                 if (userId != null && userId != sysUserMenu.getUserId()) {
@@ -78,7 +78,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
     @RequiresPermissions("sys.permisson.userRole.update")
     public Object userRole(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody List<SysUserRole> list) {
         Long userId = null;
-        Long currentUserId = WebUtil.getCurrentUser();
+        Long currentUserId = WebUtil.getCurrentUser().getId();
         for (SysUserRole sysUserRole : list) {
             if (sysUserRole.getUserId() != null) {
                 if (userId != null && userId != sysUserRole.getUserId()) {
@@ -108,7 +108,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
     @RequiresPermissions("sys.permisson.roleMenu.update")
     public Object roleMenu(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody List<SysRoleMenu> list) {
         Long roleId = null;
-        Long userId = WebUtil.getCurrentUser();
+        Long userId = WebUtil.getCurrentUser().getId();
         for (SysRoleMenu sysRoleMenu : list) {
             if (sysRoleMenu.getRoleId() != null) {
                 if (roleId != null && roleId != sysRoleMenu.getRoleId()) {
