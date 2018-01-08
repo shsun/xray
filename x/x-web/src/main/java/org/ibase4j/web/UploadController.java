@@ -16,6 +16,7 @@ import base.HttpCode;
 import base.decoder.BASE64Decoder;
 import base.utils.InstanceUtil;
 import base.utils.UploadUtil;
+import org.ibase4j.model.SysUser;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,7 +44,7 @@ public class UploadController extends BaseController {
      */
     @RequestMapping(value = "/image", method = { RequestMethod.GET, RequestMethod.POST })
     @ApiOperation(value = "上传图片")
-    public Object uploadImage(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
+    public Object uploadImage(HttpServletRequest request, HttpServletResponse response, ModelMap map,SysUser user) {
         List<String> fileNames = UploadUtil.uploadImage(request);
 
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -62,7 +63,7 @@ public class UploadController extends BaseController {
      */
     @RequestMapping(value = "/imageData", method = { RequestMethod.GET, RequestMethod.POST })
     @ApiOperation(value = "上传图片")
-    public Object uploadImageData(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
+    public Object uploadImageData(HttpServletRequest request, HttpServletResponse response, ModelMap map,SysUser user) {
 
         Map tmpmap = HttpServletRequestUtils.getRequestMap(request);
 

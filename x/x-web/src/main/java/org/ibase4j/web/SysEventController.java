@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import base.core.AbstractMSAController;
+import org.ibase4j.model.SysUser;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,7 +32,7 @@ public class SysEventController extends AbstractMSAController<ISysProvider> {
 	@ApiOperation(value = "查询新闻")
 	@RequiresPermissions("public.news.read")
 	@PutMapping(value = "/read/list")
-	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
-		return super.query(request, response, map, param);
+	public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody Map<String, Object> param) {
+		return super.query(request, response, map, user, param);
 	}
 }

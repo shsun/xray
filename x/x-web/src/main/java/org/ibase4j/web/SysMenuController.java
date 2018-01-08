@@ -7,6 +7,7 @@ import base.core.AbstractMSAController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import base.core.Parameter;
 import org.ibase4j.model.SysMenu;
+import org.ibase4j.model.SysUser;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,42 +37,42 @@ public class SysMenuController extends AbstractMSAController<ISysProvider> {
     @ApiOperation(value = "查询菜单")
     @PutMapping(value = "/read/page")
     @RequiresPermissions("sys.base.menu.read")
-    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
-        return super.query(request, response, map, param);
+    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody Map<String, Object> param) {
+        return super.query(request, response, map, user, param);
     }
 
     @ApiOperation(value = "查询菜单")
     @PutMapping(value = "/read/list")
     @RequiresPermissions("sys.base.menu.read")
-    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
-        return super.queryList(request, response, map, param);
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody Map<String, Object> param) {
+        return super.queryList(request, response, map, user, param);
     }
 
     @ApiOperation(value = "菜单详情")
     @PutMapping(value = "/read/detail")
     @RequiresPermissions("sys.base.menu.read")
-    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysMenu param) {
-        return super.get(request, response, map, param);
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysMenu param) {
+        return super.get(request, response, map, user, param);
     }
 
     @PostMapping
     @ApiOperation(value = "修改菜单")
     @RequiresPermissions("sys.base.menu.update")
-    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysMenu param) {
-        return super.update(request, response, map, param);
+    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysMenu param) {
+        return super.update(request, response, map, user, param);
     }
 
     @DeleteMapping
     @ApiOperation(value = "删除菜单")
     @RequiresPermissions("sys.base.menu.delete")
-    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysMenu param) {
-        return super.delete(request, response, map, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysMenu param) {
+        return super.delete(request, response, map, user, param);
     }
 
     @ApiOperation(value = "获取所有权限")
     @RequiresPermissions("sys.base.menu.read")
     @RequestMapping(value = "/read/permission")
-    public Object getPermissions(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
+    public Object getPermissions(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user) {
         Parameter parameter = new Parameter(getService(), "getPermissions").setModel(new SysMenu());
         List<?> list = provider.execute(parameter).getList();
         return setSuccessModelMap(map, list);

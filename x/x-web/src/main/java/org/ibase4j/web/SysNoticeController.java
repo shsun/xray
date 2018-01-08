@@ -5,6 +5,7 @@ import java.util.Map;
 import base.core.AbstractMSAController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.ibase4j.model.SysNotice;
+import org.ibase4j.model.SysUser;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,28 +33,28 @@ public class SysNoticeController extends AbstractMSAController<ISysProvider> {
     @ApiOperation(value = "查询通知")
     @RequiresPermissions("public.notice.read")
     @RequestMapping(value = "/read/list", method = RequestMethod.PUT)
-    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
-        return super.query(request, response, map, param);
+    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody Map<String, Object> param) {
+        return super.query(request, response, map, user, param);
     }
 
     @ApiOperation(value = "通知详情")
     @RequiresPermissions("public.notice.read")
     @RequestMapping(value = "/read/detail", method = RequestMethod.PUT)
-    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysNotice param) {
-        return super.get(request, response, map, param);
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysNotice param) {
+        return super.get(request, response, map, user, param);
     }
 
     @ApiOperation(value = "修改通知")
     @RequiresPermissions("public.notice.update")
     @RequestMapping(method = RequestMethod.POST)
-    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysNotice param) {
-        return super.update(request, response, map, param);
+    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysNotice param) {
+        return super.update(request, response, map, user, param);
     }
 
     @ApiOperation(value = "删除通知")
     @RequiresPermissions("public.notice.delete")
     @RequestMapping(method = RequestMethod.DELETE)
-    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysNotice param) {
-        return super.delete(request, response, map, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysNotice param) {
+        return super.delete(request, response, map, user, param);
     }
 }

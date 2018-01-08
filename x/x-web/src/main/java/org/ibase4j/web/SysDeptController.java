@@ -30,27 +30,27 @@ public class SysDeptController extends AbstractMSAController<ISysProvider> {
     @PutMapping(value = "/read/list")
     public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody Map<String, Object> param) {
         Long id = super.getCurrUser().getId();
-        return super.query(request, response, map, param);
+        return super.query(request, response, map, user, param);
     }
 
     @ApiOperation(value = "部门详情")
     @RequiresPermissions("sys.base.dept.read")
     @PutMapping(value = "/read/detail")
-    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysDept param) {
-        return super.get(request, response, map, param);
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysDept param) {
+        return super.get(request, response, map, user, param);
     }
 
     @PostMapping
     @ApiOperation(value = "修改部门")
     @RequiresPermissions("sys.base.dept.update")
-    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysDept param) {
-        return super.update(request, response, map, param);
+    public Object update(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysDept param) {
+        return super.update(request, response, map, user, param);
     }
 
     @DeleteMapping
     @ApiOperation(value = "删除部门")
     @RequiresPermissions("sys.base.dept.delete")
-    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysDept param) {
-        return super.delete(request, response, map, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysDept param) {
+        return super.delete(request, response, map, user, param);
     }
 }

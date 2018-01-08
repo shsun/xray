@@ -6,13 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import base.core.AbstractMSAController;
 import org.apache.commons.lang3.StringUtils;
-import base.core.Parameter;
-import base.config.Resources;
-import base.login.LoginHelper;
-import base.login.ThirdPartyLoginHelper;
-import base.login.ThirdPartyUser;
 import org.ibase4j.model.SysUser;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.stereotype.Controller;
@@ -22,6 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.fastjson.JSONObject;
 
+import base.config.Resources;
+import base.core.AbstractMSAController;
+import base.core.Parameter;
+import base.login.LoginHelper;
+import base.login.ThirdPartyLoginHelper;
+import base.login.ThirdPartyUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -34,7 +34,7 @@ public class ThirdPartyLoginController extends AbstractMSAController<ISysProvide
 
     @RequestMapping("/sns")
     @ApiOperation(value = "用户登录", httpMethod = "GET")
-    public void thirdLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam("t") String type) {
+    public void thirdLogin(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestParam("t") String type) {
         String url = getRedirectUrl(request, type);
         try {
             response.sendRedirect(url);
@@ -45,25 +45,25 @@ public class ThirdPartyLoginController extends AbstractMSAController<ISysProvide
 
     @RequestMapping("/sns_success")
     @ApiOperation(value = "登录成功", httpMethod = "GET")
-    public String thirdLoginsuccess(HttpServletRequest request, HttpServletResponse response) {
+    public String thirdLoginsuccess(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user) {
         return "/sns/success";
     }
 
     @RequestMapping("/sns_bind")
     @ApiOperation(value = "用户绑定", httpMethod = "GET")
-    public String thirdLoginbind(HttpServletRequest request, HttpServletResponse response) {
+    public String thirdLoginbind(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user) {
         return "/sns/bind";
     }
 
     @RequestMapping("/sns_fail")
     @ApiOperation(value = "登录失败", httpMethod = "GET")
-    public String thirdLoginfail(HttpServletRequest request, HttpServletResponse response) {
+    public String thirdLoginfail(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user) {
         return "/sns/fail";
     }
 
     @RequestMapping("/callback/wx")
     @ApiOperation(value = "微信登录回调", httpMethod = "GET")
-    public String wxCallback(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
+    public String wxCallback(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user) {
         String host = request.getHeader("host");
         try {
             String code = request.getParameter("code");
@@ -94,7 +94,7 @@ public class ThirdPartyLoginController extends AbstractMSAController<ISysProvide
 
     @RequestMapping("/callback/qq")
     @ApiOperation(value = "QQ登录回调", httpMethod = "GET")
-    public String qqCallback(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
+    public String qqCallback(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user) {
         String host = request.getHeader("host");
         try {
             String code = request.getParameter("code");
@@ -125,7 +125,7 @@ public class ThirdPartyLoginController extends AbstractMSAController<ISysProvide
 
     @RequestMapping("callback/sina")
     @ApiOperation(value = "微博登录回调", httpMethod = "GET")
-    public String sinaCallback(HttpServletRequest request, ModelMap map) {
+    public String sinaCallback(HttpServletRequest request, ModelMap map, SysUser user) {
         String host = request.getHeader("host");
         try {
             String code = request.getParameter("code");

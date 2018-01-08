@@ -6,6 +6,7 @@ import base.listener.XSessionListener;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import base.core.AbstractMSAController;
 import org.ibase4j.model.SysSession;
+import org.ibase4j.model.SysUser;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,16 +34,16 @@ public class SysSessionController extends AbstractMSAController<ISysProvider> {
     @ApiOperation(value = "查询会话")
     @PutMapping(value = "/read/list")
     @RequiresPermissions("sys.base.session.read")
-    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
+    public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody Map<String, Object> param) {
         Integer number = XSessionListener.getAllUserNumber();
         map.put("userNumber", number); // 用户数大于会话数,有用户没有登录
-        return super.query(request, response, map, param);
+        return super.query(request, response, map, user, param);
     }
 
     @DeleteMapping
     @ApiOperation(value = "删除会话")
     @RequiresPermissions("sys.base.session.delete")
-    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody SysSession param) {
-        return super.delete(request, response, map, param);
+    public Object delete(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysSession param) {
+        return super.delete(request, response, map, user, param);
     }
 }
