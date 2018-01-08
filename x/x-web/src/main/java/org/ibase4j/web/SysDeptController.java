@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.ibase4j.model.SysDept;
+import org.ibase4j.model.SysUser;
 import org.ibase4j.provider.ISysProvider;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class SysDeptController extends AbstractMSAController<ISysProvider> {
     @ApiOperation(value = "查询部门")
     @RequiresPermissions("sys.base.dept.read")
     @PutMapping(value = "/read/list")
-    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
+    public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody Map<String, Object> param) {
         Long id = super.getCurrUser().getId();
         return super.query(request, response, map, param);
     }
