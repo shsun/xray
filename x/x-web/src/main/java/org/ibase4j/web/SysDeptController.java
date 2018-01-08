@@ -28,6 +28,7 @@ public class SysDeptController extends AbstractMSAController<ISysProvider> {
     @RequiresPermissions("sys.base.dept.read")
     @PutMapping(value = "/read/list")
     public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, @RequestBody Map<String, Object> param) {
+        Long id = super.getCurrUser();
         return super.query(request, response, map, param);
     }
 

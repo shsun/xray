@@ -1,5 +1,6 @@
 package base.core;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,22 +12,40 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authz.UnauthorizedException;
-import base.IConstants;
-import base.exception.BaseException;
-import base.exception.IllegalParameterException;
-import base.HttpCode;
-import base.utils.InstanceUtil;
-import base.utils.WebUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.baomidou.mybatisplus.plugins.Page;
 
+import base.HttpCode;
+import base.IConstants;
+import base.exception.BaseException;
+import base.exception.IllegalParameterException;
+import base.utils.InstanceUtil;
+import base.utils.WebUtil;
+
 public abstract class BaseController {
     protected final Logger logger = LogManager.getLogger(this.getClass());
+
+    protected ModelAndView createModelAndView(String viewName, Map<String, ?> viewData) {
+        viewData = viewData == null ? new HashMap<String, Object>() : viewData;
+        // 第一个参数：指定页面要跳转的view视图路径;第二个参数：指定了要项前台传递的参数，在前台可以这样取值 ${sp_ids }
+        ModelAndView mav = null;
+        try {
+            mav = new ModelAndView(viewName);
+            if (viewData != null) {
+                mav.addAllObjects(viewData);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            mav = null;
+        }
+        return mav;
+    }
 
     /**
      * 获取当前用户Id

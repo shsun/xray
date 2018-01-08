@@ -85,6 +85,7 @@ public class Realm extends AuthorizingRealm {
             if (user.getPassword().equals(sb.toString())) {
                 WebUtil.saveCurrentUser(user.getId());
                 saveSession(user.getAccount());
+
                 authcInfo = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(), user.getUserName());
             } else {
                 logger.warn("USER [{}] PASSWORD IS WRONG: {}", token.getUsername(), sb.toString());

@@ -58,6 +58,9 @@
 	</mvc:interceptors>
 	-->
 
+
+
+
 	<!-- AOP式方法级权限检查  -->
 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
 		depends-on="lifecycleBeanPostProcessor">
@@ -71,7 +74,34 @@
 	<mvc:view-resolvers>
 	    <mvc:jsp cache-views="false" prefix="/WEB-INF/jsp/" suffix=".jsp" />  
 	</mvc:view-resolvers>
-	
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html"/>
+				<entry key="json" value="application/json"/>
+			</map>
+		</property>
+	</bean>
+
+	<!--
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8"/>
+			</bean>
+			<bean class="base.springmvc.MappingJacksonHttpMessageConverter">
+				<property name="objectMapper" ref="jsonMapper"/>
+			</bean>
+		</mvc:message-converters>
+		<mvc:argument-resolvers>
+			<bean class="base.springmvc.GoingArgumentResolver"/>
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+	-->
+
+
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<description>配置文件上传</description>
 		<property name="defaultEncoding" value="UTF-8" />
