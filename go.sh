@@ -26,9 +26,12 @@ sleep 1;
 
 
 
-echo ""
+echo -e "\n\n\n"
 echo "starting..................... redis"
-sudo redis-cli shutdown;
+sudo redis-cli -p 6379 shutdown;
+sleep 1;
+sudo redis-cli -p 6380 shutdown;
+
 sleep 1;
 sudo cp -rfv redis/*.conf /opt/;
 
