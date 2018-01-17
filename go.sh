@@ -30,8 +30,11 @@ echo ""
 echo "starting..................... redis"
 sudo redis-cli shutdown;
 sleep 1;
-sudo cp -rfv redis.conf /opt/;
-sudo redis-server /opt/redis.conf;
+sudo cp -rfv redis/*.conf /opt/;
+
+sudo redis-server /opt/redis_6379.conf;
+sudo redis-server /opt/redis_6380.conf;
+
 sleep 1;
 echo '';
 
