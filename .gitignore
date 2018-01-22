@@ -10,6 +10,6 @@ x/.idea
 */.idea
 **/.idea
 */.buildpath
-dump.rdb
+*.rdb
 zookeeper.out
 
