@@ -10,10 +10,10 @@
 	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:Spring-config.xml</param-value>
+		<param-value>classpath:applicationContext.xml</param-value>
 		<!--
 		<param-value>
-			classpath:Spring-config.xml,
+			classpath:applicationContext.xml,
 			classpath*:spring/common-ac-dubbo.xml,
 			classpath*:spring/common-ac-mq.xml,
 			classpath*:spring/common-ac-redis.xml,
@@ -107,7 +107,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:Spring-servlet.xml</param-value>
+			<param-value>classpath:spring-mvc.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>

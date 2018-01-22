@@ -49,6 +49,7 @@
 	<dubbo:reference id="sysProvider" interface="org.ibase4j.provider.ISysProvider" check="false"/>
 
 
+	<!--  -->
 	<bean id="updateAvailableSavingsCard" class="org.springframework.data.redis.core.script.DefaultRedisScript">
 		<property name="location" value="classpath:lua/updateAvailableSavingsCard.lua"/>
 		<!--

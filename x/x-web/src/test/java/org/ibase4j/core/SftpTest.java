@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @ComponentScan
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:Spring-config.xml" })
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class SftpTest {
 
 	@Test
