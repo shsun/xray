@@ -48,6 +48,20 @@
 	-->
 	<dubbo:reference id="sysProvider" interface="org.ibase4j.provider.ISysProvider" check="false"/>
 
+
+	<bean id="updateAvailableSavingsCard" class="org.springframework.data.redis.core.script.DefaultRedisScript">
+		<property name="location" value="classpath:META-INF/lua/updateAvailableSavingsCard.lua"/>
+		<!--
+		<property name="resultType" value="org.meibaobao.ecos.basecomponent.common.Result"/>
+		-->
+		<property name="resultType" value="java.util.Map"/>
+	</bean>
+	<bean id="initAvailableSavingsCard" class="org.springframework.data.redis.core.script.DefaultRedisScript">
+		<property name="location" value="classpath:META-INF/lua/initAvailableSavingsCard.lua"/>
+		<property name="resultType" value="java.lang.Boolean"/>
+	</bean>
+
+
 	<!-- 引入SPRING配置文件 -->
 
 	<import resource="spring/common-ac-dubbo.xml" />

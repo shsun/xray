@@ -17,6 +17,7 @@
 		<!-- <property name="nodeAddresses">
 			<array>
 				<value>${redis.host}:${redis.port}</value>
+				<value>${redis.host}:${redis.port}</value>
 			</array>
 		</property> -->
 		<!-- MasterSlaveServers -->
@@ -24,10 +25,13 @@
 		<property name="slaveAddresses">
 			<array>
 				<value>${redis.host}:${redis.port}</value>
+				<value>${redis.host}:${redis.port}</value>
 			</array>
 		</property>
 		-->
 	</bean>
+
+
 
 	<!-- 缓存 -->
 	<bean id="redisCacheManager" class="org.redisson.spring.cache.RedissonSpringCacheManager">

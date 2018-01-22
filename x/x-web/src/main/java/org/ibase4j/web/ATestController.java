@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import base.core.BaseController;
 import base.HttpCode;
 import org.ibase4j.model.TaskFireLog;
+import org.ibase4j.service.StoredCardInventoryServiceImpl;
 import org.ibase4j.service.TaskFireLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,11 @@ public class ATestController extends BaseController {
     @Autowired
     TaskFireLogService taskFireLogService;
 
+
+    @Autowired
+    StoredCardInventoryServiceImpl storedCardInventoryService;
+
+
     @RequestMapping("/test_1")
     @ResponseBody
     public Object test_1(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
@@ -28,7 +34,7 @@ public class ATestController extends BaseController {
         String s = log != null ? log.toString() : "no-data";
 
 
-
+        storedCardInventoryService.sayhi();
 
         return setModelMap(modelMap, HttpCode.OK, log);
 
