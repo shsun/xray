@@ -64,7 +64,11 @@
 
 	<import resource="spring/common-ac-mybatis.xml"/>
 
-	<!-- <import resource="spring/common-ac-mq-listener.xml"/>
-	<import resource="spring/common-ac-mq-sender.xml"/> -->
+	<!--
+	<import resource="spring/common-ac-mq.xml"/>
 
+
+	<import resource="spring/mq-listener.xml"/>
+	<import resource="spring/mq-sender.xml"/>
+	-->
 </beans>

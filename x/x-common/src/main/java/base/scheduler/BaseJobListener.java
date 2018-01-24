@@ -7,11 +7,6 @@ import java.util.concurrent.Executors;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import base.IConstants.IJOBSTATE;
-import base.email.Email;
-import base.mq.QueueSender;
-import base.utils.EmailUtil;
-import base.utils.NativeUtil;
 import org.ibase4j.model.TaskFireLog;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
@@ -20,12 +15,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
 
-public class JobListener implements org.quartz.JobListener {
-    private static Logger logger = LogManager.getLogger(JobListener.class);
+import base.IConstants.IJOBSTATE;
+import base.email.Email;
+import base.mq.QueueSender;
+import base.utils.EmailUtil;
+import base.utils.NativeUtil;
+
+public class BaseJobListener implements org.quartz.JobListener {
+
+    private static Logger logger = LogManager.getLogger(BaseJobListener.class);
 
     @Autowired
     private SchedulerService schedulerService;
 
+    /**
+     *
+     */
     private QueueSender emailQueueSender;
 
     // 线程池

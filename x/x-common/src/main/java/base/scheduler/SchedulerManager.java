@@ -48,7 +48,7 @@ public class SchedulerManager implements InitializingBean {
             }
             for (JobListener listener : this.jobListeners) {
                 if (logger.isInfoEnabled()) {
-                    logger.info("Add JobListener : " + listener.getName());
+                    logger.info("Add BaseJobListener : " + listener.getName());
                 }
                 this.scheduler.getListenerManager().addJobListener(listener);
             }
