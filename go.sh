@@ -9,7 +9,6 @@ sudo nginx -s reload;
 sleep 1;
 
 
-
 echo ""
 echo "starting..................... zookeeper"
 ZOOKEEPER_HOME=/usr/local/zookeeper-3.4.6;
