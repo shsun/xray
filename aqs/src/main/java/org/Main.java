@@ -13,8 +13,6 @@ public class Main {
 
         List<NameValuePair> param = new ArrayList<NameValuePair>();
 
-        JSONObje
-
         String URL = "https://dllgps.qiatuchina.com//api/onlineMall/login";
         String result = HttpsConnectionUtils.request(URL, param, "userId=123456");
         System.out.println("result-->" + result);

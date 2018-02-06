@@ -25,9 +25,7 @@ import base.scheduler.TaskScheduled.TaskType;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-/**
- * 内存调度管理
- */
+
 @RestController
 @Api(value = "调度管理", description = "调度管理")
 @RequestMapping(value = "/scheduled")
