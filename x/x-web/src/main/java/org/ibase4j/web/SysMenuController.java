@@ -75,6 +75,6 @@ public class SysMenuController extends AbstractMSAController<ISysProvider> {
     public Object getPermissions(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user) {
         Parameter parameter = new Parameter(getService(), "getPermissions").setModel(new SysMenu());
         List<?> list = provider.execute(parameter).getList();
-        return setSuccessModelMap(map, list);
+        return setSuccessModelMap(request,response,map, list);
     }
 }

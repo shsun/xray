@@ -49,7 +49,7 @@ public class LoginController extends AbstractMSAController<ISysProvider> {
 
         if (LoginHelper.login(param.getAccount(), SecurityUtil.encryptPassword(param.getPassword()))) {
             request.setAttribute("msg", "[" + param.getAccount() + "]登录成功.");
-            return setSuccessModelMap(map);
+            return setSuccessModelMap(request,response,map);
         }
         request.setAttribute("msg", "[" + param.getAccount() + "]登录失败.");
         throw new LoginException(Resources.getMessage("LOGIN_FAIL"));
@@ -64,7 +64,7 @@ public class LoginController extends AbstractMSAController<ISysProvider> {
             provider.execute(new Parameter("sysSessionService", "delete").setId(id));
         }
         SecurityUtils.getSubject().logout();
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     // 注册
@@ -77,7 +77,7 @@ public class LoginController extends AbstractMSAController<ISysProvider> {
         param.setPassword(SecurityUtil.encryptPassword(param.getPassword()));
         provider.execute(new Parameter("sysUserService", "update").setModel(param));
         if (LoginHelper.login(param.getAccount(), param.getPassword())) {
-            return setSuccessModelMap(map);
+            return setSuccessModelMap(request,response,map);
         }
         throw new IllegalArgumentException(Resources.getMessage("LOGIN_FAIL"));
     }
@@ -86,13 +86,13 @@ public class LoginController extends AbstractMSAController<ISysProvider> {
     @ApiOperation(value = "没有登录")
     @RequestMapping(value = "/unauthorized", method = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT })
     public Object unauthorized(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user) throws Exception {
-        return setModelMap(map, HttpCode.UNAUTHORIZED);
+        return setModelMap(request,response,map, HttpCode.UNAUTHORIZED);
     }
 
     // 没有权限
     @ApiOperation(value = "没有权限")
     @RequestMapping(value = "/forbidden", method = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT })
     public Object forbidden(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user) {
-        return setModelMap(map, HttpCode.FORBIDDEN);
+        return setModelMap(request,response,map, HttpCode.FORBIDDEN);
     }
 }

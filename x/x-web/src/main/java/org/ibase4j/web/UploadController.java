@@ -50,7 +50,7 @@ public class UploadController extends BaseController {
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setContentType("text/html;charset=utf-8");
 
-        return ab(fileNames, map);
+        return ab(request, response, fileNames, map);
     }
 
     /**
@@ -107,22 +107,22 @@ public class UploadController extends BaseController {
                             logger.error("上传文件异常：", e);
                         }
                     } else {
-                        setModelMap(map, HttpCode.BAD_REQUEST);
+                        setModelMap(request,response,map, HttpCode.BAD_REQUEST);
                         map.put("msg", "请选择要上传的文件！");
                         return map;
                     }
                 }
             }
         }
-        return ab(fileNames, map);
+        return ab(request, response, fileNames, map);
     }
 
-    private Object ab(List<String> fileNames, ModelMap map) {
+    private Object ab(HttpServletRequest request, HttpServletResponse response, List<String> fileNames, ModelMap map) {
         if (fileNames.size() > 0) {
             map.put("imgName", fileNames);
-            return super.setSuccessModelMap(map);
+            return super.setSuccessModelMap(request,response,map);
         } else {
-            super.setModelMap(map, HttpCode.BAD_REQUEST);
+            super.setModelMap(request,response,map, HttpCode.BAD_REQUEST);
             map.put("msg", "请选择要上传的文件！");
             return map;
         }

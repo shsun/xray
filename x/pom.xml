@@ -41,6 +41,7 @@
 		<!-- log4j日志文件管理包版本 -->
 		<slf4j.version>1.7.9</slf4j.version>
 		<log4j.version>2.4.1</log4j.version>
+		<logback.version>1.2.3</logback.version>
 		<disruptor.version>3.3.4</disruptor.version>
 		<!-- -->
 		<druid.version>1.0.27</druid.version>
@@ -241,6 +242,23 @@
 			<artifactId>log4j-slf4j-impl</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>uk.org.simonsite</groupId>
+			<artifactId>log4j-rolling-appender</artifactId>
+			<version>20120703-0826</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>com.lmax</groupId>
 			<artifactId>disruptor</artifactId>

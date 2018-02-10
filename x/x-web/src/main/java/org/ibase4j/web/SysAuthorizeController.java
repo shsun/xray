@@ -35,7 +35,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
     public Object getUserMenu(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysUserMenu param) {
         Parameter parameter = new Parameter(getService(), "queryMenuIdsByUserId").setId(param.getUserId());
         List<?> menus = provider.execute(parameter).getList();
-        return setSuccessModelMap(map, menus);
+        return setSuccessModelMap(request,response,map, menus);
     }
 
     @ApiOperation(value = "修改用户菜单")
@@ -56,7 +56,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
         }
         Parameter parameter = new Parameter(getService(), "updateUserMenu").setList(list);
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @ApiOperation(value = "获取用户角色")
@@ -65,7 +65,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
     public Object getUserRole(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysUserRole param) {
         Parameter parameter = new Parameter(getService(), "getRolesByUserId").setId(param.getUserId());
         List<?> menus = provider.execute(parameter).getList();
-        return setSuccessModelMap(map, menus);
+        return setSuccessModelMap(request,response,map, menus);
     }
 
     @ApiOperation(value = "修改用户角色")
@@ -86,7 +86,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
         }
         Parameter parameter = new Parameter(getService(), "updateUserRole").setList(list);
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @ApiOperation(value = "获取角色菜单编号")
@@ -95,7 +95,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
     public Object getRoleMenu(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysRoleMenu param) {
         Parameter parameter = new Parameter(getService(), "queryMenuIdsByRoleId").setId(param.getRoleId());
         List<?> menus = provider.execute(parameter).getList();
-        return setSuccessModelMap(map, menus);
+        return setSuccessModelMap(request,response,map, menus);
     }
 
     @ApiOperation(value = "修改角色菜单")
@@ -117,7 +117,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
         Parameter parameter = new Parameter(getService(), "updateRoleMenu");
         parameter.setList(list);
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @ApiOperation(value = "获取人员操作权限")
@@ -126,7 +126,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
     public Object queryUserPermissions(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysUserMenu record) {
         Parameter parameter = new Parameter(getService(), "queryUserPermissions").setModel(record);
         List<?> menuIds = provider.execute(parameter).getList();
-        return setSuccessModelMap(map, menuIds);
+        return setSuccessModelMap(request,response,map, menuIds);
     }
 
     @ApiOperation(value = "修改用户操作权限")
@@ -136,7 +136,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
             @RequestBody List<SysUserMenu> list) {
         Parameter parameter = new Parameter(getService(), "updateUserPermission").setList(list);
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @ApiOperation(value = "获取角色操作权限")
@@ -145,7 +145,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
     public Object queryRolePermissions(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysRoleMenu record) {
         Parameter parameter = new Parameter(getService(), "queryRolePermissions").setModel(record);
         List<?> menuIds = provider.execute(parameter).getList();
-        return setSuccessModelMap(map, menuIds);
+        return setSuccessModelMap(request,response,map, menuIds);
     }
 
     @ApiOperation(value = "修改角色操作权限")
@@ -155,7 +155,7 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
             @RequestBody List<SysRoleMenu> list) {
         Parameter parameter = new Parameter(getService(), "updateRolePermission").setList(list);
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @ApiOperation(value = "清理缓存")
@@ -164,6 +164,6 @@ public class SysAuthorizeController extends AbstractMSAController<ISysProvider> 
     public Object flush(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user) {
         Parameter parameter = new Parameter(getService(), "flushCache");
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 }

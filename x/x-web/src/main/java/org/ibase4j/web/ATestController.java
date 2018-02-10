@@ -27,7 +27,7 @@ public class ATestController extends BaseController {
 
     @RequestMapping("/test_1")
     @ResponseBody
-    public Object test_1(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+    public Object test_1(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
 
         request.getRequestURI();
         request.getQueryString();
@@ -38,7 +38,7 @@ public class ATestController extends BaseController {
 
         storedCardInventoryService.sayhi();
 
-        return setModelMap(modelMap, HttpCode.OK, log);
+        return setModelMap(request,response,map, HttpCode.OK, log);
 
     }
 }

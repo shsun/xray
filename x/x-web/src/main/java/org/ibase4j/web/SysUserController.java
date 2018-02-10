@@ -85,7 +85,7 @@ public class SysUserController extends AbstractMSAController<ISysProvider> {
         parameter = new Parameter("sysAuthorizeService", "queryAuthorizeByUserId").setId(id);
         List<?> menus = provider.execute(parameter).getList();
         map.put("menus", menus);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @ApiOperation(value = "当前用户信息")
@@ -121,7 +121,7 @@ public class SysUserController extends AbstractMSAController<ISysProvider> {
             param.setAvatar(filePath);
             return super.update(request, response, map, user, param);
         } else {
-            setModelMap(map, HttpCode.BAD_REQUEST);
+            setModelMap(request,response,map, HttpCode.BAD_REQUEST);
             map.put("msg", "请选择要上传的文件！");
             return map;
         }

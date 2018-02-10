@@ -58,28 +58,28 @@ public abstract class BaseController {
     /**
      * 设置成功响应代码
      */
-    protected ResponseEntity<ModelMap> setSuccessModelMap(ModelMap map) {
-        return setSuccessModelMap(map, null);
+    protected ResponseEntity<ModelMap> setSuccessModelMap(HttpServletRequest request, HttpServletResponse response, ModelMap map) {
+        return setSuccessModelMap(request, response, map, null);
     }
 
     /**
      * 设置成功响应代码
      */
-    protected ResponseEntity<ModelMap> setSuccessModelMap(ModelMap map, Object data) {
-        return setModelMap(map, HttpCode.OK, data);
+    protected ResponseEntity<ModelMap> setSuccessModelMap(HttpServletRequest request, HttpServletResponse response, ModelMap map, Object data) {
+        return setModelMap(request, response, map, HttpCode.OK, data);
     }
 
     /**
      * 设置响应代码
      */
-    protected ResponseEntity<ModelMap> setModelMap(ModelMap map, HttpCode code) {
-        return setModelMap(map, code, null);
+    protected ResponseEntity<ModelMap> setModelMap(HttpServletRequest request, HttpServletResponse response, ModelMap map, HttpCode code) {
+        return setModelMap(request, response, map, code, null);
     }
 
     /**
      * 设置响应代码
      */
-    protected ResponseEntity<ModelMap> setModelMap(ModelMap map, HttpCode code, Object data) {
+    protected ResponseEntity<ModelMap> setModelMap(HttpServletRequest request, HttpServletResponse response, ModelMap map, HttpCode code, Object data) {
         Map<String, Object> tmp = InstanceUtil.newLinkedHashMap();
         tmp.putAll(map);
         map.clear();

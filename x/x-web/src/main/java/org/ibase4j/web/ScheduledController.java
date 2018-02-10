@@ -49,7 +49,7 @@ public class ScheduledController extends AbstractMSAController<ISysProvider> {
         }
         Parameter parameter = new Parameter(getService(), "updateTask").setModel(scheduled);
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @DeleteMapping
@@ -60,7 +60,7 @@ public class ScheduledController extends AbstractMSAController<ISysProvider> {
         Assert.notNull(scheduled.getTaskName(), "TASKNAME");
         Parameter parameter = new Parameter(getService(), "delTask").setModel(scheduled);
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @PostMapping("/run")
@@ -71,7 +71,7 @@ public class ScheduledController extends AbstractMSAController<ISysProvider> {
         Assert.notNull(scheduled.getTaskName(), "TASKNAME");
         Parameter parameter = new Parameter(getService(), "execTask").setModel(scheduled);
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @PostMapping("/open")
@@ -82,7 +82,7 @@ public class ScheduledController extends AbstractMSAController<ISysProvider> {
         Assert.notNull(scheduled.getTaskName(), "TASKNAME");
         Parameter parameter = new Parameter(getService(), "openTask").setModel(scheduled);
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @PostMapping("/close")
@@ -93,7 +93,7 @@ public class ScheduledController extends AbstractMSAController<ISysProvider> {
         Assert.notNull(scheduled.getTaskName(), "TASKNAME");
         Parameter parameter = new Parameter(getService(), "closeTask").setModel(scheduled);
         provider.execute(parameter);
-        return setSuccessModelMap(map);
+        return setSuccessModelMap(request,response,map);
     }
 
     @PutMapping("/read/tasks")
@@ -106,7 +106,7 @@ public class ScheduledController extends AbstractMSAController<ISysProvider> {
         map.put("total", records.size());
         map.put("current", 1);
         map.put("size", records.size());
-        return setSuccessModelMap(map, records);
+        return setSuccessModelMap(request,response,map, records);
     }
 
     @PutMapping("/read/log")
@@ -115,6 +115,6 @@ public class ScheduledController extends AbstractMSAController<ISysProvider> {
     public Object getFireLog(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody Map<String, Object> log) {
         Parameter parameter = new Parameter(getService(), "queryLog").setMap(log);
         Page<?> list = provider.execute(parameter).getPage();
-        return setSuccessModelMap(map, list);
+        return setSuccessModelMap(request,response,map, list);
     }
 }
