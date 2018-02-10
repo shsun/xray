@@ -26,6 +26,7 @@ import base.HttpCode;
 import base.IConstants;
 import base.exception.BaseException;
 import base.exception.IllegalParameterException;
+import base.utils.HttpServletRequestUtils;
 import base.utils.InstanceUtil;
 import base.utils.WebUtil;
 
@@ -110,6 +111,9 @@ public abstract class BaseController {
         map.put("httpCode", code.value());
         map.put("msg", code.msg());
         map.put("timestamp", System.currentTimeMillis());
+
+        this.updateDebugInfo(request, map);
+
         return ResponseEntity.ok(map);
     }
 
@@ -121,23 +125,41 @@ public abstract class BaseController {
         logger.error(IConstants.EXCEPTION_HEAD, exception);
         response.setContentType("application/json;charset=UTF-8");
 
-        ModelMap tmp = new ModelMap();
+        ModelMap map = new ModelMap();
         if (exception instanceof BaseException) {
-            ((BaseException) exception).handler(tmp);
+            ((BaseException) exception).handler(map);
         } else if (exception instanceof IllegalArgumentException) {
-            new IllegalParameterException(exception.getMessage()).handler(tmp);
+            new IllegalParameterException(exception.getMessage()).handler(map);
         } else if (exception instanceof UnauthorizedException) {
-            tmp.put("httpCode", HttpCode.FORBIDDEN.value());
-            tmp.put("msg", StringUtils.defaultIfBlank(exception.getMessage(), HttpCode.FORBIDDEN.msg()));
+            map.put("httpCode", HttpCode.FORBIDDEN.value());
+            map.put("msg", StringUtils.defaultIfBlank(exception.getMessage(), HttpCode.FORBIDDEN.msg()));
         } else {
             String msg = StringUtils.defaultIfBlank(exception.getMessage(), HttpCode.INTERNAL_SERVER_ERROR.msg());
-            tmp.put("httpCode", HttpCode.INTERNAL_SERVER_ERROR.value());
-            tmp.put("msg", msg.length() > 100 ? "系统走神了,请稍候再试." : msg);
+            map.put("httpCode", HttpCode.INTERNAL_SERVER_ERROR.value());
+            map.put("msg", msg.length() > 100 ? "系统走神了,请稍候再试." : msg);
         }
-        tmp.put("timestamp", System.currentTimeMillis());
-        logger.info(JSON.toJSON(tmp));
+        map.put("timestamp", System.currentTimeMillis());
+        logger.info(JSON.toJSON(map));
 
-        byte[] bytes = JSON.toJSONBytes(tmp, SerializerFeature.DisableCircularReferenceDetect);
+        this.updateDebugInfo(request, map);
+
+        byte[] bytes = JSON.toJSONBytes(map, SerializerFeature.DisableCircularReferenceDetect);
         response.getOutputStream().write(bytes);
     }
+
+    private void updateDebugInfo(HttpServletRequest request, ModelMap map) {
+        // if ("1".equals(request.getParameter("debug"))) {
+        Map info = HttpServletRequestUtils.getRequestMap(request);
+        map.put("__a__parameter", info);
+        map.put("__a__requestURI", request.getRequestURI());
+        map.put("__a__queryString", request.getQueryString());
+
+        final long dateHeader = request.getDateHeader("");
+        if (dateHeader > 0) {
+            map.put("__a__cost", "" + (System.currentTimeMillis() - dateHeader));
+        }
+
+        // }
+    }
+
 }

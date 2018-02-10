@@ -57,14 +57,16 @@ public class SysUserController extends AbstractMSAController<ISysProvider> {
     // @RequiresPermissions("sys.base.user.read")
     @PutMapping(value = "/read/list")
     public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody Map<String, Object> param) {
-        return super.query(request, response, map, user, param);
+        Object o  =  super.query(request, response, map, user, param);
+        return o;
     }
 
     @ApiOperation(value = "用户详细信息")
     // @RequiresPermissions("sys.base.user.read")
     @PutMapping(value = "/read/detail")
     public Object get(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody SysUser param) {
-        return super.get(request, response, map, user, param);
+        Object o  = super.get(request, response, map, user, param);
+        return o;
     }
 
     @ApiOperation(value = "删除用户")
@@ -85,7 +87,7 @@ public class SysUserController extends AbstractMSAController<ISysProvider> {
         parameter = new Parameter("sysAuthorizeService", "queryAuthorizeByUserId").setId(id);
         List<?> menus = provider.execute(parameter).getList();
         map.put("menus", menus);
-        return setSuccessModelMap(request,response,map);
+        return setSuccessModelMap(request, response, map);
     }
 
     @ApiOperation(value = "当前用户信息")
@@ -121,7 +123,7 @@ public class SysUserController extends AbstractMSAController<ISysProvider> {
             param.setAvatar(filePath);
             return super.update(request, response, map, user, param);
         } else {
-            setModelMap(request,response,map, HttpCode.BAD_REQUEST);
+            setModelMap(request, response, map, HttpCode.BAD_REQUEST);
             map.put("msg", "请选择要上传的文件！");
             return map;
         }

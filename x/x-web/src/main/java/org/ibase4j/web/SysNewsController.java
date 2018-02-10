@@ -31,7 +31,8 @@ public class SysNewsController extends AbstractMSAController<ISysProvider> {
     @RequiresPermissions("public.news.read")
     @PutMapping(value = "/read/list")
     public Object query(HttpServletRequest request, HttpServletResponse response, ModelMap map, SysUser user, @RequestBody Map<String, Object> param) {
-        return super.query(request, response, map, user, param);
+        Object o  = super.query(request, response, map, user, param);
+        return o;
     }
 
     @ApiOperation(value = "新闻详情")
