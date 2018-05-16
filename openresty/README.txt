@@ -11,8 +11,11 @@
 	release:
 		clear;sudo ./configure --with-openssl=/usr/local/openssl/ --add-module=3rd_party_modules/lua-nginx-module -j2;
 
+./configure --prefix=/usr/local/Cellar/pcre/8.42 --enable-utf8 --enable-pcre8 --enable-pcre16 --enable-pcre32 --enable-unicode-properties --enable-pcregrep-libz --enable-pcregrep-libbz2 --enable-jit
 
 
+
+./Configure no-threads shared zlib -g --openssldir=/usr/local/Cellar/openresty-openssl/1.0.2k_1 --libdir=lib darwin64-x86_64-cc enable-ec_nistp_64_gcc_128
 	 ./configure --prefix=/opt/nginx \
          --with-ld-opt="-Wl,-rpath,/path/to/luajit-or-lua/lib" \
          --add-module=/path/to/ngx_devel_kit \
@@ -26,7 +29,7 @@
 
 
 
-
+brew update;brew install pcre openssl curl;brew install openresty/brew/openresty;
 
 ========== whereis openresty on ubuntu
 /usr/bin/openresty /etc/openresty /usr/local/openresty
